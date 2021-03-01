@@ -1,0 +1,17 @@
+#Features
+
+Log in/out
+user creation/demo user
+
+Stories
+Follows and feed
+Commenting on stories
+Likes
+
+Bonus: Topics/categories
+Bonus: Bookmarks
+
+#Style guide
+
+
+#Wire frames
