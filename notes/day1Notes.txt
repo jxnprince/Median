@@ -1,15 +1,35 @@
 #Features
 
-Log in/out
-user creation/demo user
+Hosting on Heroku
+	hosted on a live link that never sleeps
 
-Stories
-Follows and feed
-Commenting on stories
-Likes
+Account creation log in/log out
+	demo user availible for .. uh demos?
+	Users can sign up and log in/ out
+		BONUS: user supplied avatars
+	BONUS: users with different levels of access
+	BONUS: Follow users that are also on other social media platforms
 
-Bonus: Topics/categories
-Bonus: Bookmarks
+Users can follow other Users
+	followed users can be displayed on some page(?)
+
+Stories (Come up with fancy/catchy/clever name that's way better later)
+	Users can CRUD stories
+	Has a post body with headings
+	Has singular heading photo supplied by client
+		BONUS: has code-block formatting to be engaged with 'key' character
+	Stories have comments that update on the backend
+	Stories have likes that update on the backend
+	BONUS: Users can bookmark stories
+	BONUS: Users can share to social media via links
+	BONUS: Stories can have embedded videos
+		BONUSBONUS: App can accept uploaded videos/files
+
+Feed
+	Feed shows stories ordered by likes
+		BONUS: feed can toggle between all users and followed users
+		BONUS: feed can be organized by Topics/categories
+
 
 #Style guide
 
