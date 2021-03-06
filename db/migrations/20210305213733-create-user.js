@@ -9,19 +9,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(100),
+        allowNull: false,
+        unique: true
       },
       firstName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(45),
+        allowNull: false
       },
       lastName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(75)
       },
       hashedPassword: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255),
+        allowNull: false
       },
       gender: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(20)
       },
       birthdate: {
         type: Sequelize.DATE
@@ -30,10 +34,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       avatar: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: true
       },
       admin: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
