@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     postBody: DataTypes.TEXT,
     title: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    bookmarkId: DataTypes.INTEGER
   }, {});
   Story.associate = function(models) {
     Story.belongsTo(models.User, { foreignKey: "userId"});

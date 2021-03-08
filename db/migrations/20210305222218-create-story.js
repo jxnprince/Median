@@ -25,10 +25,6 @@ module.exports = {
         allowNull: false,
         references: { model: "Users"}
       },
-      bookmarkId: {
-        type: Sequelize.INTEGER,
-        allowNull: true
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
