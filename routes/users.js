@@ -6,6 +6,15 @@ const { User } = require('../db/models');
 
 
 
+router.get("/", asyncHandler(async (req, res) => {
+  if (req.session.auth){
+    res.redirect("/feed");
+  } else {
+    res.render("splash");
+  }
+}));
+
+
 
 router.post("/demo-user", csrfProtection, asyncHandler(async(req, res) => {
   const email = 'test@test.net';
