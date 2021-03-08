@@ -39,10 +39,11 @@ const createUserValidators =[
   check('gender')
     .isLength({ max : 20})
     .withMessage('Please provide a gender under 20 characters'),
-  check('birthDate')
-    //some logic here
+  check('avatar')
+    .isLength({ max : 255})
+    .withMessage('Please provide an address under 255 characters'),  
 ];
-router.post('/submit', csrfProtection, asyncHandler((req, res) => {
+router.post('/user/create-account', csrfProtection, createUserValidators, asyncHandler( await (req, res) => {
 
 }))
 
