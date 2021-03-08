@@ -1,10 +1,13 @@
-
-
-const { User } = require("./db/models")
+const {
+    User
+} = require("./db/models")
 
 const loginUser = (req, res, user) => {
     // change name to email???? below--
-    req.session.auth = { userId: user.id, name: user.firstName };
+    req.session.auth = {
+        userId: user.id,
+        email: user.email
+    };
 }
 
 
@@ -15,7 +18,10 @@ const logoutUser = (req, res) => {
 const restoreUser = async (req, res, next) => {
 
     if (req.session.auth) {
-        const { userId, username } = req.session.auth;
+        const {
+            userId,
+            username
+        } = req.session.auth;
 
         try {
             const user = await User.findByPk(userId);
@@ -36,4 +42,8 @@ const restoreUser = async (req, res, next) => {
 };
 
 
-module.exports = { loginUser, logoutUser, restoreUser }
+module.exports = {
+    loginUser,
+    logoutUser,
+    restoreUser
+}
