@@ -25,6 +25,7 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
+    // change to the secret in the .env
     secret: 'superSecret',
     store,
     saveUninitialized: false,
