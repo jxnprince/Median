@@ -1,4 +1,24 @@
 extends layout
+block head
 block content
-    h1 splash page
-    p form here
+    h1 Welcome to Median
+    div
+        form(method='POST', action="/login")
+            input(type="hidden" name="_csrf" value=token)
+            input(type='string' name='email' placeholder='email' required)
+            input(type='password' name='password' placeholder='password' required)
+            button(type="submit") Login
+    div
+        form(method='POST', action="signup")
+            input(type="hidden" name="_csrf" value=token)
+            input(type='string' name='email' placeholder='email' required)
+            input(type='string' name='firstName' placeholder='First Name')
+            input(type='string' name='lastName' placeholder='Last Name')
+            input(type='password' name='password' placeholder='Password' required)
+            input(type='password' name='confPassword' placeholder='Confirm Password' required)
+            button(type="submit") Sign Up
+    div
+        form(method="POST" action="/demo-user")
+            input(type="hidden" name="_csrf" value=token)
+            button(type="submit") Demo login
+block footer
