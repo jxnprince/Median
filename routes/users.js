@@ -6,27 +6,26 @@ const { User } = require('../db/models');
 
 
 
-router.get("/", asyncHandler(async (req, res) => {
+router.get("/", csrfProtection, asyncHandler(async (req, res) => {
   if (req.session.auth){
     res.redirect("/feed");
   } else {
-    res.render("splash");
+    res.render("splash", { token: req.csrfToken()});
   }
 }));
 
 
-
-router.post("/demo-user", csrfProtection, asyncHandler(async(req, res) => {
+router.post("/demo-user", csrfProtection, asyncHandler(async(req, res,next) => {
   const email = 'test@test.net';
   const user = await User.findOne({ where: { email }});
 
   loginUser(req, res, user);
 
-  return res.session.save(() => {
-    if(err) {
-      next(err);
+  return req.session.save(() => {
+    if (res) {
+      res.redirect("/")
     } else {
-      res.redirect("/");
+      next(res.error)
     }
   });
 }));
