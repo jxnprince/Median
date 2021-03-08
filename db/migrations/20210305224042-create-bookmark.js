@@ -13,10 +13,6 @@ module.exports = {
         allowNull: false,
         references: { model: "Users" }
       },
-      bookMarked: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-      },
       storyId: {
         type: Sequelize.INTEGER,
         allowNull: false,

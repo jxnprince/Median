@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER
   }, {});
   Like.associate = function(models) {
-    // associations can be defined here
+
   };
   return Like;
 };

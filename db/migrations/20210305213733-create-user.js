@@ -30,9 +30,6 @@ module.exports = {
       birthdate: {
         type: Sequelize.DATE
       },
-      bookmarkId: {
-        type: Sequelize.INTEGER
-      },
       avatar: {
         type: Sequelize.STRING,
         allowNull: true
