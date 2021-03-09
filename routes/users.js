@@ -93,7 +93,6 @@ const createUserValidators = [
 ];
 
 router.post('/user/create-account', csrfProtection, asyncHandler(async (req, res) => {
-
 }))
 router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) => {
   const email = 'test@test.net';
