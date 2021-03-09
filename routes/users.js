@@ -17,13 +17,13 @@ const {
 const bcrypt = require('bcryptjs')
 
 // GET localhost:8080/users/ ||works
+
 router.get("/", csrfProtection, asyncHandler(async (req, res) => {
   if (req.session.auth) res.redirect("/feed");
   else res.render("splash", {
     csrfToken: req.csrfToken()
   });
 }));
-
 
 // POST localhost:8080/users/ || works
 router.post('/', (req, res) => {
@@ -94,6 +94,7 @@ const createUserValidators = [
   })
   .withMessage('Please provide an address under 255 characters')
 ];
+
 // GET localhost:8080/users/signup || I think there's an issue with this route
 router.get('/signup', csrfProtection, (req, res) => {
   res.render('signup', {
@@ -137,6 +138,7 @@ router.delete('/profile/:id', (req, res) => {
   })
 })
 
+
 //put the csrf protection back in once route/form is complete
 router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
   const {
@@ -177,7 +179,6 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
   }
 }))
 
-
 router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) => {
   const email = 'test@test.net';
   const user = await User.findOne({
@@ -188,10 +189,12 @@ router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) =>
 
   loginUser(req, res, user);
 
+
   return req.session.save(() => {
     if (res) res.redirect("/users")
     else next(res.error)
   });
+
 }));
 
 module.exports = router;

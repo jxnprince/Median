@@ -19,6 +19,6 @@ block content
             button(type="submit") Sign Up
     div
         form(method="POST" action="/users/demo-user")
-            input(type="hidden" name="_csrf" value=token)
+            input(type="hidden" name="_csrf" value=csrfToken)
             button(type="submit") Demo login
 block footer
