@@ -15,6 +15,9 @@ router.get("/", csrfProtection, asyncHandler(async (req, res) => {
   }
 }));
 
+
+
+
 const createUserValidators =[
   check('email')
     .exists({checkFalsy: true})
@@ -41,11 +44,17 @@ const createUserValidators =[
     .withMessage('Please provide a gender under 20 characters'),
   check('avatar')
     .isLength({ max : 255})
-    .withMessage('Please provide an address under 255 characters'),  
+    .withMessage('Please provide an address under 255 characters'),
 ];
-router.post('/user/create-account', csrfProtection, createUserValidators, asyncHandler( await (req, res) => {
 
-}))
+router.post('/user/create-account', csrfProtection, createUserValidators, asyncHandler( async (req, res) => {
+
+}));
+
+
+
+
+
 
 router.post("/demo-user", csrfProtection, asyncHandler(async(req, res,next) => {
   const email = 'test@test.net';
