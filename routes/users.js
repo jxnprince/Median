@@ -16,7 +16,7 @@ const {
 } = require('express-validator');
 
 
-
+//!clean these up if its okay with everyone
 router.get("/", csrfProtection, asyncHandler(async (req, res) => {
   if (req.session.auth) {
     res.redirect("/feed");
@@ -67,20 +67,19 @@ const createUserValidators = [
   .withMessage('Please provide a password under 255 characters')
   .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
   .withMessage('Password must contain at least one lowercase letter, one uppercase letter, and one special character(!#%^%$...))'),
-  //confirm password???
-  // check('confirmPassword')
-  // .exists({
-  //   checkFalsy: true
-  // })
-  // .withMessage('Please confirm password')
-  // .custom((value, {
-  //   req
-  // }) => {
-  //   if (value !== req.body.password) {
-  //     throw Error('Passwords do not match')
-  //   }
-  //   return true;
-  // }),
+  check('confirmPassword')
+  .exists({
+    checkFalsy: true
+  })
+  .withMessage('Please confirm password')
+  .custom((value, {
+    req
+  }) => {
+    if (value !== req.body.password) {
+      throw Error('Passwords do not match')
+    }
+    return true;
+  }),
   check('gender')
   .isLength({
     max: 20
