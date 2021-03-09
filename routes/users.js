@@ -6,11 +6,14 @@ const { User } = require('../db/models');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
 
-//!clean these up if its okay with everyone
+
 router.get("/", csrfProtection, asyncHandler(async (req, res) => {
   if (req.session.auth) res.redirect("/feed");
   else res.render("splash", { csrfToken: req.csrfToken() });
 }));
+
+
+
 
 const createUserValidators = [
   check('email')
@@ -50,9 +53,13 @@ const createUserValidators = [
   .withMessage('Please provide an address under 255 characters')
 ];
 
+
 router.get('/signup', csrfProtection, (req, res) => {
   res.render('signup', { csrfToken: req.csrfToken() })
 });
+
+
+
 
 //put the csrf protection back in once route/form is complete
 router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
@@ -77,17 +84,27 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
 }))
 
 
+
+
+
+
+
 router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) => {
   const email = 'test@test.net';
   const user = await User.findOne({ where: { email } });
 
   loginUser(req, res, user);
 
+
   return req.session.save(() => {
     if (res) res.redirect("/users")
     else next(res.error)
   });
+
 }));
 
-module.exports = router;
 
+
+
+
+module.exports = router;
