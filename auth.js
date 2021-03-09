@@ -22,10 +22,7 @@ const logoutUser = (req, res) => {
 const restoreUser = async (req, res, next) => {
 
     if (req.session.auth) {
-        const {
-            userId,
-            username
-        } = req.session.auth;
+        const { userId } = req.session.auth;
 
         try {
             const user = await User.findByPk(userId);
@@ -39,10 +36,13 @@ const restoreUser = async (req, res, next) => {
             res.locals.authenticated = false;
             next(err);
         }
+
+
     } else {
         res.locals.authenticated = false;
         next();
     }
+
 };
 
 
