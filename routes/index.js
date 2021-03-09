@@ -1,15 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const apiRouter = require('./api')
+const storyRouter = require('./stories')
+const userRouter = require('./users');
 
-const userRouter = require('./users.js');
-const feedRouter = require('./feed.js');
-const apiRouter = require('./api.js');
-
-
-router.use('/', userRouter);
-router.use('/', feedRouter);
-router.use('/api', apiRouter);
-
-
+router.use('/users', userRouter)
+router.use('/api', apiRouter)
+router.use('/stories', storyRouter)
 
 module.exports = router
