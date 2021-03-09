@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-//GET localhost:8080/api/commnets
+//GET localhost:8080/api/commnets || working
 router.get('/', (req, res) => {
     //return a list of comments
     //api/comments?storyId=storyId=<storyId>
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     })
 })
 
-//POST localhost:8080/api/commnets
+//POST localhost:8080/api/comments || working
 router.post('/', (req, res) => {
     //logic for creating a comment
     res.json({
@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
     })
 })
 
-//PUT localhost:8080/api/comments/:id
+//PUT localhost:8080/api/comments/:id || working?
 router.put('/:id', (req, res) => {
     //logic for editing comments
     res.json({
@@ -26,7 +26,7 @@ router.put('/:id', (req, res) => {
     })
 })
 
-//DELETE localhost:8080/api/comments/:id
+//DELETE localhost:8080/api/comments/:id || working?
 router.delete('/:id', (req, res) => {
     //logic for deleting a comment
     res.json({
