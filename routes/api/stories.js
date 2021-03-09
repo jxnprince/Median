@@ -28,7 +28,7 @@ router.delete('/:id', (req, res) => {
         test: "this is a delete request to api/stories/:id"
     })
 })
-
+//PUT localhost:8080/api/stories/:id
 router.put('/:id', (req, res) => {
     res.json({
         test: "this is a put request to api/stories/:id"
