@@ -11,7 +11,6 @@ module.exports = {
         gender: 'female',
         birthdate: '1985-03-08',
         avatar: null,
-        admin: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },{
@@ -22,7 +21,6 @@ module.exports = {
         gender: 'male',
         birthdate: '1991-06-15',
         avatar: null,
-        admin: false,
         createdAt: new Date(),
         updatedAt: new Date()
       }
