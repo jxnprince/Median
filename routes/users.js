@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require('../utils.js');
 const { loginUser } = require('../auth.js');
-const { User } = require('../db/models');
+const db = require('../db/models');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
 
@@ -14,11 +14,12 @@ router.get("/", csrfProtection, asyncHandler(async (req, res) => {
 }));
 
 // POST localhost:8080/users/ || works
-router.post('/', (req, res) => {
-  //create a new user
-  res.json({ test: "this is a test route to " })
-})
+// router.post('/', (req, res) => {
+//   //create a new user
+//   res.json({ test: "this is a test route to " })
+// })
 
+//put in utils
 const createUserValidators = [
   check('email')
   .exists({ checkFalsy: true })
@@ -59,8 +60,37 @@ const createUserValidators = [
 
 // GET localhost:8080/users/signup || I think there's an issue with this route
 router.get('/signup', csrfProtection, (req, res) => {
-  res.render('signup', { csrfToken: req.csrfToken()})
+  res.render('splash', { csrfToken: req.csrfToken()})
 });
+
+//put the csrf protection back in once route/form is complete
+router.post('/', createUserValidators, asyncHandler(async (req, res) => {
+  const { email, firstName, lastName, hashedPassword, gender, avatar } = req.body
+  const user = await db.User.build({ email, firstName, lastName, hashedPassword, gender, avatar })
+  const validationErrors = validationResult(res)
+  
+  if (validationErrors.isEmpty()) {
+    const newPassword = await bcrypt.hash(hashedPassword, 10)
+    user.hashedPassword = newPassword;
+    console.log(user,`<==========================================`)
+    await user.save()
+    loginUser(req, res, user)
+    req.session.save(() => {
+      res.redirect('/user/:id/feed')
+    })
+    // console.log(`You hit the user registration route`)
+  } else {
+    console.log(`You hit the user registration error route`)
+    const errors = validationErrors.array().map((error) => error.msg);
+    res.render('error', { user, errors, csrfToken: req.csrfToken() })
+    //do we want a seperate template for rendering form errors?
+  }
+}))
+
+// GET localhost:8080/users/login 
+router.get('/login', (req, res) => {
+  res.json({ test: "this is a test post request to users/login" })
+})
 
 // POST localhost:8080/users/login || working
 router.post('/login', (req, res) => {
@@ -84,28 +114,6 @@ router.put('/profile/:id', (req, res) => {
 router.delete('/profile/:id', (req, res) => {
   res.json({ test: "this is a test request" })
 })
-
-//put the csrf protection back in once route/form is complete
-router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
-  const { email, firstName, lastName, hashedPassword, gender, avatar } = req.body
-  const user = User.build({ email, firstName, lastName, hashedPassword, gender, avatar })
-  const validationErrors = validationResult(res)
-
-  if (validationErrors.isEmpty()) {
-    const newPassword = await bcrypt.hash(hashedPassword, 10)
-    console.log(`==========================================`)
-    user.hashedPassword = newPassword;
-    await user.save()
-    loginUser(req, res, user)
-    // console.log(`You hit the user registration route`)
-    res.redirect('/user/:id/feed')
-  } else {
-    console.log(`You hit the user registration error route`)
-    const errors = validationErrors.array().map((error) => error.msg);
-    res.render('error', { user, errors, csrfToken: req.csrfToken() })
-    //do we want a seperate template for rendering form errors?
-  }
-}))
 
 router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) => {
   const email = 'test@test.net';

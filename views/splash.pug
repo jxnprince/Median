@@ -3,13 +3,13 @@ block head
 block content
     h1 Welcome to Median
     div
-        form(method='POST', action="/login")
+        form(method='POST', action="/users/login")
             input(type="hidden" name="_csrf" value=token)
             input(type='string' name='email' placeholder='email' required)
             input(type='password' name='password' placeholder='password' required)
             button(type="submit") Login
     div
-        form(method='POST', action="signup")
+        form(method='POST', action="/users/signup")
             input(type="hidden" name="_csrf" value=token)
             input(type='string' name='email' placeholder='email' required)
             input(type='string' name='firstName' placeholder='First Name')
