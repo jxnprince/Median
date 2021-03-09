@@ -6,7 +6,7 @@ const { csrfProtection, asyncHandler } = require('../utils.js');
 
 
 
-router.get('/feed', (req, res) => {
+router.get('/', (req, res) => {
     if(req.session.auth){
         res.render('feed');
     } else {

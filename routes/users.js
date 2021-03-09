@@ -93,7 +93,11 @@ const createUserValidators = [
 ];
 
 router.post('/user/create-account', csrfProtection, asyncHandler(async (req, res) => {
-}))
+}));
+
+
+
+
 router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) => {
   const email = 'test@test.net';
   const user = await User.findOne({
@@ -106,12 +110,14 @@ router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) =>
 
   return req.session.save(() => {
     if (res) {
-      res.redirect("/")
+      res.redirect("/users")
     } else {
       next(res.error)
     }
   });
 }));
+
+
 
 
 
