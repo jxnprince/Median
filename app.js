@@ -31,7 +31,7 @@ const store = new SequelizeStore({
 app.use(
   session({
     // change to the secret in the .env
-    secret: 'superSecret',
+    secret: 'superSecretSecret',
     store,
     saveUninitialized: false,
     resave: false,
