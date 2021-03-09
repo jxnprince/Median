@@ -8,6 +8,11 @@ const loginUser = (req, res, user) => {
         email: user.email
     };
 }
+const authenticatedUser = (req, res, next) => {
+    res.locals.user = req.user
+    res.locals.authenticated = !res.user.anonymous
+    next()
+}
 
 
 const logoutUser = (req, res) => {
@@ -39,6 +44,9 @@ const restoreUser = async (req, res, next) => {
         next();
     }
 };
+
+
+
 
 
 module.exports = {

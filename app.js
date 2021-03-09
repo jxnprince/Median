@@ -29,12 +29,13 @@ const store = new SequelizeStore({
 });
 
 app.use(
-  session({
+  session({ //automatically creates a session table
     // change to the secret in the .env
-    secret: 'superSecretSecret',
-    store,
-    saveUninitialized: false,
-    resave: false,
+
+    secret: process.env.SESSION_SECRET,
+    store, //tables in the database
+    saveUninitialized: false, //both are boiler plate
+    resave: false, //both are boiler plate
   })
 );
 
