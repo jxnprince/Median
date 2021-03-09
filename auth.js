@@ -3,7 +3,6 @@ const {
 } = require("./db/models")
 
 const loginUser = (req, res, user) => {
-    // change name to email???? below--
     req.session.auth = {
         userId: user.id,
         email: user.email
