@@ -29,13 +29,15 @@ const store = new SequelizeStore({
 });
 
 app.use(
-  session({
+  session({ //automatically creates a session table
     // change to the secret in the .env
-    secret: 'superSecret',
-    store,
-    saveUninitialized: false,
-    resave: false,
+
+    secret: 'superSecretSecret',
+    store, //tables in the database
+    saveUninitialized: false, //both are boiler plate
+    resave: false, //both are boiler plate
   })
+
 );
 
 // create Session table if it doesn't already exist
