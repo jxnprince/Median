@@ -13,13 +13,13 @@ router.get("/", asyncHandler(async (req, res) => {
     if(session) {
         const user = await User.findByPk(session.userId);
 
-        const allStories = await Story.findAll({ where: {
-        // order by most recent story -- createdAt
-        // need to figure out how to get the number of likes associated with an story
-            },
-
-            include: Comment
+        const allStories = await Story.findAll({
+            order: [["createdAt"] /*"Like"*/],
+            include: [Comment, { model: User, as: "UserLikes", attributes: ["firstName", "lastName", "avatar"]  }]
         });
+
+// need to figure out how to get the number of likes associated with an story
+// need to remove the hashedPassword from the UserLikes array
 
 
 
@@ -32,8 +32,10 @@ router.get("/", asyncHandler(async (req, res) => {
                 firstName: capitalizeFirstChar(user.firstName),
                 lastName: capitalizeFirstChar(user.lastName)
             },
-            the_stories: allStories
+            the_stories: allStories,
         });
+
+
 
     } else {
         res.json({
