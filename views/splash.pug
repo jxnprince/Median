@@ -18,7 +18,7 @@ block content
             input(type='password' name='confPassword' placeholder='Confirm Password' required)
             button(type="submit") Sign Up
     div
-        form(method="POST" action="/demo-user")
+        form(method="POST" action="/users/demo-user")
             input(type="hidden" name="_csrf" value=token)
             button(type="submit") Demo login
 block footer

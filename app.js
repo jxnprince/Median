@@ -32,12 +32,11 @@ app.use(
   session({ //automatically creates a session table
     // change to the secret in the .env
 
-    secret: 'superSecretSecret',
+    secret: process.env.SESSION_SECRET,
     store, //tables in the database
     saveUninitialized: false, //both are boiler plate
     resave: false, //both are boiler plate
   })
-
 );
 
 // create Session table if it doesn't already exist

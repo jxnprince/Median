@@ -1,11 +1,17 @@
 extends layout
-append head
-	script(src="/public/javascripts/feed.js")
+
 
 block head
+
+
 block content
-	div.mainContent
-		div.story
-			div.stats
+	div(id="mainContent" class="mainContent")
+		div(id="story" class="story")
+			div(id="stats" class="stats")
 			//- stats encompases likes and comments
+
+append head
+	script(src="/JS/feed.js", type=module)
+
+
 block footer
