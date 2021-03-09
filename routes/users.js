@@ -76,6 +76,7 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
   }
 }))
 
+
 router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) => {
   const email = 'test@test.net';
   const user = await User.findOne({ where: { email } });
@@ -83,9 +84,10 @@ router.post("/demo-user", csrfProtection, asyncHandler(async (req, res, next) =>
   loginUser(req, res, user);
 
   return req.session.save(() => {
-    if (res) res.redirect("/")
+    if (res) res.redirect("/users")
     else next(res.error)
   });
 }));
 
 module.exports = router;
+

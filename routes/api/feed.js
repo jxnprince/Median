@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { csrfProtection, asyncHandler } = require('../utils.js');
-const { User, Story, Like, Comment } = require('../db/models');
+const { csrfProtection, asyncHandler } = require('../../utils.js');
+const { User, Story, Like, Comment } = require('../../db/models');
 
 
 
 
-router.get("/feed", asyncHandler(async (req, res) => {
+router.get("/", asyncHandler(async (req, res) => {
     const session = req.session.auth;
 
     if(session) {
