@@ -15,11 +15,23 @@ router.get("/", asyncHandler(async (req, res) => {
 
         const allStories = await Story.findAll({
             order: [["createdAt"] /*"Like"*/],
-            include: [Comment, { model: User, as: "UserLikes", attributes: ["firstName", "lastName", "avatar"]  }]
+            include: [
+                Comment,
+                {
+                    model: User,
+                    as: "UserLikes",
+                    attributes: ["firstName", "lastName", "avatar"]
+                }
+            ]
         });
 
 // need to figure out how to get the number of likes associated with an story
-// need to remove the hashedPassword from the UserLikes array
+
+
+        const authors_array = allStories.map(async (eachStory) => {
+                const eachUser = await User.findByPk(eachStory.userId);
+                return eachUser;
+            });
 
 
 
@@ -33,6 +45,7 @@ router.get("/", asyncHandler(async (req, res) => {
                 lastName: capitalizeFirstChar(user.lastName)
             },
             the_stories: allStories,
+            authors: authors_array
         });
 
 
