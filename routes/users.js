@@ -125,10 +125,10 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 }));
 
 // // GET localhost:8080/users/profile/:id || not working because no id to reference?
-// router.get('/profile/:id', (req, res) => {
-//   console.log(`<==========================================`)
-//   res.json({ test: "this is a test get to profile/:id" })
-// })
+router.get('/profile/:id', (req, res) => {
+  console.log(`<==========================================`)
+  res.json({ test: "this is a test get to profile/:id" })
+})
 
 // // PUT localhost:8080/users/profile/:id || not working because no id to reference?
 // router.put('/profile/:id', (req, res) => {
