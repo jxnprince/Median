@@ -1,3 +1,4 @@
+const cookieParser = require("cookie-parser");
 const {
     User
 } = require("./db/models")
