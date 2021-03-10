@@ -5,6 +5,9 @@ block head
 
 
 block content
+	div
+		form(method='POST', action='/users/logout')
+			button(type='submit') Log out
 	div(id="mainContent" class="mainContent")
 		div(id="story" class="story")
 			div(id="stats" class="stats")

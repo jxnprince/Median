@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require('../utils.js');
-const { loginUser } = require('../auth.js');
+const { loginUser, logoutUser } = require('../auth.js');
 const { User } = require('../db/models');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
@@ -57,7 +57,6 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
   const { email, firstName, lastName, password, gender, avatar } = req.body
   const validationErrors = validationResult(res)
   
-  console.log(email, firstName, lastName, password, gender, avatar,`<==========================================`)
   if (validationErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10)
     const user = await User.create({email, firstName, lastName, hashedPassword, gender, avatar})
@@ -74,44 +73,69 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
   }
 }))
 
-// // GET localhost:8080/users/login 
-// router.get('/login', (req, res) => {
-//   res.json({ test: "this is a test post request to users/login" })
-// })
+const loginValidators = [
+   check('email')
+  .exists({ checkFalsy: true })
+  .withMessage('A field is missing or invalid'),
+  check('password')
+  .exists({ checkFalsy: true })
+  .withMessage('A field is missing or invalid')
+]
 
 // POST localhost:8080/users/login || working
-router.post('/login', (req, res) => {
-  res.json({ test: "this is a test post request to users/login" })
-})
+router.post('/login', loginValidators, asyncHandler(async(req, res) => {
+  let user = { email, password } = req.body
+  const validationErrors = validationResult(res)
+
+  if (validationErrors.isEmpty()) {
+    const dbEmail = await User.findOne({ where: { email: email } })
+    
+    if(dbEmail){
+      const match = await bcrypt.compare(password, dbEmail.hashedPassword.toString())
+      
+      if (match) {
+        user = dbEmail
+        loginUser(req, res, user)
+        req.session.save(() => {
+          if (req.session) res.redirect("/feed")
+          else next(res.err)
+        })
+      }
+    }
+  } else {
+    const errors = validationErrors.array().map((error) => error.msg);
+    res.render('error', { user, errors, csrfToken: req.csrfToken() })
+  }
+}))
 
 // POST localhost:8080/users/logout || working
 router.post('/logout', (req, res) => {
-  //deletes req.session.auth token
-  res.json({ test: "this is a test post to users/logout" })
-})
-// GET localhost:8080/users/profile/:id || not working because no id to reference?
-router.get('/profile/:id', (req, res) => {
-  res.json({ test: "this is a test get to profile/:id" })
-})
-// PUT localhost:8080/users/profile/:id || not working because no id to reference?
-router.put('/profile/:id', (req, res) => {
-  res.json({ test: "this is a test put request " })
-})
-// DELETE localhost:8080/users/profile/:id || not working because no id to reference?
-router.delete('/profile/:id', (req, res) => {
-  res.json({ test: "this is a test request" })
+  logoutUser(req, res)
+  res.redirect('/')
 })
 
 router.post('/demo-user', asyncHandler(async (req, res, next) => {
-  const email = 'test@test.net';
-  const user = await User.findOne({ where: { email } });
+  const user = await User.findOne({ where: { email: 'test@test.net' } });
   loginUser(req, res, user);
   return req.session.save(() => {
     //Not logging user in.  Redirecting to wrong place???
     if (req.session) res.redirect("/feed")
     else next(res.error)
-  });
-
+  })
 }));
+
+// // GET localhost:8080/users/profile/:id || not working because no id to reference?
+// router.get('/profile/:id', (req, res) => {
+//   console.log(`<==========================================`)
+//   res.json({ test: "this is a test get to profile/:id" })
+// })
+// // PUT localhost:8080/users/profile/:id || not working because no id to reference?
+// router.put('/profile/:id', (req, res) => {
+//   res.json({ test: "this is a test put request " })
+// })
+// // DELETE localhost:8080/users/profile/:id || not working because no id to reference?
+// router.delete('/profile/:id', (req, res) => {
+//   res.json({ test: "this is a test request" })
+// })
 
 module.exports = router;
