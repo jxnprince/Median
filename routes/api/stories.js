@@ -16,9 +16,19 @@ const {
 // GET localhost:8080/api/stories/ || works
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
     //return a list of the most recent stories
-    //!currently just returning all stories
-    const mostRecentStories = await Story.findAll()
-    res.json(mostRecentStories)
+    const mostRecentStories = await Story.findAll({
+        order: [
+            ['createdAt']
+        ]
+    })
+    if (mostRecentStories) {
+        res.json({
+            mostRecentStories,
+            message: "Stories"
+        })
+    } else {
+        res.json('Story not found')
+    }
 }))
 
 //POST localhost:8080/api/stories/ || works
@@ -39,17 +49,28 @@ router.post('/', /*createStoryValidator,*/ asyncHandler(async (req, res) => {
         title,
         userId
     })
-    res.send(story)
+    if (story) {
+        res.json({
+            message: "You created a new story",
+            story
+        })
+    } else {
+        res.json({
+            messsage: "Story not created"
+        })
+    }
 }))
 //GET localhost:8080/api/stories/:id || works
 router.get('/:id', asyncHandler(async (req, res) => {
     //test that you are pulling the id paramater
     //return a list of the most recent stories by a user.
-    // const userStories = await User.id
-    const storyId = parseInt(req.params.id);
+    const {
+        userId
+    } = req.params.id;
+
     const userStories = await Story.findAll({
         where: {
-            storyId
+            userId
         },
     });
     res.json(userStories)
@@ -63,12 +84,20 @@ router.delete('/:id', (req, res) => {
 
 })
 //PUT localhost:8080/api/stories/:id || works
-router.put('/:id', (req, res) => {
+router.put('/:id', csrfProtection, asyncHandler(async (req, res) => {
     //updates a specific user story
-    res.json({
-        test: "this is a put request to api/stories/:id"
+    const {
+        storyId
+    } = req.params;
+    const updatedStory = await Story.findOne({
+        where: {
+            id: storyId
+        }
     })
-})
+    res.json({
+        post: updatedStory
+    })
+}))
 
 
 
