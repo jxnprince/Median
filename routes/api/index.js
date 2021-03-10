@@ -9,7 +9,7 @@ const apiCommentsRouter = require('./comments');
 const apiFeedRouter = require('./feed.js');
 const apiNewsRouter = require('./news');
 
-// router.use('/stories', apiStoriesRouter);
+router.use('/stories', apiStoriesRouter);
 router.use('/users', apiUsersRouter);
 router.use('/follows', apiFollowsRouter);
 router.use('/likes', apiLikesRouter);
