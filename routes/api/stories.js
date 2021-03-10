@@ -1,21 +1,51 @@
 const express = require('express');
 const router = express.Router();
-
+const {
+    csrfProtection,
+    asyncHandler
+} = require('../../utils');
+const {
+    check,
+    validationResult
+} = require('express-validator');
+const {
+    Story
+} = require('../../db/models')
 //GET localhost:8080/api/stories/ || works
-router.get('/', (req, res) => {
+router.get('/', csrfProtection, asyncHandler(async (req, res) => {
     //return a list of the most recent stories
-    res.json({
-        test: 'this is a test on get to api/stories'
+    const mostRecentStories = await Story.findAll({
+        attributes: ['createdAt'],
+        order: [
+            ['createdAt', 'DESC']
+        ]
     })
-})
+    res.render('pugfile', {
+        mostRecentStories
+    })
+}))
 //POST localhost:8080/api/stories/ || works
-router.post('/', (req, res) => {
+router.post('/', createStoryValidator, asyncHandler((req, res) => {
     //submits a story via a form
     //submitted stories will then populate the general feed?
-    res.json({
-        test: "this is a post request to api/stories"
+    const {
+        imgUrl,
+        postBody,
+        title,
+        userId
+    } = req.body
+    const validationErrors = validationResult(res);
+
+    const story = await Story.create({
+        imgUrl,
+        postBody,
+        title,
+        userId
     })
-})
+
+    //needs to be finished i'm sleepy
+
+}))
 //GET localhost:8080/api/stories/:id || works
 router.get('/:id', (req, res) => {
     //test that you are pulling the id paramater
