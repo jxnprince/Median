@@ -27,11 +27,31 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         welcomeMessage.innerText = `Welcome ${firstName} ${lastName}`;
         mainDiv.appendChild(welcomeMessage);
 
+        const unorderedList = document.createElement("ul");
+
+        // loop through the stories in the API
+        data.the_stories.forEach((story) => {
+            const eachItem = document.createElement("li");
+
+            eachItem.innerHTML = `<a href="/stories/${story.id}">
+                    <img src="${story.imgUrl}">
+                    <h1> ${story.title} </h1>
+                    <p> ${story.postBody} </p>
+
+                </a>`;
+
+            unorderedList.appendChild(eachItem);
+        });
+
+
+        mainDiv.appendChild(storyDiv);
+        storyDiv.appendChild(unorderedList);
+
+
     } else {
         const errorMessage = document.createElement("h3");
         errorMessage.innerText = "Failed to fetch Story data. Please try again.";
         mainDiv.appendChild(errorMessage);
-
     }
 
 
