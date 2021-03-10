@@ -18,6 +18,8 @@ const authenticatedUser = (req, res, next) => {
 
 const logoutUser = (req, res) => {
     delete req.session.auth;
+    // req.session.destroy(req.sid)
+    res.clearCookie('connect.sid')
 }
 
 const restoreUser = async (req, res, next) => {
