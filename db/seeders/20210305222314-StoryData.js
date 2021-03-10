@@ -10,6 +10,13 @@ module.exports = {
         userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
+      },{
+        imgUrl: null,
+        postBody: "WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP WOOP!",
+        title: "This is another story!!",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }], {});
   },
 

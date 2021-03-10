@@ -4,8 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     storyId: DataTypes.INTEGER
   }, {});
-  Bookmark.associate = function(models) {
-
-  };
+  Bookmark.associate = function(models) { };
   return Bookmark;
 };
