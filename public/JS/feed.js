@@ -5,11 +5,6 @@ const getStories = async (url) => {
 };
 
 
-const getAuthors = async (url) => {
-    const data = await fetch(url);
-    return data.json();
-};
-
 
 
 // main DOMContentLoaded event here:
@@ -41,18 +36,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             const eachItem = document.createElement("li");
 
 
-            const authors_array = data.authors.map( async (eachAuthor) => {
-                return await getAuthors(`/api/users/${eachAuthor}`);
-            });
-
-
             eachItem.innerHTML = `<a href="/stories/${story.id}">
                     <img src="${story.imgUrl}">
-                    ${ authors_array.forEach(async (author) => {
-                        const result = await author;
-                        `<p> ${result} </p>`
-                        })
-                    }
 
                     <h1> ${story.title} </h1>
                     <p> ${story.postBody} </p>

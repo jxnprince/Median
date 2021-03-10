@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require('../../utils.js');
-const { User, Story, Like, Comment } = require('../../db/models');
+const { User, Story, Comment } = require('../../db/models');
 const { capitalizeFirstChar } = require('../../utils.js');
+
 
 
 
@@ -27,11 +28,6 @@ router.get("/", asyncHandler(async (req, res) => {
 
 // need to figure out how to get the number of likes associated with an story
 
-
-        const authors_array = allStories.map((eachStory) => eachStory.userId);
-
-        console.log(await authors_array);
-
         res.json({
             message: "Success, is an authorized user.",
             status: 200,
@@ -41,11 +37,16 @@ router.get("/", asyncHandler(async (req, res) => {
                 firstName: capitalizeFirstChar(user.firstName),
                 lastName: capitalizeFirstChar(user.lastName)
             },
+
+            // issue -- the promises will not resolve -- need them to resolve in order to get the author info
+            author: (allStories.map(async (eachAuthor) => {
+                const result = await User.findByPk(eachAuthor.userId, { attributes: ["firstName", "lastName", "avatar"] });
+                return [result.dataValues];
+            })),
+
             the_stories: allStories,
-            authors: authors_array
+
         });
-
-
 
     } else {
         res.json({
@@ -55,8 +56,6 @@ router.get("/", asyncHandler(async (req, res) => {
         });
     }
 }));
-
-
 
 
 
