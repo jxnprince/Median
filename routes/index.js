@@ -7,7 +7,7 @@ const feedRouter = require('./feed.js')
 
 
 router.use('/api', apiRouter)
-router.use('/stories', storyRouter)
+// router.use('/stories', storyRouter)
 router.use('/users', userRouter)
 router.use('/feed', feedRouter);
 

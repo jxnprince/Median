@@ -28,12 +28,9 @@ router.get("/", asyncHandler(async (req, res) => {
 // need to figure out how to get the number of likes associated with an story
 
 
-        const authors_array = allStories.map(async (eachStory) => {
-                const eachUser = await User.findByPk(eachStory.userId);
-                return eachUser;
-            });
+        const authors_array = allStories.map((eachStory) => eachStory.userId);
 
-
+        console.log(await authors_array);
 
         res.json({
             message: "Success, is an authorized user.",
