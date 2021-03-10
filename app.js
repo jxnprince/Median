@@ -21,11 +21,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set up session middleware
-const store = new SequelizeStore({
-  db: sequelize
-});
+const store = new SequelizeStore({ db: sequelize });
 
-app.use(session({ //automatically creates a session table
+app.use(session({
+    //automatically creates a session table
     // change to the secret in the .env
     secret: process.env.SESSION_SECRET,
     store, //tables in the database
@@ -34,7 +33,7 @@ app.use(session({ //automatically creates a session table
   })
 );
 
-// create Session table if it doesn't already exist
+// // create Session table if it doesn't already exist
 store.sync();
 app.use(restoreUser)
 app.use(indexRouter);
