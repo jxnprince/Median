@@ -1,9 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+/* #F0EAE4 
+#E0C653 
+#CF6A86 
+#9674AB 
+#494A8F 
+#333263 */
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* padding: 50px; */
+  font-family: 'Roboto Mono', monospace;
+  color: #F0EAE4;
+  background: #494A8F;
 }
 
-a {
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #9674AB;
+  z-index: 1000;
+  height: 200px;
+  overflow: hidden;
+  text-align: left;
+  line-height: 160px;
+}
+
+/* a {
   color: #00B7FF;
 }
 
@@ -24,4 +48,4 @@ body, header, nav {
 
 h1 {
   font-size: 2rem;
-}
+} */
