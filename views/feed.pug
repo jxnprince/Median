@@ -8,10 +8,20 @@ block content
 	div
 		form(method='POST', action='/users/logout')
 			button(type='submit') Log out
+
+
 	div(id="mainContent" class="mainContent")
-		div(id="story" class="story")
-			div(id="stats" class="stats")
-			//- stats encompases likes and comments
+
+	div(id="featured" class="featured")
+		div(id="featured-container" class="featured-container")
+			div(id="featured-comments" class="featured-comments")
+
+	div(id="feed-items" class="feed-items")
+		div(id="feed-container" class="feed-container")
+			div(id="feed-comments" class="feed-comments")
+
+
+
 
 append head
 	script(src="/JS/feed.js", type=module)
