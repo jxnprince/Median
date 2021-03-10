@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require('../../utils.js');
-const { User, Story, Like, Comment } = require('../../db/models');
+const { User, Story, Comment } = require('../../db/models');
 const { capitalizeFirstChar } = require('../../utils.js');
+
 
 
 
@@ -16,24 +17,28 @@ router.get("/", asyncHandler(async (req, res) => {
         const allStories = await Story.findAll({
             order: [["createdAt"] /*"Like"*/],
             include: [
-                Comment,
+                {
+                    model: Comment,
+                    attributes: ["body", "createdAt"],
+                    include: {
+                        model: User,
+                        attributes: ["firstName", "lastName", "avatar"]
+                    }
+                },
                 {
                     model: User,
                     as: "UserLikes",
+                    attributes: ["firstName", "lastName", "avatar"]
+                },
+                {
+                    model: User,
                     attributes: ["firstName", "lastName", "avatar"]
                 }
             ]
         });
 
+
 // need to figure out how to get the number of likes associated with an story
-
-
-        const authors_array = allStories.map(async (eachStory) => {
-                const eachUser = await User.findByPk(eachStory.userId);
-                return eachUser;
-            });
-
-
 
         res.json({
             message: "Success, is an authorized user.",
@@ -44,12 +49,11 @@ router.get("/", asyncHandler(async (req, res) => {
                 firstName: capitalizeFirstChar(user.firstName),
                 lastName: capitalizeFirstChar(user.lastName)
             },
-            the_stories: allStories,
-            authors: authors_array
+            the_stories: allStories
         });
 
 
-
+        // error message below if the user is not authenticated but still accesses the resource
     } else {
         res.json({
             message: "Error, the user is not authorized.",
@@ -58,8 +62,6 @@ router.get("/", asyncHandler(async (req, res) => {
         });
     }
 }));
-
-
 
 
 
