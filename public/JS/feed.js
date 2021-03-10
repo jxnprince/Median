@@ -58,6 +58,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
                 </a>`;
 
+            detailsDiv.innerHTML = `<div id="featured-comment" class"featured-comment">
+                
+            </div>
+            `;
+
             unorderedList.appendChild(eachItem);
         }
 

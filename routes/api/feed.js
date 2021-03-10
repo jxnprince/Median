@@ -17,7 +17,14 @@ router.get("/", asyncHandler(async (req, res) => {
         const allStories = await Story.findAll({
             order: [["createdAt"] /*"Like"*/],
             include: [
-                Comment,
+                {
+                    model: Comment,
+                    attributes: ["body", "createdAt"],
+                    include: {
+                        model: User,
+                        attributes: ["firstName", "lastName", "avatar"]
+                    }
+                },
                 {
                     model: User,
                     as: "UserLikes",
@@ -29,6 +36,7 @@ router.get("/", asyncHandler(async (req, res) => {
                 }
             ]
         });
+
 
 // need to figure out how to get the number of likes associated with an story
 
