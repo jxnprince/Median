@@ -8,6 +8,12 @@ module.exports = {
         storyId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        userId: 3,
+        storyId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {});
   },
@@ -16,4 +22,3 @@ module.exports = {
       return queryInterface.bulkDelete('Bookmarks', null, {});
   }
 };
- 

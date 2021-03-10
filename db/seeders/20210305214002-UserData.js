@@ -23,7 +23,19 @@ module.exports = {
         avatar: null,
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        email: 'joshua@gmail.com',
+        firstName: 'Joshua',
+        lastName: 'Schutza',
+        hashedPassword: 'password',
+        gender: 'male',
+        birthdate: '1994-06-21',
+        avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQHIkDiWxCwkOQ/profile-displayphoto-shrink_800_800/0/1530284974122?e=1620864000&v=beta&t=laeAjVIRrk74PUUK9ZlPS7JZsXAK85wSDERGUakhFUw",
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
+
       ], {});
   },
 

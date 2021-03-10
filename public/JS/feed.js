@@ -4,7 +4,11 @@ const getStories = async (url) => {
     return data.json();
 };
 
-
+// function for formatting dates
+const formatDate = (the_date) => {
+    let result = the_date.split('T');
+    return result[0];
+};
 
 
 // main DOMContentLoaded event here:
@@ -30,6 +34,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         mainDiv.appendChild(welcomeMessage);
 
         const unorderedList = document.createElement("ul");
+        const commentsList = document.createElement("ul");
 
         // loop through the stories in the API
         // this is just the first result in the API -- do the rest below for different structure
@@ -58,17 +63,29 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
                 </a>`;
 
-            detailsDiv.innerHTML = `<div id="featured-comment" class"featured-comment">
-                
-            </div>
-            `;
+
+            story.Comments.forEach(comment => {
+                const commentItem = document.createElement("li");
+
+                commentItem.innerHTML = `<div id="featured-comment" class"featured-comment">
+                    <img src="${comment.User.avatar}">
+                    <span> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
+                    Created on: <span> ${formatDate(comment.createdAt)} </span>
+                        <p> ${comment.body} </p>
+                </div> `;
+
+                commentsList.appendChild(commentItem);
+            });
 
             unorderedList.appendChild(eachItem);
+            detailsDiv.appendChild(commentsList);
         }
 
-        mainDiv.appendChild(storyDiv);
-        storyDiv.appendChild(unorderedList);
 
+
+        storyDiv.appendChild(unorderedList);
+        mainDiv.appendChild(storyDiv);
+        mainDiv.appendChild(detailsDiv);
 
 
 
