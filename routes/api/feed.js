@@ -22,6 +22,10 @@ router.get("/", asyncHandler(async (req, res) => {
                     model: User,
                     as: "UserLikes",
                     attributes: ["firstName", "lastName", "avatar"]
+                },
+                {
+                    model: User,
+                    attributes: ["firstName", "lastName", "avatar"]
                 }
             ]
         });
@@ -37,17 +41,11 @@ router.get("/", asyncHandler(async (req, res) => {
                 firstName: capitalizeFirstChar(user.firstName),
                 lastName: capitalizeFirstChar(user.lastName)
             },
-
-            // issue -- the promises will not resolve -- need them to resolve in order to get the author info
-            author: (allStories.map(async (eachAuthor) => {
-                const result = await User.findByPk(eachAuthor.userId, { attributes: ["firstName", "lastName", "avatar"] });
-                return [result.dataValues];
-            })),
-
-            the_stories: allStories,
-
+            the_stories: allStories
         });
 
+
+        // error message below if the user is not authenticated but still accesses the resource
     } else {
         res.json({
             message: "Error, the user is not authorized.",
