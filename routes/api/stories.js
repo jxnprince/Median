@@ -56,7 +56,7 @@ router.post('/', /*createStoryValidator,*/ asyncHandler(async (req, res) => {
         })
     } else {
         res.json({
-            messsage: "Story not created"
+            message: "Story not created"
         })
     }
 }))
@@ -101,4 +101,4 @@ router.put('/:id', csrfProtection, asyncHandler(async (req, res) => {
 
 
 
-// module.exports = router;
+module.exports = router;
