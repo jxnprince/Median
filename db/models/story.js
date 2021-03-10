@@ -8,24 +8,32 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Story.associate = function (models) {
     Story.belongsTo(models.User, {
-      foreignKey: "userId"
+      foreignKey: "userId",
+      onDelete: 'CASCADE',
+      hooks: true
     });
     Story.belongsToMany(models.User, {
       through: "Like",
       foreignKey: "storyId",
       otherKey: "userId",
-      as: "UserLikes"
+      as: "UserLikes",
+      // onDelete: 'CASCADE',
+      // hooks: true
     });
 
     Story.hasMany(models.Comment, {
-      foreignKey: "storyId"
+      foreignKey: "storyId",
+      // onDelete: 'CASCADE',
+      // hooks: true
     });
 
 
     Story.belongsToMany(models.User, {
       through: "Bookmark",
       foreignKey: "storyId",
-      otherKey: "userId"
+      otherKey: "userId",
+      // onDelete: 'CASCADE',
+      // hooks: true
     });
 
   };
