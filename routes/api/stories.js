@@ -61,42 +61,55 @@ router.post('/', /*createStoryValidator,*/ asyncHandler(async (req, res) => {
     }
 }))
 //GET localhost:8080/api/stories/:id || works
-router.get('/:id', asyncHandler(async (req, res) => {
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     //test that you are pulling the id paramater
     //return a list of the most recent stories by a user.
-    const {
-        userId
-    } = req.params.id;
+    const storyId = req.params.id;
 
-    const userStories = await Story.findAll({
-        where: {
-            userId
-        },
-    });
+    const userStories = await Story.findByPk(storyId);
     res.json(userStories)
 }))
 
 //DELETE localhost:8080/api/stories/:id || works
-router.delete('/:id', (req, res) => {
-    //test to make sure thet id paramater is being deleted
-    //deletes a specific user story
-    //user must own the story to delete.
-
-})
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const story = await Story.findByPk(req.params.id)
+    await story.destroy()
+    if (story) {
+        res.json({
+            message: 'error'
+        })
+    } else {
+        res.json({
+            message: 'story was deleted'
+        })
+    }
+}))
 //PUT localhost:8080/api/stories/:id || works
-router.put('/:id', csrfProtection, asyncHandler(async (req, res) => {
+router.put('/:id', asyncHandler(async (req, res) => {
     //updates a specific user story
+    const storyId = req.params.id
     const {
-        storyId
-    } = req.params;
-    const updatedStory = await Story.findOne({
-        where: {
-            id: storyId
-        }
+        imgUrl,
+        postBody,
+        title
+    } = req.body
+
+    const updatedStory = await Story.findByPk(storyId)
+    updatedStory.update({
+        imgUrl,
+        postBody,
+        title
     })
-    res.json({
-        post: updatedStory
-    })
+    if (updatedStory) {
+        res.json({
+            message: "You updated a story",
+            updatedStory
+        })
+    } else {
+        res.json({
+            message: "Story was not updated"
+        })
+    }
 }))
 
 

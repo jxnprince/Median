@@ -24,6 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: "followerId",
       foreignKey: "userId",
       as: "Followees",
+      //! Only use onDelete: 'CASCADE' if it belongs to something
+      //! Error is an infinte SELECT loop
       // onDelete: 'CASCADE',
       // hooks: true
     });
@@ -32,8 +34,8 @@ module.exports = (sequelize, DataTypes) => {
       through: "Like",
       foreignKey: "userId",
       otherKey: "storyId",
-      onDelete: 'CASCADE',
-      hooks: true
+      // onDelete: 'CASCADE',
+      // hooks: true
     });
 
 
@@ -53,8 +55,8 @@ module.exports = (sequelize, DataTypes) => {
       through: "Bookmark",
       foreignKey: "userId",
       otherKey: "storyId",
-      onDelete: 'CASCADE',
-      hooks: true
+      // onDelete: 'CASCADE',
+      // hooks: true
     });
 
   };
