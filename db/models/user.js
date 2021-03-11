@@ -41,14 +41,14 @@ module.exports = (sequelize, DataTypes) => {
 
     User.hasMany(models.Story, {
       foreignKey: "userId",
-      // onDelete: 'CASCADE',
-      // hooks: true
+      onDelete: 'CASCADE',
+      hooks: true
     });
 
     User.hasMany(models.Comment, {
       foreignKey: "userId",
-      // onDelete: 'CASCADE',
-      // hooks: true
+      onDelete: 'CASCADE',
+      hooks: true
     });
 
     User.belongsToMany(models.Story, {

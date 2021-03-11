@@ -72,17 +72,17 @@ router.put('/:id', asyncHandler(async (req, res) => {
 
 //DELETE localhost:8080/api/comments/:id || working?
 //! Need to discuss urgently, ondelete: cascade
-// router.delete('/:id', asyncHandler(async (req, res) => {
-//     const commentId = req.params.id
-//     // const userId = req.session.auth.userId
-//     const userId = 1 //Testing in postman
-//     //logic for deleting a comment
-//     const commentQuery = await Comment.findByPk(commentId)
-//     const response = commentQuery.destroy()
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const commentId = req.params.id
+    // const userId = req.session.auth.userId
+    const userId = 1 //Testing in postman
+    //logic for deleting a comment
+    const commentQuery = await Comment.findByPk(commentId)
+    const response = commentQuery.destroy()
 
-//     res.json({
-//         response
-//     })
-// }))
+    res.json({
+        response
+    })
+}))
 
 module.exports = router;
