@@ -8,26 +8,91 @@
 #494A8F 
 #1f1f35 */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  padding: 25px;
+  /* padding: 25px; */
   font-family: 'Roboto Mono', monospace;
   color: #F0EAE4;
   background: #1f1f35;
+  margin: 0 auto;
 }
 
-.header {
+a {
+  color: #F0EAE4;
+  text-decoration: none;
+}
+
+li {
+  /* content: ""; */
+  list-style: none;
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.grid-container {
+  overflow: hidden;
+  background: #1f1f35;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
+  grid-template-rows: 0.3fr 3fr 0.25fr;
+  gap: 0px 0px;
+  border-radius: 1%;
+  grid-template-areas:
+    "Header Header Header"
+    "Left-Sidebar Main-Content Right-Sidebar"
+    "Footer Footer Footer";
+}
+
+.Left-Sidebar {
+  grid-area: Left-Sidebar;
+  background-color: #1f1f35;
+}
+
+.Main-Content {
+  grid-area: Main-Content;
+  background-color: #1f1f35;
+  margin-top: 0;
+  border-radius: 1%;
+  /* background-color: #1f1f35; */
+}
+
+.Right-Sidebar {
+  grid-area: Right-Sidebar;
+  background-color: #1f1f35;
+}
+
+.Header {
+  grid-area: Header;
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   background: #494A8F;
-  height: 40px;
-  overflow: hidden;
+  height: 53px;
   line-height: 0px;
-  border-radius: 1px;
+  border-radius: 1%;
+  /* top: 0; */
+  /* left: 0; */
+  /* overflow: hidden; */
 }
 
-.form {
+.Footer {
+  grid-area: Footer;
+  background: #1f1f35;
+  line-height: 0px;
+  border-radius: 1%;
+  max-height: 50px;
+}
+
+/* .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
@@ -36,25 +101,23 @@ body {
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
+}*/
 
-a {
-  color: #9674AB
-}
-
-.hidden {
-  display: none;
-}
-/* a {
-  color: #00B7FF;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
-body, header, nav {
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ol,
+li,
+ul,
+div,
+span,
+body,
+header,
+nav {
   font-size: 1rem;
   color: inherit;
   background-color: transparent;
@@ -62,8 +125,8 @@ body, header, nav {
   padding: 0;
   outline: 0;
   font-weight: normal;
-}
+} */
 
 h1 {
   font-size: 2rem;
-} */
+}
