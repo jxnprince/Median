@@ -105,13 +105,20 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
             ]
         });
 
-        followees = followees.Followees.map((followed) => followed.Follow.followerId);
-        const followeeStories = await Story.findAll({ where: { userId: { [Op.in]: followees } } });
+        const allfollowees = followees.Followees.map((followed) => followed.Follow.followerId);
+        const followeeStories = await Story.findAll({
+            where: { userId: { [Op.in]: allfollowees } },
+        });
 
+        const followeesUserInfo = await User.findAll({
+            where: { id: { [Op.in]: allfollowees } },
+            attributes: ["firstName", "lastName", "avatar", "id"]
+        });
 
         res.json({
             user: the_user,
-            followeeStories: followeeStories
+            followeeStories,
+            followeesUserInfo
         });
 
     } else {
