@@ -16,8 +16,10 @@ const {
     5. Add error handling where needed
 */
 
+
+
 //POST localhost:8080/api/likes || works
-router.post('/', (req, res) => {
+router.post('/', asyncHandler( async (req, res) => {
     const {
         likingId
     } = req.query
@@ -41,7 +43,7 @@ router.post('/', (req, res) => {
     res.json({
         test: "this is a test post route to api/likes"
     })
-})
+}));
 
 //DELETE localhost:8080/api/likes/:id ||working?
 router.delete('/:id', (req, res) => {
