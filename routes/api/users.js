@@ -66,7 +66,7 @@ router.get('/:id(\\d+)/bookmarks', asyncHandler( async(req, res) => {
         include: [
             {
                 model: Story,
-                attributes: ["postBody", "title"]
+                attributes: ["title", "imgUrl"]
             }
         ]
     });
@@ -93,7 +93,16 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
     const userId = req.params.id
 
     if(session) {
-        const the_user = await User.findByPk(userId, { attributes: ["firstName", "lastName", "avatar"] });
+        const the_user = await User.findByPk(userId,
+            { attributes: [
+                "firstName",
+                "lastName",
+                "avatar",
+                "email",
+                "gender"
+            ] }
+        );
+
 
         let followees = await User.findByPk(userId, {
             include: [

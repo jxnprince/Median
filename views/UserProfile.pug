@@ -1,7 +1,19 @@
 extends layout
+
 block head
+
 block content
-    div(id="" class="")
+    div(id="left-container" class="left-container")
+        div(id="profile-img" class="profile-img")
+            div(id="follow-edit-links" class="follow-edit-links")
+
+    div(id="bookmarks-container" class="bookmarks-container")
+
+    div(id="userinfo-container" class="userinfo-container")
+
+
+
+
 
 append head
     script(src="/JS/profile.js", type=module)
