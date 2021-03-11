@@ -53,11 +53,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
 
             eachItem.innerHTML = `<a href="/stories/${story.id}">
-                    <div id="story-img" class="story-img">
+                    <div id="story-img" class="featured-story-img">
                         <img src="${story.imgUrl}">
                     </div>
 
-                    <div id="story-heading" class="story-heading">
+                    <div id="story-heading" class="featured-story-heading">
                         <h1> ${story.title} </h1>
                         <img src="${story.User.avatar}">
                         <span> ${story.User.firstName} ${story.User.lastName} </span>
@@ -66,7 +66,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                         <span> ${story.UserLikes.length} </span>
                     </div>
 
-                    <div id="story-text" class="story-text">
+                    <div id="story-text" class="featured-story-text">
                         <p> ${story.postBody} </p>
                     </div>
 
@@ -76,11 +76,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             story.Comments.forEach(comment => {
                 const commentItem = document.createElement("li");
 
-                commentItem.innerHTML = `<div id="featured-comment" class"featured-comment">
+                commentItem.innerHTML = `<div id="featured-comment" class="featured-comment">
                     <img src="${comment.User.avatar}">
-                    <span> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
-                    Created on: <span> ${formatDate(comment.createdAt)} </span>
-                        <p> ${comment.body} </p>
+                    <span class= "featured-comment-userName"> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
+                    Created on: <span class= "featured-comment-date"> ${formatDate(comment.createdAt)} </span>
+                        <p class= "featured-comment-body"> ${comment.body} </p>
                 </div> `;
 
                 commentsList.appendChild(commentItem);
@@ -100,17 +100,17 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
             eachItem.innerHTML = `<div id="shortened-story" class="shortened-story">
                 <a href="/stories/${story.id}">
-                    <div id="shortened-story-img" class="shortened-story-img">
-                        <img src="${story.imgUrl}">
+                    <div id="shortened-story-img" class="shortened-story-img-div">
+                        <img src="${story.imgUrl}" class="shortened-story-img">
                     </div>
 
                     <div id="shortened-story-heading" class="shortened-story-heading">
-                        <h2> ${story.title} </h2>
-                        <img src="${story.User.avatar}">
-                        <span> ${story.User.firstName} ${story.User.lastName} </span>
+                        <h2 class="shortened-story-title"> ${story.title} </h2>
+                        <img src="${story.User.avatar}" class="shortened-story-avatar">
+                        <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
 
-                        <img src="likes/img">
-                        <span> ${story.UserLikes.length} </span>
+                        <img src="likes/img" class="shortened-story-thumbsup">
+                        <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
                     </div>
                 </a>
             </div>`;
@@ -119,11 +119,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             story.Comments.forEach(comment => {
                 const commentItem = document.createElement("li");
 
-                commentItem.innerHTML = `<div id="featured-comment" class"featured-comment">
-                    <img src="${comment.User.avatar}">
-                    <span> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
-                    Created on: <span> ${formatDate(comment.createdAt)} </span>
-                        <p> ${comment.body} </p>
+                commentItem.innerHTML = `<div id="featured-comment" class= "shortened-story-featured-comment">
+                    <img src="${comment.User.avatar}" class= "shortened-story-comment-avatar">
+                    <span class= "shortened-story-comment-name"> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
+                    Created on: <span class= "shortened-story-comment-date"> ${formatDate(comment.createdAt)} </span>
+                        <p class= "shortened-story-comment-body"> ${comment.body} </p>
                 </div> `;
 
                 feedCommentsList.appendChild(commentItem);
