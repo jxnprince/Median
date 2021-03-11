@@ -4,8 +4,7 @@ const {
     asyncHandler
 } = require('../../utils')
 const {
-    Comment,
-    User
+    Comment
 } = require('../../db/models')
 
 //GET localhost:8080/api/comments/:id || working
