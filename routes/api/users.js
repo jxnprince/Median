@@ -1,22 +1,44 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../../db/models');
+const { User, Story } = require('../../db/models');
 const { asyncHandler } = require('../../utils.js');
 
-//GET localhost:8080/api/users/:id/stories || not working ? no id to reference?
-router.get('/', (req, res) => {
+
+
+
+//GET localhost:8080/api/users/:id/bookmarks
+router.get('/:id(\\d+)/bookmarks', asyncHandler( async(req, res) => {
     //return 5 Stories
     //includes: link to story, quantity of likes, comments
     //organized by current date
-    res.json({
-        test: "this is a get test to api/users/:id/stories"
-    })
-});
+    const userId = req.params.id;
+    const usersBookmarks = await User.findByPk(userId, {
+        attributes: ["firstName", "lastName", "avatar"],
+        include: [
+            {
+                model: Story,
+                attributes: ["postBody", "title"]
+            }
+        ]
+    });
+
+    if (usersBookmarks) {
+        res.json({
+            their_bookmarks: usersBookmarks
+        });
+    } else {
+        res.json({
+            message: "Error no stories are associated with your account."
+        });
+    }
+
+}));
+
+
 
 
 
 //GET localhost:8080/api/users/:id/
-//used for the feed page to get user info for each author on the page
 router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
     const session = req.session.auth;
 
