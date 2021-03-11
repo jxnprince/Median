@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     birthdate: DataTypes.DATE,
     avatar: DataTypes.STRING,
   }, {});
+
+  //! Do these associations affect querying Follow table by PK?
   User.associate = function (models) {
     User.belongsToMany(models.User, {
       through: "Follow",

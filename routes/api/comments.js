@@ -25,9 +25,9 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 //POST localhost:8080/api/comments || working
 router.post('/:id(\\d+)', asyncHandler(async (req, res) => {
     //logic for creating a comment
-    const storyId = req.params.id;
-    // const userId = req.session.auth.userId
-    const userId = 1 //Testing in postman
+    const storyId = req.params.id
+    const userId = req.session.auth.userId
+    // const userId = 1 //Testing in postman
     const {
         //!make sure to rename later
         comment
@@ -53,8 +53,8 @@ router.post('/:id(\\d+)', asyncHandler(async (req, res) => {
 //patch?
 router.put('/:id', asyncHandler(async (req, res) => {
     const commentId = req.params.id;
-    // const userId = req.session.auth.userId
-    const userId = 1 //Testing in postman
+    const userId = req.session.auth.userId
+    // const userId = 1 //Testing in postman
 
     //logic for editing comments
     const {
@@ -62,8 +62,11 @@ router.put('/:id', asyncHandler(async (req, res) => {
     } = req.body
 
     const commentQuery = await Comment.findByPk(commentId)
-    commentQuery.body = comment
-    commentQuery.save()
+    //Only edit comment if userId matches userId on comment
+    if (commentQuery.userId === userId) {
+        commentQuery.body = comment
+        commentQuery.save()
+    }
 
     res.json({
         commentQuery
@@ -74,15 +77,13 @@ router.put('/:id', asyncHandler(async (req, res) => {
 //! Need to discuss urgently, ondelete: cascade
 router.delete('/:id', asyncHandler(async (req, res) => {
     const commentId = req.params.id
-    // const userId = req.session.auth.userId
-    const userId = 1 //Testing in postman
+    const userId = req.session.auth.userId
+    // const userId = 1 //Testing in postman
     //logic for deleting a comment
     const commentQuery = await Comment.findByPk(commentId)
-    const response = commentQuery.destroy()
+    commentQuery.destroy()
 
-    res.json({
-        response
-    })
+    res.send('Comment deleted')
 }))
 
 module.exports = router;
