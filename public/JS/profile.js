@@ -46,22 +46,54 @@ window.addEventListener("DOMContentLoaded", async(event) => {
         <li> ${user_info.user.gender} </li>
     </ul>`;
 
+
+
+    // GET THE NUMBER OF LIKES FOR EACH USERS STORY
+    usersStories.innerHTML = `<h1> Your stories ${users_stories.their_stories.length} </h1>`;
     // loop through their_stories on users_stories
+    const usersStoriesList = document.createElement('ul');
     users_stories.their_stories.forEach((eachStory) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = ` <a href="/stories/${eachStory.id}">
+            <img src="${eachStory.imgUrl}">
+            <span> ${eachStory.title} </span>
+        </a> `;
+
+        usersStoriesList.appendChild(listItem);
+    });
+    usersStories.appendChild(usersStoriesList);
+
+
+
+    // GET THE NUMBER OF LIKES FOR EACH FOLLOWEES STORY
+    usersFollowees.innerHTML = `<h1> Your Followers  ${user_info.followeesUserInfo.length} </h1>`;
+    // loop through followeeStories on user_info
+    const followeeStoriesList = document.createElement('ul');
+    user_info.followeeStories.forEach((eachStory) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<a href="/stories/${eachStory.id}">
+            <img src="${eachStory.imgUrl}">
+            <span> ${eachStory.title} </span>
+        </a>`;
+
+        followeeStoriesList.appendChild(listItem);
+
+
+        // loop through followeesUserInfo on user_info
+        user_info.followeesUserInfo.forEach((eachUser) => {
+            const author_info = document.createElement('li');
+            author_info.innerHTML = `<a href="/users/profile/${eachUser.id}">
+                <img src="${eachUser.avatar}">
+                <span> ${eachUser.firstName} ${eachUser.lastName} </span>
+            </a> `;
+
+            followeeStoriesList.appendChild(author_info);
+        });
 
     });
-    usersStories.appendChild();
 
-    // loop through followeeStories on user_info
-    //user_info.followeeStories.forEach((eachStory) => {
+    usersFollowees.appendChild(followeeStoriesList);
 
-    //});
-    usersFollowees.appendChild();
-    // loop through followeesUserInfo on user_info
-    //user_info.followeesUserInfo.forEach((eachUser) => {
-
-    //});
-    usersFollowees.appendChild();
 
 
 });

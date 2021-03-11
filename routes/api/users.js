@@ -112,7 +112,7 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
 
         const followeesUserInfo = await User.findAll({
             where: { id: { [Op.in]: allfollowees } },
-            attributes: ["firstName", "lastName", "avatar"]
+            attributes: ["firstName", "lastName", "avatar", "id"]
         });
 
         res.json({
