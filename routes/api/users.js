@@ -7,7 +7,7 @@ const Op = sequelize.Op;
 
 
 // used to give the current session / logged in users id
-//GET localhost:8080/api/users/:id/stories
+//GET localhost:8080/api/users/
 router.get('/', (req, res) => {
     const session = req.session.auth;
     if(session) {
