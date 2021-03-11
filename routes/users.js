@@ -34,6 +34,10 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   });
 }));
 
+router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
+  if (req.session.auth) res.redirect("/feed");
+  res.render('loginForm', {csrfToken: req.csrfProtection()})
+}))
 
 //DO NOT TOUCH THIS ROUTE!!!!
 router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
