@@ -133,42 +133,48 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
   })
 }));
 
-// console.log(`<==========================================`)
 
-// // GET localhost:8080/users/profile/:id || not working because no id to reference?
-router.get('/profile/:id', asyncHandler(async (req, res) => {
-  const id = req.params.id
-  const user = await User.findByPk(id)
-  const userStories = await Story.findAll({
-    where: {
-      userId: id
-    }
-  })
-  let followees = await User.findByPk(id, {
-    include: [{
-      model: User,
-      as: "Followees",
-      attributes: ["firstName", "lastName", "id"]
-    }]
-  })
-  // followees.Followees[0].Follow.followerId
-  followees = followees.Followees.map((followed) => followed.Follow.followerId)
-  const followeeStories = await Story.findAll({
-    where: {
-      userId: {
-        [Op.in]: followees
-      }
-    }
-  })
-  res.render("userProfile", {
+
+// change this
+
+// GET localhost:8080/users/profile/:id
+router.get('/profile/:id(\\d+)', asyncHandler(async (req, res) => {
+  // const id = req.params.id
+  // const user = await User.findByPk(id)
+  // const userStories = await Story.findAll({
+  //   where: {
+  //     userId: id
+  //   }
+  // })
+  // let followees = await User.findByPk(id, {
+  //   include: [{
+  //     model: User,
+  //     as: "Followees",
+  //     attributes: ["firstName", "lastName", "id"]
+  //   }]
+  // })
+  // // followees.Followees[0].Follow.followerId
+  // followees = followees.Followees.map((followed) => followed.Follow.followerId)
+  // const followeeStories = await Story.findAll({
+  //   where: {
+  //     userId: {
+  //       [Op.in]: followees
+  //     }
+  //   }
+  // })
+  res.render("userProfile" /*, {
     user,
     userStories,
     followeeStories,
     title: `${user.firstName}'s profile`
-  })
-}))
+  }*/ );
 
-router.get('/profile/:id/editUser', csrfProtection, asyncHandler(async (req, res) => {
+}));
+
+
+
+
+router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (req, res) => {
   const user = await findByPk(req.params.id)
   const {
     email,
@@ -190,7 +196,7 @@ router.get('/profile/:id/editUser', csrfProtection, asyncHandler(async (req, res
 }))
 
 // // // PUT localhost:8080/users/profile/:id || not working because no id to reference?
-router.post('/profile/:id', updateUserValidators, asyncHandler(async (req, res) => {
+router.post('/profile/:id(\\d+)', updateUserValidators, asyncHandler(async (req, res) => {
   const {
     email,
     firstName,
@@ -210,7 +216,7 @@ router.post('/profile/:id', updateUserValidators, asyncHandler(async (req, res) 
       birthdate,
       avatar
     })
-    if (req.session) res.redirect("/profile/:id")
+    if (req.session) res.redirect("/profile/:id(\\d+)")
     else next(res.err)
   } else {
     const errors = validationErrors.array().map((error) => error.msg);

@@ -2,6 +2,30 @@ const express = require('express');
 const router = express.Router();
 const { User, Story } = require('../../db/models');
 const { asyncHandler } = require('../../utils.js');
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
+
+
+// used to give the current session / logged in users id
+//GET localhost:8080/api/users/:id/stories
+router.get('/', (req, res) => {
+    const session = req.session.auth;
+    if(session) {
+        res.json({
+            userId: session.userId,
+            status: 200
+        });
+    } else {
+        res.json({
+            message: "Error, you are not authorized.",
+            status: 401,
+            stack: "Not authorized."
+        });
+    }
+
+});
+
+
 
 
 
@@ -66,15 +90,30 @@ router.get('/:id(\\d+)/bookmarks', asyncHandler( async(req, res) => {
 //GET localhost:8080/api/users/:id/
 router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
     const session = req.session.auth;
+    const userId = req.params.id
 
     if(session) {
-        const the_user = await User.findByPk(req.params.id, {
-            attributes: ["firstName", "lastName", "avatar"]
+        const the_user = await User.findByPk(userId, { attributes: ["firstName", "lastName", "avatar"] });
+
+        let followees = await User.findByPk(userId, {
+            include: [
+                {
+                    model: User,
+                    as: "Followees",
+                    attributes: ["firstName", "lastName", "id"]
+                }
+            ]
         });
 
+        followees = followees.Followees.map((followed) => followed.Follow.followerId);
+        const followeeStories = await Story.findAll({ where: { userId: { [Op.in]: followees } } });
+
+
         res.json({
-            user: the_user
+            user: the_user,
+            followeeStories: followeeStories
         });
+
 
     }  else {
         res.json({
