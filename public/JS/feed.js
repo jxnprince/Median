@@ -77,7 +77,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                 const commentItem = document.createElement("li");
 
                 commentItem.innerHTML = `<div id="featured-comment" class="featured-comment">
-                    <img src="${comment.User.avatar}">
+                    <img src="${comment.User.avatar}" class="featured-comment-avatar">
                     <span class= "featured-comment-userName"> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
                     Created on: <span class= "featured-comment-date"> ${formatDate(comment.createdAt)} </span>
                         <p class= "featured-comment-body"> ${comment.body} </p>
