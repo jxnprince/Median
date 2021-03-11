@@ -110,7 +110,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     }
 }))
 //PUT localhost:8080/api/stories/:id || works
-router.put('/:id', asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
     //updates a specific user story
     const storyId = req.params.id
     const {
