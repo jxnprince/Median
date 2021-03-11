@@ -13,14 +13,39 @@ const {
     validationResult
 } = require('express-validator');
 
+
+//!Get X number of stories by userID
+// GET localhost:8080/api/stories?userId=<userID>&limit=<X>
 // GET localhost:8080/api/stories/ || works
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
+
+    const {
+        userId,
+        limit
+    } = req.query
+
+    let mostRecentStories
+    if (userId !== undefined) {
+        mostRecentStories = await Story.findAll({
+            order: [
+                ['createdAt']
+            ],
+            where: {
+                userId
+            }
+        })
+    } else {
+        mostRecentStories = await Story.findAll({
+            order: [
+                ['createdAt']
+            ]
+        })
+    }
+
+    if (limit !== undefined) mostRecentStories = mostRecentStories.slice(0, limit)
+
     //return a list of the most recent stories
-    const mostRecentStories = await Story.findAll({
-        order: [
-            ['createdAt']
-        ]
-    })
+
     if (mostRecentStories) {
         res.json({
             mostRecentStories,

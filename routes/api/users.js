@@ -25,11 +25,6 @@ router.get('/', (req, res) => {
 
 });
 
-
-
-
-
-
 //GET localhost:8080/api/users/:id/stories
 router.get('/:id(\\d+)/stories', asyncHandler( async(req, res) => {
     //return 5 Stories
@@ -51,10 +46,6 @@ router.get('/:id(\\d+)/stories', asyncHandler( async(req, res) => {
     }
 
 }));
-
-
-
-
 
 
 
@@ -123,8 +114,7 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
             followeeStories: followeeStories
         });
 
-
-    }  else {
+    } else {
         res.json({
             message: "You are not authorized.",
             status: 401,
@@ -133,7 +123,5 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
     }
 
 }));
-
-
 
 module.exports = router;
