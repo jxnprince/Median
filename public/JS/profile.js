@@ -22,6 +22,10 @@ window.addEventListener("DOMContentLoaded", async(event) => {
     const followEditLinks = document.getElementById('follow-edit-links');
     const bookmarksContainer = document.getElementById('bookmarks-container');
     const userInfoContainer = document.getElementById('userinfo-container');
+    const usersStories = document.getElementById('users-stories');
+    const usersFollowees = document.getElementById('users-followees');
+
+
 
     profileImg.innerHTML = `<img src="${user_info.avatar}">`;
     followEditLinks.innerHTML = `<a href=""> Follow </a>
@@ -42,9 +46,22 @@ window.addEventListener("DOMContentLoaded", async(event) => {
         <li> ${user_info.user.gender} </li>
     </ul>`;
 
-    // loop through followeeStories on user_info
-
-
     // loop through their_stories on users_stories
+    users_stories.their_stories.forEach((eachStory) => {
+
+    });
+    usersStories.appendChild();
+
+    // loop through followeeStories on user_info
+    //user_info.followeeStories.forEach((eachStory) => {
+
+    //});
+    usersFollowees.appendChild();
+    // loop through followeesUserInfo on user_info
+    //user_info.followeesUserInfo.forEach((eachUser) => {
+
+    //});
+    usersFollowees.appendChild();
+
 
 });
