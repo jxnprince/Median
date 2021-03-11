@@ -26,7 +26,9 @@ body {
   text-align: left;
   line-height: 160px;
 }
-
+.hidden {
+  display: none;
+}
 /* a {
   color: #00B7FF;
 }
