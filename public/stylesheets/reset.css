@@ -42,7 +42,9 @@ a {
   color: #9674AB
 }
 
-
+.hidden {
+  display: none;
+}
 /* a {
   color: #00B7FF;
 }

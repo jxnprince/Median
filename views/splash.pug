@@ -5,6 +5,7 @@ block content
         div
         //- form(method='POST', action='/users/logout')
         //-     button(type='submit') Log out
+    div(id='logoDiv')
     div
         form(method='POST', action="/users/login")
             input(type="hidden" name="_csrf" value=csrfToken)
@@ -12,7 +13,7 @@ block content
             input(type='password' name='password' placeholder='password' required)
             button(type="submit") Login
     div
-        form(method='POST', action="/users/signup")
+        form(class='hidden' id='signUpForm' method='POST', action="/users/signup")
             input(type="hidden" name="_csrf" value=csrfToken)
             input(type='string' name='email' placeholder='email' required)
             input(type='string' name='firstName' placeholder='First Name')
@@ -21,9 +22,13 @@ block content
             input(type='password' name='confPassword' placeholder='Confirm Password' required)
             //- input(type='string' name='gender' placeholder='Gender')
             //- input(type='string' name='avatar' placeholder='ImageUrl')
-            button(type="submit") Sign Up
+            button(type="submit" id='submitSignUpFormButton') Sign Up
+            button(type="click" id='backToSplash') Back
     div
+        button(type='click' id='displaySignUpFormButton') Sign Up
         form(method="POST" action="/users/demo-user")
             input(type="hidden" name="_csrf" value=csrfToken)
-            button(type="submit") Demo login
+            button(type="submit" id='demoUserButton') Demo login
+    link(href='/stylesheets/splash.css' rel='stylesheet')
+    script(src='/JS/splash.js' type='module')
 block footer
