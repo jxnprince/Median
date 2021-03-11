@@ -17,44 +17,37 @@ const {
 //!Get X number of stories by userID
 // GET localhost:8080/api/stories?userId=<userID>&limit=<X>
 // GET localhost:8080/api/stories/ || works
-router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-
-    const {
-        userId,
-        limit
-    } = req.query
-
-    let mostRecentStories
-    if (userId !== undefined) {
-        mostRecentStories = await Story.findAll({
+router.get(
+    '/',
+    csrfProtection,
+    asyncHandler(async (req, res) => {
+        const {
+            userId,
+            limit
+        } = req.query
+        const params = {
             order: [
                 ['createdAt']
             ],
-            where: {
-                userId
-            }
-        })
-    } else {
-        mostRecentStories = await Story.findAll({
-            order: [
-                ['createdAt']
-            ]
-        })
-    }
+            limit,
+        }
+        if (userId !== undefined) params.where = {
+            userId
+        }
+        const mostRecentStories = await Story.findAll(params)
+        //return a list of the most recent stories
+        if (mostRecentStories) {
+            res.json({
+                mostRecentStories,
+                message: 'Stories',
+            })
+        } else {
+            res.json('Story not found')
+        }
+    })
+)
+//return a list of the most recent stories
 
-    if (limit !== undefined) mostRecentStories = mostRecentStories.slice(0, limit)
-
-    //return a list of the most recent stories
-
-    if (mostRecentStories) {
-        res.json({
-            mostRecentStories,
-            message: "Stories"
-        })
-    } else {
-        res.json('Story not found')
-    }
-}))
 
 //POST localhost:8080/api/stories/ || works
 router.post('/', /*createStoryValidator,*/ asyncHandler(async (req, res) => {
