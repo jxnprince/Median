@@ -69,7 +69,7 @@ router.post('/', createStoryValidator, asyncHandler(async (req, res) => {
         userId
     })
 
-    const validationErrors = validationResult(res);
+    const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
         if (story) {
             res.json({
@@ -126,7 +126,7 @@ router.put('/:id(\\d+)', createStoryValidator, asyncHandler(async (req, res) => 
         postBody,
         title
     } = req.body
-    const validationErrors = validationResult(res)
+    const validationErrors = validationResult(req)
 
     if (validationErrors.isEmpty()) {
         const updatedStory = await Story.findByPk(storyId)
