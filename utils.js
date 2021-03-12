@@ -3,6 +3,24 @@ const csrfProtection = csurf({ cookie: true });
 const asyncHandler = (handler) => (req, res, next) => handler(req, res, next).catch(next);
 const capitalizeFirstChar = (the_string) => the_string.charAt(0).toUpperCase() + the_string.slice(1);
 const  {check}  = require('express-validator');
+const createStoryValidator = [
+  check('title')
+  .exists({ checkFalsy: true })
+  .withMessage('Please input a valid title')
+  .isLength({ max: 100 })
+  .withMessage('Please provide a title under 100 characters'),
+  check('postBody')
+  .exists({ checkFalsy: true })
+  .withMessage('Please input post content')
+]
+
+const createCommentValidator = [
+  check('body')
+  .exists({ checkFalsy: true })
+  .withMessage('Please input a valid comment')
+  .isLength({ max: 255 })
+  .withMessage('Please provide a comment under 255 characters')
+]
 
 const createUserValidators = [
   check('email')
@@ -97,5 +115,7 @@ module.exports = {
     capitalizeFirstChar,
     createUserValidators,
     loginValidators,
-    updateUserValidators
+    updateUserValidators,
+    createStoryValidator,
+    createCommentValidator
 };

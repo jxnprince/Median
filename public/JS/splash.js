@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   const backButton= document.getElementById('backToSplash');
   const loginForm= document.getElementById('login-form');
   const loginButton= document.getElementById('displayLoginFormButton');
-  logoDiv.innerHTML= "I'm a logo placeholder"
+  logoDiv.innerHTML= "I'm a logo placeholder";
 
   displayFormButton.addEventListener('click', async (event) =>{
     displayFormButton.setAttribute('class', 'hidden');
@@ -31,4 +31,5 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     loginForm.classList.remove('hidden');
     console.log('I got clicked');
   })
+  
 });
