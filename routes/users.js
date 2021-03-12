@@ -49,7 +49,7 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
     gender,
     avatar
   } = req.body
-  const validationErrors = validationResult(res)
+  const validationErrors = validationResult(req)
 
   if (validationErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10)
@@ -84,7 +84,7 @@ router.post('/login', loginValidators, asyncHandler(async (req, res) => {
     email,
     password
   } = req.body
-  const validationErrors = validationResult(res)
+  const validationErrors = validationResult(req)
 
   if (validationErrors.isEmpty()) {
     const dbEmail = await User.findOne({
@@ -177,7 +177,7 @@ router.post('/profile/:id(\\d+)', updateUserValidators, asyncHandler(async (req,
     birthdate,
     avatar
   } = req.body;
-  const validationErrors = validationResult(res)
+  const validationErrors = validationResult(req)
   if (validationErrors.isEmpty()) {
     const user = await findByPk(req.params.id)
     user.update({
