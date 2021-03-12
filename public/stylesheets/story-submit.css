@@ -1,0 +1,9 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+    color: #F0EAE4;
+    background: #494A8F;
+}
+
+.story-form {
+    display: flex
+}

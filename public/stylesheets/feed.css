@@ -49,3 +49,7 @@
 	max-height: 15px;
 	max-width: 15px;
 }
+
+body {
+	color: purple;
+}

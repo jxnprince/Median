@@ -1,20 +1,30 @@
 extends layout
-block head
-
-
-
-
-    div(id="mainContent" class="mainContent")
-        div(id="featured" class="featured")
-            div(id="featured-container" class="featured-container")
-                div(id="featured-comments" class="featured-comments")
-                    div(id="feed-items" class="feed-items")
-
-        div(id="feed-container" class="feed-container")
-            div(id="feed-comments" class="feed-comments")
-
-
-
 append head
-    script(src="/JS/feed.js" type='module')
-    link(rel='stylesheet' href='/stylesheets/feed.css')
+	script(src='/JS/splash.js' type='module')
+	script(src="/JS/feed.js", type='module')
+	link(rel='stylesheet' href='/stylesheets/feed.css')
+	body
+		div(class="Header")
+			div(id='logoDiv') I'm a Logo
+			a(href='/submit-story' id='submit-story-link-button' class='link-button') Submit Story
+			form(method='POST', action="/users/logout")
+				input(type="hidden" name="_csrf" value=csrfToken)
+				button(type="submit") Logout
+			a(href='/profile' id='user-profile-button' class='link-button') Profile
+		div(id="mainContent" class="mainContent")
+		div(id="featured" class="featured")
+		div(id="featured-container" class="featured-container")
+		div(id="featured-comments" class="featured-comments")
+		div(id="feed-items" class="feed-items")
+		div(id="feed-container" class="feed-container")
+		div(id="feed-comments" class="feed-comments")
+		div(class="Footer")
+			div(id='app-academy-logo') App Academy Logo
+			div(id='robert-link')
+				a(href='') Robert's Link/Image
+			div(id='jackson-link')
+				a(href='') Jackson's Link/Image
+			div(id='troy-link')
+				a(href='') Troy's Link/Image
+			div(id='josh-link')
+				a(href='') Josh's Link/Image

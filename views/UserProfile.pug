@@ -1,7 +1,4 @@
 extends layout
-block head
-
-
     div(id="left-container" class="left-container")
         div(id="profile-img" class="profile-img")
             div(id="follow-edit-links" class="follow-edit-links")
@@ -18,3 +15,23 @@ block head
 
 append head
     script(src="/JS/profile.js", type=module)
+body
+    div(id="left-container" class=["left-container", "Left-Sidebar"])
+        div(id="profile-img" class="profile-img")
+        div(id="bookmarks-container" class="bookmarks-container")
+        div(id="userinfo-container" class="userinfo-container")div(id="userinfo-container" class="userinfo-container")
+        div(id="follow-edit-links" class="follow-edit-links")
+    div(class="Main-Content")    
+        div(id="users-stories" class="users-stories")
+        div(id="users-followees" class="users-followees")
+    div(class="Right-Sidebar")
+    div(class="Footer")
+        div(id='app-academy-logo') App Academy Logo
+        div(id='robert-link')
+            a(href='') Robert's Link/Image
+        div(id='jackson-link')
+            a(href='') Jackson's Link/Image
+        div(id='troy-link')
+            a(href='') Troy's Link/Image
+        div(id='josh-link')
+            a(href='') Josh's Link/Image
