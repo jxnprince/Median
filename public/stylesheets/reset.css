@@ -29,8 +29,17 @@ li {
   /* content: ""; */
   list-style: none;
 }
-
-
+.link-button{
+  display: inline-block;
+  text-align: center;
+  color: black;
+  background-color: grey;
+  padding: 10px 20px
+}
+.header{
+  display: flex;
+  flex-direction: column;
+}
 .hidden {
   display: none;
 }

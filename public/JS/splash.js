@@ -3,7 +3,9 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   const signUpForm = document.getElementById('signUpForm');
   const demoUserButton = document.getElementById('demoUserButton');
   const logoDiv = document.getElementById('logoDiv');
-  const backButton= document.getElementById('backToSplash')
+  const backButton= document.getElementById('backToSplash');
+  const loginForm= document.getElementById('login-form');
+  const loginButton= document.getElementById('displayLoginFormButton');
   logoDiv.innerHTML= "I'm a logo placeholder"
 
   displayFormButton.addEventListener('click', async (event) =>{
@@ -20,6 +22,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     logoDiv.classList.remove('hidden');
     logoDiv.innerHTML='I back!';
     signUpForm.setAttribute('class', 'hidden');
+    console.log('I got clicked');
+  })
+  loginButton.addEventListener('click', async (event) =>{
+    loginButton.setAttribute('class', 'hidden');
+    loginForm.classList.remove('hidden');
     console.log('I got clicked');
   })
 });
