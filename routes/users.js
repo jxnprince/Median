@@ -93,10 +93,10 @@ router.post('/login', loginValidators, asyncHandler(async (req, res) => {
       }
     })
 
-    console.log('(================================)')
+    // console.log('(================================)')
     if (dbEmail) {
       const match = await bcrypt.compare(password, dbEmail.hashedPassword.toString())
-      console.log('<================================>')
+      // console.log('<================================>')
 
       if (match) {
         user = dbEmail
@@ -143,41 +143,8 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 
 
 // GET localhost:8080/users/profile/
-router.get('/profile', asyncHandler(async (req, res) => {
-  // const id = req.params.id
-  // const user = await User.findByPk(id)
-  // const userStories = await Story.findAll({
-  //   where: {
-  //     userId: id
-  //   }
-  // })
-  // let followees = await User.findByPk(id, {
-  //   include: [{
-  //     model: User,
-  //     as: "Followees",
-  //     attributes: ["firstName", "lastName", "id"]
-  //   }]
-  // })
-  // // followees.Followees[0].Follow.followerId
-  // followees = followees.Followees.map((followed) => followed.Follow.followerId)
-  // const followeeStories = await Story.findAll({
-  //   where: {
-  //     userId: {
-  //       [Op.in]: followees
-  //     }
-  //   }
-  // })
-  res.render("UserProfile" /*, {
-    user,
-    userStories,
-    followeeStories,
-    title: `${user.firstName}'s profile`
-  }*/ );
 
-}));
-
-
-
+router.get('/profile', asyncHandler(async (req, res) => res.render("userProfile")));
 
 router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (req, res) => {
   const user = await findByPk(req.params.id)

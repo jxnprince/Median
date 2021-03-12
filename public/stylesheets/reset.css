@@ -13,11 +13,10 @@
 }
 
 body {
-  /* padding: 25px; */
   font-family: 'Roboto Mono', monospace;
   color: #F0EAE4;
   background: #1f1f35;
-  margin: 0 auto;
+  margin: 0;
 }
 
 a {
@@ -26,36 +25,33 @@ a {
 }
 
 li {
-  /* content: ""; */
   list-style: none;
 }
-.link-button{
+
+.link-button {
   display: inline-block;
   text-align: center;
   color: black;
   background-color: grey;
   padding: 10px 20px
 }
-.header{
+
+.header {
   display: flex;
   flex-direction: column;
 }
+
 .hidden {
   display: none;
 }
 
-
 .grid-container {
-  overflow: hidden;
   background: #1f1f35;
   min-height: 100vh;
-  width: 100%;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
   grid-template-rows: 0.3fr 3fr 0.25fr;
   gap: 0px 0px;
-  border-radius: 1%;
   grid-template-areas:
     "Header Header Header"
     "Left-Sidebar Main-Content Right-Sidebar"
@@ -71,8 +67,6 @@ li {
   grid-area: Main-Content;
   background-color: #1f1f35;
   margin-top: 0;
-  border-radius: 1%;
-  /* background-color: #1f1f35; */
 }
 
 .Right-Sidebar {
@@ -87,18 +81,25 @@ li {
   background: #494A8F;
   height: 53px;
   line-height: 0px;
-  border-radius: 1%;
   /* top: 0; */
-  /* left: 0; */
-  /* overflow: hidden; */
 }
 
 .Footer {
   grid-area: Footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: #1f1f35;
   line-height: 0px;
   border-radius: 1%;
   max-height: 50px;
+}
+
+#creators-info {
+  right: 2rem;
+  max-width: 30%;
+  top: 25%;
+  flex-direction: row;
 }
 
 h1 {
@@ -114,9 +115,6 @@ input {
 button {
   color: #F0EAE4;
   background-color: #494A8F;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
 }
 
 button :hover {
@@ -127,16 +125,17 @@ button :target {
   background-color: #E0C653;
 }
 
-/* .form {
-  position: relative;
+form {
+  margin-block-end: 0;
+  /* position: relative;
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}*/
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+}
 
 /* h1,
 h2,

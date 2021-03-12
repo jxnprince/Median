@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
 body {
-  /* padding: 50px; */
   font-family: 'Roboto Mono', monospace;
   color: #F0EAE4;
   background: #494A8F;
 }
-
 
 .hidden {
   display: none;
@@ -14,13 +12,10 @@ body {
 
 .main-content {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 #logoDiv {
-  height: 250px;
-  width: 250px;
-  flex-shrink: unset;
   height: 250px;
   width: 250px;
   background-color: #F0EAE4;
@@ -29,13 +24,14 @@ body {
 
 .formButtons {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
-#displaySignUpFormButton {
-  margin: 0 auto;
-  align-self: center;
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .signupForm {
@@ -43,12 +39,22 @@ body {
   flex-direction: column;
 }
 
+#login-form {
+  flex-direction: column;
+}
+
+/* #submit-login {} */
+
 input {
   width: 50%;
   margin: 2px auto;
   background-color: #F0EAE4;
 }
 
-.buttons {
-  margin: 0 auto;
+#displayLoginFormButton {
+  position: absolute;
+  right: 2rem;
+  max-width: 60px;
+  height: 30px;
+  top: 25%;
 }
