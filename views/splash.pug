@@ -1,51 +1,31 @@
 extends layout
 append head
+    link(href='/stylesheets/reset.css' rel='stylesheet')
     link(href='/stylesheets/splash.css' rel='stylesheet')
     script(src='/JS/splash.js' type='module')
     body
-        div(class="grid-container")
-            div(class="Header")
-                div(id='logoDiv')
-                button(type='click' id='displayLoginFormButton') Login
-                form(method='POST', action="/users/login" class="hidden" id='login-form')
+      div(class="grid-container")
+        div(class="Header")
+        div(class="Left-Sidebar")
+        div(class="Main-Content")
+            div(id='logoDiv')
+            div(class= "singupForm")
+                form(class='hidden' id='signUpForm' method='POST', action="/users/signup")
                     input(type="hidden" name="_csrf" value=csrfToken)
                     input(type='string' name='email' placeholder='email' required)
-                    input(type='password' name='password' placeholder='password' required)
-                    button(type="submit") Login
-            div(class="Left-Sidebar")
-            div(class="Main-Content")
-                div
-                    form(method='POST', action="/users/login")
-                        input(type="hidden" name="_csrf" value=csrfToken)
-                        input(type='string' name='email' placeholder='email' required)
-                        input(type='password' name='password' placeholder='password' required)
-                        button(type="submit") Login
-                div
-                    form(class='hidden' id='signUpForm' method='POST', action="/users/signup")
-                        input(type="hidden" name="_csrf" value=csrfToken)
-                        input(type='string' name='email' placeholder='email' required)
-                        input(type='string' name='firstName' placeholder='First Name')
-                        input(type='string' name='lastName' placeholder='Last Name')
-                        input(type='password' name='password' placeholder='Password' required)
-                        input(type='password' name='confPassword' placeholder='Confirm Password' required)
-                        //- input(type='string' name='gender' placeholder='Gender')
-                        //- input(type='string' name='avatar' placeholder='ImageUrl')
+                    input(type='string' name='firstName' placeholder='First Name')
+                    input(type='string' name='lastName' placeholder='Last Name')
+                    input(type='password' name='password' placeholder='Password' required)
+                    input(type='password' name='confPassword' placeholder='Confirm Password' required)
+                    //- input(type='string' name='gender' placeholder='Gender')
+                    //- input(type='string' name='avatar' placeholder='ImageUrl')
+                    div(class="buttons")
                         button(type="submit" id='submitSignUpFormButton') Sign Up
                         button(type="click" id='backToSplash') Back
-                div
-                    button(type='click' id='displaySignUpFormButton') Sign Up
-                    form(method="POST" action="/users/demo-user")
-                        input(type="hidden" name="_csrf" value=csrfToken)
-                        button(type="submit" id='demoUserButton') Demo login
-            div(class="Right-Sidebar")
-            div(class="Footer")
-                div(id='app-academy-logo') App Academy Logo
-                div(id='robert-link')
-                    a(href='') Robert's Link/Image
-                div(id='jackson-link')
-                    a(href='') Jackson's Link/Image
-                div(id='troy-link')
-                    a(href='') Troy's Link/Image
-                div(id='josh-link')
-                    a(href='') Josh's Link/Image
-    
+            div(class="formButtons")
+                button(type='click' id='displaySignUpFormButton') Sign Up
+                form(method="POST" action="/users/demo-user")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    button(type="submit" id='demoUserButton') Demo login
+        div(class="Right-Sidebar")
+        div(class="Footer")
