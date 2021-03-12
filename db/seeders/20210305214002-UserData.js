@@ -12,7 +12,8 @@ const { getRandomName, getStarwarsNames, randomNumber, randomYear, randomMonth, 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users',
-      [{
+      [
+        {
         email: 'test@test.net',
         firstName: 'test',
         lastName: 'testerson',
@@ -52,7 +53,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -63,7 +64,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -74,7 +75,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -85,7 +86,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -96,7 +97,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -107,7 +108,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -118,7 +119,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -129,7 +130,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -140,7 +141,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -151,7 +152,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -162,7 +163,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -173,7 +174,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -184,7 +185,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -195,7 +196,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -206,7 +207,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -217,7 +218,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -228,7 +229,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -239,7 +240,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -250,7 +251,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -261,7 +262,7 @@ module.exports = {
         gender: 'male',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomMaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
 
@@ -273,7 +274,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -284,7 +285,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -295,7 +296,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -306,7 +307,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -317,7 +318,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -328,7 +329,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -339,7 +340,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -350,7 +351,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -361,7 +362,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -372,7 +373,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -383,7 +384,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -394,7 +395,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -405,7 +406,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -416,7 +417,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -427,7 +428,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -438,7 +439,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -449,7 +450,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -460,7 +461,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -471,7 +472,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
@@ -482,7 +483,7 @@ module.exports = {
         gender: 'female',
         birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         avatar: `${getRandomFemaleImg()}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       }
 
