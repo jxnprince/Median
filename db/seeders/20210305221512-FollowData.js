@@ -14,253 +14,253 @@ module.exports = {
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
         userId: `${randomNumber(43)}`,
         followerId: `${randomNumber(43)}`,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
 
