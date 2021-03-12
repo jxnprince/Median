@@ -226,7 +226,8 @@ const getRandomName = (gender) => {
 
 
 
-
+// change this so that the corresponding character name matches with the character photo
+// make their name the key and the photo the value in an object ----
 
 const getStarwarsNames = () => {
 
