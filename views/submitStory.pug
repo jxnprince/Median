@@ -1,15 +1,22 @@
-doctype html
-html(lang="en")
+extends layout
 append head
-link(rel= "stylesheet" href="/stylesheets/story-submit.css")
-title Submit-Story
 body
-            div(class="story-form")
-            form(method='POST', action="api/stories/")
-            div(class="input-boxes")
-                input(type="hidden" name="_csrf" value=csrfToken)
-                input(type='string' name='imgUrl' placeholder='image' required value= email)
-                textarea(class="story-input" placeholder="Start writing here")
-                input(type='string' name='title' placeholder='Title' value= gender)
-                button(type="submit") Submit Story
-block footer
+    div(class="Header")
+        div(id='logoDiv') I'm a Logo!
+        a(href='/submit-story' id='submit-story-link-button' class='link-button') Submit Story
+        form(method='POST', action="'/logout'")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            button(type="submit") Logout
+            a(href='/profile' id='user-profile-button' class='link-button')) Profile
+//- body
+//-   div(class="grid-container")
+//-     div(class="Header")
+//-     div(class="Left-Sidebar")
+//-       //- block left
+//-     div(class="Main-Content")
+//-       //- block content
+//-     div(class="Right-Sidebar")
+//-       //- block right
+//-     div(class="Footer")
+//-       //- block footer
+
