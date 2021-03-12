@@ -1,20 +1,269 @@
+const { randomNumber, randomYear, randomMonth, randomDay } = require('../../data/index.js');
+
 'use strict';
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Follows', [
       {
-        userId: 1,
-        followerId: 2,
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        userId: 3,
-        followerId: 2,
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
         createdAt: new Date(),
         updatedAt: new Date()
-      }
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: `${randomNumber(43)}`,
+        followerId: `${randomNumber(43)}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+
     ], {});
   },
 

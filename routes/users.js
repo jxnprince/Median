@@ -167,7 +167,7 @@ router.get('/profile', asyncHandler(async (req, res) => {
   //     }
   //   }
   // })
-  res.render("userProfile" /*, {
+  res.render("UserProfile" /*, {
     user,
     userStories,
     followeeStories,
