@@ -1,0 +1,36 @@
+extends layout
+append head
+    link(href='/stylesheets/reset.css' rel='stylesheet')
+    script(src='/JS/single-story.js' type='module')
+    body
+        div(class="grid-container")
+            div(class="Header")
+                img(src='' class='logo')
+                button(type='click', id='displayLoginFormButton') Login
+                form(class='hidden' id='login-form' method='POST', action="/users/login")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    input(type='string' name='email' placeholder='email' required)
+                    input(type='password' name='password' placeholder='Password' required)
+                    button(type="submit" id='submit-login') Login
+            div(class="Left-Sidebar")
+                div(class="edit-delete")
+                    form(method='GET', action=(`/stories/edit/${apiNumber}`))
+                        button(type='submit' id='edit-story-button') Edit
+                    form(method='GET', action=(`/stories/${apiNumber}`))
+                        button(type='submit' id='delete-story-button' formmethod='DELETE') Delete
+                div(class="edit-delete")
+            div(class="Main-Content" id="Main-Content")
+                div(id="current-story-api-number" class= `${apiNumber}`)
+            //- div(id="buffer")
+            div(class="Right-Sidebar")
+            div(class="Footer")
+                div(id='app-academy-logo') App Academy Logo
+                div(id='creators-info')
+                    div(id='robert-link')
+                        a(href='') Robert's Link/Image
+                    div(id='jackson-link')
+                        a(href='') Jackson's Link/Image
+                    div(id='troy-link')
+                        a(href='') Troy's Link/Image
+                    div(id='josh-link')
+                        a(href='') Josh's Link/Image

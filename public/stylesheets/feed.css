@@ -50,6 +50,24 @@
 	max-width: 15px;
 }
 
-body {
-	color: purple;
+#miniLogo {
+	height: 100%;
+	/* background-color: #F0EAE4; */
+	/* margin: 0 auto; */
+}
+
+.left-items {
+	position: absolute;
+	left: 2rem;
+	top: 25%;
+}
+
+.right-items {
+	position: absolute;
+	right: 2rem;
+	top: 25%;
+}
+
+.link-button {
+	max-width: 20rem;
 }

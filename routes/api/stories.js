@@ -65,7 +65,7 @@ router.post('/', /*createStoryValidator,*/ asyncHandler(async (req, res) => {
         imgUrl,
         postBody,
         title,
-        userId
+        userId:req.session.auth.userId
     })
     if (story) {
         res.json({
@@ -83,7 +83,6 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     //test that you are pulling the id paramater
     //return a list of the most recent stories by a user.
     const storyId = req.params.id;
-
     const userStories = await Story.findByPk(storyId);
     res.json(userStories)
 }))

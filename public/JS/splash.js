@@ -6,12 +6,12 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   const backButton= document.getElementById('backToSplash');
   const loginForm= document.getElementById('login-form');
   const loginButton= document.getElementById('displayLoginFormButton');
-  logoDiv.innerHTML= "I'm a logo placeholder"
 
   displayFormButton.addEventListener('click', async (event) =>{
     displayFormButton.setAttribute('class', 'hidden');
     demoUserButton.setAttribute('class', 'hidden');
     logoDiv.setAttribute('class', 'hidden');
+    // loginForm.setAttribute('class', 'hidden');
     logoDiv.innerHTML='I am hiding!';
     signUpForm.setAttribute('class', 'signupForm');
     signUpForm.classList.remove('hidden');

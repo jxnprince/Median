@@ -6,7 +6,7 @@ append head
     body
         div(class="grid-container")
             div(class="Header")
-                div(id='logoDiv')
+                img(src='' class='logo')
                 button(type='click', id='displayLoginFormButton') Login
                 form(class='hidden' id='login-form' method='POST', action="/users/login")
                     input(type="hidden" name="_csrf" value=csrfToken)
@@ -15,7 +15,7 @@ append head
                     button(type="submit" id='submit-login') Login
             div(class="Left-Sidebar")
             div(class="Main-Content")
-                div(class= "singupForm")
+                div(class= "signupForm")
                     form(class='hidden' id='signUpForm' method='POST', action="/users/signup")
                         input(type="hidden" name="_csrf" value=csrfToken)
                         input(type='string' name='email' placeholder='email' required)
@@ -28,19 +28,21 @@ append head
                         div(class="buttons")
                             button(type="submit" id='submitSignUpFormButton') Sign Up
                             button(type="click" id='backToSplash') Back
+                div(id='logoDiv')
                 div(class="formButtons")
                     button(type='click' id='displaySignUpFormButton') Sign Up
                     form(method="POST" action="/users/demo-user")
                         input(type="hidden" name="_csrf" value=csrfToken)
                         button(type="submit" id='demoUserButton') Demo login
             div(class="Right-Sidebar")
-                div(class="Footer")
-            div(id='app-academy-logo') App Academy Logo
-            div(id='robert-link')
-                a(href='') Robert's Link/Image
-            div(id='jackson-link')
-                a(href='') Jackson's Link/Image
-            div(id='troy-link')
-                a(href='') Troy's Link/Image
-            div(id='josh-link')
-                a(href='') Josh's Link/Image
+            div(class="Footer")
+                div(id='app-academy-logo') App Academy Logo
+                div(id='creators-info')
+                    div(id='robert-link')
+                        a(href='') Robert's Link/Image
+                    div(id='jackson-link')
+                        a(href='') Jackson's Link/Image
+                    div(id='troy-link')
+                        a(href='') Troy's Link/Image
+                    div(id='josh-link')
+                    a(href='') Josh's Link/Image

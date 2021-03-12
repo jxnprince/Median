@@ -1,40 +1,35 @@
 extends layout
-
-//- block head
-
-//- block content
-//-     div(id="left-container" class="left-container")
-//-         div(id="profile-img" class="profile-img")
-//-             div(id="follow-edit-links" class="follow-edit-links")
-
-//-     div(id="bookmarks-container" class="bookmarks-container")
-//-     div(id="userinfo-container" class="userinfo-container")
-    div(id="userinfo-container" class="userinfo-container")
-
-    div(id="users-stories" class="users-stories")
-
-    div(id="users-followees" class="users-followees")
 append head
-    script(src="/JS/profile.js", type=module)
-body
-    div(id="left-container" class=["left-container", "Left-Sidebar"])
-        div(id="profile-img" class="profile-img")
-        div(id="bookmarks-container" class="bookmarks-container")
-        div(id="userinfo-container" class="userinfo-container")div(id="userinfo-container" class="userinfo-container")
-        div(id="follow-edit-links" class="follow-edit-links")
-    div(class="Main-Content")    
-        div(id="users-stories" class="users-stories")
-        div(id="users-followees" class="users-followees")
-    div(class="Right-Sidebar")
-    div(class="Footer")
-        div(id='app-academy-logo') App Academy Logo
-        div(id='robert-link')
-            a(href='') Robert's Link/Image
-        div(id='jackson-link')
-            a(href='') Jackson's Link/Image
-        div(id='troy-link')
-            a(href='') Troy's Link/Image
-        div(id='josh-link')
-            a(href='') Josh's Link/Image
-
-
+    script(src='/JS/profile.js' type='module')
+    link(rel='stylesheet' href='/stylesheets/reset.css')
+    body
+      div(class="grid-container")
+        div(class="Header")
+            div(class="left-items")
+                div(id='minilogo')
+                a(href='/submit-story' id='submit-story-link-button' class='link-button') Submit Story
+            div(class="right-items")
+                form(method='POST', action="/users/logout" class="logout")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    button(type="submit") Logout
+                a(href='/profile' id='user-profile-button' class='link-button') Profile
+        div(class="Left-Sidebar")
+            div(id="profile-img" class="profile-img")
+            div(id="bookmarks-container" class="bookmarks-container")
+            div(id="userinfo-container" class="userinfo-container")
+            div(id="follow-edit-links" class="follow-edit-links")
+        div(class="Main-Content")
+            div(id="users-stories" class="users-stories")
+            div(id="users-followees" class="users-followees")
+        div(class="Right-Sidebar")
+        div(class="Footer")
+            div(id='app-academy-logo') App Academy Logo
+            div(id='creators-info')
+                div(id='robert-link')
+                    a(href='') Robert's Link/Image
+                div(id='jackson-link')
+                    a(href='') Jackson's Link/Image
+                div(id='troy-link')
+                    a(href='') Troy's Link/Image
+                div(id='josh-link')
+                    a(href='') Josh's Link/Image
