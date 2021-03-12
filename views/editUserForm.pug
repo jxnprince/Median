@@ -1,15 +1,36 @@
 extends layout
-block head
-block content
-	div
-		form(method='POST', action="/profile/:id/editUser")
+append head
+body
+	div(class="Header")
+		div(id='logoDiv') I'm a Logo
+		a(href='/submit-story' id='submit-story-link-button' class='link-button') Submit Story
+		form(method='POST', action="'/logout'")
 			input(type="hidden" name="_csrf" value=csrfToken)
-			input(type='string' name='email' placeholder='email' required value= email)
-			input(type='string' name='firstName' placeholder='First Name' value= firstName)
-			input(type='string' name='lastName' placeholder='Last Name' value= firstName)
-			//- input(type='password' name='password' placeholder='Password' required value= )
-			//- input(type='password' name='confPassword' placeholder='Confirm Password' required)
-			input(type='string' name='gender' placeholder='Gender' value= gender)
-			input(type='string' name='avatar' placeholder='ImageUrl' value= avatar)
-			button(type="submit") Update Profile
-block footer
+			button(type="submit") Logout
+		a(href='/profile' id='user-profile-button' class='link-button') Profile
+	div(class="Left-Sidebar")
+	div(id="mainContent" class="mainContent")
+		div
+			form(method='POST', action="/profile/:id/editUser")
+				input(type="hidden" name="_csrf" value=csrfToken)
+				input(type='string' name='email' placeholder='email' required value= email)
+				input(type='string' name='firstName' placeholder='First Name' value= firstName)
+				input(type='string' name='lastName' placeholder='Last Name' value= firstName)
+				//- input(type='password' name='password' placeholder='Password' required value= )
+				//- input(type='password' name='confPassword' placeholder='Confirm Password' required)
+				input(type='string' name='gender' placeholder='Gender' value= gender)
+				input(type='string' name='avatar' placeholder='ImageUrl' value= avatar)
+				button(type="submit") Update Profile
+	div(class="Right-Sidebar")
+	div(class="Footer")
+		div(id='app-academy-logo') App Academy Logo
+		div(id='robert-link')
+			a(href='') Robert's Link/Image
+		div(id='jackson-link')
+			a(href='') Jackson's Link/Image
+		div(id='troy-link')
+			a(href='') Troy's Link/Image
+		div(id='josh-link')
+			a(href='') Josh's Link/Image
+
+

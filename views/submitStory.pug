@@ -1,4 +1,22 @@
-//- extends layout
-//- block head
-//- block content
-//- block footer
+extends layout
+append head
+body
+    div(class="Header")
+        div(id='logoDiv') I'm a Logo!
+        a(href='/submit-story' id='submit-story-link-button' class='link-button') Submit Story
+        form(method='POST', action="'/logout'")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            button(type="submit") Logout
+            a(href='/profile' id='user-profile-button' class='link-button')) Profile
+//- body
+//-   div(class="grid-container")
+//-     div(class="Header")
+//-     div(class="Left-Sidebar")
+//-       //- block left
+//-     div(class="Main-Content")
+//-       //- block content
+//-     div(class="Right-Sidebar")
+//-       //- block right
+//-     div(class="Footer")
+//-       //- block footer
+
