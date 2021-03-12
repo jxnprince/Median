@@ -92,6 +92,32 @@ li {
   max-height: 50px;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+input {
+  width: 50%;
+  margin: 2px auto;
+  background-color: #F0EAE4;
+}
+
+button {
+  color: #F0EAE4;
+  background-color: #494A8F;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+button :hover {
+  background-color: #9674AB;
+}
+
+button :target {
+  background-color: #E0C653;
+}
+
 /* .form {
   position: relative;
   z-index: 1;
@@ -126,7 +152,3 @@ nav {
   outline: 0;
   font-weight: normal;
 } */
-
-h1 {
-  font-size: 2rem;
-}
