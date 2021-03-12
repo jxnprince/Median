@@ -28,7 +28,7 @@ router.post('/:id(\\d+)', createCommentValidator, asyncHandler(async (req, res) 
     const storyId = req.params.id
     const userId = req.session.auth.userId
     // const userId = 1 //Testing in postman
-    const validationErrors = validationResult(res)
+    const validationErrors = validationResult(req)
 
     if (validationErrors.isEmpty()) {
         const {
@@ -72,7 +72,7 @@ router.put('/:id', createCommentValidator, asyncHandler(async (req, res) => {
     const {
         comment
     } = req.body
-    const validationErrors = validationResult(res);
+    const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
     const commentQuery = await Comment.findByPk(commentId)
     //Only edit comment if userId matches userId on comment
