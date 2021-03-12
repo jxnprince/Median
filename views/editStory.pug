@@ -16,11 +16,10 @@ append head
         div(class="Left-Sidebar")
         div(class="Main-Content")
             div(class="Submit-form")
-                //- form(method='POST' action='')
-                //-     input(type="text" name="Title" placeholder= "Title" required)
-                //-     input(type="text" name="Imgurl" placeholder='Image Url')
-                //-     textArea(type="text" name="Body" required)
-                //-     button(type="submit") Update Story
+                form(method='POST' action='')
+                    input(type="text" name="Title" value=story.title placeholder="Title" required )
+                    textArea(type="text" name="Body" required)= story.postBody
+                    button(type="submit") Update Story
         div(class="Right-Sidebar")
         div(class="Footer")
             div(id='app-academy-logo') App Academy Logo
@@ -33,4 +32,3 @@ append head
                     a(href='') Troy's Link/Image
                 div(id='josh-link')
                     a(href='') Josh's Link/Image
-
