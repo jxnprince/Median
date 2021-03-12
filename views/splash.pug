@@ -16,6 +16,13 @@ append head
             div(class="Left-Sidebar")
             div(class="Main-Content")
                 div(class= "signupForm")
+                if errors
+                    div(class='alert alert-danger' role='alert')
+                        p The following error(s) occurred:
+                        ul
+                            each error in errors
+                                li= error
+                div(class= "singupForm")
                     form(class='hidden' id='signUpForm' method='POST', action="/users/signup")
                         input(type="hidden" name="_csrf" value=csrfToken)
                         input(type='string' name='email' placeholder='email' required)
@@ -34,6 +41,7 @@ append head
                     form(method="POST" action="/users/demo-user")
                         input(type="hidden" name="_csrf" value=csrfToken)
                         button(type="submit" id='demoUserButton') Demo login
+                    if errors
             div(class="Right-Sidebar")
             div(class="Footer")
                 div(id='app-academy-logo') App Academy Logo

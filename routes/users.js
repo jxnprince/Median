@@ -70,7 +70,7 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
   } else {
     console.log(`You hit the user registration error route`)
     const errors = validationErrors.array().map((error) => error.msg);
-    res.render('error', {
+    res.render('splash', {
       user,
       errors,
       csrfToken: req.csrfToken()
@@ -143,6 +143,7 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 
 
 // GET localhost:8080/users/profile/
+
 router.get('/profile', asyncHandler(async (req, res) => res.render("userProfile")));
 
 router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (req, res) => {

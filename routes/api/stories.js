@@ -6,7 +6,8 @@ const {
 } = require('../../db/models')
 const {
     csrfProtection,
-    asyncHandler
+    asyncHandler,
+    createStoryValidator
 } = require('../../utils');
 const {
     check,
@@ -50,7 +51,7 @@ router.get(
 
 
 //POST localhost:8080/api/stories/ || works
-router.post('/', /*createStoryValidator,*/ asyncHandler(async (req, res) => {
+router.post('/', createStoryValidator, asyncHandler(async (req, res) => {
     //submits a story via a form
     //submitted stories will then populate the general feed?
     const {
@@ -67,16 +68,30 @@ router.post('/', /*createStoryValidator,*/ asyncHandler(async (req, res) => {
         title,
         userId:req.session.auth.userId
     })
-    if (story) {
+
+    const validationErrors = validationResult(req);
+    if (validationErrors.isEmpty()) {
+        if (story) {
+            res.json({
+                message: "You created a new story",
+                story
+            })
+        } else {
+            res.json({
+                message: "Story not created"
+            })
+        }
+    } else{
+        console.log(`You hit the story registration error route`)
+        const errors = validationErrors.array().map((error) => error.msg);
         res.json({
-            message: "You created a new story",
-            story
-        })
-    } else {
-        res.json({
-            message: "Story not created"
+          story,
+          errors,
+          csrfToken: req.csrfToken(),
+          message: "You have the following errors:"
         })
     }
+
 }))
 //GET localhost:8080/api/stories/:id || works
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
@@ -102,7 +117,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     }
 }))
 //PUT localhost:8080/api/stories/:id || works
-router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', createStoryValidator, asyncHandler(async (req, res) => {
     //updates a specific user story
     const storyId = req.params.id
     const {
@@ -110,22 +125,34 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
         postBody,
         title
     } = req.body
+    const validationErrors = validationResult(req)
 
-    const updatedStory = await Story.findByPk(storyId)
-    updatedStory.update({
-        imgUrl,
-        postBody,
-        title
-    })
-    if (updatedStory) {
-        res.json({
-            message: "You updated a story",
-            updatedStory
+    if (validationErrors.isEmpty()) {
+        const updatedStory = await Story.findByPk(storyId)
+        updatedStory.update({
+            imgUrl,
+            postBody,
+            title
         })
-    } else {
-        res.json({
-            message: "Story was not updated"
-        })
+        if (updatedStory) {
+            res.json({
+                message: "You updated a story",
+                updatedStory
+            })
+        } else {
+            res.json({
+                message: "Story was not updated"
+            })
+        }
+    } else{
+        console.log(`You hit the story registration error route`)
+        const errors = validationErrors.array().map((error) => error.msg);
+        res.render('error', {
+          story,
+          errors,
+          csrfToken: req.csrfToken(),
+          message: "You have the following errors:"
+        });
     }
 }))
 
