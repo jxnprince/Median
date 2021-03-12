@@ -209,6 +209,282 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('m'),
+        lastName: getRandomName('m'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'male',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomMaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('m'),
+        lastName: getRandomName('m'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'male',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomMaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('m'),
+        lastName: getRandomName('m'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'male',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomMaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('m'),
+        lastName: getRandomName('m'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'male',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomMaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('m'),
+        lastName: getRandomName('m'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'male',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomMaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        email: `${bcrypt.hashSync(`${randomNumber(100)}`, 2)}@gmail.com`,
+        firstName: getRandomName('f'),
+        lastName: getRandomName('f'),
+        hashedPassword: bcrypt.hashSync('Password1!', 10),
+        gender: 'female',
+        birthdate: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        avatar: `${getRandomFemaleImg()}`,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
 
       ], {});
   },
