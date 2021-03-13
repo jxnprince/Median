@@ -1,5 +1,5 @@
-const { randomNumber, randomYear, randomMonth, randomDay } = require('../../data/index.js');
-
+const { randomComment, comments_array } = require('../../data/index.js');
+// randomComment(comments_array[0])
 
 
 

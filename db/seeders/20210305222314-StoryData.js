@@ -1,5 +1,5 @@
-const { randomStory } = require('../../data/index.js');
-
+const { randomStory, stories_array } = require('../../data/index.js');
+// randomStory(stories_array[0])
 
 
 
@@ -13,7 +13,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Stories',
     [
-      
+
     ], {});
   },
 
