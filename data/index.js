@@ -484,7 +484,8 @@ const getRandomFemaleImg = () => {
 
 
 
-
+// https://medium.com/topic/javascript
+// go to link above to get url for images
 const getRandomStoryImg = () => {
     const images = [
         'https://miro.medium.com/max/1458/1*WNBUtTzkDqn-uzP8vPcvpw.jpeg',
