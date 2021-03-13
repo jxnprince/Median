@@ -1,0 +1,36 @@
+.Header {
+	display: flex;
+	flex-direction: column;
+	grid-area: Header;
+	position: fixed;
+	width: 100%;
+	background: #494A8F;
+	height: 53px;
+	line-height: 0px;
+	/* top: 0; */
+}
+
+.miniLogo {
+	height: 55px;
+	width: 70px;
+}
+
+.Footer {
+	grid-area: Footer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #1f1f35;
+	line-height: 0px;
+	border-radius: 1%;
+	max-height: 50px;
+}
+
+#creators-info {
+	right: 2rem;
+	max-width: 30%;
+	top: 25%;
+	flex-direction: row;
+}
+
+.loginHeader {}

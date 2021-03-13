@@ -1,6 +1,6 @@
 extends layout
 append head
-    script(src='/JS/profile.js' type='module')
+    //- script(src='/JS/splash.js' type='module')
     link(href='/stylesheets/header-footer.css' rel='stylesheet')
     link(rel='stylesheet' href='/stylesheets/reset.css')
     body
@@ -15,13 +15,13 @@ append head
                     button(type="submit") Logout
                 a(href='/profile' id='user-profile-button' class='link-button') Profile
         div(class="Left-Sidebar")
-            div(id="profile-img" class="profile-img")
-            div(id="bookmarks-container" class="bookmarks-container")
-            div(id="userinfo-container" class="userinfo-container")
-            div(id="follow-edit-links" class="follow-edit-links")
         div(class="Main-Content")
-            div(id="users-stories" class="users-stories")
-            div(id="users-followees" class="users-followees")
+            div(class="Submit-form")
+                //- form(method='POST' action='')
+                //-     input(type="text" name="Title" placeholder= "Title" required)
+                //-     input(type="text" name="Imgurl" placeholder='Image Url')
+                //-     textArea(type="text" name="Body" required)
+                //-     button(type="submit") Update Story
         div(class="Right-Sidebar")
         div(class="Footer")
             div(id='app-academy-logo') App Academy Logo
@@ -34,3 +34,4 @@ append head
                     a(href='') Troy's Link/Image
                 div(id='josh-link')
                     a(href='') Josh's Link/Image
+
