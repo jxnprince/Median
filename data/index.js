@@ -1277,36 +1277,1104 @@ Well, thank you for reading my article, if it gave you some value I will be so h
         the_title: `Javascript destructuring, or why your code gets big.`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `In this piece, I am going to be sharing five ways that you can make money as a developer without a job. Now, this is important because I know a lot of developers out there are not able to get a job right now. That doesn’t mean you shouldn’t be able to use your programming ability to make money on the side.
+
+The five methods I am going to address are the same ones I have tried before. You can try these different ways alongside your day job. Sometimes they may end up making you more money than your actual job.
+
+1. Freelancing
+Freelancing is such a great opportunity to take whatever skill set that you have and be able to get paid to use those skills. It does not matter what you are good at. If you are good at one specific thing, there is probably someone willing to pay for it.
+
+When I first decided to go the freelancing route, I opened different accounts from different platforms. I thought that the more account I have, the better my chance of getting projects will increase. So, I applied to Upwork, Fiverr, Freelancer, Toptal engineering, PPH, guru, you name it.
+
+I was not successful for a while until I got a client from Upwork from which all my other clients came. I came to notice that it does not matter how good you are to freelance. You do not have to be a pro at the different web development stacks or even at mobile development.
+
+All you have to do is to learn how better market yourself.
+
+If you are beginning and have low rates, you might even get more clients because people want the lower price for what you can do. I am not asking you to sell yourself short.
+
+Do not be afraid to start small. You can build a website for $20k for a company, or you can make a little program for $20. It does not matter what skill you have.
+
+As long as you can market that skill correctly, you will be able to get clients and be able to make money. With online platforms like Upwork, you need to gauge yourself and your prices so that you will be able to land clients.
+
+2. Tutoring
+Tutoring is popular for most developers. Some may choose to do this through instructional videos on YouTube or creating courses online for websites like Udemy, Udacity and Skillshare.
+
+If you are a developer who enjoys interacting with people, you may do well in personal or online tutoring. The best part about this is that you can charge different rates depending on the clients.
+
+If you are a teenager in school, you can start offering classes to your classmates. Age is not a limiting factor.
+
+You can also sign up on websites like Coursera and Chegg where you can help people with their homework while also tutoring them.
+
+If you get better at it and have a good enough online presence, it can be a great way of earning a living. You can even change your rates as you grow.
+
+I would highly recommend you at least consider because it is a great one way to use and still improve your programming skills. I tried this before and made some cash then I stopped because I did not have enough time to handle Upwork projects at the same time.
+
+3. Sharing knowledge online
+Sharing knowledge is one thing anyone can do in any capacity. It could be through a YouTube video, an article, a tweet, anything.
+
+There are a lot of opportunities out there for such. I have not tried this yet, but I have written a lot of programming articles other the years under a friend who had hired me as one of his writers. You can even decide to create a blogging site and work your way up.
+
+I am not saying that you’re going to make a lot of money by hosting ads on your blog or hosting ads on your YouTube channel because it takes a lot of time to get people to follow you.
+
+It is a slower route to take, but the money accumulates over time. When you share online, there is a high chance of being discovered by a potential client, a recruiter or a prospective student.
+
+4. Start a business
+Starting a business is by far the most difficult to do. Tech stories about the likes of Mark Zuckerberg and Sergey Brin have given rise to a lot of startups in silicon valley and also worldwide.
+
+It may sound like a cliché, but you can do the same. I know building a product, or a service that you can sell is not an easy thing to do, but it is worth the time and effort.
+
+Most of the companies in tech started because one person or a small group of people decided to build something that would sell. Look at a lot of the apps you use today. A good number started because someone wanted to create something better and more efficient.
+
+The great thing with programming is that, once you start, you are automatically an entrepreneur. You can build whatever you want and go ahead and sell it.
+
+You can make a simple app on the app store, and make good money from it. Now, is that going to happen? Probably not, but if you have a good idea or you have something that you want to build, go ahead and build it. You already have the time. You have nothing to lose.
+
+5. Provide tech solutions to local businesses
+This involves going to some local business, and try to pitch your tech ideas to them. They probably don’t know how to set up a website, or they probably wouldn’t even go out and seek that assistance.
+
+The trick is to identify a problem, pitch a solution, then charge something that makes sense.
+
+Make them see that they will make their money back from the solution that you’re pitching to them, or save money. I have had friends with small businesses. I noticed that most of them did not have websites, so I pitched the idea to them. I can attest to this because most of them are still my clients today.
+
+After all, I maintain their websites for a fee.
+
+These methods are not for everybody. Maybe none of these will work for you, and maybe one or two will work for someone else. I believe that taking that step to find out which works for you is worth it. Building a freelance empire has never been easy. It commands a lot of sweat.`,
+        the_title: `5 Ways to Earn Money as a Developer`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `Forms are an essential part of any website or application. You will see them used everywhere from login/signup screens to adding and updating data.
+When using React, typically we would want to create a controlled component when dealing with inputs.
+For example, we will need to create a state variable and set this as the value of the input. Then we will need to add an onChange event listener to the input. Now, whenever the input is updated, we have a controlled state within our application.import React, { useState } from 'react';
+
+const App = () => {
+  const [username, setUsername] = useState('');
+  return (
+    <form className="App">
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        value={username}
+        onChange={e => setUsername(e.target.value)}
+      />
+      <input type="submit" />
+    </form>
+  );
+};
+
+export default App;As you can see from above, there is a few extra lines of code needed to pull this off. Imagine if we have a form with multiple inputs? We will need to create a separate state for each input and add the value and onChange listener for each one. Also, every time we change the value of the input, it will cause a rerender of the component.
+To make things a lot simpler, welcome the React Hook Form library. It is described as,
+“Performant, flexible and extensible forms with easy-to-use validation.”
+Sounds good, doesn’t it? In this article, we will take a look at the React Hook Form library. We will start off with learning how to implement it in our app, then take a look at how to handle validation.
+Getting Started
+To show off this library, we will build a simple form. First off, let’s create a form in our React project like below. It is a simple form with three input fields and a submit button.
+const App = () => {
+  return (
+    <form className="App">
+      <input type="text" placeholder="Username" name="username" />
+      <input type="email" placeholder="Email" name="email" />
+      <input type="password" placeholder="Password" name="password" />
+      <input type="submit" />
+    </form>
+  );
+};
+I added a few basic stylings too, just to make it look a little nicer. Now if we open up our application it will look something like this.Using React Hook Form
+To use the React Hook Form library, let’s first install it into our project. You can find the npm package here.
+We will import the useForm hook from the library.
+import { useForm } from 'react-hook-form';
+Then, call it inside of a function component. This hook will give us three variables when we call it, register handleSubmit and errors.
+const { register, handleSubmit, errors } = useForm();
+To track the changes to our inputs, we will pass register as a ref to each input that we want to track. Now each input will look like this.
+<input
+  type="text"
+  placeholder="Username"
+  name="username"
+  ref={register}
+/>
+Next, let’s take care of the handle submit functionality of the form. We will create a onSubmit function, which will accept data. For now, we will just output it to the console.
+const onSubmit = (data) => {
+  console.log(data);
+};
+On the form, add the handleSubmit function as a prop and pass onSubmit as a callback function.
+<form className="App" onSubmit={handleSubmit(onSubmit)}>
+Now, when we add data to the form and submit it, we will see the output in our console. We now have a nice object with all of our form data.Don’t forget to add a name prop to the inputs. The name we pass to the inputs will be used as the key in our data object.
+Adding Validation
+To add validation rules to the form, we can pass an optional object as an argument to register.
+For example, if we want to make an input required, we can simply add the following to any input.
+<input
+  type="text"
+  placeholder="Username"
+  name="username"
+  ref={register({ required: true })}
+/>
+Now, if we try to submit the form without a username, it will not work.
+We can display an error message by using the errors value from before. Any errors that occur will become a prop on the errors object and we can use this to display errors.
+For example, if a user does not write in a username (which we made required), we can display an error like so.
+{errors.username && <p>Username required</p>}The list of supported validation rules are:
+required
+min
+max
+minLength
+maxLength
+pattern
+validate
+If you were following along with the code, we should now have a form with the validation set up like below.import { useForm } from 'react-hook-form';
+
+const App = () => {
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+  };
+
+  return (
+    <form className="App" onSubmit={handleSubmit(onSubmit)}>
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        ref={register({ required: true })}
+      />
+      {errors.username && <p>Username required</p>}
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        ref={register({ required: true })}
+      />
+      {errors.email && <p>Email required</p>}
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        ref={register({ required: true })}
+      />
+      {errors.password && <p>Password required</p>}
+      <input type="submit" />
+    </form>
+  );
+};
+
+export default App;Wrapping Up
+Thanks for reading! I hope this article was helpful for you to get started working with the React Hook Form library.
+It is easy to use, good for performance, and requires a lot less code. Give it a shot in your next application where a form is needed.
+If you want to check out the full source code for the example we created, check out the GitHub repository here.
+To learn about another useful React library, check out the article below where we look at the React Icons library.`,
+        the_title: `The Easiest Way to Deal with Forms in React`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `Nowadays, CSS’s topic is more innovative and exciting than ever, even if it has been neglected for some time as the front-end developers have focused more on JavaScript. In the last few years, some CSS techniques and technologies have been developed to develop and design much better websites and apps.
+I have put together the highlights of the CSS tutorials available on the web. These CSS tutorials are a treasure trove of important information. On the one hand, you will find information on the most important aspects of the latest CSS programming, such as CSS architecture, animation, and layout. On the other hand, you will learn some of the best websites and expert tips on web design and front end through this selection.
+Enjoy learning and improving.
+Web design basics
+1. Over 50 interesting CSS properties and values
+In this CSS Tricks article by Greg Hovanesyan, you will find many interesting CSS properties and their advantages. Also, application examples are used to explain how you can write simpler codes yourself.
+2. The CSS Position Property Explained with Examples
+This article explains the various values of CSS positioning and how they work. An in-depth tutorial was written by Sarah Chima Atuonwu.
+CSS architecture tutorials
+3. CSS architecture (for Drupal 8)
+This tutorial is published on the Drupal website. The purpose of this tutorial is to apply the best practices for CSS to drupal.
+4. CSS Architecture with ReactJS
+The idea behind this documentation is to enable you to create better ReactJS projects by structuring and scaling your CSS architecture.
+5. CSS Architecture for Modern JavaScript Applications
+The purpose of this documentation is to modernize CSS architecture and apply it in the context of modern JavaScript applications.
+6. Scalable and Modular Architecture for CSS
+This documentation is your flexible guide to developing small or large websites.
+7. CSS Architecture Style Guides For Frontend Developers
+This documentation will give you different ideas that can help you create a stronger CSS architecture.
+8. CSS architecture for design systems
+Brad Frost explains how to build a design system with a robust CSS architecture for large organizations.
+9. A guide to creating easy-care CSS
+Adam Silver’s great comprehensive tutorial explains how you can write modular, scalable, and easy-to-maintain CSS without worrying about previous decisions or existing designs becoming a problem.
+10. CSS architecture for UI (User Interface) developers
+This tutorial of Matteo Pescarin gives you a perfect overview of different CSS architectures, such as BEM, SMACSS, ITCSS, and Atomic Design.
+11. How to Write Loops with Preprocessors
+Animations in precompilers such as Sass, Less, and Stylus help you keep CSS clear, clean, and easy to maintain. In this tutorial, Chris Coyier explains the functions and use of animation loops.
+Design styles
+12. The ultimate guide to asymmetric headers
+In this impressive documentation, Erik Kennedy deals with asymmetrical headers such as diagonal headers. He examines different design approaches by comparing them for their simplicity and made a comparison of which one is the best.
+13. Optimized link display with the CSS Text
+Links are subject to strict design limitations, which can, however, also affect their readability. This short article, Bitdegree shows how to improve the style and usability of links using text-decoration-color.
+CSS images
+14. A guide for beginners on the subject of the CSS image display
+Michael Mangialardi, the founder of Daily CSS Images, wrote a detailed guide on creating pure CSS images.
+15. Folded Paper Effect In Pure CSS
+Joel Hawkins explains how you can use folded paper effect sections to create flyers posters on a page.
+16. Stunning picture effects with the CSS backdrop filter
+In this tutorial on SitePoint, Ashna Laxmi explains how to use the CSS backdrop filter introduced in the Filter Effects Level 2 Specifications module. The Laxmi tutorial is mainly about the following topics: syntax, browser support, and practical applications.
+17. Image effects with CSS
+Bennet Feely has put together a website with images in which various newer CSS properties have been used in image processing (CSS blending and filtering). There are surprisingly many ways to manipulate a single image. This tutorial will teach you how to use these effects right away.
+CSS animation
+18. CSS animation for beginners
+A great introduction to CSS animation from product and front-end designer Rachel Cope.
+19. How to create a series of micro-animations
+Donovan Hutchinson explores how to create a series of small and simple animations for different situations.
+20. Transition effects with CSS masks
+The creative front-end programmer Robin Delaporte describes in this experimental tutorial how you can use steps () Timing for CSS masks to create spectacular slide transitions (like in PowerPoint).
+21. Do magic with WebSockets and CSS3
+In this tutorial, you’ll learn how to connect CSS animations to the web in real-time. Helio Dolores from OutSystems explains an app that he has developed for sales. With this app, customers in the store can see the desired item on a larger screen. This gives customers a better first visual impression.
+22. Optimization of CSS animations
+This documentation will show you how to run and animations more synchronously with the JavaScript library “Ensure Animation.” This library monitors animation events of selected elements and ensures that animations continue controlled or are specifically stopped.
+23. Use CSS to design frames with rounded corners
+Useful documentation from Chris Ruppel you can explore to create animation on your border design.
+24. Animate different final stages with a set of CSS keyframes
+Ana Tudor explains how with just 30 lines of SCSS, you can create, for example, explosions of rainbow particles at random in pure CSS.
+25. How to Create CSS Horizontal Scrolling Website
+A neat little trick we found on the CSS Tricks page. The author documented how a website can be scrolled horizontally with CSS.
+CSS layouts
+26. A Complete Guide to the CSS Grid Layout Module
+This is a really comprehensive guide to Chris House’s much-discussed CSS Grid Layout module. In this guide, he presents the grid concepts as found in the latest version of the specification.
+27. Guide to automatic element placement in the CSS grid
+This tutorial explains the auto-placement algorithm steps when placing items on a web page.
+28. CSS Grid Layout tutorial
+This documentation will teach you everything you need to know about CSS grid layout.
+29. A Responsive Comic Panel Layout with CSS Grid
+CSS Grid Layout is great for creating online comics, especially when you want them to be flexible. This tutorial shows how you can create responsive online comics.
+30. A Complete Guide to Flexbox
+In this article by Chris Coyier, you will learn the basics of working well with CSS Flexbox.
+31. Interesting CSS writing modes
+Jen Simmons’ tutorial gives an excellent introduction to writing modes. It’s not just a very innovative technique for creating pages in Chinese, Japanese, or Korean. This method is also helpful to better understand Flexbox and Grid.
+32. Art Direction For The Web Using CSS Shapes
+In this article, you will learn how you can use the CSS Shapes module to layout content in the same way as it is for newspapers or magazines. You will also learn how to create a shape and adjust its size, position, and box model.
+Responsive design
+33. Responsive grids and how to actually use them
+This documentation explains how easy it is to create a bespoke grid system. For me, this article is definitely required reading for web developers and web designers.
+34. The correct way to do CSS breakpoints
+A very well-thought-out text that focuses on the range of different end devices instead of just hard breakpoints. Because there will continue to be new end devices with different resolutions and pixel densities in the future.
+35. Element Queries, And How You Can Use Them Today
+Do the components used to build websites get better when you add CSS? Can more powerful websites be programmed with less external support and tools? Tommy Hodgins asked himself this question, and his solution is: “Element Queries.” This tutorial explains why.
+36. Responsive images in CSS
+This document explains how you can create responsive images in CSS with a helpful combination of media queries and background-image.
+37. Scaling of responsive animations
+In this tutorial, front-end programmer Zach Saucier shows various techniques in which animations you can scale differently.
+38. Organizer with CSS and jQuery
+Claudia Romano, the co-founder of CodyHouse and Nucleo, presents a simple and responsive template in his tutorial with which events can be displayed on a timeline and divided into groups.
+39. Responsive 3D shapes
+Another great article from Ana Tudor, a very active member of CodePen. This time she explains different approaches for responsive 3D shapes.
+40. How to create responsive tables with pure CSS using Grid Layout Module
+Shingo Nakayama shows a quick and easy way to optimize tables with pure CSS using a grid layout. This approach is suitable for tables with relatively simple content.
+Email newsletters
+41. Create interactive emails with CSS
+In this excellent article with an additional screencast, Mark Robbins explains how JavaScript-like functions can create HTML email campaigns because programming email doesn’t have to be boring.
+42. CSS hacks for responsive emails
+Vitaly Friedman shows in a webinar for Shopify two incredible techniques that can be used to improve HTML emails by making them responsive — without using media queries. If you want to learn more “dirty” CSS tricks to improve design projects, you should watch the video.
+43. The ultimate guide to using WebFonts in email
+On the Litmus blog, Jaina Mistry wrote an extensive guide on how to use web-fonts in email. It explains the fonts’ use, where you can find them, and which email clients support the web fonts in the emails.
+Website performance
+44. Here’s why you should inline critical CSS to reduce load time
+Nick Melville describes how website performance can be significantly improved by embedding critical CSS.
+45. Performance optimization for websites with multiple background images
+In this article, Harry Roberts explains how to improve a page’s perceived performance when large images fail to load properly, and users look at a large white hole. It shows a methodology in which the average color of your image is given as background-color.
+46. High-performance parallaxing
+It can be fun if you know how to use the parallax effect correctly. Because whether you like it or not, the parallax effect will not disappear from the scene for the time being. Paul Lewis discusses excellent solutions for the parallax effect that are high-performance and work across browsers.
+47. 10 basic principles for smart web animations
+Anand Sharma, the founder of the health app “ Gyroscope, “presents in his tutorial the 10 most important basic principles of how animations can be created with 60fps. This is required reading for anyone looking to improve their animation performance.
+48. How to optimize web fonts
+This tutorial explains how optimized fonts, combined with a well-thought-out strategy, can help you reduce your website’s overall size and improve rendering times.
+CSS tools
+49. PostCSS
+If you want to get started with PostCSS, this guide by Nicolas J. Engler is for you. It gives you basic knowledge and explains the plug-in extension for PostCSS. You will also find information on how PostCSS can be integrated with other CSS processors, such as task runners and coordinators.
+50. From sass to PostCSS in 10 minutes
+This article explains how you can easily switch to Sass and shows you a new design in just 10 minutes.
+51. How to Remove Unused CSS for Leaner CSS Files
+This tutorial shows you how easy it is to create stylesheets with different tools. You can find out how you can install these stylesheets and use them for high-performance designs with and without Grunt.`,
+        the_title: `51 CSS Tutorials That Will Help You Improve Your Web Design`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `CSS is a language that is used by nearly every developer at some point. While it's a language that we sometimes take for granted, it is powerful and has many nuances that can help (or hurt) our designs. Here are 30 of the best CSS practices that will keep you writing solid CSS and avoiding some costly mistakes.
+
+1. Make It Readable
+The readability of your CSS is incredibly important, though most people overlook why it's important. Great readability of your CSS makes it much easier to maintain in the future, as you'll be able to find elements quicker. Also, you'll never know who might need to look at your code later on.
+
+2. Keep It Consistent
+Along the lines of keeping your code readable is making sure that the CSS is consistent. You should start to develop your own "sub-language" of CSS that allows you to quickly name things. There are certain classes that I create in nearly every theme, and I use the same name each time. For example, I use .caption-right to float images which contain a caption to the right.
+
+Think about things like whether or not you'll use underscores or dashes in your IDs and class names, and in what cases you'll use them. When you start creating your own standards for CSS, you'll become much more proficient.3. Start With a Framework
+Some design purists scoff at the thought of using a CSS framework with each design, but I believe that if someone else has taken the time to maintain a tool that speeds up production, why reinvent the wheel? I know frameworks shouldn't be used in every instance, but most of the time they can help.
+
+Many designers have their own framework that they have created over time, and that's a great idea too. It helps keep consistency within the projects.
+
+At the same time, I would also like to say that you should use frameworks only if you already know a good deal of CSS. There will almost certainly come a time when you will have to create a certain aspect of some layout all by yourself, and your deep understanding of CSS will help you get things done.4. Use a Reset
+Most CSS frameworks have a reset built in, but if you're not going to use one, then at least consider using a reset. Resets essentially eliminate browser inconsistencies such as heights, font sizes, margins, and headings. The reset allows your layout to look consistent in all browsers.
+
+The MeyerWeb is a classic reset. Normalize.css is another very popular reset.
+
+5. Organize the Stylesheet With a Top-Down Structure
+It always makes sense to lay your stylesheet out in a way that allows you to quickly find parts of your code. I recommend a top-down format that tackles styles as they appear in the source code. So an example stylesheet might be ordered like this:
+
+Generic classes (body, a, p, h1, etc.)
+#header
+#nav-menu
+#main-content
+It also helps if you keep track of different sections of the website in the stylesheet with comments.6. Combine Elements
+Elements in a stylesheet sometimes share properties. Instead of rewriting previous code, why not just combine them? For example, your h1, h2, and h3 elements might all share the same font and color:We could add unique characteristics to each of these header styles if we wanted (i.e. h1 {size: 2.1em}) later in the stylesheet.
+
+7. Create Your HTML First
+Many designers create their CSS at the same time they create the HTML. It seems logical to create both at the same time, but actually you'll save even more time if you create the entire HTML mockup first. The reasoning behind this method is that you know all the elements of your site layout, but you don't know what CSS you'll need with your design. Creating the HTML layout first allows you to visualize the entire page as a whole, and allows you to think of your CSS in a more holistic, top-down manner.
+
+8. Use Multiple Classes
+Sometimes it's beneficial to add multiple classes to an element. Let's say that you have a div "box" that you want to float right, and you've already got a class .right in your CSS that floats everything to the right. You can simply add an extra class in the declaration, like so:You can add as many classes as you'd like (space separated) to any declaration.
+
+This is one of those situations where you have to take individual cases into account. While it is helpful to create class names that provide some hint of how they affect the layout, you should also avoid using class names that require you to constantly switch between HTML and CSS.
+
+Be very careful when using ids and class-names like "left" and "right." I will use them, but only for things such as examples in blog posts. How come? Let's imagine that, down the road, you decide that you'd rather see the box floated to the left. In this case, you'd have to return to your HTML and change the class name—all in order to adjust the presentation of the page. This is unsemantic. Remember: HTML is for markup and content. CSS is for presentation.
+
+If you must return to your HTML to change the presentation (or styling) of the page, you're doing it wrong!
+
+9. Use the Right Doctype
+The doctype declaration greatly affects whether or not your markup and CSS will validate. In fact, the entire look and feel of your site can change greatly depending on the doctype that you declare.
+
+Learn more about which doctype to use at A List Apart. You can simply start using <!DOCTYPE html> when creating pages based on HTML5.
+
+10. Use Shorthand
+You can shrink your code considerably by using shorthand when crafting your CSS. For elements like padding, margin, font, and some others, you can combine styles in one line. For example, a div might have these styles:11. Comment Your CSS
+Just like any other language, it's a great idea to comment your code in sections. To add a comment, simply add /* behind the comment, and */ to close it, like so:12. Understand the Difference Between Block and Inline Elements
+Block elements are elements that naturally clear each line after they're declared, spanning the whole width of the available space. Inline elements take only as much space as they need, and don't force a new line after they're used.
+
+Here are the lists of elements that are typically inline:13. Alphabetize Your Properties
+While this is more of a frivolous tip, it can come in handy for quick scanning.This is a bit controversial because you have to sacrifice speed for slightly improved readability. However, you should not hesitate in trying it out if you think it will help you.
+
+14. Use CSS Compressors
+CSS compressors help shrink CSS file size by removing line breaks, white spaces, and combining elements. This combination can greatly reduce the file size, which speeds up browser loading. CSS Minifier and HTML Compressor are two excellent online tools that can shrink CSS.
+
+It should be noted that shrinking your CSS can provide gains in performance, but you lose some of the readability of your CSS.
+
+15. Make Use of Generic Classes
+You'll find that there are certain styles that you're applying over and over. Instead of adding that particular style to each ID, you can create generic classes and add them to the IDs or other CSS classes (using tip #8).
+
+For example, I find myself using float:right and float:left over and over in my designs. So I simply add the classes .left and .right to my stylesheet, and reference it in the elements.This way, you don't have to constantly add float:left to all the elements that need to be floated.
+
+16. Use margin: 0 auto to Center Layouts
+Many beginners to CSS can't figure out why you can't simply use float: center to achieve that centered effect on block-level elements. If only it were that easy! Unfortunately, you'll need to use this method to center a div, paragraphs, or other elements in your layout:By declaring that both the left and the right margins of an element must be identical, the browsers have no choice but to center the element within its containing element.
+
+17. Don't Just Wrap a div Around It
+When starting out, there's a temptation to wrap a div with an ID or class around an element and create a style for it.Sometimes it might seem easier to just create unique element styles like the above example, but you'll start to clutter your stylesheet. This would have worked just fine:Then you can easily add a style to the h1 instead of a parent div.
+
+18. Use Browser Developer Tools
+Modern web browsers come bundled with some vital tools that are must-haves for any web developer. These developer tools are now part of all the major browsers, including Chrome, Firefox, Safari, and Edge. Among the many features that come bundled with the Chrome and Firefox developer tools (like debugging JavaScript, inspecting HTML, and viewing errors), you can also visually inspect, modify, and edit CSS in real time.
+
+19. Hack Less
+Avoid using browser-specific hacks if at all possible. There is a tremendous pressure to make sure that designs look consistent across all browsers, but using hacks only makes your designs harder to maintain in the future. Plus, using a reset file (see #4) can eliminate nearly all of the rendering irregularities between browsers.
+
+20. Use Absolute Positioning Sparingly
+Absolute positioning is a handy aspect of CSS that allows you to define where exactly an element should be positioned on a page to the exact pixel. However, because of absolute positioning's disregard for other elements on the page, the layouts can get quite hairy if there are multiple absolutely positioned elements running around the layout.
+
+21. Use Text-transform
+text-transform is a highly useful CSS property that allows you to "standardize" how text is formatted on your site. For example, say you want to create some headers that only have lowercase letters. Just add the text-transform property to the header style like so:Now all of the letters in the header will be lowercase by default. text-transform allows you to modify your text (first letter capitalized, all letters capitalized, or all lowercase) with a simple property.
+
+22. Don't Use Negative Margins to Hide Your h1
+Often, people will use an image for their header text and then either use display:none or a negative margin to float the h1 off the page. Matt Cutts, then head of Google's Webspam team, has officially said that this is a bad idea, as Google might think it's spam.
+
+As Cutts explicitly says, avoid hiding your logo's text with CSS. Just use the alt tag. While many claim that you can still use CSS to hide a h1 tag as long as the h1 is the same as the logo text, I prefer to err on the safe side.
+
+23. Validate Your CSS and XHTML
+Validating your CSS and XHTML does more than give a sense of pride: it helps you quickly spot errors in your code. If you're working on a design and for some reason things just aren't looking right, try running the markup and CSS validator and see what errors pop up. Usually you'll find that you forgot to close a div somewhere or missed a semi-colon in a CSS property.
+
+24. Rems and Ems vs. Pixels
+There's always been a strong debate as to whether it's better to use pixels (px) or ems and rems when defining font sizes. Pixels are a more static way to define font sizes, and ems are more scalable with different browser sizes and mobile devices. With the advent of many different types of web browsing (laptop, mobile, etc.), ems and rems are increasingly becoming the default for font size measurements as they allow the greatest form of flexibility.
+
+25. Don't Underestimate the List
+Lists are a great way to present data in a structured format whos style is easy to modify. Thanks to the display property, you don't have to just use the list as a text attribute. Lists are also great for creating navigation menus and things of the sort.
+
+Many beginners use divs to make each element in the list because they don't understand how to properly use lists. It's well worth the effort to use brush up on learning list elements to structure data in the future.
+
+26. Avoid Extra Selectors
+It's easy to unknowingly add extra selectors to our CSS that clutters the stylesheet. One common example of adding extra selectors is with lists.Adding extra selectors won't bring Armageddon or anything of the sort, but they do keep your CSS from being as simple and clean as possible.
+
+27. Add Margins and Padding to All Elements
+Modern browsers are fairly uniform in the way they render elements, but legacy browsers tend to render elements differently. For example, Internet Explorer renders certain elements differently than Firefox or Chrome, and different versions of Internet Explorer render differently from one another.
+
+One of the main differences between versions of older browsers is how padding and margins are rendered. If you're not already using a reset, you might want to define the margin and padding for all elements on the page, to be on the safe side. You can do this quickly with a global reset, like so:Now all elements have a padding and margin of 0, unless defined by another style in the stylesheet.
+
+28. Use Multiple Stylesheets
+Depending on the complexity of the design and the size of the site, it's sometimes easier to make smaller, multiple stylesheets instead of one giant stylesheet. Aside from being easier for the designer to manage, multiple stylesheets allow you to leave out CSS on certain pages that don't need them.
+
+For example, I might having a polling program that would have a unique set of styles. Instead of including the poll styles to the main stylesheet, I could just create a poll.css and the stylesheet only to the pages that show the poll.
+
+However, be sure to consider the number of HTTP requests that are being made. Many designers prefer to develop with multiple stylesheets, and then combine them into one file. This reduces the number of HTTP requests to one. Also, the entire file will be cached on the user's computer.
+
+29. Check for Closed Elements First When Debugging
+If you're noticing that your design looks a tad wonky, there's a good chance it's because you've left off a closing </div>. You can use the XHTML validator to help sniff out all sorts of errors like this.
+
+30. Try to Use Flexbox and Grid Layout Instead of Floats
+In the past, it was very common and necessary to use floats to create any kind of layout. Unfortunately, floats come with a lot of problems. You can instead start using the much more powerful layout modules called flexbox and grid layout. Flexbox will help you create one-dimensional layouts, and grid will help you with two-dimensional layouts.`,
+        the_title: `30 CSS Best Practices for Beginners`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `JavaScript’s another beautiful part which make us love with language.
+When it come to hoisting it make us confused most of the time. This is the one of the favourite question of interviewer. So today we’ll try to understand hoisting in simple layman language.
+Let’s start with some JS code to understand the hoisting.
+// JS Hoisting
+var m = 10;
+function miniScript() {
+  console.log(“miniScript is exploring JS”);
+}
+// Let's invoke the functions and variables
+miniScript();
+console.log(m);
+It’s simple JS code in which we’ve declared simple variable and function. Output of this as expectedSo this is all we know but the big question what is hoisting?
+To understand this let’s modify the piece of code which we wrote above to this.
+//Call the function and variables even before we declaring them.
+console.log(m);
+miniScript();
+function miniScript() {
+  console.log(“miniScript is exploring JS”);
+}
+var m = 10;
+what should you think the output of this?
+Most of the programming language will throw the error here because we’r trying to run the functions which is not even exist by then.
+But this is the beauty of JavaScript which make us to love this more as we exploring this in deep.
+This is the output of above piece of code.The output is var m = undefined and we get the correct value for miniScript() function. This is all because of Hoisting. In layman language definition of Hoisting would be —
+Hoisting in JavaScript is accessing the variables and functions even before declaring or initialising them without any error.
+So the big question how JavaScript engine do this?
+Let’s put the debugger on the first line of code and stop the browser to execute the code and deep dive into it.
+I am attaching the screen recording of putting debugger into the first line of codeSo as you can see in the Global scope if we scroll down a bit we can found our variables and function.
+Variable was undefined which means JavaScript engine assigned a memory to this variable and give it a placeholder undefined.
+Now if we console.log our complete function then you’ll see something interested will happen.
+// Let's see how our function will look in Global scope before executing.
+console.log(miniScript);
+function miniScript() {
+   console.log("miniScript is exploring JS");
+}
+JavaScript will assign memory to functions and variables even before start executing the code. This is called Hoisting.
+Now let’s see if we use arrow functions and then what will happen in global stack. This will not behave as traditional functions.
+// Arrow function behave like variables.
+console.log(miniScript);
+var miniScript = () => {
+   console.log("miniScript is exploring JS");
+}
+You can see arrow function just behaves like variables as it’s value is undefined. What this means is function assigned memory in execution context and undefined is placeholder for this.
+Hoisting is a concept of JavaScript in which JS host all function expression and variables at top of the environment and because of that we can use a variable or function before declaring it.
+This all is happening because of Hoisting.
+Next time if someone asks you hoisting — Hoisting is assigning the memory to variables and functions even before initialising them.
+Let’s deep more dive and see what happen in the case of let and const ?
+// Use case for let or Const - I am using const
+console.log(m);
+const m = 'miniScript';
+What do you think the output will be? will they behave same as var or functions?
+let’s see ….The answer is bit more complex. You can see we got the error “Uncaught ReferenceError: Cannot access ‘m’ before initialization”. This means we can’t access the variable before initialization but as you can see the Scopes we have another local scope called Script in which our variable ‘m’ and it’s value is undefined. So what does this mean?
+This means let and const are not belongs to Global scopes. They create their own local scope on the top of Global scope.
+This is called Temporal Dead Zone. If you try to access these variables from dead zone you’ll get reference error. But in terms of Hoisting the const and let have the memory and placeholder Undefined. which means they are also hoisted.
+So this is all about JavaScript Hoisting. I tried to keep it simple and try to explain what’s going on under the hood. How JavaScript engine assign memory and hoisted the variables.
+If you like this post please give me a Thumbs up 👍 . It will motivate me to write another post in simple layman language.`,
+        the_title: `Hoisting in JavaScript.`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `For programmers — especially self-taught programmers — our first introduction to the world of ‘recursion’ is often in the form of something math-related. It’s not uncommon for programmers to intrinsically call upon some of our favourite F words when we think of recursion — no not that F word, these ones:
+Fibonacci
+function fibonacci(position) {
+  if (position < 3) return 1;
+  return fibonacci(position - 1) + fibonacci(position - 2);
+}
+Factorial
+function factorial(num) {
+  if (num === 1) return num;
+  return num * factorial(num - 1);
+}
+Recursive versions of the fibonacci and factorial functions are some of the more beautiful pieces of code you can expect to see. These concise slices of code rely on little more than themselves to get the job done. They embody the very definition of recursion — a function that calls itself (the calling of itself is the part that is recursive). It’s really no wonder that just like when a tutorial incorporates a new topic by demonstrating how it interacts with something trivial, like a counter or a ‘to do’ list, fibonacci and factorial functions encapsulate the topic of recursion with little to zero interference from the external complexities you might find as soon as you start introducing other bits of code to interact with. Just like the counter and the ‘to do’ list, fibonacci and factorial are trivial.
+You may have heard a saying that “all iterative algorithms can be expressed recursively”. In other words, a function that uses a loop can be rewritten to use itself. Now if any iterative algorithm can be written recursively, the same must be true for the inverse.
+Note: An iterative algorithm, or function, is one that makes use of a loop to get the job done.
+Let’s go back to our recursive Fibonacci function and write it as an iterative Fibonacci function instead:
+function fibonacci(index = 1) {
+  let sequence = [0, 1, 1];
+  if (index < 3) return 1;
+  for (let i = 2; i < index; i++) {
+    sequence.push(sequence[sequence.length - 1] + sequence[sequence.length - 2]);
+  }
+  return sequence[index];
+}
+Let’s also take our recursive Factorial function and write that as an iterative Factorial function:
+function factorial(num) {
+  if (num === 1) return 1;
+  for (let i = num - 1; i >= 1; i--) {
+    num = num * i;
+  }
+  return num;
+}
+Both of our recursive and iterative approaches reach the same conclusion. If you give them the same input, they will produce the same output. Even the path the take is, arguably, the same. The only difference is the metaphorical mode of transportation used on the path to reach said output.
+So if we’re able to write recursive functions iteratively, why do we even need to bother learning about recursion in the first place, and what use does it have in programming?
+The main reason we use recursion is to simplify an algorithm into terms easily understood by most people. It’s important to note here that the purpose of recursion (or rather, its benefit of recursion) is to make our code easier to read, and easier to reason with. However, it is important to be aware that recursion is not a mechanism we can use to optimize our code for performance — if anything, it can have an adverse effect on performance compared to an equivalent function written iteratively.
+If you want a short soundbite to remember, I’d say this: Recursive functions optimise legibility for developers. Iterative functions optimise performance for computers.
+The frustrating thing about a lot of articles and tutorials on recursion I’ve read before is that they veer on the side of caution and fixate themselves on only talking about functions such as a recursive fibonacci or factorial. There’s no real advantage a developer can gain from these being written recursively. This is like giving someone the punchline to a joke, without any of the steps leading up to it.
+In the case of recursive fibonacci and factorial functions, we saw earlier that if we convert them into iterative functions the code itself isn’t actually that bad. It’s arguably just as easy to read and legible as the recursive equivalents. Sure, it might not have the same level of elegance, but if it’s still readable, I’m going to go ahead and favour optimising for performance.
+It therefore seems plausible that a lot of people learning about recursion for the first time may struggle to see any real use from using it. Maybe they just see it as some sort of over-engineering abstraction. So how is recursion useful? Or better yet, how can we make the study of recursion useful?
+Useful recursion can be found when we actually try to write code that resembles a real life scenario.
+I can probably take a punt and say that close to zero developers anywhere (outside of a whiteboard interview) have been expected to write a recursive fibonacci or factorial function for their job — and if they were, they could have just googled it because there’s a million articles that already explain it.
+There aren’t, however, enough articles demonstrating how recursion can be used in real life scenarios. We need fewer ‘Introduction to Recursion’ articles, and more articles about how recursion can help you solve that coding problem you’re currently facing at work.
+So now that we’re on the topic, let’s imagine the following scenario: your boss has given you a data structure full of departments that each contain the email addresses of everyone that works in that department. However, each department sometimes is made up varying levels of subdepartments, objects and arrays. Your boss wants you to write a function that can send an email to each of those email addresses.
+Here’s the data structure:
+const companyEmailAddresses = {
+  finance: ["jill@companyx.com", "frank@companyx.com"],
+  engineering: {
+    qa: ["ahmed@companyx.com", "taylor@companyx.com"],
+    development: ["cletus@companyx.com", "bojangles@companyx.com", "bibi@companyx.com"],
+  },
+  management: {
+    directors: ["tanya@companyx.com", "odell@companyx.com", "amin@companyx.com"],
+    projectLeaders: [
+      "bobby@companyx.com",
+      "jack@companyx.com",
+      "harry@companyx.com",
+      "oscar@companyx.com",
+    ],
+    hr: ["mo@companyx.com", "jag@companyx.com", "ilaria@companyx.com"],
+  },
+  sales: {
+    business: {
+      senior: ["larry@companyx.com", "sally@companyx.com"],
+    },
+    client: {
+      senior: ["jola@companyx.com", "amit@companyx.com"],
+      exec: ["asha@companyx.com", "megan@companyx.com"],
+    },
+  },
+};
+So, how do you tackle this?
+Well, from what we can see, a subdepartment appears to take the form of an object, while arrays have been used to store email addresses. So I could try and write some sort of iterative function that loops through each department, and checks if it is a subdepartment (object) or a list of email addresses (array). If it’s an array, we can then loop through the array and send an email to each email address. If it’s an object, we could create another loop to tackle that subdepartment, using the same ‘check if it’s an object or an array’ tactic we used earlier. From what we can tell, our data structure doesn’t go any deeper than two sub levels. So one more iteration should satisfy all levels and do what we want it to.
+Our final code might look something like this:
+function sendEmail(emailAddress) {
+  console.log('sending email to ${emailAddress}');
+}
+function gatherEmailAddresses(departments) {
+  let departmentKeys = Object.keys(departments);
+  for (let i = 0; i < departmentKeys.length; i++) {
+    if (Array.isArray(departments[departmentKeys[i]])) {
+      departments[departmentKeys[i]].forEach((email) => sendEmail(email));
+    } else {
+      for (let dept in departments[departmentKeys[i]]) {
+        if (Array.isArray(departments[departmentKeys[i]][dept])) {
+          departments[departmentKeys[i]][dept].forEach((email) => sendEmail(email));
+        } else {
+          for (let subDept in departments[departmentKeys[i]][dept])
+            if (Array.isArray(departments[departmentKeys[i]][dept][subDept])) {
+              departments[departmentKeys[i]][dept][subDept].forEach((email) => sendEmail(email));
+            }
+        }
+      }
+    }
+  }
+}
+I’ve checked it out, maybe I’ve even written a little unit test for it. It looks like a mess, but it works. With the amount of nested loops here you could argue that it’s highly inefficient. Someone in the background hollers “Big O? More like Big OMG, am I right?”
+Now of course, there are other ways we could have tackled this, but what we have at the moment works. Anyway, it’s just a little function and there’s not too many email addresses in there and we probably won’t use it often, so it doesn’t matter. Let’s get back to working on more important projects before the boss finds another side task for me to work on!
+Five minutes later and your boss returns and mentions that they also want the function to still work even if new departments, subdepartments, and email addresses are added to this data structure at a later point. Okay, this changes things because now I need to factor in the possibility of subsubsubdepartments, subsubsubsubdepartments and so on.
+Suddenly my iterative function no longer satisfies the criteria.
+But lo and behold, a recursive solution enters!
+function sendEmail(emailAddress) {
+  console.log('sending email to ${emailAddress}');
+}
+function gatherEmailAddresses(departments) {
+  let departmentKeys = Object.keys(departments);
+  departmentKeys.forEach((dept) => {
+    if (Array.isArray(departments[dept])) {
+      return departments[dept].forEach((email) => sendEmail(email));
+    }
+    return gatherEmailAddresses(departments[dept]);
+  });
+}
+Okay, we finally have a function that makes use of recursion in something more fitting of a real-life scenario. Let’s explain how it all works.
+Our function loops through the keys from the companyEmailAddresses data structure, checks if the value of that key is an array, if it is, it sends an email to each value in that array. However, if the value of the aforementioned key is not an array, it'll call itself - gatherEmailAddresses again (it recurses). However, instead of passing in the entire companyEmailAddresses object like it did the first time, it will just pass in the object node for the subdirectory it was initially looping through.
+This function provides us with two benefits on our previous iterative counterpart:
+It caters to the additional criteria imposed by our boss. As long as it continues to follow the same pattern, the function can still handle any new objects or arrays added to it without the need to change a single line of code;
+It is easier to read. We don’t have a bunch of nested loops that our brains have to try and keep track of.
+You’ll also notice that our function actually contains iterative and recursive elements. There’s no reason why an algorithm has to be exclusively one or the other. It’s perfectly fine to have something iterative such as a forEach function that contains recursive calls to itself.
+Let’s just pick up on my second point for a moment. It’s only easier to read if you understand how recursion works outside of the confines of fibonacci, factorial, and any other clinical coding trials you might find in a ‘How To Crack The Coding Interview’ book/course. So let’s spend some time explaining exactly what is happening inside of our recursive function.
+Our function takes one value — an object — as its only parameter. The object we pass in is the entire companyEmailAddresses variable, which is this grotesque monster:
+const companyEmailAddresses = {
+  finance: ["jill@companyx.com", "frank@companyx.com"],
+  engineering: {
+    qa: ["ahmed@companyx.com", "taylor@companyx.com"],
+    development: ["cletus@companyx.com", "bojangles@companyx.com", "bibi@companyx.com"],
+  },
+  management: {
+    directors: ["tanya@companyx.com", "odell@companyx.com", "amin@companyx.com"],
+    projectLeaders: [
+      "bobby@companyx.com",
+      "jack@companyx.com",
+      "harry@companyx.com",
+      "oscar@companyx.com",
+    ],
+    hr: ["mo@companyx.com", "jag@companyx.com", "ilaria@companyx.com"],
+  },
+  sales: {
+    business: {
+      senior: ["larry@companyx.com", "sally@companyx.com"],
+    },
+    client: {
+      senior: ["jola@companyx.com", "amit@companyx.com"],
+      exec: ["asha@companyx.com", "megan@companyx.com"],
+    },
+  },
+};
+The first thing we do is run Object.keys() on it which returns an array with each department. Something that would look like this: ["finance", "engineering", "management", "sales"]. We then proceed to forEach loop through our companyEmailAddresses, using our array of departments as a way to check each department for certain things. In our case, we use it to check if the structure of each node is an array or not, which we do with Array.isArray(departments[dept]. If it returns true, we just proceed to loop through that array, applying out sendEmail() function on each value. Simple enough, and so far we've not used any recursion. Maybe you didn't even need to read this paragraph, but at least this explanation was here if you did need it. Anyway, let's get to the good bit - the recursive bit.
+If our Array.isArray(departments[dept] returns false, that means we have an object, which in our case means we have a subdepartment. In our iterative function, we simply repeated the process - ie, we made another loop - but did it for the subdepartment. But instead, for our recursive function we call the gatherEmailAddresses() function again, seemingly passing in the same companyEmailAddresses object as before. The key difference here is that instead of passing the object in from its root (the entire object), we pass it in from the position of the subdirectory - the subdirectory becomes the new root. We know that our companyEmailAddresses object is just made up of lots of objects that either contain another object or an array. Therefore, our function has been written in such a way that if it hits an array, it knows that it is the end of a node (a lead), so it will try and 'send emails'. But if it hits an object, it needs to continue to traverse deeper.
+Make sense?
+Here are some diagram-ish code blocks I cobbled together to try to help illustrate further.
+Our entire object has four departments. The first department is an array. It requires no additional traversal as we have immediately hit the leaf node. This department would return true to Array.isArray().
+  finance: [
+            "jill@companyx.com",
+            "frank@companyx.com"
+           ],
+The second department is an object. This department would return false to Array.isArray(). It requires additional traversal so we call gatherEmailAddresses() function, passing in department[dept], which is equivalent to companyEmailAddresses["engineering"] or the code you see below.
+engineering: {
+    qa: [
+         "ahmed@companyx.com",
+         "taylor@companyx.com"
+        ],
+    development: [
+                  "cletus@companyx.com",
+                  "bojangles@companyx.com",
+                  "bibi@companyx.com"
+                 ],
+  },
+As we have now recursively called our function again, we do not pass onto the third department yet as our recursive function needs to be handled first — ie, we are still handling the second department. The technical way to explain this is that our recursive call is added to our call stack.
+If you recall, the first thing our function does is Object.keys() on the object passed in. This gives us ["qa", "development"]. We then loop through each department (or subdepartment in this case). We check if the "qa" department/subdepartment is an array with Array.isArray(). It is, so would return true, so we can then use the sendEmail() function. The same would also occur with "development", as that is also an array.
+  engineering: {
+    qa: [
+         "ahmed@companyx.com",
+         "taylor@companyx.com"
+        ],
+    development: [
+                  "cletus@companyx.com",
+                  "bojangles@companyx.com",
+                  "bibi@companyx.com"
+                 ],
+  },
+The third department (three subdepartments) has a similar structure to the second department (two subdepartments), while the fourth department has two subdepartments, but those two subdepartments also contain two subdepartments — so our recursive function takes place again inside of each. I’ve skipped showing code block breakdowns for these as you hopefully understand how the recursive part is working.
+Conclusion
+Okay so now we have seen a practical example of recursion in practice. Hopefully this has provided you with a deeper understanding of recursion, along with another way of being able to approach a problems that require some sort of loop.
+However, I’d like to highlight again that performance may suffer if recursion is used when it shouldn’t be. Recursion shouldn’t all of a sudden become your go-to tool instead of iteration, the gains you make in readability may be lost in performance. Ultimately it depends on the scenario presented to you. You will face some problems in programming that may lend themselves well to recursion, while others may lend themselves better to iteration. In some cases, like with the problem we faced earlier, a little bit of both approaches might be best.`,
+        the_title: `This is how Recursion should be taught to Software Developers`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `You are starting a new project? You want to use all the latest tech simultaneously to a production level standard. By the end of this article you will have a production ready react app, which uses redux, redux-saga and TypeScript.So what you want to do first is fire up a create-react-app with the typescript template. This will give you a really solid starting point. Though you might want to add better linter, for example one that enforces accessibility.
+npx create-react-app my-app --template typescript
+Okay now thats completed. CD into the directory.
+cd my-app
+Let’s install our dependencies
+yarn add react-redux redux redux-saga reselect axios styled-components react-grid-system @fortawesome/react-fontawesom @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
+*you can of course use another styling method and icon library. But for this example I’ll be using the above.
+And then our dev dependencies.
+yarn add redux-devtools-extension @types/react-redux @types/redux @types/redux-saga @types/reselect @types/axios @types/styled-components" --dev
+So if you were to run a yarn start now the frontend will render in the browser. However we will need to add some magic here and there to connect all these technologies together.
+Firstly, we want to create store.ts file in the ./src/ directory.
+import { applyMiddleware, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import createSagaMiddleware from "redux-saga";
+
+import { AppState, rootReducer } from "modules";
+import rootSaga from "sagas";
+
+export default function store(initialState: AppState) {
+  const sagaMiddleware = createSagaMiddleware();
+  const middleware = [sagaMiddleware];
+
+  return {
+    ...createStore(
+      rootReducer,
+      initialState,
+      composeWithDevTools(applyMiddleware(...middleware))
+    ),
+    runSaga: sagaMiddleware.run(rootSaga),
+  };
+}
+
+I’m using absolute paths imports see line 5 and 6. Add this to your tsconfig.ts to introduce absolute path imports.
+"baseUrl": "./src",
+But basically in this new store script we are connecting our reducer and saga middleware.
+Essentially redux-saga is a redux middleware, which means this thread can be started, paused and cancelled from the main application with normal redux actions, it has access to the full redux application state and it can dispatch redux actions as well.
+So we have to stack all these technologies in our store.ts script and call the createStore function.
+The function takes the following arguments createStore(reducer, [preloadedState], [enhancer]) Read more here.
+So now we have a basic store in our app, Woo hoo! If you run the app now and have the Redux DevTools chrome extension installed, you should a simple, yet functioning store.
+Okay lets have a look at the first argument of the createStore() function, our reducer.import { combineReducers } from "redux";
+import { weatherReducer, WeatherState } from "modules/weather/weatherReducer";
+
+export interface AppState {
+  weather: WeatherState;
+}
+
+export const rootReducer = combineReducers({
+  weather: weatherReducer,
+});So pretty simple stuff. We have our combineReducers(reducers) combining all our reducers into one readable object for the createStore() function.
+The combineReducers helper function turns an object whose values are different reducing functions into a single reducing function you can pass to createStore. Read more here.
+We also see our AppState type which we import into our store.ts file. Essentially we are creating a typed contract for our reducer using the typescript Interface feature.
+Okay now lets check out the weatherReducer :)import { WeatherActions } from "./weatherActions";
+import { Forecast } from "./weatherTypes";
+
+export interface WeatherState {
+  forecast: Forecast | {};
+  loading: {
+    forecast: boolean;
+  };
+}
+
+export const initialStateWeather: WeatherState = {
+  forecast: {},
+  loading: {
+    forecast: false,
+  },
+};
+
+export function weatherReducer(
+  state = initialStateWeather,
+  action: WeatherActions
+) {
+  switch (action.type) {
+    case "WEATHER/GET_FORECAST_REQUEST": {
+      return {
+        ...state,
+        loading: {
+          forecast: true,
+        },
+      };
+    }
+
+    case "WEATHER/GET_FORECAST_SUCCESS": {
+      const newState = {
+        ...state,
+        forecast: {
+          ...action.forecast,
+        },
+        loading: {
+          forecast: false,
+        },
+      };
+      return newState;
+    }
+
+    case "WEATHER/GET_FORECAST_FAIL": {
+      return {
+        ...state,
+        loading: {
+          forecast: false,
+        },
+      };
+    }
+
+    default:
+      return state;
+  }
+}
+
+export default weatherReducer;It’s pretty standard stuff here, we are again using the interface concept to create a state contract.
+And here we have our actions file.// remove any
+import { Forecast } from "./weatherTypes";
+
+export type WeatherActions =
+  | {
+      type: "WEATHER/GET_FORECAST_REQUEST";
+      lat: string;
+      lon: string;
+    }
+  | {
+      type: "WEATHER/GET_FORECAST_SUCCESS";
+      forecast: Forecast;
+    }
+  | { type: "WEATHER/GET_FORECAST_FAIL"; error: any };
+
+export function getForecastRequest(lat: string, lon: string): WeatherActions {
+  return {
+    type: "WEATHER/GET_FORECAST_REQUEST",
+    lat,
+    lon,
+  };
+}
+
+export function getForecastSuccess(forecast: Forecast): WeatherActions {
+  return {
+    type: "WEATHER/GET_FORECAST_SUCCESS",
+    forecast,
+  };
+}
+
+export function getForecastFail(error: any): WeatherActions {
+  return { type: "WEATHER/GET_FORECAST_FAIL", error };
+}A pretty simple set up here too, not relying on any dependencies. To me it seems very readable which can be an issue with TypeScript sometimes.
+(I am using ananytype on this file, I would never recommended this is just as the type of the error object is unknown to me as it’s a third party API)
+We are using a custom type Forecast :export interface Forecast {
+  properties: {
+    meta: {
+      units: {
+        [index: string]: string;
+      };
+      updated_at: string;
+    };
+    timeseries: [
+      {
+        data: {
+          next_6_hours: {
+            details: {
+              [index: string]: number;
+            };
+            summary: {
+              symbol_code: string;
+            };
+          };
+          instant: {
+            details: {
+              [index: string]: number;
+            };
+          };
+          next_12_hours: {
+            summary: {
+              symbol_code: string;
+            };
+            details: {
+              [index: string]: number;
+            };
+          };
+          next_1_hours: {
+            details: {
+              [index: string]: number;
+            };
+            summary: {
+              symbol_code: string;
+            };
+          };
+        };
+        time: string;
+      }
+    ];
+  };
+  geometry: {
+    type: string;
+    coordinates: Array<number>;
+  };
+  type: string;
+}Okay so we have our types, actions, and reducer set up. Let’s call one of our actions and see what happens.import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { getForecastRequest } from "modules/weather/weatherActions";
+import { useSelectForecast } from "modules/weather/weatherSelectors";
+
+import { WeatherReport } from "components/weather";
+import { Container, Row, Col } from "react-grid-system";
+
+function App() {
+  const dispatch = useDispatch();
+
+  const [toggle, setToggle] = useState<boolean>(true);
+
+  useEffect(() => {
+    dispatch(getForecastRequest("59.92609", "10.73436"));
+  }, []);
+
+  const forecast = useSelectForecast();
+
+  return (
+    <Container>
+      <Row>
+        <Col md={12}>
+          {toggle && Object.keys(forecast).length > 0 && (
+            <WeatherReport forecasts={[forecast]} />
+          )}
+        </Col>
+        <Col md={12}>
+          <button onClick={() => setToggle(!toggle)}>
+            {${ toggle? "Hide": "Show" } weather forecast}
+          </button>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
+
+export default App;Okay so here is our App.tsx file. We are doing a simple dispatch of the action getForecastRequest(lat: string, lon: string) We will see no linting errors when calling this function, as we are using two strings as parameters.
+We will manage the side effect of this action using redux-saga.import { takeLatest, call, put } from "redux-saga/effects";
+import * as actions from "../modules/weather/weatherActions";
+
+import { getCompleteForecast } from "modules/weather/weatherService";
+
+export function* workerGetForeCastRequest({
+  lat,
+  lon,
+}: {
+  type: "WEATHER/GET_FORECAST_REQUEST";
+  lat: string;
+  lon: string;
+}) {
+  try {
+    const response = yield call(getCompleteForecast, lat, lon);
+
+    yield put(actions.getForecastSuccess(response.data));
+  } catch (error) {
+    yield put(actions.getForecastFail({ error }));
+  }
+}
+
+export default function* WatcherWeatherRequest() {
+  yield takeLatest("WEATHER/GET_FORECAST_REQUEST", workerGetForeCastRequest);
+}The only difference here to a vanilla JS redux-saga worker is the destructuring of the action object. Conventionally a worker has an action parameter which is an object supplied by the takeLatest or takeEvery function. We will destructure the parameter which allows us to assign the correct types.
+As you can see clearly here I have decided against the convention that “define every action type as a string constant”, see below as example. Although feel free to mix these guidelines however suits you and/or your team.
+const ADD_TODO = 'TODOS/ADD_TODO'
+const REMOVE_TODO = 'TODOS/REMOVE_TODO'
+const LOAD_ARTICLE = 'TODOS/LOAD_ARTICLE'
+Okay so now we have nearly completed the flow of an asynchronous redux action. Lastly we need to select the data in our reducer using a selector. I will use the reselect library with a basic createSelector example to highlight how you can gain some performance improvements. Here is a short explanation of what reselect and the createSelector function is:
+Selectors created using Reselect’s createSelector function are memoized. That’s a fancy word to mean that the function remembers the arguments passed-in the last time it was invoked and doesn’t recalculate if the arguments are the same. You can view it a little bit like caching.
+
+import { createSelector } from "reselect";
+import { useSelector } from "react-redux";
+
+import { AppState } from "modules";
+import { Forecast } from "./weatherTypes";
+
+const forecastSelector = (state: AppState) => state.weather.forecast;
+
+export const selectAllForecast = () => {
+  return createSelector(
+    [forecastSelector],
+    (forecast: Forecast | {}) => forecast
+  );
+};
+
+export function useSelectForecast() {
+  return useSelector(selectAllForecast());
+}So here we are selecting the forecast state from the app state slice, typing our app state slice with our AppState from our root reducer file. We then use that data as our first argument in the createSelector ensuring that our useSelectForecast function doesn’t recalculate if the forecast hasn’t changed. This becomes much more useful when you are doing a lot of computing logic in your selector function and/or have dynamic arguments being sent in by the user inputs.
+Secondly in our createSelector function because the selected forecast data can be either a Forecast type or an empty object as described in our weatherReducer.ts we specify that typing in the createSelector function.
+import { WeatherActions } from "./weatherActions";
+import { Forecast } from "./weatherTypes";
+
+export interface WeatherState {
+  forecast: Forecast | {};
+  loading: {
+    forecast: boolean;
+  };
+}
+
+export const initialStateWeather: WeatherState = {
+  forecast: {},
+  loading: {
+    forecast: false,
+  },
+};Lastly just to finish some of the high level typescript react features, let’s take a quick look at typing a useState function.
+const [toggle, setToggle] = useState<boolean>(true);
+It’s a simple declaration in the <> brackets. Of course you could pass multiple types, and include globals types, like so.
+const [data, setData] = useState<Forecast | []>([]);
+Conclusion
+Using TypeScript doesn’t have to be so intimidating and can be fun. Have a play with these techniques. Please do reach out if you have any questions or further ideas.
+`,
+        the_title: `TypeScript + react, redux, redux-saga starter kit`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `Prerequisites
+Please make sure that Node.js (>= 10.13.0) is installed on your operating system and docker.
+Init project
+We need to create our project, firstly create blog directory.
+mkdir blog
+Later, go to blog directory and init the project.
+cd blog
+npm init
+The last command going to create a package.json file, its purpose is to handle the history of all dependencies installed in our project.
+
+Install dependencies
+To our API Rest, we need the next dependencies, express, pg, typeorm, typescript.
+Install dependencies dev dependencies.
+npm install typescript @types/express @types/node --save-dev
+We will only use the last dependencies to develop our API.
+Now, install the dependencies that we’ll use in the production environment.
+npm install express pg typeorm
+express: This is a web application framework for NodeJS.
+pg: It is a collection of NodeJS modules for interfacing with your PostgreSQL database.
+Typescript: It’s a language for application-scale JavaScript, this module helps us to add optional types to JavaScript that support tools for large-scale JavaScript applications for any browser.
+typeorm: It’s an ORM that runs in Node JS that can use with TypeScript and JavaScript (ES5, ES6, ES7, ES8).
+@types/express, @types/node: these packages help us with the type definitions for Express and NodeJS.
+
+Configuring TypeScript
+First, we need to add a command into the package.json file to execute commands of the typescript module. In the section of scripts add the next line.
+“tsc”: “tsc “
+Now, we going to configure TypeScript in our project, execute the command below:
+npm run tsc -- --init
+The last command generates tsctsconfig.json, this file indicates that we are going to working with TypeScript. This file contains the working setup for TypeScript transpillation.
+In the file, we add the next lines, those lines help us with the configuration of the build and root directories.
+“outDir”: “./build”,
+“rootDirs”: [“./src”],
+rootDirs: This configuration list who combined represent the project.
+outDir: This line redirects the output of compiled files.
+Configuring our server
+We going to create the src directory and server.ts file.
+mkdir src
+cd src
+touch server.ts
+Once created our sever.ts file we going to create a class called Server and the constructor, configuration, routes, and start method.
+
+
+Once created the class and methods execute the command below to convert our TypeScript code to JavaScript.
+npm run tsc
+Remember the tsctsconfig.json configurations, the JavaScript files will generate into the build directory.
+Now, start the server with the next command.
+node ./build/server.js
+After that. try to go to the next link http://localhost:3000/.
+Create controllers
+In this example of API, we going to use controllers to handle the routes, we need to create the controller directory and the post.controller.ts file.
+In this controller, we going to handle the methods to the CRUD.
+
+Next, execute the command below:
+npm run tsc
+node ./build/server.js
+And try to access the new routes of the post controller. http://localhost:3001/api/posts
+If you want to prove all the methods of post controller use postman.
+Create services
+In some cases, we need to get data from different places thus database or another API, for this reason, we need to handle this operation in an exclusive file. In this practice, we’ll use services to handle these tasks.
+Create a new directory called services and the file post.service.ts.
+
+Now execute commands to tranpillate our code and start the server.
+npm run tsc
+node ./build/server.
+
+
+In the next section we’ll configure the database and execute som queries.
+Create the database
+For this practice, we going to use Docker containers, you can get some information about how to install docker in the documentation.
+Once Docker installed, run the next command:
+docker run -d -p 5433:5432 — name blog -e POSTGRES_USER=blog -e POSTGRES_PASSWORD=blog — mount src=db-blog,dst=/var/lib/postgresql/data postgres
+The flag -d indicates that the container going to execute in detach mode in the background.
+The flag -p 5433:5432 specifies that the container will configure the port 5432 and we can access it with the 5444 from localhost.
+— name blog specify the name of our container.
+In the line -e POSTGRES_PASSWORD=password we specified an environment variable POSTGRES_PASSWORD.
+You can validate if the container was launched correctly using PgAdmin.
+
+
+Configure the database connection
+In this section we goint to confiure the database connection with our API using typeorm.
+Create the connection
+In the server file, we import createConnection function form typeorm, i this section we use async functions, so if you want to learn more about this topic visit the documentation.
+
+In the last pictures shows how to create a new connection, It needs type of data base, port, host, username, password, database name. The method createConnection was imported form typeorm module.
+Our method database Configuration going to execute into routes method and wait until the connection finished. It’s important the connection before starting with routes configuration.
+If you want to know more about the different ways to create a connection vist typeorm’s documetnation.
+Create entities
+Well, we have the database connection, so the next step is configure the entities of our application. According TypeOrm’s documentation a entity is a class tha maps to a database table, you can define a entity using the annotation @Entity().
+If you remember, in the configuration of the database we have this line entities: [“build/database/entities/**/*.js”], so we need to create the directory src/database/entites, and this directory will contain our entitites.
+Create a class called PostEntity and in this class we define our table posts.
+
+
+@PrimaryGeneratedColumn() genrate a primary column which value will be automatically generated and @Column() define a column of our database.
+Create custom repository
+All the actions that we need to do, we’ll do in the repository file, in this file we connect to a specific table and execute some actions such as update, create, delete and other DML operations.
+Create the src/repository directory and a file called post.repository.ts and create the class PostRepository like class bellow.
+
+The class PostRepository extends from Repository class, this class lets us to work with our entity objects. Find entities, insert, update, delete, etc, and @EntityRepository() is used to declare a class as a custom repository.
+Integrate services with the repositories
+Now we have all necesary to finish our API, we have the controllers, services and the repositories, in this section we integrate all the compoenets.
+First we’ll inport PostRepository into the class PostService, and initialize the reposritory with some commands form typeorm module. The methos that we’ll use are getConnection() this method help us to get a specific connection, for example our connection was called blog and getCustomRepository() get the custom repository for example PostRepository, once initializaed pir service we can execute some methods, for example find(), this method retrieves all registers into the table posts.
+
+
+Now transpille the code and start the server.
+npm run tsc
+node ./build/server.js
+Insert some data into posts table and you can access to the next url http://localhost:3000/api/posts and get data.
+
+With this we finish the practice, but you can see the complete code on GitHub.
+Conclusion
+Let’s look at what we have learned.
+How to create a single Rest API with express.
+Configration of typescript.
+Configration of typeorm.
+How to configure controllers, services, and repositories.
+How to configure PostgreSQL Docker container.
+First of all, thanks for reading and I hope this little tutorial will help you.
+Kindest Regards.
+`,
+        the_title: `Create a Rest API with Express, PostgreSQL, TypeOrm, and TypeScript`,
     },
     {
         the_body: ``,

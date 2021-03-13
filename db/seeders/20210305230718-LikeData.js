@@ -9,11 +9,263 @@ module.exports = {
     return queryInterface.bulkInsert('Likes',
     [
       {
-        storyId: 1,
-        userId: 1,
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      },
+      {
+        storyId: `${randomNumber(43)}`,
+        userId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+      }
 
     ], {});
   },
