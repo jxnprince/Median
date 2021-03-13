@@ -52,20 +52,30 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             let story = data.the_stories[i];
             const eachItem = document.createElement("li");
 
-
+            if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
+            if (story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
+            
             eachItem.innerHTML = `<a href="/stories/${story.id}">
                     <div id="story-img" class="featured-story-img">
                         <img src="${story.imgUrl}">
                     </div>
 
                     <div id="story-heading" class="featured-story-heading">
-                        <h1> ${story.title} </h1>
+                    <h1> ${story.title} </h1>
+
+                    <div class='story-information'>
+                        <div "user-information">
                         <img class="avatar" src="${story.User.avatar}">
+
                         <span> ${story.User.firstName} ${story.User.lastName} </span>
 
-                        <img src="likes/img">
-                        <span> ${story.UserLikes.length} </span>
+                        </div>
+                        <div class= 'likediv'>
+                            <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
+                            <span class= 'likeScore'> ${story.UserLikes.length} </span>
+                        </div>
                     </div>
+                </div>
 
                     <div id="story-text" class="featured-story-text">
                         <p> ${story.postBody} </p>
@@ -99,37 +109,42 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         for (let i = 1; i < data.the_stories.length; i++) {
             let story = data.the_stories[i];
             const eachItem = document.createElement("li");
-
-            eachItem.innerHTML = `<div id="shortened-story" class="shortened-story">
+            //
+            // REPLACE DEFAULT IMAGES
+            //
+            if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
+            if(story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
+            eachItem.innerHTML = `
+            <div id="shortened-story" class="shortened-story">
                 <a href="/stories/${story.id}">
-                    <div id="shortened-story-img" class="shortened-story-img-div">
-                        <img src="${story.imgUrl}" class="shortened-story-img">
-                    </div>
-
-                    <div id="shortened-story-heading" class="shortened-story-heading">
-                        <h2 class="shortened-story-title"> ${story.title} </h2>
+                <div id="shortened-story-heading" class="shortened-story-heading">
+                <div id="shortened-story-img" class="shortened-story-img-div">
+                    <img src="${story.imgUrl}" class="shortened-story-img">
+                </div>
+                <h2 class="shortened-story-title"> ${story.title} </h2>
                         <img src="${story.User.avatar}" class="shortened-story-avatar">
                         <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
-
-                        <img src="likes/img" class="shortened-story-thumbsup">
+                        <div class= 'likediv'>
+                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
                         <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                        </div>
                     </div>
                 </a>
             </div>`;
 
 
-            story.Comments.forEach(comment => {
-                const commentItem = document.createElement("li");
+            // story.Comments.forEach(comment => {
+            //     const commentItem = document.createElement("li");
 
-                commentItem.innerHTML = `<div id="featured-comment" class= "shortened-story-featured-comment">
-                    <img src="${comment.User.avatar}" class= "shortened-story-comment-avatar">
-                    <span class= "shortened-story-comment-name"> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
-                    Created on: <span class= "shortened-story-comment-date"> ${formatDate(comment.createdAt)} </span>
-                        <p class= "shortened-story-comment-body"> ${comment.body} </p>
-                </div> `;
+            //     commentItem.innerHTML = `<div id="featured-comment" class= "shortened-story-featured-comment">
+            //         <img src="${comment.User.avatar}" class= "shortened-story-comment-avatar">
+            //         <span class= "shortened-story-comment-name"> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
+            //         Created on: <span class= "shortened-story-comment-date"> ${formatDate(comment.createdAt)} </span>
+            //             <p class= "shortened-story-comment-body"> ${comment.body} </p>
+            //     </div> `;
 
-                feedCommentsList.appendChild(commentItem);
-            });
+            //     feedCommentsList.appendChild(commentItem);
+            // });
 
 
             feedList.appendChild(eachItem);
@@ -147,13 +162,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
         mainDiv.appendChild(featuredContainer);
         mainDiv.appendChild(feedItems);
-
-
+        const aaLogo = document.getElementById('aaLogoDiv')
+        aaLogo.innerHTML = `<img src='https://i.imgur.com/Hcuwo4G.png' class= 'aaLogo'>`
     } else {
         const errorMessage = document.createElement("h3");
         errorMessage.innerText = "Failed to fetch Story data. Please try again.";
         mainDiv.appendChild(errorMessage);
     }
-
-
 });

@@ -43,6 +43,10 @@ body {
   flex-direction: column;
 }
 
+#submit-login {
+  align-self: center;
+}
+
 /* #submit-login {} */
 
 input {
