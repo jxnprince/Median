@@ -497,39 +497,39 @@ const getRandomFemaleImg = () => {
 const getRandomStoryImg = () => {
     const images = [
         'https://miro.medium.com/max/1458/1*WNBUtTzkDqn-uzP8vPcvpw.jpeg',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        ''
+        'https://miro.medium.com/max/1050/0*2yDCEl0gIFv3UG70',
+        'https://miro.medium.com/max/1050/0*xLd-PSOqrxSFrXJ8',
+        'https://miro.medium.com/max/2880/1*1PVk34MALRt1SKP4-9Hjyg.jpeg',
+        'https://miro.medium.com/max/1050/1*qJz8qTvS2dZxcZCMBkA1Eg.png',
+        'https://miro.medium.com/max/1050/1*B78gvkfsQdzn_ulMvv1Efw.png',
+        'https://miro.medium.com/max/1050/1*Ybu9fEJ8EG4SY9JGpycwmA.jpeg',
+        'https://miro.medium.com/max/1313/1*oEvfDpu6mhAl9vDcxp7w-Q.jpeg',
+        'https://miro.medium.com/max/1050/0*sItPVUzYfMBtBnsP.png',
+        'https://miro.medium.com/max/1313/1*Abd6kidBd_UqS5_ewMwghA.png',
+        'https://miro.medium.com/max/1313/0*3jzst-QWzhihMsqn',
+        'https://miro.medium.com/max/1050/0*xt2bufniUFIf36eS',
+        'https://miro.medium.com/max/1050/1*z2O2W5vrJBDXlcZ7rzPyxQ.jpeg',
+        'https://miro.medium.com/max/1050/1*qaPfsXfZX8cTnPQBkwcH9w.png',
+        'https://miro.medium.com/max/1050/1*Ll1KOgWPfke528-rln1rDQ.png',
+        'https://miro.medium.com/max/1050/1*gAleceLp3svxK5wi_Rk4kA.png',
+        'https://miro.medium.com/max/1050/1*GxO24bEpo3fhbZAR68ot6w.png',
+        'https://miro.medium.com/max/1050/1*y40LVjY5in6VDjD_SNGktw.png',
+        'https://miro.medium.com/max/1050/1*panWUr2GrPysRxJQDD3jvw.png',
+        'https://miro.medium.com/max/1050/1*XCr0dNeVNc4ItW2H2_WbqA.png',
+        'https://miro.medium.com/max/1050/1*whrAkzydxrSwKniJobSU_Q.png',
+        'https://miro.medium.com/max/1050/1*dxyoGCWKkob6a9PLx_nAEQ.png',
+        'https://miro.medium.com/max/1050/1*xeUH-TFDMBUF51Z832FN1Q.gif',
+        'https://miro.medium.com/max/1050/1*SPKiKvkG3YLot0SsuRxAOQ.gif',
+        'https://miro.medium.com/max/1050/1*xYQgLEd6oT_jrAukxiR1rA.gif',
+        'https://miro.medium.com/max/1050/1*2fTdKuX0LlsSIaKt9E3HZg.gif',
+        'https://miro.medium.com/max/924/1*wOXng-MSKGjCI2x30BFVhw.gif',
+        'https://miro.medium.com/max/753/1*C6_WwmtEVyLBr6_Sm9RWFA.gif',
+        'https://miro.medium.com/max/753/1*1dH91Xv6Zw_qbJDgJxzUVA.gif',
+        'https://miro.medium.com/max/960/1*lXcokRFVhwUqnO51MNY8AQ.jpeg',
+        'https://miro.medium.com/max/1050/1*l_yFu1PcNZQNfXcIiEopOQ.png',
+        'https://miro.medium.com/max/1500/1*GCIVOwlon1oHQ6Hm0HdY_Q.jpeg',
+        'https://miro.medium.com/max/1313/0*rTI-BTj42v1yTcoy',
+        'https://miro.medium.com/max/1313/0*7mtomuVNePI2_TMA'
     ];
 
 
@@ -5005,7 +5005,8 @@ For Lox, I gave it statements for prosaic reasons. I picked a C-like syntax for 
 
 
 // randomStory(stories_array[0])
-console.log(randomStory(stories_array[0]));
+
+
 
 
 
