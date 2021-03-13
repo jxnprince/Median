@@ -6,16 +6,14 @@
 }
 
 .feed-container {
-	/* width: 100%; */
-	display: flex;
-	align-items: center;
+	width: 100%;
 	flex-direction: column;
 }
 
 .featured-container {
 	background-color: rgba(73, 74, 143, 0.1);
-	border-radius: 1%;
-	margin-top: 10px;
+	border-radius: 3%;
+	margin-top: 5px;
 	padding: 5px;
 	display: flex;
 	align-items: center;
@@ -24,12 +22,13 @@
 
 .featured-story-img {
 	padding-top: 5%;
-	padding-left: 9%;
-	padding-right: 5%;
-	margin: 10px;
-	display: block;
-    margin-left: auto;
-    margin-right: auto
+	align-self: center;
+}
+
+.avatar {
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
 }
 
 .shortened-story {
@@ -62,26 +61,87 @@
 	/* margin: 0 auto; */
 }
 
-.left-items {
-	position: absolute;
-	left: 2rem;
-	top: 25%;
+.avatar {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
 }
 
-.right-items {
-	position: absolute;
-	right: 2rem;
-	top: 25%;
-}
-.avatar{
-	width: 60px;
-	height: 60px
-}
-.link-button {
-	max-width: 20rem;
-}
-.story-feed-ul{
+
+.story-feed-ul {
 	width: 80%;
 	padding: 0;
 	margin: 0;
+}
+
+.story-information {
+	display: flex;
+}
+
+.user-information {
+	justify-content: flex-start;
+	margin: 5px;
+}
+
+.likediv {
+	background-color: #494A8F;
+	opacity: 75%;
+	width: 25px;
+	height: 25px;
+	border-radius: 20%;
+	transition: background-color 0.5s;
+	display: flex;
+	margin: 5px;
+	/* justify-content: flex-end; */
+}
+
+.likediv:hover {
+	background-color: #9674AB;
+	opacity: 100%;
+}
+
+.likeScore {
+	text-decoration: bold;
+	margin: 5px;
+}
+
+.feed-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.shortened-story {
+	border-radius: 3%;
+}
+
+.shortened-story-img {
+	margin: 5px;
+	height: 50px;
+	width: 50px;
+	flex-direction: flex-start;
+}
+
+.shortened-story-title {
+	flex-direction: row;
+}
+
+.shortened-story-heading {
+	flex-direction: row;
+}
+
+.shortened-story-avatar {
+	margin: 5px;
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+}
+
+.shortened-story-name {
+	padding: 5px;
+	margin: 5px;
+}
+
+.shortened-story-likes-amount {
+	margin: 5px;
 }

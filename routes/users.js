@@ -127,6 +127,11 @@ router.post('/logout', (req, res) => {
   res.redirect('/')
 })
 
+router.get('/logout', (req, res) => {
+  logoutUser(req, res)
+  res.redirect('/')
+})
+
 router.post('/demo-user', asyncHandler(async (req, res, next) => {
   const user = await User.findOne({
     where: {
