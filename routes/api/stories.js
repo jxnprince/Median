@@ -51,7 +51,7 @@ router.get(
 
 
 //POST localhost:8080/api/stories/ || works
-router.post('/', createStoryValidator, asyncHandler(async (req, res) => {
+router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, res) => {
     //submits a story via a form
     //submitted stories will then populate the general feed?
     const {
@@ -61,16 +61,16 @@ router.post('/', createStoryValidator, asyncHandler(async (req, res) => {
         userId
     } = req.body
     // const validationErrors = validationResult(res);
-
-    const story = await Story.create({
-        imgUrl,
-        postBody,
-        title,
-        userId:req.session.auth.userId
-    })
-
+    
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
+        
+            const story = await Story.create({
+                imgUrl,
+                postBody,
+                title,
+                userId:req.session.auth.userId
+            })
         if (story) {
             res.json({
                 message: "You created a new story",
@@ -84,12 +84,10 @@ router.post('/', createStoryValidator, asyncHandler(async (req, res) => {
     } else{
         console.log(`You hit the story registration error route`)
         const errors = validationErrors.array().map((error) => error.msg);
-        res.json({
-          story,
+        res.render('submitStory', {
           errors,
           csrfToken: req.csrfToken(),
-          message: "You have the following errors:"
-        })
+        });
     }
 
 }))
@@ -117,7 +115,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     }
 }))
 //PUT localhost:8080/api/stories/:id || works
-router.put('/:id(\\d+)', createStoryValidator, asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', createStoryValidator, csrfProtection, asyncHandler(async (req, res) => {
     //updates a specific user story
     const storyId = req.params.id
     const {
@@ -147,11 +145,9 @@ router.put('/:id(\\d+)', createStoryValidator, asyncHandler(async (req, res) => 
     } else{
         console.log(`You hit the story registration error route`)
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('error', {
-          story,
+        res.render('editStory', {
           errors,
           csrfToken: req.csrfToken(),
-          message: "You have the following errors:"
         });
     }
 }))

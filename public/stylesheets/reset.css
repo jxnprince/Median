@@ -79,6 +79,10 @@ li {
   background-color: #1f1f35;
 }
 
+.alert-alert-danger{
+  color: red;
+}
+
 h1 {
   font-size: 2rem;
 }

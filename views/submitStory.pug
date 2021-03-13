@@ -4,35 +4,41 @@ append head
     link(href='/stylesheets/header-footer.css' rel='stylesheet')
     link(rel='stylesheet' href='/stylesheets/reset.css')
     body
-      div(class="grid-container")
-        div(class="Header")
-            div(class="left-items")
-                div(id='minilogo')
-                a(href='/stories/submit-story' id='submit-story-link-button' class='link-button') Submit Story
-            div(class="right-items")
-                form(method='POST', action="/users/logout" class="logout")
-                    input(type="hidden" name="_csrf" value=csrfToken)
-                    button(type="submit") Logout
-                a(href='/profile' id='user-profile-button' class='link-button') Profile
-        div(class="Left-Sidebar")
-        div(class="Main-Content")
-            div(class="Submit-form")
-                form(method="Post" action="/api/stories/")
-                    input(type="hidden" name="_csrf" value=csrfToken)
-                    input(type="text" name="title" placeholder= "Title" required)
-                    input(type="text" name="imgUrl" placeholder='Image Url')
-                    textArea(type="text" name="postBody" required)
-                    button(type="submit") Post Story
-        div(class="Right-Sidebar")
-        div(class="Footer")
-            div(id='app-academy-logo') App Academy Logo
-            div(id='creators-info')
-                div(id='robert-link')
-                    a(href='') Robert's Link/Image
-                div(id='jackson-link')
-                    a(href='') Jackson's Link/Image
-                div(id='troy-link')
-                    a(href='') Troy's Link/Image
-                div(id='josh-link')
-                    a(href='') Josh's Link/Image
+        div(class="grid-container")
+            div(class="Header")
+                div(class="left-items")
+                    div(id='minilogo')
+                    a(href='/stories/submit-story' id='submit-story-link-button' class='link-button') Submit Story
+                div(class="right-items")
+                    form(method='POST', action="/users/logout" class="logout")
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        button(type="submit") Logout
+                    a(href='/profile' id='user-profile-button' class='link-button') Profile
+            div(class="Left-Sidebar")
+            div(class="Main-Content")
+                if errors
+                    div(class='alert-alert-danger' role='alert')
+                        p The following error(s) occurred:
+                        ul
+                            each error in errors
+                                li= error
+                div(class="Submit-form")
+                    form(method="Post" action="/api/stories/")
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        input(type="text" name="title" placeholder= "Title" required)
+                        input(type="text" name="imgUrl" placeholder='Image Url')
+                        textArea(type="text" name="postBody" required)
+                        button(type="submit") Post Story
+            div(class="Right-Sidebar")
+            div(class="Footer")
+                div(id='app-academy-logo') App Academy Logo
+                div(id='creators-info')
+                    div(id='robert-link')
+                        a(href='') Robert's Link/Image
+                    div(id='jackson-link')
+                        a(href='') Jackson's Link/Image
+                    div(id='troy-link')
+                        a(href='') Troy's Link/Image
+                    div(id='josh-link')
+                        a(href='') Josh's Link/Image
 
