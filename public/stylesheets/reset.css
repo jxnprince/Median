@@ -94,7 +94,9 @@ li {
   border-radius: 1%;
   max-height: 50px;
 }
-
+.alert-alert-danger{
+  color: red;
+}
 #creators-info {
   right: 2rem;
   max-width: 30%;
