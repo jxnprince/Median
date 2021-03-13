@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       body: {
-        type: Sequelize.STRING(255),
+        type: Sequelize.TEXT,
         allowNull: false
       },
       userId: {
