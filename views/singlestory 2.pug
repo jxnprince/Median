@@ -21,12 +21,6 @@ append head
                         button(type='submit' id='delete-story-button' formmethod='DELETE') Delete
                 div(class="edit-delete")
             div(class="Main-Content" id="Main-Content")
-                if errors
-                    div(class='alert-alert-danger' role='alert')
-                        p The following error(s) occurred:
-                        ul
-                            each error in errors
-                                li= error
                 div(id="current-story-api-number" class= `${apiNumber}`)
             //- div(id="buffer")
             div(class="Right-Sidebar")

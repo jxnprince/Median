@@ -12,6 +12,11 @@
   box-sizing: border-box;
 }
 
+/* .miniLogo {
+  height: 55px;
+  width: 70px;
+} */
+
 body {
   font-family: 'Roboto Mono', monospace;
   color: #F0EAE4;
@@ -36,10 +41,10 @@ li {
   padding: 10px 20px
 }
 
-.header {
+/* .header {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .hidden {
   display: none;
@@ -74,32 +79,8 @@ li {
   background-color: #1f1f35;
 }
 
-.Header {
-  grid-area: Header;
-  position: fixed;
-  width: 100%;
-  background: #494A8F;
-  height: 53px;
-  line-height: 0px;
-  /* top: 0; */
-}
-
-.Footer {
-  grid-area: Footer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #1f1f35;
-  line-height: 0px;
-  border-radius: 1%;
-  max-height: 50px;
-}
-
-#creators-info {
-  right: 2rem;
-  max-width: 30%;
-  top: 25%;
-  flex-direction: row;
+.alert-alert-danger{
+  color: red;
 }
 
 h1 {
@@ -107,56 +88,16 @@ h1 {
 }
 
 input {
-  width: 50%;
+  /* width: 50%; */
   margin: 2px auto;
   background-color: #F0EAE4;
 }
 
-button {
+/* button {
   color: #F0EAE4;
   background-color: #494A8F;
-}
-
-button :hover {
-  background-color: #9674AB;
-}
-
-button :target {
-  background-color: #E0C653;
-}
+} */
 
 form {
   margin-block-end: 0;
-  /* position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
 }
-
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-ol,
-li,
-ul,
-div,
-span,
-body,
-header,
-nav {
-  font-size: 1rem;
-  color: inherit;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  font-weight: normal;
-} */

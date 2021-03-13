@@ -33,17 +33,18 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
     if(data.status === 200){
         // make / render the html containing the feed information -
-        const welcomeMessage = document.createElement("h3");
+        //const welcomeMessage = document.createElement("h3");
         const firstName = data.current_user.firstName;
         const lastName = data.current_user.lastName;
 
 
-        welcomeMessage.innerText = `Welcome ${firstName} ${lastName}`;
-        mainDiv.appendChild(welcomeMessage);
+        //welcomeMessage.innerText = `Welcome ${firstName} ${lastName}`;
+        //mainDiv.appendChild(welcomeMessage);
 
         const unorderedList = document.createElement("ul");
         const commentsList = document.createElement("ul");
         const feedCommentsList = document.createElement("ul");
+        unorderedList.setAttribute('class','story-feed-ul')
 
         // loop through the stories in the API
         // this is just the first result in the API -- do the rest below for different structure
@@ -59,7 +60,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
                     <div id="story-heading" class="featured-story-heading">
                         <h1> ${story.title} </h1>
-                        <img src="${story.User.avatar}">
+                        <img class="avatar" src="${story.User.avatar}">
                         <span> ${story.User.firstName} ${story.User.lastName} </span>
 
                         <img src="likes/img">
@@ -93,6 +94,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
 // html for the rest of the results from the API
         const feedList = document.createElement("ul");
+        feedList.setAttribute('class','story-feed-ul')
 
         for (let i = 1; i < data.the_stories.length; i++) {
             let story = data.the_stories[i];

@@ -12,7 +12,6 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     demoUserButton.setAttribute('class', 'hidden');
     logoDiv.setAttribute('class', 'hidden');
     // loginForm.setAttribute('class', 'hidden');
-    logoDiv.innerHTML='I am hiding!';
     signUpForm.setAttribute('class', 'signupForm');
     signUpForm.classList.remove('hidden');
     console.log('I got clicked');
@@ -22,7 +21,6 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     demoUserButton.classList.remove('hidden');
     logoDiv.classList.remove('hidden');
     signUpForm.classList.remove('signupForm');
-    logoDiv.innerHTML='I back!';
     signUpForm.setAttribute('class', 'hidden');
     console.log('I got clicked');
   })

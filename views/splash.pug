@@ -1,31 +1,34 @@
 extends layout
 append head
     link(href='/stylesheets/reset.css' rel='stylesheet')
+    link(href='/stylesheets/header-footer.css' rel='stylesheet')
     link(href='/stylesheets/splash.css' rel='stylesheet')
     script(src='/JS/splash.js' type='module')
     body
         div(class="grid-container")
             div(class="Header")
-                img(src='' class='logo')
+                img(class='miniLogo' src='https://i.imgur.com/IgoFy68.png')
+                div
+                //- img(class='displayLoginFormButton' src='https://i.imgur.com/Yr0lEE7.png?1)')
                 button(type='click', id='displayLoginFormButton') Login
                 form(class='hidden' id='login-form' method='POST', action="/users/login")
                     input(type="hidden" name="_csrf" value=csrfToken)
-                    input(type='string' name='email' placeholder='email' required)
-                    input(type='password' name='password' placeholder='Password' required)
+                    input(type='string' name='email' class='loginHeader' placeholder='email' required)
+                    input(type='password' name='password' placeholder='Password' class='loginHeader' required)
                     button(type="submit" id='submit-login') Login
             div(class="Left-Sidebar")
             div(class="Main-Content")
                 div(class= "signupForm")
                 if errors
-                    div(class='alert alert-danger' role='alert')
+                    div(class='alert-alert-danger' role='alert')
                         p The following error(s) occurred:
                         ul
                             each error in errors
                                 li= error
-                div(class= "singupForm")
+                div(class= "signupForm")
                     form(class='hidden' id='signUpForm' method='POST', action="/users/signup")
                         input(type="hidden" name="_csrf" value=csrfToken)
-                        input(type='string' name='email' placeholder='email' required)
+                        input(type='string' name='email' placeholder='Email' required)
                         input(type='string' name='firstName' placeholder='First Name')
                         input(type='string' name='lastName' placeholder='Last Name')
                         input(type='password' name='password' placeholder='Password' required)
@@ -35,7 +38,7 @@ append head
                         div(class="buttons")
                             button(type="submit" id='submitSignUpFormButton') Sign Up
                             button(type="click" id='backToSplash') Back
-                div(id='logoDiv')
+                div(id='logoDiv' class='splashLogo')
                 div(class="formButtons")
                     button(type='click' id='displaySignUpFormButton') Sign Up
                     form(method="POST" action="/users/demo-user")
