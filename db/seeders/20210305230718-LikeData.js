@@ -1,20 +1,20 @@
+const { randomNumber, randomYear, randomMonth, randomDay } = require('../../data/index.js');
+
+
+
 'use strict';
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Likes', [
+    return queryInterface.bulkInsert('Likes',
+    [
       {
         storyId: 1,
         userId: 1,
-        createdAt: new Date(),
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
-      {
-        storyId: 1,
-        userId: 3,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
+
     ], {});
   },
 
