@@ -1,3 +1,11 @@
+const faker = require('faker');
+// console.log(faker.name.firstName());
+
+
+const emailAddress = faker.internet.email();
+const toggle = true;
+
+
 
 
 
@@ -537,9 +545,7 @@ const getRandomStoryImg = () => {
 
 
 const randomStory = (data) => {
-    // create a story object
-    // return a function that returns the story object
-    const the_story = {
+    return {
         imgUrl: `${getRandomStoryImg()}`,
         postBody: `${data.the_body}`,
         title: `${data.the_title}`,
@@ -547,9 +553,6 @@ const randomStory = (data) => {
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
     };
-
-
-    return () => the_story;
 };
 
 
@@ -2377,51 +2380,3058 @@ Kindest Regards.
         the_title: `Create a Rest API with Express, PostgreSQL, TypeOrm, and TypeScript`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `Following on from my post on using react-konva as part of reciprocal.dev to build a User Journey Map and then adding zoom and panning to said map I decided to add some enhancements to change properties of components rendered on the canvas from outside the canvas.
+In order to implement this enhancement I needed to introduce an app-wide state so I could track both the interaction in the non-canvas UI and update the value in the canvas components.
+To do this I started by building a context that I could then access, using the useContext hook in the components that needed to access the properties the context exposed to change the app’s state.
+I added the context provider at the root component level so child components could access the context and while this worked well with the UI elements I had created to display the screen information, it didn’t work with the components in the canvas.
+The components that were children of the Stage used to render canvas elements were unable to access these properties due to scoping issues.
+Accessing the React Context within a react-konva Stage
+The fix for getting around the scoping issue is relatively simple, it just requires setting up another context provider inside the Stage .
+For the new provider to re-use the value from the original provider we need to wrap a consumer around the Stage and make sure that our context provider component can have it’s value set by a prop.
+Once we have the provider inside the Stage we can the use the useContext hook within the components that will be rendered to the canvas.
+The final structure looks like this:
+
+import { useState, useContext } from 'react';
+import { Stage, Rect } from 'react-konva';
+import ColourContext, { ColourConsumer, ColourProvider } from './contexts/ColourContext';
+
+function Screen() {
+ const { colour } = useContext(ColourContext);
+  return (
+    <Rect
+      x={0}
+      y={0}
+      width={200}
+      height={200}
+      fill={colour}
+    />
+  )
+}
+
+function Canvas() {
+ return (
+    <ColourConsumer>
+   {(colourValue) => (
+      <Stage>
+        <ColourProvider value={colourValue}>
+          <Screen />
+        </ColourProvider>
+      </Stage>
+    )}
+    </ColourConsumer>
+ )
+}
+
+function App() {
+ const [colour, setColour] = useState('#FF0000');
+ return (
+   <ColourProvider value={{ colour, setColour }}>
+    <Canvas />
+   </ColourProvider>
+ )
+}
+
+
+
+Using the React Context to update UI elements on state change
+With the context accessible from inside the canvas we can use this context to update a shared state between UI elements outside of the canvas and those inside of it.
+Firstly we need to have some means of getting and setting a value that will be updated via the non-canvas UI. To do this we use useState to track a value called colour and the getter and setter of this value to the provider via it’s value prop.
+This colour value is changed inside of the non-canvas UI we call setColour whenever the user selects a value from the colour select element.
+Within the canvas components we take the colour value from the context and use it to set the colour used in the component.
+
+
+function Screen() {
+ const { colour } = useContext(ColourContext);
+  return (
+    <Rect
+      x={0}
+      y={0}
+      width={200}
+      height={200}
+      fill={colour}
+    />
+  )
+}
+
+// This requires the context to be relayed within the Konva Stage
+function Canvas() {
+ return (
+    <ColourConsumer>
+   {(colourValue) => (
+      <Stage>
+        <ColourProvider value={colourValue}>
+          <Screen />
+        </ColourProvider>
+      </Stage>
+    )}
+    </ColourConsumer>
+ )
+}
+
+// No need to relay, can just use useContext
+function ColourForm() {
+  const {colour, setColour} = useContext(ColourContext);
+
+  function handleChange(e) {
+    setColour(e.target.value);
+  }
+
+  return (
+    <select value={colour} onChange={handleChange}>
+      <option value='#ff0000'>Red</option>
+      <option value='#00ff00'>Green</option>
+      <option value='#0000ff'>Blue</option>
+    </select>
+   )
+}
+
+function App() {
+ const [colour, setColour] = useState('#ff0000');
+ return (
+   <ColourProvider value={{ colour, setColour }}>
+    <Canvas />
+    <ColourForm />
+   </ColourProvider>
+ )
+}
+
+
+Once we’ve got the colour value being read by the canvas component and set by the non-canvas component we can now set the colour of the Rect using the select box.
+Summary
+While this post covers a very simple use case there’s no reason why you couldn’t use a React Context to track the state of a number of values and build an advanced UI that allows the user to update objects within the canvas from outside of it.
+You can find a demo of the shared state in the example User Journey Map I’ve built as part of reciprocal.dev, as this uses the approach mentioned in this post to track the app state between the non-canvas UI and the main canvas.
+`,
+        the_title: `Using a React Context with react-konva`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `Modules are the building blocks of an application. Modules are isolated pieces of code that when put together construct the larger functioning application. Node.js accomplishes this abstraction through the CommonJS standard or recently introduced ES module system.
+The main idea of modules is to break down large pieces of code into smaller pieces. So by storing relevant code in individual files, code can be plugged into other portions of an application via importing. Importing a file means loading in code that is made available for use within the file.
+A simple import statement with CommonJS would be something like the following.
+const sample = require('./sample.js');
+// if sample.js provided a function
+sample();
+// if sample.js provided a variable
+console.log(sample);
+// etc
+In CommonJS, importing a file involves using the require() function, which takes in a module identifier, and loads in that module within the current module.
+When importing the built-in or third-party modules, the process is the same, a single word module identifier is passed into require().
+// built-in module used for creating HTTP servers
+const http = require('http');
+// third-party package used for making HTTP requests
+const axios = require('axios');
+The other side of this process is the exportation of code so that other modules can access it within their scope.
+// sample.js
+const sample = 'sample variable string';
+const sample2 = 'sample2 variable string';
+module.exports = sample;
+// importing module
+const sample = require('./sample.js');
+console.log(sample);  // => sample variable string
+console.log(sample2); // => Reference error
+Expanding on the example above, here we see the structure within “sample.js” that allows other modules to import its API for use. Any code that is defined within a module is private to other modules unless it is explicitly exported. When I tried to log the “sample2” variable, a reference error was thrown because it was not explicitly exported via assignment to the “exports” property on the module object. This is how Node.js allows files access to encapsulated code. Node.js also provides the same exporting functionality via the shorthand “exports” object.
+// sample.js
+const sample = 'sample variable string';
+exports.sample = sample;
+As of Node.js version 14.x, the standard JavaScript module system, ES modules, has also been adopted and provides alternatives to utilizing modules along with some key differences. The ES module system utilizes the “import” statement to import modules and does so asynchronously as opposed to the synchronous require() function.
+A simple import statement with CommonJS would be something like the following:
+// importing with ES Modules
+import sample from './sample.mjs';
+Aside from the syntactical differences, CommonJS and ES modules provide other key differences. Like the “module” object which is injected by default into each CommonJS module by Node, other values are made available within the modules. The __filename and __dirname are variables that are made available within every CommonJS module, useful for various configurations.
+// within a CommonJS module
+// by default .js extensionconsole.log(__filename, __dirname); // double underscore
+When working with ES modules, these variables are not available and need to be computed. This is carried out by the only value that is injected within ES modules, the “import.meta” property which helps identify the URL which maps to the current module.`,
+        the_title: `Modules in Node.js`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `Being able to implement private variables and methods is very helpful for restricting access to code. By making a variable private it limits the amount of code that can mutate it. There are several ways to implement private variables and methods in JavaScript. One of such ways is by using closures.
+What is a closure?
+A closure is the combination of a function bundled with its surrounding state. This means that we can access the scope in which the function is defined, from inside that function. Let’s look at a simple example:Here we have an outer function add and an inner function addFive. Assigning add to a variable will return the inner function addFive.Invoking the variable and passing a number will execute addFive. At first, it seems accessing x should not be possible since x belongs to the scope of the outer function which has already finished executing. But, because the function addFive forms a closure, it also has access to the environment or scope in which it was declared (also known as the lexical environment).
+If a function forms a closure, it can access variables and functions declared in the parent/outer function even after that parent/outer function finishes executing. This principle allows us to implement private variables.
+Implementing private variables
+In JavaScript, private variables are not natively available. But knowing how closures work, we can emulate them.
+This example applies the concept we looked at in the previous section. An IIFE(Immediately Invoked Function Expression) is assigned to the constant Door. The IIFE executes immediately and returns an object with two methods. This returned object has a function and a variable in its lexical environment.
+The IIFE finishes executing, so the variable and function are both inaccessible from the outside. Only the two methods inside the returned object can access them because they form closures.`,
+        the_title: `How do closures make private variables possible in JavaScript?`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `There aren't really any development fields more challenging than operating system (OS) development. It is the "great pinnacle of programming."
+
+Few programmers ever attempt to build an OS and many of those who do make the attempt never produce a functioning system.
+
+However, if you do make it all the way to the finish line and produce a functional operating system, you will have joined an elite group of top-flight programmers.
+
+What is an Operating System?
+The earliest computers did not have operating systems.
+
+Every program that ran on these early systems had to include all of the code necessary to run the computer, communicate with connected hardware, and perform the computation the program was actually intended to perform. This situation meant that even simple programs were complex.
+
+As computer systems diversified and became more complex and powerful, it became increasingly impractical to write programs that functioned as both an operating system and a useful application.
+
+In response, individual mainframe computer owners began to develop system software that made it easier to write and run programs and operating systems were born.
+
+An operating system (OS) is software that manages computer hardware and system resources and provides the tools that applications need to operate. The birth of operating systems meant that programs no longer had to be written to control the entire scope of computer operation.
+
+Instead, computer applications could be written to be run by the operating system while the operating system worried about computer resources and connected peripheral equipment such as printers and punched paper card readers.
+
+A Brief History of Operating Systems
+The first operating system was created by General Motors in 1956 to run a single IBM mainframe computer. Other IBM mainframe owners followed suit and created their own operating systems.
+
+As you can imagine, the earliest operating systems varied wildly from one computer to the next, and while they did make it easier to write programs, they did not allow programs to be used on more than one mainframe without a complete rewrite.
+
+In the 1960s, IBM was the first computer manufacturer to take on the task of operating system development and began distributing operating systems with their computers.
+
+However, IBM wasn't the only vendor creating operating systems during this time. Control Data Corporation, Computer Sciences Corporation, Burroughs Corporation, GE, Digital Equipment Corporation, and Xerox all released mainframe operating systems in the 1960s as well.
+
+In the late 1960s, the first version of the Unix operating system was developed. Written in C, and freely available during it's earliest years, Unix was easily ported to new systems and rapidly achieved broad acceptance.
+
+Many modern operating systems, including Apple OS X and all Linux flavors, trace their roots back to Unix.
+
+Microsoft Windows was developed in response to a request from IBM for an operating system to run its range of personal computers.
+
+The first OS built by Microsoft wasn't called Windows, it was called MS-DOS and was built in 1981 by purchasing the 86-DOS operating system from Seattle Computer Products and modifying it to meet IBM's requirements.
+
+The name Windows was first used in 1985 when a graphical user interface was created and paired with MS-DOS.
+
+Apple OS X, Microsoft Windows, and the various forms of Linux (including Android) now command the vast majority of the modern operating system market.
+
+The Parts of an Operating System
+Operating systems are built out of two main parts:
+
+The kernel;
+System programs.
+The kernel is the heart of the operating system. It is the first program loaded when the computer starts up, it manages computer resources, and it handles requests from system programs and applications.
+
+System programs run on top of the kernel. They aren't used to perform useful work, instead, they are the programs necessary to connect the kernel to user applications and peripheral devices. Device drivers, file systems, networking programs, and system utilities like disk defragmeters are all examples of system programs.
+
+Application programs aren't part of the operating system and are the programs used to perform useful work. Word processing applications, browsers, and media player are common types of application programs. Application programs are managed and enabled by the kernel, and use system programs to access computer periphery devices and hardware.
+
+What You Need to Know
+The list of things you need to know before you attempt to undertake operating system development is very long. The three most important things you need to master prior to jumping into OS development are:
+
+Basic computer science knowledge;
+Computer programming theory and best-practices;
+Low-level and a high-level programming languages.
+Learn Computer Science
+OS development isn't like web development. It isn't something you can jump into and learn as you go. You need to develop a solid foundation in computer science before moving on to other topics.
+
+Here are some resources to get you started:
+
+Coursera: Computer Science 101 is the course you should take first if you are brand new to the field of computer programming and computer science.
+
+If you have a little knowledge and experience under your belt, skip this course in favor of the Udacity of edX options. However, if you are brand new to the field, this course takes a no-prior-experience approach to introducing computer science and programming topics.
+
+Udacity: Intro to Computer Science takes a web-development approach to teaching computer science. While not directly applicable to the prospect of building an operating system, this is a solid course that delivers useful information and provides a good overview of the basics of computer programming.
+
+edX: Introduction to Computer Science is the most complete and in-depth computer science course in this list. This free, self-paced course was designed by Harvard University and mirrors the content presented in the course by the same name offered on the campus of Harvard University.
+
+In this far-reaching course you will learn about algorithms, data structures, resource management, software engineering, and get a look at programming languages like C, PHP, and JavaScript.
+
+Learn Computer Programming
+With a solid grasp of computer science under your belt and some limited experience with programming languages, the next step is to learn how to tackle a large-scale programming project.
+
+Udacity: Software Development Process is an excellent course everyone should take if they've never undertaken a large-scale, challenging programming project before. In this course you'll learn workflow and management tools and techniques such as Git and how to set up an integrated development environment.
+
+Learn Programming Languages
+In order to develop an operating system, you will need to master at least two programming languages:
+
+Low-level assembly language;
+A high-level programming language.
+Assembly languages are used to communicate directly with a CPU. Each type of CPU speaks a machine language and there is just one corresponding assembly language for each type of CPU. The most common computer architecture is x86, it was originally developed by Intel and is now used by a wide range of computer chip manufacturers including AMD, VIA, and many others. In this guide we will point you in the direction of learning x86 assembly language.
+
+High-level programming languages work with multiple computer architectures. C is the programming language most commonly used and recommended for writing operating systems. For this reason, we are going to recommend learning and using C for OS development. However, other languages such as C++ and Python can also be used.
+
+x86 Assembly Language
+The x86 Assembly Guide is a great place to start learning assembly language. This short document provides a brief overview of x86 assembly language and will set the stage for the more advanced resources you'll be moving on to next.
+
+Programming from the Ground Up by Jonathan Bartlett is one of the defining books of the assembly language landscape. This book uses assembly language as the basis for learning computer science and programming. This resource is also available from the Internet Archive.
+
+The Art of Assembly Language by Randy Hyde is another iconic text in the world of assembly language education. Originally written specifically for Hyde's programming courses at Cal Poly and UC Riverside, the text was released as an HTML ebook in the mid-1990s and is recognized as a defining work within the field. The text is also hosted as a series of PDF files by the Yale FLINT Group.
+
+If you want to use a traditional textbook to learn about x86 assembly language two of the most commonly used and highly recommended texts are:
+
+Assembly Language Step-by-Step: Programming with Linux by Jeff Duntemann;
+Modern X86 Assembly Language Programming by Daniel Kusswurm.
+C
+There are many high-level programming languages you could learn and many different resources you could use to learn them. Our recommendation, and the recommendation most commonly echoed by the OS development community, is to learn C, and we've found several excellent resources that will turn you into a competent C programmer.
+
+Get a quick overview of the C programming language by completing this C Tutorial. This resource won't turn you into an expert, but it will give you a good basic understanding of the language and prepare you to tackle more challenging topics and resources.
+
+Learn C the Hard Way is a free HTML ebook that includes many practice exercises. This text walks you all the way through the C programming language, and if you put in the work, take your time, and complete all of the exercises, you'll be well on your way to being a competent C programmer by the time you complete this tutorial.
+
+If a traditional textbook is something you're more likely to work your way through, these two texts are some of the most popular for mastering the C programming language.
+
+The C Programming Language by Kernighan and Ritchie;
+C Programming Absolute Beginner's Guide by Perry and Miller.
+OS Development Tutorials
+Once you have a strong grasp of the fundamental concepts of computer science and programming, and have mastered assembly language and C, the next step is to complete one or two OS development tutorials that walk through the entire process of developing a simple OS from scratch. We found three excellent resources that do just that.
+
+Linux From Scratch will walk you through the process of building a complete Linux operating system. Completely this tutorial won't produce a full-fledged operating system, but it will give you a solid code base on which to build out a complete operating system. Tackle advanced tutorials such as Beyond Linux from Scratch, Automated Linux from Scratch, Cross Linux from Scratch, or Hardened Linux from Scratch to build your basic OS into a useful piece of software.
+
+The little book about OS development by Erik Helin and Adam Renberg was developed as part of an advanced computer science course the authors completed while students as the Royal Institute of Technology in Stockholm. This course walks through the complete process of developing an x86 operating system by beginning with setting up a programming environment, culminating in programming for multitasking, and hitting topics such as managing system memory and developing file systems along the way.
+
+Operating System Development Series from Broken Thorn Entertainment is a series of 25 tutorials that walk you through the process of creating an OS from the ground up. Beginners beware: this series assumes you already know your way around an IDE and are a competent C and assembly language programmer.
+
+There are many texts you could use to learn about the discipline of OS development. Three of the most commonly recommended are:
+
+Modern Operating Systems by Tanenbaum and Bos;
+The Design of the UNIX Operating System by Maurice Bach;
+Operating System Concepts by Silberschatz, Galvin, and Gagne.
+OS Development Communities
+As you embark on the journey of becoming an OS developer, there are a few places where you can find other OS developers to learn from and commiserate with:
+
+OSDev.org is a wiki with a great deal of information about OS development as well as a forum where you can meet and get feedback from other like-minded programmers.
+OS Development Channel on reddit is a great community where you can learn about OS development and enjoy a moment of levity when the task of OS development becomes a bit to arduous.
+Computer Science, Programmers, and StackOverflow from StackExchange are places you can pose technical questions to other programmers when you come up against a problem you can't seem to figure out on your own.
+Summary
+Learning OS development is one of the most challenging programming tasks you can undertake. However, succeeding in your effort to build a working OS will mark you as a competent programmer and one who deeply understands how processors, hardware, and computer programs work together to create what the rest of the world takes for granted as a functioning computer.`,
+        the_title: `How To Program Your Very Own Operating Systems (OS)`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `Django REST with React: what you will learn
+In the following tutorial you'll learn:
+
+how to build a simple Django REST API
+how to structure a Django project with React
+Django REST with React: requirements
+To follow along with the tutorial you should have:
+
+a basic understanding of Python and Django
+a basic understanding of JavaScript (ECMAScript 2015) and React
+a newer version of Node.js installed on your system
+Ready? Let's get started!
+
+Book in progress!
+Please read
+Django REST with React: what you will learn
+Django REST with React: requirements
+Setting up a Python virtual environment, and the project
+Django REST with React: building a Django application
+Django REST with React: creating a Django model
+Django REST with React: a sprinkle of testing
+Django REST serializers
+Setting up the controll... ehm the views
+Setting up the rout... ehm the urls
+Django and React together
+Setting up React and webpack
+Django REST with React: preparing the frontend app
+Django REST with React: the React frontend
+Django REST with React: conclusions, where to go from here
+Setting up a Python virtual environment, and the project
+First things first make sure to have a Python virtual environment in place. Create a new folder and move into it:
+
+mkdir django-react && cd $_
+Once done create and activate the new Python environment:
+
+python3 -m venv venv
+source venv/bin/activate
+NOTE: from now on make sure to be always in the django-react folder and to have the Python environment active.
+
+Now let's pull in the dependencies:
+
+pip install django djangorestframework
+When the installation ends you're ready to create a new Django project:
+
+django-admin startproject django_react .
+Now we can start building our first Django app: a simple API for listing and storing contacts.
+
+Django REST with React: building a Django application
+A Django project can have many applications. Each application ideally should do one thing. Django applications are modular and reusable, if another project needs the same app over and over we can put that app in the Python package manager and install it from there.
+
+To create a new application in Django you would run:
+
+django-admin startapp app_name
+In our case, still in the project folder run:
+
+django-admin startapp leads
+This will create our new leads app in the django-react folder. Your project structure now should be:
+
+(venv) your@prompt:~/Code/django-react$ tree -d -L 1
+.
+├── django_react
+├── leads
+└── venv
+Now let’s tell Django how to use the new app. Open up django_react/settings.py and add the app in INSTALLED_APPS:
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'leads.apps.LeadsConfig', # activate the new app
+]
+So far so good! In the next section we'll add our first model.
+
+Django REST with React: creating a Django model
+With the app in place it's time to create our first model. A model is an object representing your table's data. Almost every web framework has models and Django makes no exception.
+
+A Django model may have one or more fields: each field is a column in your table. Before moving forward let's define our requirements for the lead application.
+
+Since I'm collecting contacts I can think of a Lead model made of the following fields:
+
+a name
+an email
+a message
+(Feel free to add extra fields! Like phone for example). Let's not forget a timestamp field as well! Django does not add a created_at column by default.
+
+Open up leads/models.py and create the Lead model:
+
+from django.db import models
+
+class Lead(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.CharField(max_length=300)
+    created_at = models.DateTimeField(auto_now_add=True)
+A quick note about models: take your time to check Django fields documentation. When planning a model try to choose the most appropriate fields for your use case. With the model in place let's create a migration by running:
+
+python manage.py makemigrations leads
+Finally migrate the database with:
+
+python manage.py migrate
+Great! In the next sections we'll talk about serializers and views. But first a note about testing.
+
+Django REST with React: a sprinkle of testing
+At this point you may wonder "Valentino, how about testing?" Rather than annoying you with a TDD tutorial I'll give you some tips instead.
+
+I've seen a ton of Django tutorials starting like so:
+
+class SomeModelModelTest(TestCase):
+    def setUp(self):
+        SomeModel.objects.create(
+            name=fake.name(),
+            email=fake.email(),
+            phone=fake.phone_number(),
+            message=fake.text(),
+            source=fake.url()
+        )
+    def test_save_model(self):
+        saved_models = SomeModel.objects.count()
+        self.assertEqual(saved_models, 2)
+Don't do that. There's no point in testing neither a vanilla Django model nor the Django ORM. Here's a good starting point for testing in Django:
+
+do not test Django built-in code (models, views, etc)
+do not test Python built-in functions
+Do not test what is already tested! So what should I test? Have you added a custom method to a Django model? Test it! Do you have a custom view? Test it! But, how do I know what to test exactly?
+
+Do yourself a favour. Install coverage:
+
+pip install coverage
+Then, every time you add some code to your application run coverage with:
+
+coverage run --source='.' manage.py test
+Then generate the report:
+
+coverage html
+You'll see exactly what to test. If you prefer seeing the report on the command line run:
+
+coverage report
+Wait, are you still there? I'm impressed! Hold tight, in the next section we'll take a look at serializers!
+
+To learn more about testing in Django see Django Testing Cheat Sheet.
+
+Django REST serializers
+What is serialization? What is a Django REST serializer? Serialization is the act of transforming an object into another data format. After transforming an object we can save it to a file or send it through the network.
+
+Why serialization is necessary? Think of a Django model: it's a Python class. How do you render a Python class to JSON in a browser? With a Django REST serializer!
+
+A serializer works the other way around too: it converts JSON to objects. This way you can:
+
+display Django models in a browser by converting them to JSON
+make CRUD request with a JSON payload to the API
+To recap: a Django REST serializer is mandatory for operating on models through the API. Create a new file named leads/serializers.py. The LeadSerializer takes our Lead model and some fields:
+
+from rest_framework import serializers
+from .models import Lead
+
+class LeadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lead
+        fields = ('id', 'name', 'email', 'message')
+As you can see we're subclassing ModelSerializer. A ModelSerializer in Django REST is like a ModelForm. It is suitable whenever you want to closely map a Model to a serializer.
+
+Save and close the file. In the next sections we'll take a look at views and urls.
+
+Setting up the controll... ehm the views
+Coming from other frameworks you may find surprising that Django has no controllers.
+
+A controller encapsulates logic for processing requests and returning responses. In the traditional MVC architecture there is the Model, the View, and the Controller. Example of MVC frameworks are Rails, Phoenix, Laravel.
+
+Django is a MVT framework. That is, Model – View – Template. There are many types of views in Django: function views, class based views, and generic views.
+
+Some developers prefer function views in place of class based views. Personally I am a big fan of the latter. When I pick Django it's because I value development speed, DRY, less code.
+
+I see no point in writing views by hand when there's already a set of sane defaults. Here's my rule of thumb:
+
+Use function views only if the time spent customizing a generic view is more than the time spent writing the view by hand. As with plain Django, in Django REST framework there are many ways for writing views:
+
+function based views
+class based views
+generic API views
+For the scope of this tutorial I will use generic API views. Our simple app should:
+
+list a collection of models
+create new objects in the database
+By taking a look at the generic API views documentation we can see that there's a view for listing and creating models: ListCreateAPIView, which takes a queryset, and a serializer_class.
+
+Open up leads/views.py and create the view:
+
+from .models import Lead
+from .serializers import LeadSerializer
+from rest_framework import generics
+
+class LeadListCreate(generics.ListCreateAPIView):
+    queryset = Lead.objects.all()
+    serializer_class = LeadSerializer
+That is. With 3 lines of code we created a view for handling GET and POST requests. What's missing now? URL mapping! In other words we should map URLs to views.
+
+How? Head over to the next section.
+
+Setting up the rout... ehm the urls
+Our goal is to wire up LeadListCreate to api/lead/. In other words we want to make GET and POST requests to api/lead/ for listing and creating models.
+
+To configure the URL mapping include the app urls in django_react/urls.py:
+
+from django.urls import path, include
+
+urlpatterns = [
+    path('', include('leads.urls')),
+]
+Next up create a new file named leads/urls.py. In this file we'll wire up LeadListCreate to api/lead/:
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('api/lead/', views.LeadListCreate.as_view() ),
+]
+Finally let's enable rest_framework in INSTALLED_APPS. Open up django_react/settings.py and add the app there:
+
+# Application definition
+
+INSTALLED_APPS = [
+    # omitted for brevity
+    'leads.apps.LeadsConfig',
+    'rest_framework'
+]
+Now you should be able to run a sanity check with:
+
+python manage.py runserver
+Head over http://127.0.0.1:8000/api/lead/ and you'll see the browsable API:
+
+Django REST framework browseable API
+
+NOTE: it is a good idea to disable the browseable API in production with this configuration:
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
+While there create some contact in the builtin form. In the next section we'll get into React.
+
+Django and React together
+A lot of fellow Python developers struggle with a simple question. How to glue Django and $insert_frontend_library_here together?
+
+Should React router take over the routing? Should React mount a component in each Django template? (If you want to lose sanity). I'd say "it depends". It depends on how much JavaScript do you need. But how much JavaScript is too much?
+
+Jokes aside there are many ways for setting up a Django project with React. I see the following patterns (which are common to almost every web framework):
+
+Option 1. React in its own "frontend" Django app: load a single HTML template and let React manage the frontend (difficulty: medium)
+
+Option 2. Django REST as a standalone API + React as a standalone SPA (difficulty: hard, it involves some form of token-based authentication)
+
+Option 3. Mix and match: mini React apps inside Django templates (difficulty: simple, but not so maintainable in the long run)
+
+And here are my advices. If you're just starting out with Django REST and React avoid option 2. Instead go for option number 1 (React in its own "frontend" Django app) if:
+
+you're building an app-like website
+the interface has lot of user interactions/AJAX
+you're ok with Session based authentication
+there are no SEO concerns
+you're fine with React Router
+In fact keeping React closer to Django makes easier to reason about authentication. You can exploit the Django builtin authentication for registering and logging in users.
+
+Use the good ol' Session authentication and do not worry too much about tokens and JWT.
+
+Go for option number 3 (mini React apps inside Django templates) if:
+
+the website doesn’t need much Javascript
+SEO is a big concern and you can't use Node.js for Server Side Rendering
+In the next section we'll go with the option 1.
+
+Setting up React and webpack
+Disclaimer: My tutorials are free, no strings attached. This means I have no obligation to keep them constantly updated to the latest releases of the packages. Keep also in mind, frontend tooling changes so fast that I can't keep up updating every single blog post as quickly as webpack introduces breaking changes in the configuration. If something doesn't work for you, drop me a polite email, and I'll try to fix the tutorial if I have time. Enjoy!
+
+We already know how to create a Django app so let's do it again for the frontend app:
+
+django-admin startapp frontend
+You'll see a new directory called frontend inside your project folder:
+
+(venv) your@prompt:~/Code/django-react$ tree -d -L 1
+.
+├── django_react
+├── frontend
+├── leads
+└── venv
+Let's also prepare a directory structure for holding React components:
+
+mkdir -p ./frontend/src/components
+and static files:
+
+mkdir -p ./frontend/{static,templates}/frontend
+Next up we'll set up React, webpack and babel. Move in the frontend folder and initialize the environment:
+
+cd ./frontend && npm init -y
+Next up install webpack and webpack cli:
+
+npm i webpack webpack-cli --save-dev
+Now open up package.json and configure two scripts, one for production and one for development:
+
+"scripts": {
+    "dev": "webpack --mode development --entry ./src/index.js --output-path ./static/frontend",
+    "build": "webpack --mode production --entry ./src/index.js --output-path ./static/frontend"
+},
+Close the file and save it. Now let's install babel for transpiling our code:
+
+npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+Next up pull in React:
+
+npm i react react-dom --save-dev
+Now configure babel with a .babelrc (still inside ./frontend):
+
+{
+    "presets": [
+        "@babel/preset-env", "@babel/preset-react"
+    ]
+}
+NOTE: if you're getting regeneratorRuntime is not defined with async/await in your React components replace the above babel configuration with the version presented in this post.
+
+And finally create a webpack.config.js for configuring babel-loader:
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+};
+Now we're ready to roll! (Welcome to modern frontend!).
+
+Django REST with React: preparing the frontend app
+First things first create a view in ./frontend/views.py:
+
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'frontend/index.html')
+Then create a template in ./frontend/templates/frontend/index.html:
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Django REST with React</title>
+</head>
+<body>
+<div id="app">
+    <!-- React will load here -->
+</div>
+</body>
+{% load static %}
+<script src="{% static "frontend/main.js" %}"></script>
+</html>
+As you can see the template will call ./frontend/main.js which is our webpack bundle. Configure the new URL mapping to include the frontend in ./project/urls.py:
+
+urlpatterns = [
+    path('', include('leads.urls')),
+    path('', include('frontend.urls')),
+]
+Next up create a new file named ./frontend/urls.py:
+
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path('', views.index ),
+]
+Finally enable the frontend app in ./project/settings.py:
+
+# Application definition
+
+INSTALLED_APPS = [
+    # omitted for brevity
+    'leads.apps.LeadsConfig',
+    'rest_framework',
+    'frontend', # enable the frontend app
+]
+At this point you can give it a shot on http://127.0.0.1:8000/ (while still running Django development server). You'll see a blank page for now.
+
+In the next section we'll finally add React to the mix.
+
+Django REST with React: the React frontend
+To keep things simple we'll create a simple React component that will display our data. If you haven't got anything in the database it's a good moment to populate your application with some contact.
+
+Run the development server and head over http://127.0.0.1:8000/api/lead/ to insert some leads.
+
+Now create a new file in ./frontend/src/components/App.js. It will be a React component for fetching and displaying data:
+
+import React, { Component } from "react";
+import { render } from "react-dom";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      loaded: false,
+      placeholder: "Loading"
+    };
+  }
+
+  componentDidMount() {
+    fetch("api/lead")
+      .then(response => {
+        if (response.status > 400) {
+          return this.setState(() => {
+            return { placeholder: "Something went wrong!" };
+          });
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.setState(() => {
+          return {
+            data,
+            loaded: true
+          };
+        });
+      });
+  }
+
+  render() {
+    return (
+      <ul>
+        {this.state.data.map(contact => {
+          return (
+            <li key={contact.id}>
+              {contact.name} - {contact.email}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+}
+
+export default App;
+
+const container = document.getElementById("app");
+render(<App />, container);
+NOTE: you can write the very same component as a function with the useEffect hook.
+
+Save and close the file. Now create the entry point for webpack in ./frontend/src/index.js and import your component:
+
+import App from "./components/App";
+Now we're ready to test things out. Run webpack with:
+
+npm run dev
+start the development server:
+
+python manage.py runserver
+and head over http://127.0.0.1:8000/. (If you see "Something went wrong" make sure to migrate and populate your database)
+
+You should finally see your data in a React component:
+
+Simple React component
+
+Pretty simple. But it works!
+
+Django REST with React: conclusions, where to go from here
+In this tutorial we built a simple Django REST/React project. You learned how to:
+
+build a simple Django REST API
+structure a Django project with React
+connect React to the Django REST API
+Feel free to experiment by adding more features to the project (like authentication).
+
+The approach we took when connecting the React frontend to Django was a bit simplistic, but represent a strong foundation of what you'll do in the real world.
+
+To learn more about the challenges you'll face with webpack and Django in bigger projects make sure to read also Using webpack with Django: it's not easy as you think.
+
+I also gave a talk on the topic: "Decoupling Django with Django REST and React" at Pycon Italy X in Florence. Slides here!
+
+Thanks for reading!`,
+        the_title: `Tutorial: Django REST with React (and a sprinkle of testing)`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `class Field(**kwargs)¶
+When you create a Form class, the most important part is defining the fields of the form. Each field has custom validation logic, along with a few other hooks.
+
+Field.clean(value)¶
+Although the primary way you’ll use Field classes is in Form classes, you can also instantiate them and use them directly to get a better idea of how they work. Each Field instance has a clean() method, which takes a single argument and either raises a django.core.exceptions.ValidationError exception or returns the clean value:
+
+>>> from django import forms
+>>> f = forms.EmailField()
+>>> f.clean('foo@example.com')
+'foo@example.com'
+>>> f.clean('invalid email address')
+Traceback (most recent call last):
+...
+ValidationError: ['Enter a valid email address.']
+Core field arguments¶
+Each Field class constructor takes at least these arguments. Some Field classes take additional, field-specific arguments, but the following should always be accepted:
+
+required¶
+Field.required¶
+By default, each Field class assumes the value is required, so if you pass an empty value – either None or the empty string ("") – then clean() will raise a ValidationError exception:
+
+>>> from django import forms
+>>> f = forms.CharField()
+>>> f.clean('foo')
+'foo'
+>>> f.clean('')
+Traceback (most recent call last):
+...
+ValidationError: ['This field is required.']
+>>> f.clean(None)
+Traceback (most recent call last):
+...
+ValidationError: ['This field is required.']
+>>> f.clean(' ')
+' '
+>>> f.clean(0)
+'0'
+>>> f.clean(True)
+'True'
+>>> f.clean(False)
+'False'
+To specify that a field is not required, pass required=False to the Field constructor:
+
+>>> f = forms.CharField(required=False)
+>>> f.clean('foo')
+'foo'
+>>> f.clean('')
+''
+>>> f.clean(None)
+''
+>>> f.clean(0)
+'0'
+>>> f.clean(True)
+'True'
+>>> f.clean(False)
+'False'
+If a Field has required=False and you pass clean() an empty value, then clean() will return a normalized empty value rather than raising ValidationError. For CharField, this will return empty_value which defaults to an empty string. For other Field classes, it might be None. (This varies from field to field.)
+
+Widgets of required form fields have the required HTML attribute. Set the Form.use_required_attribute attribute to False to disable it. The required attribute isn’t included on forms of formsets because the browser validation may not be correct when adding and deleting formsets.
+
+label¶
+Field.label¶
+The label argument lets you specify the “human-friendly” label for this field. This is used when the Field is displayed in a Form.
+
+As explained in “Outputting forms as HTML” above, the default label for a Field is generated from the field name by converting all underscores to spaces and upper-casing the first letter. Specify label if that default behavior doesn’t result in an adequate label.
+
+Here’s a full example Form that implements label for two of its fields. We’ve specified auto_id=False to simplify the output:
+
+>>> from django import forms
+>>> class CommentForm(forms.Form):
+...     name = forms.CharField(label='Your name')
+...     url = forms.URLField(label='Your website', required=False)
+...     comment = forms.CharField()
+>>> f = CommentForm(auto_id=False)
+>>> print(f)
+<tr><th>Your name:</th><td><input type="text" name="name" required></td></tr>
+<tr><th>Your website:</th><td><input type="url" name="url"></td></tr>
+<tr><th>Comment:</th><td><input type="text" name="comment" required></td></tr>
+label_suffix¶
+Field.label_suffix¶
+The label_suffix argument lets you override the form’s label_suffix on a per-field basis:
+
+>>> class ContactForm(forms.Form):
+...     age = forms.IntegerField()
+...     nationality = forms.CharField()
+...     captcha_answer = forms.IntegerField(label='2 + 2', label_suffix=' =')
+>>> f = ContactForm(label_suffix='?')
+>>> print(f.as_p())
+<p><label for="id_age">Age?</label> <input id="id_age" name="age" type="number" required></p>
+<p><label for="id_nationality">Nationality?</label> <input id="id_nationality" name="nationality" type="text" required></p>
+<p><label for="id_captcha_answer">2 + 2 =</label> <input id="id_captcha_answer" name="captcha_answer" type="number" required></p>
+initial¶
+Field.initial¶
+The initial argument lets you specify the initial value to use when rendering this Field in an unbound Form.
+
+To specify dynamic initial data, see the Form.initial parameter.
+
+The use-case for this is when you want to display an “empty” form in which a field is initialized to a particular value. For example:
+
+>>> from django import forms
+>>> class CommentForm(forms.Form):
+...     name = forms.CharField(initial='Your name')
+...     url = forms.URLField(initial='http://')
+...     comment = forms.CharField()
+>>> f = CommentForm(auto_id=False)
+>>> print(f)
+<tr><th>Name:</th><td><input type="text" name="name" value="Your name" required></td></tr>
+<tr><th>Url:</th><td><input type="url" name="url" value="http://" required></td></tr>
+<tr><th>Comment:</th><td><input type="text" name="comment" required></td></tr>
+You may be thinking, why not just pass a dictionary of the initial values as data when displaying the form? Well, if you do that, you’ll trigger validation, and the HTML output will include any validation errors:
+
+>>> class CommentForm(forms.Form):
+...     name = forms.CharField()
+...     url = forms.URLField()
+...     comment = forms.CharField()
+>>> default_data = {'name': 'Your name', 'url': 'http://'}
+>>> f = CommentForm(default_data, auto_id=False)
+>>> print(f)
+<tr><th>Name:</th><td><input type="text" name="name" value="Your name" required></td></tr>
+<tr><th>Url:</th><td><ul class="errorlist"><li>Enter a valid URL.</li></ul><input type="url" name="url" value="http://" required></td></tr>
+<tr><th>Comment:</th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="text" name="comment" required></td></tr>
+This is why initial values are only displayed for unbound forms. For bound forms, the HTML output will use the bound data.
+
+Also note that initial values are not used as “fallback” data in validation if a particular field’s value is not given. initial values are only intended for initial form display:
+
+>>> class CommentForm(forms.Form):
+...     name = forms.CharField(initial='Your name')
+...     url = forms.URLField(initial='http://')
+...     comment = forms.CharField()
+>>> data = {'name': '', 'url': '', 'comment': 'Foo'}
+>>> f = CommentForm(data)
+>>> f.is_valid()
+False
+# The form does *not* fall back to using the initial values.
+>>> f.errors
+{'url': ['This field is required.'], 'name': ['This field is required.']}
+Instead of a constant, you can also pass any callable:
+
+>>> import datetime
+>>> class DateForm(forms.Form):
+...     day = forms.DateField(initial=datetime.date.today)
+>>> print(DateForm())
+<tr><th>Day:</th><td><input type="text" name="day" value="12/23/2008" required><td></tr>
+The callable will be evaluated only when the unbound form is displayed, not when it is defined.
+
+widget¶
+Field.widget¶
+The widget argument lets you specify a Widget class to use when rendering this Field. See Widgets for more information.
+
+help_text¶
+Field.help_text¶
+The help_text argument lets you specify descriptive text for this Field. If you provide help_text, it will be displayed next to the Field when the Field is rendered by one of the convenience Form methods (e.g., as_ul()).
+
+Like the model field’s help_text, this value isn’t HTML-escaped in automatically-generated forms.
+
+Here’s a full example Form that implements help_text for two of its fields. We’ve specified auto_id=False to simplify the output:
+
+>>> from django import forms
+>>> class HelpTextContactForm(forms.Form):
+...     subject = forms.CharField(max_length=100, help_text='100 characters max.')
+...     message = forms.CharField()
+...     sender = forms.EmailField(help_text='A valid email address, please.')
+...     cc_myself = forms.BooleanField(required=False)
+>>> f = HelpTextContactForm(auto_id=False)
+>>> print(f.as_table())
+<tr><th>Subject:</th><td><input type="text" name="subject" maxlength="100" required><br><span class="helptext">100 characters max.</span></td></tr>
+<tr><th>Message:</th><td><input type="text" name="message" required></td></tr>
+<tr><th>Sender:</th><td><input type="email" name="sender" required><br>A valid email address, please.</td></tr>
+<tr><th>Cc myself:</th><td><input type="checkbox" name="cc_myself"></td></tr>
+>>> print(f.as_ul()))
+<li>Subject: <input type="text" name="subject" maxlength="100" required> <span class="helptext">100 characters max.</span></li>
+<li>Message: <input type="text" name="message" required></li>
+<li>Sender: <input type="email" name="sender" required> A valid email address, please.</li>
+<li>Cc myself: <input type="checkbox" name="cc_myself"></li>
+>>> print(f.as_p())
+<p>Subject: <input type="text" name="subject" maxlength="100" required> <span class="helptext">100 characters max.</span></p>
+<p>Message: <input type="text" name="message" required></p>
+<p>Sender: <input type="email" name="sender" required> A valid email address, please.</p>
+<p>Cc myself: <input type="checkbox" name="cc_myself"></p>
+error_messages¶
+Field.error_messages¶
+The error_messages argument lets you override the default messages that the field will raise. Pass in a dictionary with keys matching the error messages you want to override. For example, here is the default error message:
+
+>>> from django import forms
+>>> generic = forms.CharField()
+>>> generic.clean('')
+Traceback (most recent call last):
+  ...
+ValidationError: ['This field is required.']
+And here is a custom error message:
+
+>>> name = forms.CharField(error_messages={'required': 'Please enter your name'})
+>>> name.clean('')
+Traceback (most recent call last):
+  ...
+ValidationError: ['Please enter your name']
+In the built-in Field classes section below, each Field defines the error message keys it uses.
+
+validators¶
+Field.validators¶
+The validators argument lets you provide a list of validation functions for this field.
+
+See the validators documentation for more information.
+
+localize¶
+Field.localize¶
+The localize argument enables the localization of form data input, as well as the rendered output.
+
+See the format localization documentation for more information.
+
+disabled¶
+Field.disabled¶
+The disabled boolean argument, when set to True, disables a form field using the disabled HTML attribute so that it won’t be editable by users. Even if a user tampers with the field’s value submitted to the server, it will be ignored in favor of the value from the form’s initial data.
+
+Checking if the field data has changed¶
+has_changed()¶
+Field.has_changed()¶
+The has_changed() method is used to determine if the field value has changed from the initial value. Returns True or False.
+
+See the Form.has_changed() documentation for more information.
+
+Built-in Field classes¶
+Naturally, the forms library comes with a set of Field classes that represent common validation needs. This section documents each built-in field.
+
+For each field, we describe the default widget used if you don’t specify widget. We also specify the value returned when you provide an empty value (see the section on required above to understand what that means).
+
+BooleanField¶
+class BooleanField(**kwargs)¶
+Default widget: CheckboxInput
+Empty value: False
+Normalizes to: A Python True or False value.
+Validates that the value is True (e.g. the check box is checked) if the field has required=True.
+Error message keys: required
+Note
+
+Since all Field subclasses have required=True by default, the validation condition here is important. If you want to include a boolean in your form that can be either True or False (e.g. a checked or unchecked checkbox), you must remember to pass in required=False when creating the BooleanField.
+
+CharField¶
+class CharField(**kwargs)¶
+Default widget: TextInput
+Empty value: Whatever you’ve given as empty_value.
+Normalizes to: A string.
+Uses MaxLengthValidator and MinLengthValidator if max_length and min_length are provided. Otherwise, all inputs are valid.
+Error message keys: required, max_length, min_length
+Has four optional arguments for validation:
+
+max_length¶
+min_length¶
+If provided, these arguments ensure that the string is at most or at least the given length.
+
+strip¶
+If True (default), the value will be stripped of leading and trailing whitespace.
+
+empty_value¶
+The value to use to represent “empty”. Defaults to an empty string.
+
+ChoiceField¶
+class ChoiceField(**kwargs)¶
+Default widget: Select
+Empty value: '' (an empty string)
+Normalizes to: A string.
+Validates that the given value exists in the list of choices.
+Error message keys: required, invalid_choice
+The invalid_choice error message may contain %(value)s, which will be replaced with the selected choice.
+
+Takes one extra argument:
+
+choices¶
+Either an iterable of 2-tuples to use as choices for this field, enumeration choices, or a callable that returns such an iterable. This argument accepts the same formats as the choices argument to a model field. See the model field reference documentation on choices for more details. If the argument is a callable, it is evaluated each time the field’s form is initialized, in addition to during rendering. Defaults to an empty list.
+
+TypedChoiceField¶
+class TypedChoiceField(**kwargs)¶
+Just like a ChoiceField, except TypedChoiceField takes two extra arguments, coerce and empty_value.
+
+Default widget: Select
+Empty value: Whatever you’ve given as empty_value.
+Normalizes to: A value of the type provided by the coerce argument.
+Validates that the given value exists in the list of choices and can be coerced.
+Error message keys: required, invalid_choice
+Takes extra arguments:
+
+coerce¶
+A function that takes one argument and returns a coerced value. Examples include the built-in int, float, bool and other types. Defaults to an identity function. Note that coercion happens after input validation, so it is possible to coerce to a value not present in choices.
+
+empty_value¶
+The value to use to represent “empty.” Defaults to the empty string; None is another common choice here. Note that this value will not be coerced by the function given in the coerce argument, so choose it accordingly.
+
+DateField¶
+class DateField(**kwargs)¶
+Default widget: DateInput
+Empty value: None
+Normalizes to: A Python datetime.date object.
+Validates that the given value is either a datetime.date, datetime.datetime or string formatted in a particular date format.
+Error message keys: required, invalid
+Takes one optional argument:
+
+input_formats¶
+A list of formats used to attempt to convert a string to a valid datetime.date object.
+
+If no input_formats argument is provided, the default input formats are taken from DATE_INPUT_FORMATS if USE_L10N is False, or from the active locale format DATE_INPUT_FORMATS key if localization is enabled. See also format localization.
+
+DateTimeField¶
+class DateTimeField(**kwargs)¶
+Default widget: DateTimeInput
+Empty value: None
+Normalizes to: A Python datetime.datetime object.
+Validates that the given value is either a datetime.datetime, datetime.date or string formatted in a particular datetime format.
+Error message keys: required, invalid
+Takes one optional argument:
+
+input_formats¶
+A list of formats used to attempt to convert a string to a valid datetime.datetime object, in addition to ISO 8601 formats.
+
+The field always accepts strings in ISO 8601 formatted dates or similar recognized by parse_datetime(). Some examples are:
+
+* '2006-10-25 14:30:59'
+* '2006-10-25T14:30:59'
+* '2006-10-25 14:30'
+* '2006-10-25T14:30'
+* '2006-10-25T14:30Z'
+* '2006-10-25T14:30+02:00'
+* '2006-10-25'
+If no input_formats argument is provided, the default input formats are taken from DATETIME_INPUT_FORMATS and DATE_INPUT_FORMATS if USE_L10N is False, or from the active locale format DATETIME_INPUT_FORMATS and DATE_INPUT_FORMATS keys if localization is enabled. See also format localization.
+
+Changed in Django 3.1:
+Support for ISO 8601 date string parsing (including optional timezone) was added.
+
+The fallback on DATE_INPUT_FORMATS in the default input_formats was added.
+
+DecimalField¶
+class DecimalField(**kwargs)¶
+Default widget: NumberInput when Field.localize is False, else TextInput.
+Empty value: None
+Normalizes to: A Python decimal.
+Validates that the given value is a decimal. Uses MaxValueValidator and MinValueValidator if max_value and min_value are provided. Leading and trailing whitespace is ignored.
+Error message keys: required, invalid, max_value, min_value, max_digits, max_decimal_places, max_whole_digits
+The max_value and min_value error messages may contain %(limit_value)s, which will be substituted by the appropriate limit. Similarly, the max_digits, max_decimal_places and max_whole_digits error messages may contain %(max)s.
+
+Takes four optional arguments:
+
+max_value¶
+min_value¶
+These control the range of values permitted in the field, and should be given as decimal.Decimal values.
+
+max_digits¶
+The maximum number of digits (those before the decimal point plus those after the decimal point, with leading zeros stripped) permitted in the value.
+
+decimal_places¶
+The maximum number of decimal places permitted.
+
+DurationField¶
+class DurationField(**kwargs)¶
+Default widget: TextInput
+Empty value: None
+Normalizes to: A Python timedelta.
+Validates that the given value is a string which can be converted into a timedelta. The value must be between datetime.timedelta.min and datetime.timedelta.max.
+Error message keys: required, invalid, overflow.
+Accepts any format understood by parse_duration().
+
+EmailField¶
+class EmailField(**kwargs)¶
+Default widget: EmailInput
+Empty value: Whatever you’ve given as empty_value.
+Normalizes to: A string.
+Uses EmailValidator to validate that the given value is a valid email address, using a moderately complex regular expression.
+Error message keys: required, invalid
+Has three optional arguments max_length, min_length, and empty_value which work just as they do for CharField.
+
+FileField¶
+class FileField(**kwargs)¶
+Default widget: ClearableFileInput
+Empty value: None
+Normalizes to: An UploadedFile object that wraps the file content and file name into a single object.
+Can validate that non-empty file data has been bound to the form.
+Error message keys: required, invalid, missing, empty, max_length
+Has two optional arguments for validation, max_length and allow_empty_file. If provided, these ensure that the file name is at most the given length, and that validation will succeed even if the file content is empty.
+
+To learn more about the UploadedFile object, see the file uploads documentation.
+
+When you use a FileField in a form, you must also remember to bind the file data to the form.
+
+The max_length error refers to the length of the filename. In the error message for that key, %(max)d will be replaced with the maximum filename length and %(length)d will be replaced with the current filename length.
+
+FilePathField¶
+class FilePathField(**kwargs)¶
+Default widget: Select
+Empty value: '' (an empty string)
+Normalizes to: A string.
+Validates that the selected choice exists in the list of choices.
+Error message keys: required, invalid_choice
+The field allows choosing from files inside a certain directory. It takes five extra arguments; only path is required:
+
+path¶
+The absolute path to the directory whose contents you want listed. This directory must exist.
+
+recursive¶
+If False (the default) only the direct contents of path will be offered as choices. If True, the directory will be descended into recursively and all descendants will be listed as choices.
+
+match¶
+A regular expression pattern; only files with names matching this expression will be allowed as choices.
+
+allow_files¶
+Optional. Either True or False. Default is True. Specifies whether files in the specified location should be included. Either this or allow_folders must be True.
+
+allow_folders¶
+Optional. Either True or False. Default is False. Specifies whether folders in the specified location should be included. Either this or allow_files must be True.
+
+FloatField¶
+class FloatField(**kwargs)¶
+Default widget: NumberInput when Field.localize is False, else TextInput.
+Empty value: None
+Normalizes to: A Python float.
+Validates that the given value is a float. Uses MaxValueValidator and MinValueValidator if max_value and min_value are provided. Leading and trailing whitespace is allowed, as in Python’s float() function.
+Error message keys: required, invalid, max_value, min_value
+Takes two optional arguments for validation, max_value and min_value. These control the range of values permitted in the field.
+
+ImageField¶
+class ImageField(**kwargs)¶
+Default widget: ClearableFileInput
+Empty value: None
+Normalizes to: An UploadedFile object that wraps the file content and file name into a single object.
+Validates that file data has been bound to the form. Also uses FileExtensionValidator to validate that the file extension is supported by Pillow.
+Error message keys: required, invalid, missing, empty, invalid_image
+Using an ImageField requires that Pillow is installed with support for the image formats you use. If you encounter a corrupt image error when you upload an image, it usually means that Pillow doesn’t understand its format. To fix this, install the appropriate library and reinstall Pillow.
+
+When you use an ImageField on a form, you must also remember to bind the file data to the form.
+
+After the field has been cleaned and validated, the UploadedFile object will have an additional image attribute containing the Pillow Image instance used to check if the file was a valid image. Pillow closes the underlying file descriptor after verifying an image, so whilst non-image data attributes, such as format, height, and width, are available, methods that access the underlying image data, such as getdata() or getpixel(), cannot be used without reopening the file. For example:
+
+>>> from PIL import Image
+>>> from django import forms
+>>> from django.core.files.uploadedfile import SimpleUploadedFile
+>>> class ImageForm(forms.Form):
+...     img = forms.ImageField()
+>>> file_data = {'img': SimpleUploadedFile('test.png', <file data>)}
+>>> form = ImageForm({}, file_data)
+# Pillow closes the underlying file descriptor.
+>>> form.is_valid()
+True
+>>> image_field = form.cleaned_data['img']
+>>> image_field.image
+<PIL.PngImagePlugin.PngImageFile image mode=RGBA size=191x287 at 0x7F5985045C18>
+>>> image_field.image.width
+191
+>>> image_field.image.height
+287
+>>> image_field.image.format
+'PNG'
+>>> image_field.image.getdata()
+# Raises AttributeError: 'NoneType' object has no attribute 'seek'.
+>>> image = Image.open(image_field)
+>>> image.getdata()
+<ImagingCore object at 0x7f5984f874b0>
+Additionally, UploadedFile.content_type will be updated with the image’s content type if Pillow can determine it, otherwise it will be set to None.
+
+IntegerField¶
+class IntegerField(**kwargs)¶
+Default widget: NumberInput when Field.localize is False, else TextInput.
+Empty value: None
+Normalizes to: A Python integer.
+Validates that the given value is an integer. Uses MaxValueValidator and MinValueValidator if max_value and min_value are provided. Leading and trailing whitespace is allowed, as in Python’s int() function.
+Error message keys: required, invalid, max_value, min_value
+The max_value and min_value error messages may contain %(limit_value)s, which will be substituted by the appropriate limit.
+
+Takes two optional arguments for validation:
+
+max_value¶
+min_value¶
+These control the range of values permitted in the field.
+
+JSONField¶
+class JSONField(encoder=None, decoder=None, **kwargs)¶
+New in Django 3.1.
+A field which accepts JSON encoded data for a JSONField.
+
+Default widget: Textarea
+Empty value: None
+Normalizes to: A Python representation of the JSON value (usually as a dict, list, or None), depending on JSONField.decoder.
+Validates that the given value is a valid JSON.
+Error message keys: required, invalid
+Takes two optional arguments:
+
+encoder¶
+A json.JSONEncoder subclass to serialize data types not supported by the standard JSON serializer (e.g. datetime.datetime or UUID). For example, you can use the DjangoJSONEncoder class.
+
+Defaults to json.JSONEncoder.
+
+decoder¶
+A json.JSONDecoder subclass to deserialize the input. Your deserialization may need to account for the fact that you can’t be certain of the input type. For example, you run the risk of returning a datetime that was actually a string that just happened to be in the same format chosen for datetimes.
+
+The decoder can be used to validate the input. If json.JSONDecodeError is raised during the deserialization, a ValidationError will be raised.
+
+Defaults to json.JSONDecoder.
+
+Note
+
+If you use a ModelForm, the encoder and decoder from JSONField will be used.
+
+User friendly forms
+
+JSONField is not particularly user friendly in most cases. However, it is a useful way to format data from a client-side widget for submission to the server.
+
+GenericIPAddressField¶
+class GenericIPAddressField(**kwargs)¶
+A field containing either an IPv4 or an IPv6 address.
+
+Default widget: TextInput
+Empty value: '' (an empty string)
+Normalizes to: A string. IPv6 addresses are normalized as described below.
+Validates that the given value is a valid IP address.
+Error message keys: required, invalid
+The IPv6 address normalization follows RFC 4291#section-2.2 section 2.2, including using the IPv4 format suggested in paragraph 3 of that section, like ::ffff:192.0.2.0. For example, 2001:0::0:01 would be normalized to 2001::1, and ::ffff:0a0a:0a0a to ::ffff:10.10.10.10. All characters are converted to lowercase.
+
+Takes two optional arguments:
+
+protocol¶
+Limits valid inputs to the specified protocol. Accepted values are both (default), IPv4 or IPv6. Matching is case insensitive.
+
+unpack_ipv4¶
+Unpacks IPv4 mapped addresses like ::ffff:192.0.2.1. If this option is enabled that address would be unpacked to 192.0.2.1. Default is disabled. Can only be used when protocol is set to 'both'.
+
+MultipleChoiceField¶
+class MultipleChoiceField(**kwargs)¶
+Default widget: SelectMultiple
+Empty value: [] (an empty list)
+Normalizes to: A list of strings.
+Validates that every value in the given list of values exists in the list of choices.
+Error message keys: required, invalid_choice, invalid_list
+The invalid_choice error message may contain %(value)s, which will be replaced with the selected choice.
+
+Takes one extra required argument, choices, as for ChoiceField.
+
+TypedMultipleChoiceField¶
+class TypedMultipleChoiceField(**kwargs)¶
+Just like a MultipleChoiceField, except TypedMultipleChoiceField takes two extra arguments, coerce and empty_value.
+
+Default widget: SelectMultiple
+Empty value: Whatever you’ve given as empty_value
+Normalizes to: A list of values of the type provided by the coerce argument.
+Validates that the given values exists in the list of choices and can be coerced.
+Error message keys: required, invalid_choice
+The invalid_choice error message may contain %(value)s, which will be replaced with the selected choice.
+
+Takes two extra arguments, coerce and empty_value, as for TypedChoiceField.
+
+NullBooleanField¶
+class NullBooleanField(**kwargs)¶
+Default widget: NullBooleanSelect
+Empty value: None
+Normalizes to: A Python True, False or None value.
+Validates nothing (i.e., it never raises a ValidationError).
+NullBooleanField may be used with widgets such as Select or RadioSelect by providing the widget choices:
+
+NullBooleanField(
+    widget=Select(
+        choices=[
+            ('', 'Unknown'),
+            (True, 'Yes'),
+            (False, 'No'),
+        ]
+    )
+)
+RegexField¶
+class RegexField(**kwargs)¶
+Default widget: TextInput
+Empty value: Whatever you’ve given as empty_value.
+Normalizes to: A string.
+Uses RegexValidator to validate that the given value matches a certain regular expression.
+Error message keys: required, invalid
+Takes one required argument:
+
+regex¶
+A regular expression specified either as a string or a compiled regular expression object.
+
+Also takes max_length, min_length, strip, and empty_value which work just as they do for CharField.
+
+strip¶
+Defaults to False. If enabled, stripping will be applied before the regex validation.
+
+SlugField¶
+class SlugField(**kwargs)¶
+Default widget: TextInput
+Empty value: Whatever you’ve given as empty_value.
+Normalizes to: A string.
+Uses validate_slug or validate_unicode_slug to validate that the given value contains only letters, numbers, underscores, and hyphens.
+Error messages: required, invalid
+This field is intended for use in representing a model SlugField in forms.
+
+Takes two optional parameters:
+
+allow_unicode¶
+A boolean instructing the field to accept Unicode letters in addition to ASCII letters. Defaults to False.
+
+empty_value¶
+The value to use to represent “empty”. Defaults to an empty string.
+
+TimeField¶
+class TimeField(**kwargs)¶
+Default widget: TimeInput
+Empty value: None
+Normalizes to: A Python datetime.time object.
+Validates that the given value is either a datetime.time or string formatted in a particular time format.
+Error message keys: required, invalid
+Takes one optional argument:
+
+input_formats¶
+A list of formats used to attempt to convert a string to a valid datetime.time object.
+
+If no input_formats argument is provided, the default input formats are taken from TIME_INPUT_FORMATS if USE_L10N is False, or from the active locale format TIME_INPUT_FORMATS key if localization is enabled. See also format localization.
+
+URLField¶
+class URLField(**kwargs)¶
+Default widget: URLInput
+Empty value: Whatever you’ve given as empty_value.
+Normalizes to: A string.
+Uses URLValidator to validate that the given value is a valid URL.
+Error message keys: required, invalid
+Has three optional arguments max_length, min_length, and empty_value which work just as they do for CharField.
+
+UUIDField¶
+class UUIDField(**kwargs)¶
+Default widget: TextInput
+Empty value: None
+Normalizes to: A UUID object.
+Error message keys: required, invalid
+This field will accept any string format accepted as the hex argument to the UUID constructor.
+
+Slightly complex built-in Field classes¶
+ComboField¶
+class ComboField(**kwargs)¶
+Default widget: TextInput
+Empty value: '' (an empty string)
+Normalizes to: A string.
+Validates the given value against each of the fields specified as an argument to the ComboField.
+Error message keys: required, invalid
+Takes one extra required argument:
+
+fields¶
+The list of fields that should be used to validate the field’s value (in the order in which they are provided).
+
+>>> from django.forms import ComboField
+>>> f = ComboField(fields=[CharField(max_length=20), EmailField()])
+>>> f.clean('test@example.com')
+'test@example.com'
+>>> f.clean('longemailaddress@example.com')
+Traceback (most recent call last):
+...
+ValidationError: ['Ensure this value has at most 20 characters (it has 28).']
+MultiValueField¶
+class MultiValueField(fields=(), **kwargs)¶
+Default widget: TextInput
+Empty value: '' (an empty string)
+Normalizes to: the type returned by the compress method of the subclass.
+Validates the given value against each of the fields specified as an argument to the MultiValueField.
+Error message keys: required, invalid, incomplete
+Aggregates the logic of multiple fields that together produce a single value.
+
+This field is abstract and must be subclassed. In contrast with the single-value fields, subclasses of MultiValueField must not implement clean() but instead - implement compress().
+
+Takes one extra required argument:
+
+fields¶
+A tuple of fields whose values are cleaned and subsequently combined into a single value. Each value of the field is cleaned by the corresponding field in fields – the first value is cleaned by the first field, the second value is cleaned by the second field, etc. Once all fields are cleaned, the list of clean values is combined into a single value by compress().
+
+Also takes some optional arguments:
+
+require_all_fields¶
+Defaults to True, in which case a required validation error will be raised if no value is supplied for any field.
+
+When set to False, the Field.required attribute can be set to False for individual fields to make them optional. If no value is supplied for a required field, an incomplete validation error will be raised.
+
+A default incomplete error message can be defined on the MultiValueField subclass, or different messages can be defined on each individual field. For example:
+
+from django.core.validators import RegexValidator
+
+class PhoneField(MultiValueField):
+    def __init__(self, **kwargs):
+        # Define one message for all fields.
+        error_messages = {
+            'incomplete': 'Enter a country calling code and a phone number.',
+        }
+        # Or define a different message for each field.
+        fields = (
+            CharField(
+                error_messages={'incomplete': 'Enter a country calling code.'},
+                validators=[
+                    RegexValidator(r'^[0-9]+$', 'Enter a valid country calling code.'),
+                ],
+            ),
+            CharField(
+                error_messages={'incomplete': 'Enter a phone number.'},
+                validators=[RegexValidator(r'^[0-9]+$', 'Enter a valid phone number.')],
+            ),
+            CharField(
+                validators=[RegexValidator(r'^[0-9]+$', 'Enter a valid extension.')],
+                required=False,
+            ),
+        )
+        super().__init__(
+            error_messages=error_messages, fields=fields,
+            require_all_fields=False, **kwargs
+        )
+widget¶
+Must be a subclass of django.forms.MultiWidget. Default value is TextInput, which probably is not very useful in this case.
+
+compress(data_list)¶
+Takes a list of valid values and returns a “compressed” version of those values – in a single value. For example, SplitDateTimeField is a subclass which combines a time field and a date field into a datetime object.
+
+This method must be implemented in the subclasses.
+
+SplitDateTimeField¶
+class SplitDateTimeField(**kwargs)¶
+Default widget: SplitDateTimeWidget
+Empty value: None
+Normalizes to: A Python datetime.datetime object.
+Validates that the given value is a datetime.datetime or string formatted in a particular datetime format.
+Error message keys: required, invalid, invalid_date, invalid_time
+Takes two optional arguments:
+
+input_date_formats¶
+A list of formats used to attempt to convert a string to a valid datetime.date object.
+
+If no input_date_formats argument is provided, the default input formats for DateField are used.
+
+input_time_formats¶
+A list of formats used to attempt to convert a string to a valid datetime.time object.
+
+If no input_time_formats argument is provided, the default input formats for TimeField are used.
+
+Fields which handle relationships¶
+Two fields are available for representing relationships between models: ModelChoiceField and ModelMultipleChoiceField. Both of these fields require a single queryset parameter that is used to create the choices for the field. Upon form validation, these fields will place either one model object (in the case of ModelChoiceField) or multiple model objects (in the case of ModelMultipleChoiceField) into the cleaned_data dictionary of the form.
+
+For more complex uses, you can specify queryset=None when declaring the form field and then populate the queryset in the form’s __init__() method:
+
+class FooMultipleChoiceForm(forms.Form):
+    foo_select = forms.ModelMultipleChoiceField(queryset=None)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['foo_select'].queryset = ...
+Both ModelChoiceField and ModelMultipleChoiceField have an iterator attribute which specifies the class used to iterate over the queryset when generating choices. See Iterating relationship choices for details.
+
+ModelChoiceField¶
+class ModelChoiceField(**kwargs)¶
+Default widget: Select
+Empty value: None
+Normalizes to: A model instance.
+Validates that the given id exists in the queryset.
+Error message keys: required, invalid_choice
+Allows the selection of a single model object, suitable for representing a foreign key. Note that the default widget for ModelChoiceField becomes impractical when the number of entries increases. You should avoid using it for more than 100 items.
+
+A single argument is required:
+
+queryset¶
+A QuerySet of model objects from which the choices for the field are derived and which is used to validate the user’s selection. It’s evaluated when the form is rendered.
+
+ModelChoiceField also takes two optional arguments:
+
+empty_label¶
+By default the <select> widget used by ModelChoiceField will have an empty choice at the top of the list. You can change the text of this label (which is "---------" by default) with the empty_label attribute, or you can disable the empty label entirely by setting empty_label to None:
+
+# A custom empty label
+field1 = forms.ModelChoiceField(queryset=..., empty_label="(Nothing)")
+
+# No empty label
+field2 = forms.ModelChoiceField(queryset=..., empty_label=None)
+Note that if a ModelChoiceField is required and has a default initial value, no empty choice is created (regardless of the value of empty_label).
+
+to_field_name¶
+This optional argument is used to specify the field to use as the value of the choices in the field’s widget. Be sure it’s a unique field for the model, otherwise the selected value could match more than one object. By default it is set to None, in which case the primary key of each object will be used. For example:
+
+# No custom to_field_name
+field1 = forms.ModelChoiceField(queryset=...)
+would yield:
+
+<select id="id_field1" name="field1">
+<option value="obj1.pk">Object1</option>
+<option value="obj2.pk">Object2</option>
+...
+</select>
+and:
+
+# to_field_name provided
+field2 = forms.ModelChoiceField(queryset=..., to_field_name="name")
+would yield:
+
+<select id="id_field2" name="field2">
+<option value="obj1.name">Object1</option>
+<option value="obj2.name">Object2</option>
+...
+</select>
+ModelChoiceField also has the attribute:
+
+iterator¶
+The iterator class used to generate field choices from queryset. By default, ModelChoiceIterator.
+
+The __str__() method of the model will be called to generate string representations of the objects for use in the field’s choices. To provide customized representations, subclass ModelChoiceField and override label_from_instance. This method will receive a model object and should return a string suitable for representing it. For example:
+
+from django.forms import ModelChoiceField
+
+class MyModelChoiceField(ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "My Object #%i" % obj.id
+ModelMultipleChoiceField¶
+class ModelMultipleChoiceField(**kwargs)¶
+Default widget: SelectMultiple
+Empty value: An empty QuerySet (self.queryset.none())
+Normalizes to: A QuerySet of model instances.
+Validates that every id in the given list of values exists in the queryset.
+Error message keys: required, invalid_list, invalid_choice, invalid_pk_value
+The invalid_choice message may contain %(value)s and the invalid_pk_value message may contain %(pk)s, which will be substituted by the appropriate values.
+
+Allows the selection of one or more model objects, suitable for representing a many-to-many relation. As with ModelChoiceField, you can use label_from_instance to customize the object representations.
+
+A single argument is required:
+
+queryset¶
+Same as ModelChoiceField.queryset.
+
+Takes one optional argument:
+
+to_field_name¶
+Same as ModelChoiceField.to_field_name.
+
+ModelMultipleChoiceField also has the attribute:
+
+iterator¶
+Same as ModelChoiceField.iterator.
+
+Deprecated since version 3.1:
+The list message is deprecated, use invalid_list instead.
+
+Iterating relationship choices¶
+By default, ModelChoiceField and ModelMultipleChoiceField use ModelChoiceIterator to generate their field choices.
+
+When iterated, ModelChoiceIterator yields 2-tuple choices containing ModelChoiceIteratorValue instances as the first value element in each choice. ModelChoiceIteratorValue wraps the choice value whilst maintaining a reference to the source model instance that can be used in custom widget implementations, for example, to add data-* attributes to <option> elements.
+
+For example, consider the following models:
+
+from django.db import models
+
+class Topping(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(decimal_places=2, max_digits=6)
+
+    def __str__(self):
+        return self.name
+
+class Pizza(models.Model):
+    topping = models.ForeignKey(Topping, on_delete=models.CASCADE)
+You can use a Select widget subclass to include the value of Topping.price as the HTML attribute data-price for each <option> element:
+
+from django import forms
+
+class ToppingSelect(forms.Select):
+    def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
+        option = super().create_option(name, value, label, selected, index, subindex, attrs)
+        if value:
+            option['attrs']['data-price'] = value.instance.price
+        return option
+
+class PizzaForm(forms.ModelForm):
+    class Meta:
+        model = Pizza
+        fields = ['topping']
+        widgets = {'topping': ToppingSelect}
+This will render the Pizza.topping select as:
+
+<select id="id_topping" name="topping" required>
+<option value="" selected>---------</option>
+<option value="1" data-price="1.50">mushrooms</option>
+<option value="2" data-price="1.25">onions</option>
+<option value="3" data-price="1.75">peppers</option>
+<option value="4" data-price="2.00">pineapple</option>
+</select>
+For more advanced usage you may subclass ModelChoiceIterator in order to customize the yielded 2-tuple choices.
+
+ModelChoiceIterator¶
+class ModelChoiceIterator(field)¶
+The default class assigned to the iterator attribute of ModelChoiceField and ModelMultipleChoiceField. An iterable that yields 2-tuple choices from the queryset.
+
+A single argument is required:
+
+field¶
+The instance of ModelChoiceField or ModelMultipleChoiceField to iterate and yield choices.
+
+ModelChoiceIterator has the following method:
+
+__iter__()¶
+Yields 2-tuple choices, in the (value, label) format used by ChoiceField.choices. The first value element is a ModelChoiceIteratorValue instance.
+
+Changed in Django 3.1:
+In older versions, the first value element in the choice tuple is the field value itself, rather than a ModelChoiceIteratorValue instance. In most cases this proxies transparently but, if you need the field value itself, use the ModelChoiceIteratorValue.value attribute instead.
+
+ModelChoiceIteratorValue¶
+class ModelChoiceIteratorValue(value, instance)¶
+New in Django 3.1.
+Two arguments are required:
+
+value¶
+The value of the choice. This value is used to render the value attribute of an HTML <option> element.
+
+instance¶
+The model instance from the queryset. The instance can be accessed in custom ChoiceWidget.create_option() implementations to adjust the rendered HTML.
+
+ModelChoiceIteratorValue has the following method:
+
+__str__()¶
+Return value as a string to be rendered in HTML.
+
+Creating custom fields¶
+If the built-in Field classes don’t meet your needs, you can create custom Field classes. To do this, create a subclass of django.forms.Field. Its only requirements are that it implement a clean() method and that its __init__() method accept the core arguments mentioned above (required, label, initial, widget, help_text).
+
+You can also customize how a field will be accessed by overriding get_bound_field().`,
+        the_title: `Form fields In Django`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten.
+
+G.K. Chesterton by way of Neil Gaiman, Coraline
+
+I’m really excited we’re going on this journey together. This is a book on implementing interpreters for programming languages. It’s also a book on how to design a language worth implementing. It’s the book I wish I’d had when I first started getting into languages, and it’s the book I’ve been writing in my head for nearly a decade.
+
+To my friends and family, sorry I’ve been so absentminded!
+
+In these pages, we will walk step-by-step through two complete interpreters for a full-featured language. I assume this is your first foray into languages, so I’ll cover each concept and line of code you need to build a complete, usable, fast language implementation.
+
+In order to cram two full implementations inside one book without it turning into a doorstop, this text is lighter on theory than others. As we build each piece of the system, I will introduce the history and concepts behind it. I’ll try to get you familiar with the lingo so that if you ever find yourself at a cocktail party full of PL (programming language) researchers, you’ll fit in.
+
+Strangely enough, a situation I have found myself in multiple times. You wouldn’t believe how much some of them can drink.
+
+But we’re mostly going to spend our brain juice getting the language up and running. This is not to say theory isn’t important. Being able to reason precisely and formally about syntax and semantics is a vital skill when working on a language. But, personally, I learn best by doing. It’s hard for me to wade through paragraphs full of abstract concepts and really absorb them. But if I’ve coded something, run it, and debugged it, then I get it.
+
+Static type systems in particular require rigorous formal reasoning. Hacking on a type system has the same feel as proving a theorem in mathematics.
+
+It turns out this is no coincidence. In the early half of last century, Haskell Curry and William Alvin Howard showed that they are two sides of the same coin: the Curry-Howard isomorphism.
+
+That’s my goal for you. I want you to come away with a solid intuition of how a real language lives and breathes. My hope is that when you read other, more theoretical books later, the concepts there will firmly stick in your mind, adhered to this tangible substrate.
+
+1 . 1Why Learn This Stuff?
+Every introduction to every compiler book seems to have this section. I don’t know what it is about programming languages that causes such existential doubt. I don’t think ornithology books worry about justifying their existence. They assume the reader loves birds and start teaching.
+
+But programming languages are a little different. I suppose it is true that the odds of any of us creating a broadly successful, general-purpose programming language are slim. The designers of the world’s widely used languages could fit in a Volkswagen bus, even without putting the pop-top camper up. If joining that elite group was the only reason to learn languages, it would be hard to justify. Fortunately, it isn’t.
+
+1 . 1 . 1Little languages are everywhere
+For every successful general-purpose language, there are a thousand successful niche ones. We used to call them “little languages”, but inflation in the jargon economy led to the name “domain-specific languages”. These are pidgins tailor-built to a specific task. Think application scripting languages, template engines, markup formats, and configuration files.
+
+A random selection of little languages.
+
+A random selection of some little languages you might run into.
+
+Almost every large software project needs a handful of these. When you can, it’s good to reuse an existing one instead of rolling your own. Once you factor in documentation, debuggers, editor support, syntax highlighting, and all of the other trappings, doing it yourself becomes a tall order.
+
+But there’s still a good chance you’ll find yourself needing to whip up a parser or other tool when there isn’t an existing library that fits your needs. Even when you are reusing some existing implementation, you’ll inevitably end up needing to debug and maintain it and poke around in its guts.
+
+1 . 1 . 2Languages are great exercise
+Long distance runners sometimes train with weights strapped to their ankles or at high altitudes where the atmosphere is thin. When they later unburden themselves, the new relative ease of light limbs and oxygen-rich air enables them to run farther and faster.
+
+Implementing a language is a real test of programming skill. The code is complex and performance critical. You must master recursion, dynamic arrays, trees, graphs, and hash tables. You probably use hash tables at least in your day-to-day programming, but do you really understand them? Well, after we’ve crafted our own from scratch, I guarantee you will.
+
+While I intend to show you that an interpreter isn’t as daunting as you might believe, implementing one well is still a challenge. Rise to it, and you’ll come away a stronger programmer, and smarter about how you use data structures and algorithms in your day job.
+
+1 . 1 . 3One more reason
+This last reason is hard for me to admit, because it’s so close to my heart. Ever since I learned to program as a kid, I felt there was something magical about languages. When I first tapped out BASIC programs one key at a time I couldn’t conceive how BASIC itself was made.
+
+Later, the mixture of awe and terror on my college friends’ faces when talking about their compilers class was enough to convince me language hackers were a different breed of human—some sort of wizards granted privileged access to arcane arts.
+
+It’s a charming image, but it has a darker side. I didn’t feel like a wizard, so I was left thinking I lacked some inborn quality necessary to join the cabal. Though I’ve been fascinated by languages ever since I doodled made-up keywords in my school notebook, it took me decades to muster the courage to try to really learn them. That “magical” quality, that sense of exclusivity, excluded me.
+
+And its practitioners don’t hesitate to play up this image. Two of the seminal texts on programming languages feature a dragon and a wizard on their covers.
+
+When I did finally start cobbling together my own little interpreters, I quickly learned that, of course, there is no magic at all. It’s just code, and the people who hack on languages are just people.
+
+There are a few techniques you don’t often encounter outside of languages, and some parts are a little difficult. But not more difficult than other obstacles you’ve overcome. My hope is that if you’ve felt intimidated by languages and this book helps you overcome that fear, maybe I’ll leave you just a tiny bit braver than you were before.
+
+And, who knows, maybe you will make the next great language. Someone has to.
+
+1 . 2How the Book Is Organized
+This book is broken into three parts. You’re reading the first one now. It’s a couple of chapters to get you oriented, teach you some of the lingo that language hackers use, and introduce you to Lox, the language we’ll be implementing.
+
+Each of the other two parts builds one complete Lox interpreter. Within those parts, each chapter is structured the same way. The chapter takes a single language feature, teaches you the concepts behind it, and walks you through an implementation.
+
+It took a good bit of trial and error on my part, but I managed to carve up the two interpreters into chapter-sized chunks that build on the previous chapters but require nothing from later ones. From the very first chapter, you’ll have a working program you can run and play with. With each passing chapter, it grows increasingly full-featured until you eventually have a complete language.
+
+Aside from copious, scintillating English prose, chapters have a few other delightful facets:
+
+1 . 2 . 1The code
+We’re about crafting interpreters, so this book contains real code. Every single line of code needed is included, and each snippet tells you where to insert it in your ever-growing implementation.
+
+Many other language books and language implementations use tools like Lex and Yacc, so-called compiler-compilers, that automatically generate some of the source files for an implementation from some higher-level description. There are pros and cons to tools like those, and strong opinions—some might say religious convictions—on both sides.
+
+Yacc is a tool that takes in a grammar file and produces a source file for a compiler, so it’s sort of like a “compiler” that outputs a compiler, which is where we get the term “compiler-compiler”.
+
+Yacc wasn’t the first of its ilk, which is why it’s named “Yacc”—Yet Another Compiler-Compiler. A later similar tool is Bison, named as a pun on the pronunciation of Yacc like “yak”.
+
+A yak.
+If you find all of these little self-references and puns charming and fun, you’ll fit right in here. If not, well, maybe the language nerd sense of humor is an acquired taste.
+
+We will abstain from using them here. I want to ensure there are no dark corners where magic and confusion can hide, so we’ll write everything by hand. As you’ll see, it’s not as bad as it sounds, and it means you really will understand each line of code and how both interpreters work.
+
+A book has different constraints from the “real world” and so the coding style here might not always reflect the best way to write maintainable production software. If I seem a little cavalier about, say, omitting private or declaring a global variable, understand I do so to keep the code easier on your eyes. The pages here aren’t as wide as your IDE and every character counts.
+
+Also, the code doesn’t have many comments. That’s because each handful of lines is surrounded by several paragraphs of honest-to-God prose explaining it. When you write a book to accompany your program, you are welcome to omit comments too. Otherwise, you should probably use // a little more than I do.
+
+While the book contains every line of code and teaches what each means, it does not describe the machinery needed to compile and run the interpreter. I assume you can slap together a makefile or a project in your IDE of choice in order to get the code to run. Those kinds of instructions get out of date quickly, and I want this book to age like XO brandy, not backyard hooch.
+
+1 . 2 . 2Snippets
+Since the book contains literally every line of code needed for the implementations, the snippets are quite precise. Also, because I try to keep the program in a runnable state even when major features are missing, sometimes we add temporary code that gets replaced in later snippets.
+
+A snippet with all the bells and whistles looks like this:
+
+      default:
+lox/Scanner.java
+in scanToken()
+replace 1 line
+        if (isDigit(c)) {
+          number();
+        } else {
+          Lox.error(line, "Unexpected character.");
+        }
+        break;
+In the center, you have the new code to add. It may have a few faded out lines above or below to show where it goes in the existing surrounding code. There is also a little blurb telling you in which file and where to place the snippet. If that blurb says “replace _ lines”, there is some existing code between the faded lines that you need to remove and replace with the new snippet.
+
+1 . 2 . 3Asides
+Asides contain biographical sketches, historical background, references to related topics, and suggestions of other areas to explore. There’s nothing that you need to know in them to understand later parts of the book, so you can skip them if you want. I won’t judge you, but I might be a little sad.
+
+Well, some asides do, at least. Most of them are just dumb jokes and amateurish drawings.
+
+1 . 2 . 4Challenges
+Each chapter ends with a few exercises. Unlike textbook problem sets, which tend to review material you already covered, these are to help you learn more than what’s in the chapter. They force you to step off the guided path and explore on your own. They will make you research other languages, figure out how to implement features, or otherwise get you out of your comfort zone.
+
+Vanquish the challenges and you’ll come away with a broader understanding and possibly a few bumps and scrapes. Or skip them if you want to stay inside the comfy confines of the tour bus. It’s your book.
+
+A word of warning: the challenges often ask you to make changes to the interpreter you’re building. You’ll want to implement those in a copy of your code. The later chapters assume your interpreter is in a pristine (“unchallenged”?) state.
+
+1 . 2 . 5Design notes
+Most “programming language” books are strictly programming language implementation books. They rarely discuss how one might happen to design the language being implemented. Implementation is fun because it is so precisely defined. We programmers seem to have an affinity for things that are black and white, ones and zeroes.
+
+I know a lot of language hackers whose careers are based on this. You slide a language spec under their door, wait a few months, and code and benchmark results come out.
+
+Personally, I think the world needs only so many implementations of FORTRAN 77. At some point, you find yourself designing a new language. Once you start playing that game, then the softer, human side of the equation becomes paramount. Things like which features are easy to learn, how to balance innovation and familiarity, what syntax is more readable and to whom.
+
+Hopefully your new language doesn’t hardcode assumptions about the width of a punched card into its grammar.
+
+All of that stuff profoundly affects the success of your new language. I want your language to succeed, so in some chapters I end with a “design note”, a little essay on some corner of the human aspect of programming languages. I’m no expert on this—I don’t know if anyone really is—so take these with a large pinch of salt. That should make them tastier food for thought, which is my main aim.
+
+1 . 3The First Interpreter
+We’ll write our first interpreter, jlox, in Java. The focus is on concepts. We’ll write the simplest, cleanest code we can to correctly implement the semantics of the language. This will get us comfortable with the basic techniques and also hone our understanding of exactly how the language is supposed to behave.
+
+The book uses Java and C, but readers have ported the code to many other languages. If the languages I picked aren’t your bag, take a look at those.
+
+Java is a great language for this. It’s high level enough that we don’t get overwhelmed by fiddly implementation details, but it’s still pretty explicit. Unlike in scripting languages, there tends to be less complex machinery hiding under the hood, and you’ve got static types to see what data structures you’re working with.
+
+I also chose Java specifically because it is an object-oriented language. That paradigm swept the programming world in the ’90s and is now the dominant way of thinking for millions of programmers. Odds are good you’re already used to organizing code into classes and methods, so we’ll keep you in that comfort zone.
+
+While academic language folks sometimes look down on object-oriented languages, the reality is that they are widely used even for language work. GCC and LLVM are written in C++, as are most JavaScript virtual machines. Object-oriented languages are ubiquitous, and the tools and compilers for a language are often written in the same language.
+
+A compiler reads files in one language, translates them, and outputs files in another language. You can implement a compiler in any language, including the same language it compiles, a process called “self-hosting”.
+
+You can’t compile your compiler using itself yet, but if you have another compiler for your language written in some other language, you use that one to compile your compiler once. Now you can use the compiled version of your own compiler to compile future versions of itself, and you can discard the original one compiled from the other compiler. This is called “bootstrapping”, from the image of pulling yourself up by your own bootstraps.
+
+Fact: This is the primary mode of transportation of the American cowboy.
+And, finally, Java is hugely popular. That means there’s a good chance you already know it, so there’s less for you to learn to get going in the book. If you aren’t that familiar with Java, don’t freak out. I try to stick to a fairly minimal subset of it. I use the diamond operator from Java 7 to make things a little more terse, but that’s about it as far as “advanced” features go. If you know another object-oriented language, like C# or C++, you can muddle through.
+
+By the end of part II, we’ll have a simple, readable implementation. It’s not very fast, but it’s correct. However, it work by taking advantage of the Java virtual machine’s own runtime facilities. We want to learn how Java itself implements those things.
+
+1 . 4The Second Interpreter
+So in the next part, we start all over again, but this time in C. C is the perfect language for understanding how an implementation really works, all the way down to the bytes in memory and the code flowing through the CPU.
+
+A big reason that we’re using C is so I can show you things C is particularly good at, but that does mean you’ll need to be pretty comfortable with it. You don’t have to be the reincarnation of Dennis Ritchie, but you shouldn’t be spooked by pointers either.
+
+If you aren’t there yet, pick up an introductory book on C and chew through it, then come back here when you’re done. In return, you’ll come away from this book an even stronger C programmer. That’s useful given how many language implementations are written in C: Lua, CPython, and Ruby’s MRI, to name a few.
+
+In our C interpreter, clox, we are forced to implement for ourselves all the things Java gave us for free. We’ll write our own dynamic array and hash table. We’ll decide how objects are represented in memory, and build a garbage collector to reclaim them.
+
+I pronounce the name like “sea-locks”, but you can say it “clocks” or even “clochs”, where you pronounce the “x” like the Greeks do if it makes you happy.
+
+Our Java implementation was focused on being correct. Now that we have that down, we’ll turn to also being fast. Our C interpreter will contain a compiler that translates Lox to an efficient bytecode representation (don’t worry, I’ll get into what that means soon), which it then executes. This is the same technique used by implementations of Lua, Python, Ruby, PHP, and many other successful languages.
+
+Did you think this was just an interpreter book? It’s a compiler book as well. Two for the price of one!
+
+We’ll even try our hand at benchmarking and optimization. By the end, we’ll have a robust, accurate, fast interpreter for our language, able to keep up with other professional caliber implementations out there. Not bad for one book and a few thousand lines of code.
+
+CHALLENGES
+There are at least six domain-specific languages used in the little system I cobbled together to write and publish this book. What are they?
+
+Get a “Hello, world!” program written and running in Java. Set up whatever makefiles or IDE projects you need to get it working. If you have a debugger, get comfortable with it and step through your program as it runs.
+
+Do the same thing for C. To get some practice with pointers, define a doubly linked list of heap-allocated strings. Write functions to insert, find, and delete items from it. Test them.
+
+DESIGN NOTE: WHAT’S IN A NAME?
+One of the hardest challenges in writing this book was coming up with a name for the language it implements. I went through pages of candidates before I found one that worked. As you’ll discover on the first day you start building your own language, naming is deviously hard. A good name satisfies a few criteria:
+
+It isn’t in use. You can run into all sorts of trouble, legal and social, if you inadvertently step on someone else’s name.
+
+It’s easy to pronounce. If things go well, hordes of people will be saying and writing your language’s name. Anything longer than a couple of syllables or a handful of letters will annoy them to no end.
+
+It’s distinct enough to search for. People will Google your language’s name to learn about it, so you want a word that’s rare enough that most results point to your docs. Though, with the amount of AI search engines are packing today, that’s less of an issue. Still, you won’t be doing your users any favors if you name your language “for”.
+
+It doesn’t have negative connotations across a number of cultures. This is hard to be on guard for, but it’s worth considering. The designer of Nimrod ended up renaming his language to “Nim” because too many people remember that Bugs Bunny used “Nimrod” as an insult. (Bugs was using it ironically.)
+
+If your potential name makes it through that gauntlet, keep it. Don’t get hung up on trying to find an appellation that captures the quintessence of your language. If the names of the world’s other successful languages teach us anything, it’s that the name doesn’t matter much. All you need is a reasonably unique token.`,
+        the_title: `Crafting Interpreters`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `You must have a map, no matter how rough. Otherwise you wander all over the place. In The Lord of the Rings I never made anyone go farther than he could on a given day.
+
+J. R. R. Tolkien
+
+We don’t want to wander all over the place, so before we set off, let’s scan the territory charted by previous language implementers. It will help us understand where we are going and the alternate routes others have taken.
+
+First, let me establish a shorthand. Much of this book is about a language’s implementation, which is distinct from the language itself in some sort of Platonic ideal form. Things like “stack”, “bytecode”, and “recursive descent”, are nuts and bolts one particular implementation might use. From the user’s perspective, as long as the resulting contraption faithfully follows the language’s specification, it’s all implementation detail.
+
+We’re going to spend a lot of time on those details, so if I have to write “language implementation” every single time I mention them, I’ll wear my fingers off. Instead, I’ll use “language” to refer to either a language or an implementation of it, or both, unless the distinction matters.
+
+2 . 1The Parts of a Language
+Engineers have been building programming languages since the Dark Ages of computing. As soon as we could talk to computers, we discovered doing so was too hard, and we enlisted their help. I find it fascinating that even though today’s machines are literally a million times faster and have orders of magnitude more storage, the way we build programming languages is virtually unchanged.
+
+Though the area explored by language designers is vast, the trails they’ve carved through it are few. Not every language takes the exact same path—some take a shortcut or two—but otherwise they are reassuringly similar, from Rear Admiral Grace Hopper’s first COBOL compiler all the way to some hot, new, transpile-to-JavaScript language whose “documentation” consists entirely of a single, poorly edited README in a Git repository somewhere.
+
+There are certainly dead ends, sad little cul-de-sacs of CS papers with zero citations and now-forgotten optimizations that only made sense when memory was measured in individual bytes.
+
+I visualize the network of paths an implementation may choose as climbing a mountain. You start off at the bottom with the program as raw source text, literally just a string of characters. Each phase analyzes the program and transforms it to some higher-level representation where the semantics—what the author wants the computer to do—become more apparent.
+
+Eventually we reach the peak. We have a bird’s-eye view of the user’s program and can see what their code means. We begin our descent down the other side of the mountain. We transform this highest-level representation down to successively lower-level forms to get closer and closer to something we know how to make the CPU actually execute.
+
+The branching paths a language may take over the mountain.
+Let’s trace through each of those trails and points of interest. Our journey begins on the left with the bare text of the user’s source code:
+
+var average = (min + max) / 2;
+2 . 1 . 1Scanning
+The first step is scanning, also known as lexing, or (if you’re trying to impress someone) lexical analysis. They all mean pretty much the same thing. I like “lexing” because it sounds like something an evil supervillain would do, but I’ll use “scanning” because it seems to be marginally more commonplace.
+
+A scanner (or lexer) takes in the linear stream of characters and chunks them together into a series of something more akin to “words”. In programming languages, each of these words is called a token. Some tokens are single characters, like ( and ,. Others may be several characters long, like numbers (123), string literals ("hi!"), and identifiers (min).
+
+“Lexical” comes from the Greek root “lex”, meaning “word”.
+
+Some characters in a source file don’t actually mean anything. Whitespace is often insignificant, and comments, by definition, are ignored by the language. The scanner usually discards these, leaving a clean sequence of meaningful tokens.
+
+[var] [average] [=] [(] [min] [+] [max] [)] [/] [2] [;]
+2 . 1 . 2Parsing
+The next step is parsing. This is where our syntax gets a grammar—the ability to compose larger expressions and statements out of smaller parts. Did you ever diagram sentences in English class? If so, you’ve done what a parser does, except that English has thousands and thousands of “keywords” and an overflowing cornucopia of ambiguity. Programming languages are much simpler.
+
+A parser takes the flat sequence of tokens and builds a tree structure that mirrors the nested nature of the grammar. These trees have a couple of different names—parse tree or abstract syntax tree—depending on how close to the bare syntactic structure of the source language they are. In practice, language hackers usually call them syntax trees, ASTs, or often just trees.
+
+An abstract syntax tree.
+Parsing has a long, rich history in computer science that is closely tied to the artificial intelligence community. Many of the techniques used today to parse programming languages were originally conceived to parse human languages by AI researchers who were trying to get computers to talk to us.
+
+It turns out human languages were too messy for the rigid grammars those parsers could handle, but they were a perfect fit for the simpler artificial grammars of programming languages. Alas, we flawed humans still manage to use those simple grammars incorrectly, so the parser’s job also includes letting us know when we do by reporting syntax errors.
+
+2 . 1 . 3Static analysis
+The first two stages are pretty similar across all implementations. Now, the individual characteristics of each language start coming into play. At this point, we know the syntactic structure of the code—things like which expressions are nested in which—but we don’t know much more than that.
+
+In an expression like a + b, we know we are adding a and b, but we don’t know what those names refer to. Are they local variables? Global? Where are they defined?
+
+The first bit of analysis that most languages do is called binding or resolution. For each identifier, we find out where that name is defined and wire the two together. This is where scope comes into play—the region of source code where a certain name can be used to refer to a certain declaration.
+
+If the language is statically typed, this is when we type check. Once we know where a and b are declared, we can also figure out their types. Then if those types don’t support being added to each other, we report a type error.
+
+The language we’ll build in this book is dynamically typed, so it will do its type checking later, at runtime.
+
+Take a deep breath. We have attained the summit of the mountain and a sweeping view of the user’s program. All this semantic insight that is visible to us from analysis needs to be stored somewhere. There are a few places we can squirrel it away:
+
+Often, it gets stored right back as attributes on the syntax tree itself—extra fields in the nodes that aren’t initialized during parsing but get filled in later.
+
+Other times, we may store data in a lookup table off to the side. Typically, the keys to this table are identifiers—names of variables and declarations. In that case, we call it a symbol table and the values it associates with each key tell us what that identifier refers to.
+
+The most powerful bookkeeping tool is to transform the tree into an entirely new data structure that more directly expresses the semantics of the code. That’s the next section.
+
+Everything up to this point is considered the front end of the implementation. You might guess everything after this is the back end, but no. Back in the days of yore when “front end” and “back end” were coined, compilers were much simpler. Later researchers invented new phases to stuff between the two halves. Rather than discard the old terms, William Wulf and company lumped those new phases into the charming but spatially paradoxical name middle end.
+
+2 . 1 . 4Intermediate representations
+You can think of the compiler as a pipeline where each stage’s job is to organize the data representing the user’s code in a way that makes the next stage simpler to implement. The front end of the pipeline is specific to the source language the program is written in. The back end is concerned with the final architecture where the program will run.
+
+In the middle, the code may be stored in some intermediate representation (IR) that isn’t tightly tied to either the source or destination forms (hence “intermediate”). Instead, the IR acts as an interface between these two languages.
+
+There are a few well-established styles of IRs out there. Hit your search engine of choice and look for “control flow graph”, “static single-assignment”, “continuation-passing style”, and “three-address code”.
+
+This lets you support multiple source languages and target platforms with less effort. Say you want to implement Pascal, C, and Fortran compilers, and you want to target x86, ARM, and, I dunno, SPARC. Normally, that means you’re signing up to write nine full compilers: Pascal→x86, C→ARM, and every other combination.
+
+A shared intermediate representation reduces that dramatically. You write one front end for each source language that produces the IR. Then one back end for each target architecture. Now you can mix and match those to get every combination.
+
+If you’ve ever wondered how GCC supports so many crazy languages and architectures, like Modula-3 on Motorola 68k, now you know. Language front ends target one of a handful of IRs, mainly GIMPLE and RTL. Target back ends like the one for 68k then take those IRs and produce native code.
+
+There’s another big reason we might want to transform the code into a form that makes the semantics more apparent . . .
+
+2 . 1 . 5Optimization
+Once we understand what the user’s program means, we are free to swap it out with a different program that has the same semantics but implements them more efficiently—we can optimize it.
+
+A simple example is constant folding: if some expression always evaluates to the exact same value, we can do the evaluation at compile time and replace the code for the expression with its result. If the user typed in this:
+
+pennyArea = 3.14159 * (0.75 / 2) * (0.75 / 2);
+we could do all of that arithmetic in the compiler and change the code to:
+
+pennyArea = 0.4417860938;
+Optimization is a huge part of the programming language business. Many language hackers spend their entire careers here, squeezing every drop of performance they can out of their compilers to get their benchmarks a fraction of a percent faster. It can become a sort of obsession.
+
+We’re mostly going to hop over that rathole in this book. Many successful languages have surprisingly few compile-time optimizations. For example, Lua and CPython generate relatively unoptimized code, and focus most of their performance effort on the runtime.
+
+If you can’t resist poking your foot into that hole, some keywords to get you started are “constant propagation”, “common subexpression elimination”, “loop invariant code motion”, “global value numbering”, “strength reduction”, “scalar replacement of aggregates”, “dead code elimination”, and “loop unrolling”.
+
+2 . 1 . 6Code generation
+We have applied all of the optimizations we can think of to the user’s program. The last step is converting it to a form the machine can actually run. In other words, generating code (or code gen), where “code” here usually refers to the kind of primitive assembly-like instructions a CPU runs and not the kind of “source code” a human might want to read.
+
+Finally, we are in the back end, descending the other side of the mountain. From here on out, our representation of the code becomes more and more primitive, like evolution run in reverse, as we get closer to something our simple-minded machine can understand.
+
+We have a decision to make. Do we generate instructions for a real CPU or a virtual one? If we generate real machine code, we get an executable that the OS can load directly onto the chip. Native code is lightning fast, but generating it is a lot of work. Today’s architectures have piles of instructions, complex pipelines, and enough historical baggage to fill a 747’s luggage bay.
+
+Speaking the chip’s language also means your compiler is tied to a specific architecture. If your compiler targets x86 machine code, it’s not going to run on an ARM device. All the way back in the ’60s, during the Cambrian explosion of computer architectures, that lack of portability was a real obstacle.
+
+For example, the AAD (“ASCII Adjust AX Before Division”) instruction lets you perform division, which sounds useful. Except that instruction takes, as operands, two binary-coded decimal digits packed into a single 16-bit register. When was the last time you needed BCD on a 16-bit machine?
+
+To get around that, hackers like Martin Richards and Niklaus Wirth, of BCPL and Pascal fame, respectively, made their compilers produce virtual machine code. Instead of instructions for some real chip, they produced code for a hypothetical, idealized machine. Wirth called this p-code for portable, but today, we generally call it bytecode because each instruction is often a single byte long.
+
+These synthetic instructions are designed to map a little more closely to the language’s semantics, and not be so tied to the peculiarities of any one computer architecture and its accumulated historical cruft. You can think of it like a dense, binary encoding of the language’s low-level operations.
+
+2 . 1 . 7Virtual machine
+If your compiler produces bytecode, your work isn’t over once that’s done. Since there is no chip that speaks that bytecode, it’s your job to translate. Again, you have two options. You can write a little mini-compiler for each target architecture that converts the bytecode to native code for that machine. You still have to do work for each chip you support, but this last stage is pretty simple and you get to reuse the rest of the compiler pipeline across all of the machines you support. You’re basically using your bytecode as an intermediate representation.
+
+The basic principle here is that the farther down the pipeline you push the architecture-specific work, the more of the earlier phases you can share across architectures.
+
+There is a tension, though. Many optimizations, like register allocation and instruction selection, work best when they know the strengths and capabilities of a specific chip. Figuring out which parts of your compiler can be shared and which should be target-specific is an art.
+
+Or you can write a virtual machine (VM), a program that emulates a hypothetical chip supporting your virtual architecture at runtime. Running bytecode in a VM is slower than translating it to native code ahead of time because every instruction must be simulated at runtime each time it executes. In return, you get simplicity and portability. Implement your VM in, say, C, and you can run your language on any platform that has a C compiler. This is how the second interpreter we build in this book works.
+
+The term “virtual machine” also refers to a different kind of abstraction. A system virtual machine emulates an entire hardware platform and operating system in software. This is how you can play Windows games on your Linux machine, and how cloud providers give customers the user experience of controlling their own “server” without needing to physically allocate separate computers for each user.
+
+The kind of VMs we’ll talk about in this book are language virtual machines or process virtual machines if you want to be unambiguous.
+
+2 . 1 . 8Runtime
+We have finally hammered the user’s program into a form that we can execute. The last step is running it. If we compiled it to machine code, we simply tell the operating system to load the executable and off it goes. If we compiled it to bytecode, we need to start up the VM and load the program into that.
+
+In both cases, for all but the basest of low-level languages, we usually need some services that our language provides while the program is running. For example, if the language automatically manages memory, we need a garbage collector going in order to reclaim unused bits. If our language supports “instance of” tests so you can see what kind of object you have, then we need some representation to keep track of the type of each object during execution.
+
+All of this stuff is going at runtime, so it’s called, appropriately, the runtime. In a fully compiled language, the code implementing the runtime gets inserted directly into the resulting executable. In, say, Go, each compiled application has its own copy of Go’s runtime directly embedded in it. If the language is run inside an interpreter or VM, then the runtime lives there. This is how most implementations of languages like Java, Python, and JavaScript work.
+
+2 . 2Shortcuts and Alternate Routes
+That’s the long path covering every possible phase you might implement. Many languages do walk the entire route, but there are a few shortcuts and alternate paths.
+
+2 . 2 . 1Single-pass compilers
+Some simple compilers interleave parsing, analysis, and code generation so that they produce output code directly in the parser, without ever allocating any syntax trees or other IRs. These single-pass compilers restrict the design of the language. You have no intermediate data structures to store global information about the program, and you don’t revisit any previously parsed part of the code. That means as soon as you see some expression, you need to know enough to correctly compile it.
+
+Syntax-directed translation is a structured technique for building these all-at-once compilers. You associate an action with each piece of the grammar, usually one that generates output code. Then, whenever the parser matches that chunk of syntax, it executes the action, building up the target code one rule at a time.
+
+Pascal and C were designed around this limitation. At the time, memory was so precious that a compiler might not even be able to hold an entire source file in memory, much less the whole program. This is why Pascal’s grammar requires type declarations to appear first in a block. It’s why in C you can’t call a function above the code that defines it unless you have an explicit forward declaration that tells the compiler what it needs to know to generate code for a call to the later function.
+
+2 . 2 . 2Tree-walk interpreters
+Some programming languages begin executing code right after parsing it to an AST (with maybe a bit of static analysis applied). To run the program, the interpreter traverses the syntax tree one branch and leaf at a time, evaluating each node as it goes.
+
+This implementation style is common for student projects and little languages, but is not widely used for general-purpose languages since it tends to be slow. Some people use “interpreter” to mean only these kinds of implementations, but others define that word more generally, so I’ll use the inarguably explicit “tree-walk interpreter” to refer to these. Our first interpreter rolls this way.
+
+A notable exception is early versions of Ruby, which were tree walkers. At 1.9, the canonical implementation of Ruby switched from the original MRI (Matz’s Ruby Interpreter) to Koichi Sasada’s YARV (Yet Another Ruby VM). YARV is a bytecode virtual machine.
+
+2 . 2 . 3Transpilers
+Writing a complete back end for a language can be a lot of work. If you have some existing generic IR to target, you could bolt your front end onto that. Otherwise, it seems like you’re stuck. But what if you treated some other source language as if it were an intermediate representation?
+
+You write a front end for your language. Then, in the back end, instead of doing all the work to lower the semantics to some primitive target language, you produce a string of valid source code for some other language that’s about as high level as yours. Then, you use the existing compilation tools for that language as your escape route off the mountain and down to something you can execute.
+
+They used to call this a source-to-source compiler or a transcompiler. After the rise of languages that compile to JavaScript in order to run in the browser, they’ve affected the hipster sobriquet transpiler.
+
+The first transcompiler, XLT86, translated 8080 assembly into 8086 assembly. That might seem straightforward, but keep in mind the 8080 was an 8-bit chip and the 8086 a 16-bit chip that could use each register as a pair of 8-bit ones. XLT86 did data flow analysis to track register usage in the source program and then efficiently map it to the register set of the 8086.
+
+It was written by Gary Kildall, a tragic hero of computer science if there ever was one. One of the first people to recognize the promise of microcomputers, he created PL/M and CP/M, the first high-level language and OS for them.
+
+He was a sea captain, business owner, licensed pilot, and motorcyclist. A TV host with the Kris Kristofferson-esque look sported by dashing bearded dudes in the ’80s. He took on Bill Gates and, like many, lost, before meeting his end in a biker bar under mysterious circumstances. He died too young, but sure as hell lived before he did.
+
+While the first transcompiler translated one assembly language to another, today, most transpilers work on higher-level languages. After the viral spread of UNIX to machines various and sundry, there began a long tradition of compilers that produced C as their output language. C compilers were available everywhere UNIX was and produced efficient code, so targeting C was a good way to get your language running on a lot of architectures.
+
+Web browsers are the “machines” of today, and their “machine code” is JavaScript, so these days it seems almost every language out there has a compiler that targets JS since that’s the main way to get your code running in a browser.
+
+JS used to be the only way to execute code in a browser. Thanks to WebAssembly, compilers now have a second, lower-level language they can target that runs on the web.
+
+The front end—scanner and parser—of a transpiler looks like other compilers. Then, if the source language is only a simple syntactic skin over the target language, it may skip analysis entirely and go straight to outputting the analogous syntax in the destination language.
+
+If the two languages are more semantically different, you’ll see more of the typical phases of a full compiler including analysis and possibly even optimization. Then, when it comes to code generation, instead of outputting some binary language like machine code, you produce a string of grammatically correct source (well, destination) code in the target language.
+
+Either way, you then run that resulting code through the output language’s existing compilation pipeline, and you’re good to go.
+
+2 . 2 . 4Just-in-time compilation
+This last one is less a shortcut and more a dangerous alpine scramble best reserved for experts. The fastest way to execute code is by compiling it to machine code, but you might not know what architecture your end user’s machine supports. What to do?
+
+You can do the same thing that the HotSpot Java Virtual Machine (JVM), Microsoft’s Common Language Runtime (CLR), and most JavaScript interpreters do. On the end user’s machine, when the program is loaded—either from source in the case of JS, or platform-independent bytecode for the JVM and CLR—you compile it to native for the architecture their computer supports. Naturally enough, this is called just-in-time compilation. Most hackers just say “JIT”, pronounced like it rhymes with “fit”.
+
+The most sophisticated JITs insert profiling hooks into the generated code to see which regions are most performance critical and what kind of data is flowing through them. Then, over time, they will automatically recompile those hot spots with more advanced optimizations.
+
+This is, of course, exactly where the HotSpot JVM gets its name.
+
+2 . 3Compilers and Interpreters
+Now that I’ve stuffed your head with a dictionary’s worth of programming language jargon, we can finally address a question that’s plagued coders since time immemorial: What’s the difference between a compiler and an interpreter?
+
+It turns out this is like asking the difference between a fruit and a vegetable. That seems like a binary either-or choice, but actually “fruit” is a botanical term and “vegetable” is culinary. One does not strictly imply the negation of the other. There are fruits that aren’t vegetables (apples) and vegetables that aren’t fruits (carrots), but also edible plants that are both fruits and vegetables, like tomatoes.
+
+
+A Venn diagram of edible plants
+Peanuts (which are not even nuts) and cereals like wheat are actually fruit, but I got this drawing wrong. What can I say, I’m a software engineer, not a botanist. I should probably erase the little peanut guy, but he’s so cute that I can’t bear to.
+
+Now pine nuts, on the other hand, are plant-based foods that are neither fruits nor vegetables. At least as far as I can tell.
+
+So, back to languages:
+
+Compiling is an implementation technique that involves translating a source language to some other—usually lower-level—form. When you generate bytecode or machine code, you are compiling. When you transpile to another high-level language, you are compiling too.
+
+When we say a language implementation “is a compiler”, we mean it translates source code to some other form but doesn’t execute it. The user has to take the resulting output and run it themselves.
+
+Conversely, when we say an implementation “is an interpreter”, we mean it takes in source code and executes it immediately. It runs programs “from source”.
+
+Like apples and oranges, some implementations are clearly compilers and not interpreters. GCC and Clang take your C code and compile it to machine code. An end user runs that executable directly and may never even know which tool was used to compile it. So those are compilers for C.
+
+In older versions of Matz’s canonical implementation of Ruby, the user ran Ruby from source. The implementation parsed it and executed it directly by traversing the syntax tree. No other translation occurred, either internally or in any user-visible form. So this was definitely an interpreter for Ruby.
+
+But what of CPython? When you run your Python program using it, the code is parsed and converted to an internal bytecode format, which is then executed inside the VM. From the user’s perspective, this is clearly an interpreter—they run their program from source. But if you look under CPython’s scaly skin, you’ll see that there is definitely some compiling going on.
+
+The answer is that it is both. CPython is an interpreter, and it has a compiler. In practice, most scripting languages work this way, as you can see:
+
+The Go tool is even more of a horticultural curiosity. If you run go build, it compiles your Go source code to machine code and stops. If you type go run, it does that, then immediately executes the generated executable.
+
+So go is a compiler (you can use it as a tool to compile code without running it), is an interpreter (you can invoke it to immediately run a program from source), and also has a compiler (when you use it as an interpreter, it is still compiling internally).
+
+A Venn diagram of compilers and interpreters
+That overlapping region in the center is where our second interpreter lives too, since it internally compiles to bytecode. So while this book is nominally about interpreters, we’ll cover some compilation too.
+
+2 . 4Our Journey
+That’s a lot to take in all at once. Don’t worry. This isn’t the chapter where you’re expected to understand all of these pieces and parts. I just want you to know that they are out there and roughly how they fit together.
+
+This map should serve you well as you explore the territory beyond the guided path we take in this book. I want to leave you yearning to strike out on your own and wander all over that mountain.
+
+But, for now, it’s time for our own journey to begin. Tighten your bootlaces, cinch up your pack, and come along. From here on out, all you need to focus on is the path in front of you.
+
+Henceforth, I promise to tone down the whole mountain metaphor thing.
+
+CHALLENGES
+Pick an open source implementation of a language you like. Download the source code and poke around in it. Try to find the code that implements the scanner and parser. Are they handwritten, or generated using tools like Lex and Yacc? (.l or .y files usually imply the latter.)
+
+Just-in-time compilation tends to be the fastest way to implement dynamically typed languages, but not all of them use it. What reasons are there to not JIT?
+
+Most Lisp implementations that compile to C also contain an interpreter that lets them execute Lisp code on the fly as well. Why?`,
+        the_title: `A Map of the Territory`,
     },
     {
-        the_body: ``,
-        the_title: ``,
+        the_body: `What nicer thing can you do for somebody than make them breakfast?
+
+Anthony Bourdain
+
+We’ll spend the rest of this book illuminating every dark and sundry corner of the Lox language, but it seems cruel to have you immediately start grinding out code for the interpreter without at least a glimpse of what we’re going to end up with.
+
+At the same time, I don’t want to drag you through reams of language lawyering and specification-ese before you get to touch your text editor. So this will be a gentle, friendly introduction to Lox. It will leave out a lot of details and edge cases. We’ve got plenty of time for those later.
+
+A tutorial isn’t very fun if you can’t try the code out yourself. Alas, you don’t have a Lox interpreter yet, since you haven’t built one!
+
+Fear not. You can use mine.
+
+3 . 1Hello, Lox
+Here’s your very first taste of Lox:
+
+Your first taste of Lox, the language, that is. I don’t know if you’ve ever had the cured, cold-smoked salmon before. If not, give it a try too.
+
+// Your first Lox program!
+print "Hello, world!";
+As that // line comment and the trailing semicolon imply, Lox’s syntax is a member of the C family. (There are no parentheses around the string because print is a built-in statement, and not a library function.)
+
+Now, I won’t claim that C has a great syntax. If we wanted something elegant, we’d probably mimic Pascal or Smalltalk. If we wanted to go full Scandinavian-furniture-minimalism, we’d do a Scheme. Those all have their virtues.
+
+I’m surely biased, but I think Lox’s syntax is pretty clean. C’s most egregious grammar problems are around types. Dennis Ritchie had this idea called “declaration reflects use”, where variable declarations mirror the operations you would have to perform on the variable to get to a value of the base type. Clever idea, but I don’t think it worked out great in practice.
+
+Lox doesn’t have static types, so we avoid that.
+
+What C-like syntax has instead is something you’ll often find more valuable in a language: familiarity. I know you are already comfortable with that style because the two languages we’ll be using to implement Lox—Java and C—also inherit it. Using a similar syntax for Lox gives you one less thing to learn.
+
+3 . 2A High-Level Language
+While this book ended up bigger than I was hoping, it’s still not big enough to fit a huge language like Java in it. In order to fit two complete implementations of Lox in these pages, Lox itself has to be pretty compact.
+
+When I think of languages that are small but useful, what comes to mind are high-level “scripting” languages like JavaScript, Scheme, and Lua. Of those three, Lox looks most like JavaScript, mainly because most C-syntax languages do. As we’ll learn later, Lox’s approach to scoping hews closely to Scheme. The C flavor of Lox we’ll build in Part III is heavily indebted to Lua’s clean, efficient implementation.
+
+Now that JavaScript has taken over the world and is used to build ginormous applications, it’s hard to think of it as a “little scripting language”. But Brendan Eich hacked the first JS interpreter into Netscape Navigator in ten days to make buttons animate on web pages. JavaScript has grown up since then, but it was once a cute little language.
+
+Because Eich slapped JS together with roughly the same raw materials and time as an episode of MacGyver, it has some weird semantic corners where the duct tape and paper clips show through. Things like variable hoisting, dynamically bound this, holes in arrays, and implicit conversions.
+
+I had the luxury of taking my time on Lox, so it should be a little cleaner.
+
+Lox shares two other aspects with those three languages:
+
+3 . 2 . 1Dynamic typing
+Lox is dynamically typed. Variables can store values of any type, and a single variable can even store values of different types at different times. If you try to perform an operation on values of the wrong type—say, dividing a number by a string—then the error is detected and reported at runtime.
+
+There are plenty of reasons to like static types, but they don’t outweigh the pragmatic reasons to pick dynamic types for Lox. A static type system is a ton of work to learn and implement. Skipping it gives you a simpler language and a shorter book. We’ll get our interpreter up and executing bits of code sooner if we defer our type checking to runtime.
+
+After all, the two languages we’ll be using to implement Lox are both statically typed.
+
+3 . 2 . 2Automatic memory management
+High-level languages exist to eliminate error-prone, low-level drudgery, and what could be more tedious than manually managing the allocation and freeing of storage? No one rises and greets the morning sun with, “I can’t wait to figure out the correct place to call free() for every byte of memory I allocate today!”
+
+There are two main techniques for managing memory: reference counting and tracing garbage collection (usually just called garbage collection or GC). Ref counters are much simpler to implement—I think that’s why Perl, PHP, and Python all started out using them. But, over time, the limitations of ref counting become too troublesome. All of those languages eventually ended up adding a full tracing GC, or at least enough of one to clean up object cycles.
+
+In practice, ref counting and tracing are more ends of a continuum than opposing sides. Most ref counting systems end up doing some tracing to handle cycles, and the write barriers of a generational collector look a bit like retain calls if you squint.
+
+For lots more on this, see “A Unified Theory of Garbage Collection” (PDF).
+
+Tracing garbage collection has a fearsome reputation. It is a little harrowing working at the level of raw memory. Debugging a GC can sometimes leave you seeing hex dumps in your dreams. But, remember, this book is about dispelling magic and slaying those monsters, so we are going to write our own garbage collector. I think you’ll find the algorithm is quite simple and a lot of fun to implement.
+
+3 . 3Data Types
+In Lox’s little universe, the atoms that make up all matter are the built-in data types. There are only a few:
+
+Booleans. You can’t code without logic and you can’t logic without Boolean values. “True” and “false”, the yin and yang of software. Unlike some ancient languages that repurpose an existing type to represent truth and falsehood, Lox has a dedicated Boolean type. We may be roughing it on this expedition, but we aren’t savages.
+
+Boolean variables are the only data type in Lox named after a person, George Boole, which is why “Boolean” is capitalized. He died in 1864, nearly a century before digital computers turned his algebra into electricity. I wonder what he’d think to see his name all over billions of lines of Java code.
+
+There are two Boolean values, obviously, and a literal for each one.
+
+true;  // Not false.
+false; // Not *not* false.
+Numbers. Lox has only one kind of number: double-precision floating point. Since floating-point numbers can also represent a wide range of integers, that covers a lot of territory, while keeping things simple.
+
+Full-featured languages have lots of syntax for numbers—hexadecimal, scientific notation, octal, all sorts of fun stuff. We’ll settle for basic integer and decimal literals.
+
+1234;  // An integer.
+12.34; // A decimal number.
+Strings. We’ve already seen one string literal in the first example. Like most languages, they are enclosed in double quotes.
+
+"I am a string";
+"";    // The empty string.
+"123"; // This is a string, not a number.
+As we’ll see when we get to implementing them, there is quite a lot of complexity hiding in that innocuous sequence of characters.
+
+Even that word “character” is a trickster. Is it ASCII? Unicode? A code point or a “grapheme cluster”? How are characters encoded? Is each character a fixed size, or can they vary?
+
+Nil. There’s one last built-in value who’s never invited to the party but always seems to show up. It represents “no value”. It’s called “null” in many other languages. In Lox we spell it nil. (When we get to implementing it, that will help distinguish when we’re talking about Lox’s nil versus Java or C’s null.)
+
+There are good arguments for not having a null value in a language since null pointer errors are the scourge of our industry. If we were doing a statically typed language, it would be worth trying to ban it. In a dynamically typed one, though, eliminating it is often more annoying than having it.
+
+3 . 4Expressions
+If built-in data types and their literals are atoms, then expressions must be the molecules. Most of these will be familiar.
+
+3 . 4 . 1Arithmetic
+Lox features the basic arithmetic operators you know and love from C and other languages:
+
+add + me;
+subtract - me;
+multiply * me;
+divide / me;
+The subexpressions on either side of the operator are operands. Because there are two of them, these are called binary operators. (It has nothing to do with the ones-and-zeroes use of “binary”.) Because the operator is fixed in the middle of the operands, these are also called infix operators (as opposed to prefix operators where the operator comes before the operands, and postfix where it comes after).
+
+There are some operators that have more than two operands and the operators are interleaved between them. The only one in wide usage is the “conditional” or “ternary” operator of C and friends:
+
+condition ? thenArm : elseArm;
+Some call these mixfix operators. A few languages let you define your own operators and control how they are positioned—their “fixity”.
+
+One arithmetic operator is actually both an infix and a prefix one. The - operator can also be used to negate a number.
+
+-negateMe;
+All of these operators work on numbers, and it’s an error to pass any other types to them. The exception is the + operator—you can also pass it two strings to concatenate them.
+
+3 . 4 . 2Comparison and equality
+Moving along, we have a few more operators that always return a Boolean result. We can compare numbers (and only numbers), using Ye Olde Comparison Operators.
+
+less < than;
+lessThan <= orEqual;
+greater > than;
+greaterThan >= orEqual;
+We can test two values of any kind for equality or inequality.
+
+1 == 2;         // false.
+"cat" != "dog"; // true.
+Even different types.
+
+314 == "pi"; // false.
+Values of different types are never equivalent.
+
+123 == "123"; // false.
+I’m generally against implicit conversions.
+
+3 . 4 . 3Logical operators
+The not operator, a prefix !, returns false if its operand is true, and vice versa.
+
+!true;  // false.
+!false; // true.
+The other two logical operators really are control flow constructs in the guise of expressions. An and expression determines if two values are both true. It returns the left operand if it’s false, or the right operand otherwise.
+
+true and false; // false.
+true and true;  // true.
+And an or expression determines if either of two values (or both) are true. It returns the left operand if it is true and the right operand otherwise.
+
+false or false; // false.
+true or false;  // true.
+I used and and or for these instead of && and || because Lox doesn’t use & and | for bitwise operators. It felt weird to introduce the double-character forms without the single-character ones.
+
+I also kind of like using words for these since they are really control flow structures and not simple operators.
+
+The reason and and or are like control flow structures is that they short-circuit. Not only does and return the left operand if it is false, it doesn’t even evaluate the right one in that case. Conversely (contrapositively?), if the left operand of an or is true, the right is skipped.
+
+3 . 4 . 4Precedence and grouping
+All of these operators have the same precedence and associativity that you’d expect coming from C. (When we get to parsing, we’ll get way more precise about that.) In cases where the precedence isn’t what you want, you can use () to group stuff.
+
+var average = (min + max) / 2;
+Since they aren’t very technically interesting, I’ve cut the remainder of the typical operator menagerie out of our little language. No bitwise, shift, modulo, or conditional operators. I’m not grading you, but you will get bonus points in my heart if you augment your own implementation of Lox with them.
+
+Those are the expression forms (except for a couple related to specific features that we’ll get to later), so let’s move up a level.
+
+3 . 5Statements
+Now we’re at statements. Where an expression’s main job is to produce a value, a statement’s job is to produce an effect. Since, by definition, statements don’t evaluate to a value, to be useful they have to otherwise change the world in some way—usually modifying some state, reading input, or producing output.
+
+You’ve seen a couple of kinds of statements already. The first one was:
+
+print "Hello, world!";
+A print statement evaluates a single expression and displays the result to the user. You’ve also seen some statements like:
+
+Baking print into the language instead of just making it a core library function is a hack. But it’s a useful hack for us: it means our in-progress interpreter can start producing output before we’ve implemented all of the machinery required to define functions, look them up by name, and call them.
+
+"some expression";
+An expression followed by a semicolon (;) promotes the expression to statement-hood. This is called (imaginatively enough), an expression statement.
+
+If you want to pack a series of statements where a single one is expected, you can wrap them up in a block.
+
+{
+  print "One statement.";
+  print "Two statements.";
+}
+Blocks also affect scoping, which leads us to the next section . . .
+
+3 . 6Variables
+You declare variables using var statements. If you omit the initializer, the variable’s value defaults to nil.
+
+This is one of those cases where not having nil and forcing every variable to be initialized to some value would be more annoying than dealing with nil itself.
+
+var imAVariable = "here is my value";
+var iAmNil;
+Once declared, you can, naturally, access and assign a variable using its name.
+
+
+var breakfast = "bagels";
+print breakfast; // "bagels".
+breakfast = "beignets";
+print breakfast; // "beignets".
+Can you tell that I tend to work on this book in the morning before I’ve had anything to eat?
+
+I won’t get into the rules for variable scope here, because we’re going to spend a surprising amount of time in later chapters mapping every square inch of the rules. In most cases, it works like you would expect coming from C or Java.
+
+3 . 7Control Flow
+It’s hard to write useful programs if you can’t skip some code or execute some more than once. That means control flow. In addition to the logical operators we already covered, Lox lifts three statements straight from C.
+
+We already have and and or for branching, and we could use recursion to repeat code, so that’s theoretically sufficient. It would be pretty awkward to program that way in an imperative-styled language, though.
+
+Scheme, on the other hand, has no built-in looping constructs. It does rely on recursion for repetition. Smalltalk has no built-in branching constructs, and relies on dynamic dispatch for selectively executing code.
+
+An if statement executes one of two statements based on some condition.
+
+if (condition) {
+  print "yes";
+} else {
+  print "no";
+}
+A while loop executes the body repeatedly as long as the condition expression evaluates to true.
+
+var a = 1;
+while (a < 10) {
+  print a;
+  a = a + 1;
+}
+I left do while loops out of Lox because they aren’t that common and wouldn’t teach you anything that you won’t already learn from while. Go ahead and add it to your implementation if it makes you happy. It’s your party.
+
+Finally, we have for loops.
+
+for (var a = 1; a < 10; a = a + 1) {
+  print a;
+}
+This loop does the same thing as the previous while loop. Most modern languages also have some sort of for-in or foreach loop for explicitly iterating over various sequence types. In a real language, that’s nicer than the crude C-style for loop we got here. Lox keeps it basic.
+
+This is a concession I made because of how the implementation is split across chapters. A for-in loop needs some sort of dynamic dispatch in the iterator protocol to handle different kinds of sequences, but we don’t get that until after we’re done with control flow. We could circle back and add for-in loops later, but I didn’t think doing so would teach you anything super interesting.
+
+3 . 8Functions
+A function call expression looks the same as it does in C.
+
+makeBreakfast(bacon, eggs, toast);
+You can also call a function without passing anything to it.
+
+makeBreakfast();
+Unlike in, say, Ruby, the parentheses are mandatory in this case. If you leave them off, it doesn’t call the function, it just refers to it.
+
+A language isn’t very fun if you can’t define your own functions. In Lox, you do that with fun.
+
+I’ve seen languages that use fn, fun, func, and function. I’m still hoping to discover a funct, functi, or functio somewhere.
+
+fun printSum(a, b) {
+  print a + b;
+}
+Now’s a good time to clarify some terminology. Some people throw around “parameter” and “argument” like they are interchangeable and, to many, they are. We’re going to spend a lot of time splitting the finest of downy hairs around semantics, so let’s sharpen our words. From here on out:
+
+An argument is an actual value you pass to a function when you call it. So a function call has an argument list. Sometimes you hear actual parameter used for these.
+
+A parameter is a variable that holds the value of the argument inside the body of the function. Thus, a function declaration has a parameter list. Others call these formal parameters or simply formals.
+
+Speaking of terminology, some statically typed languages like C make a distinction between declaring a function and defining it. A declaration binds the function’s type to its name so that calls can be type-checked but does not provide a body. A definition declares the function and also fills in the body so that the function can be compiled.
+
+Since Lox is dynamically typed, this distinction isn’t meaningful. A function declaration fully specifies the function including its body.
+
+The body of a function is always a block. Inside it, you can return a value using a return statement.
+
+fun returnSum(a, b) {
+  return a + b;
+}
+If execution reaches the end of the block without hitting a return, it implicitly returns nil.
+
+See, I told you nil would sneak in when we weren’t looking.
+
+3 . 8 . 1Closures
+Functions are first class in Lox, which just means they are real values that you can get a reference to, store in variables, pass around, etc. This works:
+
+fun addPair(a, b) {
+  return a + b;
+}
+
+fun identity(a) {
+  return a;
+}
+
+print identity(addPair)(1, 2); // Prints "3".
+Since function declarations are statements, you can declare local functions inside another function.
+
+fun outerFunction() {
+  fun localFunction() {
+    print "I'm local!";
+  }
+
+  localFunction();
+}
+If you combine local functions, first-class functions, and block scope, you run into this interesting situation:
+
+fun returnFunction() {
+  var outside = "outside";
+
+  fun inner() {
+    print outside;
+  }
+
+  return inner;
+}
+
+var fn = returnFunction();
+fn();
+Here, inner() accesses a local variable declared outside of its body in the surrounding function. Is this kosher? Now that lots of languages have borrowed this feature from Lisp, you probably know the answer is yes.
+
+For that to work, inner() has to “hold on” to references to any surrounding variables that it uses so that they stay around even after the outer function has returned. We call functions that do this closures. These days, the term is often used for any first-class function, though it’s sort of a misnomer if the function doesn’t happen to close over any variables.
+
+Peter J. Landin coined the term “closure”. Yes, he invented damn near half the terms in programming languages. Most of them came out of one incredible paper, “The Next 700 Programming Languages”.
+
+In order to implement these kind of functions, you need to create a data structure that bundles together the function’s code and the surrounding variables it needs. He called this a “closure” because it closes over and holds on to the variables it needs.
+
+As you can imagine, implementing these adds some complexity because we can no longer assume variable scope works strictly like a stack where local variables evaporate the moment the function returns. We’re going to have a fun time learning how to make these work correctly and efficiently.
+
+3 . 9Classes
+Since Lox has dynamic typing, lexical (roughly, “block”) scope, and closures, it’s about halfway to being a functional language. But as you’ll see, it’s also about halfway to being an object-oriented language. Both paradigms have a lot going for them, so I thought it was worth covering some of each.
+
+Since classes have come under fire for not living up to their hype, let me first explain why I put them into Lox and this book. There are really two questions:
+
+3 . 9 . 1Why might any language want to be object oriented?
+Now that object-oriented languages like Java have sold out and only play arena shows, it’s not cool to like them anymore. Why would anyone make a new language with objects? Isn’t that like releasing music on 8-track?
+
+It is true that the “all inheritance all the time” binge of the ’90s produced some monstrous class hierarchies, but object-oriented programming (OOP) is still pretty rad. Billions of lines of successful code have been written in OOP languages, shipping millions of apps to happy users. Likely a majority of working programmers today are using an object-oriented language. They can’t all be that wrong.
+
+In particular, for a dynamically typed language, objects are pretty handy. We need some way of defining compound data types to bundle blobs of stuff together.
+
+If we can also hang methods off of those, then we avoid the need to prefix all of our functions with the name of the data type they operate on to avoid colliding with similar functions for different types. In, say, Racket, you end up having to name your functions like hash-copy (to copy a hash table) and vector-copy (to copy a vector) so that they don’t step on each other. Methods are scoped to the object, so that problem goes away.
+
+3 . 9 . 2Why is Lox object oriented?
+I could claim objects are groovy but still out of scope for the book. Most programming language books, especially ones that try to implement a whole language, leave objects out. To me, that means the topic isn’t well covered. With such a widespread paradigm, that omission makes me sad.
+
+Given how many of us spend all day using OOP languages, it seems like the world could use a little documentation on how to make one. As you’ll see, it turns out to be pretty interesting. Not as hard as you might fear, but not as simple as you might presume, either.
+
+3 . 9 . 3Classes or prototypes
+When it comes to objects, there are actually two approaches to them, classes and prototypes. Classes came first, and are more common thanks to C++, Java, C#, and friends. Prototypes were a virtually forgotten offshoot until JavaScript accidentally took over the world.
+
+In class-based languages, there are two core concepts: instances and classes. Instances store the state for each object and have a reference to the instance’s class. Classes contain the methods and inheritance chain. To call a method on an instance, there is always a level of indirection. You look up the instance’s class and then you find the method there:
+
+How fields and methods are looked up on classes and instances
+Prototype-based languages merge these two concepts. There are only objects—no classes—and each individual object may contain state and methods. Objects can directly inherit from each other (or “delegate to” in prototypal lingo):
+
+In practice the line between class-based and prototype-based languages blurs. JavaScript’s “constructor function” notion pushes you pretty hard towards defining class-like objects. Meanwhile, class-based Ruby is perfectly happy to let you attach methods to individual instances.
+
+How fields and methods are looked up in a prototypal system
+This means that in some ways prototypal languages are more fundamental than classes. They are really neat to implement because they’re so simple. Also, they can express lots of unusual patterns that classes steer you away from.
+
+But I’ve looked at a lot of code written in prototypal languages—including some of my own devising. Do you know what people generally do with all of the power and flexibility of prototypes?  . . . They use them to reinvent classes.
+
+I don’t know why that is, but people naturally seem to prefer a class-based (Classic? Classy?) style. Prototypes are simpler in the language, but they seem to accomplish that only by pushing the complexity onto the user. So, for Lox, we’ll save our users the trouble and bake classes right in.
+
+Larry Wall, Perl’s inventor/prophet calls this the “waterbed theory”. Some complexity is essential and cannot be eliminated. If you push it down in one place, it swells up in another.
+
+Prototypal languages don’t so much eliminate the complexity of classes as they do make the user take that complexity by building their own class-like metaprogramming libraries.
+
+3 . 9 . 4Classes in Lox
+Enough rationale, let’s see what we actually have. Classes encompass a constellation of features in most languages. For Lox, I’ve selected what I think are the brightest stars. You declare a class and its methods like so:
+
+class Breakfast {
+  cook() {
+    print "Eggs a-fryin'!";
+  }
+
+  serve(who) {
+    print "Enjoy your breakfast, " + who + ".";
+  }
+}
+The body of a class contains its methods. They look like function declarations but without the fun keyword. When the class declaration is executed, Lox creates a class object and stores that in a variable named after the class. Just like functions, classes are first class in Lox.
+
+They are still just as fun, though.
+
+// Store it in variables.
+var someVariable = Breakfast;
+
+// Pass it to functions.
+someFunction(Breakfast);
+Next, we need a way to create instances. We could add some sort of new keyword, but to keep things simple, in Lox the class itself is a factory function for instances. Call a class like a function, and it produces a new instance of itself.
+
+var breakfast = Breakfast();
+print breakfast; // "Breakfast instance".
+3 . 9 . 5Instantiation and initialization
+Classes that only have behavior aren’t super useful. The idea behind object-oriented programming is encapsulating behavior and state together. To do that, you need fields. Lox, like other dynamically typed languages, lets you freely add properties onto objects.
+
+breakfast.meat = "sausage";
+breakfast.bread = "sourdough";
+Assigning to a field creates it if it doesn’t already exist.
+
+If you want to access a field or method on the current object from within a method, you use good old this.
+
+class Breakfast {
+  serve(who) {
+    print "Enjoy your " + this.meat + " and " +
+        this.bread + ", " + who + ".";
+  }
+
+  // ...
+}
+Part of encapsulating data within an object is ensuring the object is in a valid state when it’s created. To do that, you can define an initializer. If your class has a method named init(), it is called automatically when the object is constructed. Any parameters passed to the class are forwarded to its initializer.
+
+class Breakfast {
+  init(meat, bread) {
+    this.meat = meat;
+    this.bread = bread;
+  }
+
+  // ...
+}
+
+var baconAndToast = Breakfast("bacon", "toast");
+baconAndToast.serve("Dear Reader");
+// "Enjoy your bacon and toast, Dear Reader."
+3 . 9 . 6Inheritance
+Every object-oriented language lets you not only define methods, but reuse them across multiple classes or objects. For that, Lox supports single inheritance. When you declare a class, you can specify a class that it inherits from using a less-than (<) operator.
+
+class Brunch < Breakfast {
+  drink() {
+    print "How about a Bloody Mary?";
+  }
+}
+Why the < operator? I didn’t feel like introducing a new keyword like extends. Lox doesn’t use : for anything else so I didn’t want to reserve that either. Instead, I took a page from Ruby and used <.
+
+If you know any type theory, you’ll notice it’s not a totally arbitrary choice. Every instance of a subclass is an instance of its superclass too, but there may be instances of the superclass that are not instances of the subclass. That means, in the universe of objects, the set of subclass objects is smaller than the superclass’s set, though type nerds usually use <: for that relation.
+
+Here, Brunch is the derived class or subclass, and Breakfast is the base class or superclass.
+
+Every method defined in the superclass is also available to its subclasses.
+
+var benedict = Brunch("ham", "English muffin");
+benedict.serve("Noble Reader");
+Even the init() method gets inherited. In practice, the subclass usually wants to define its own init() method too. But the original one also needs to be called so that the superclass can maintain its state. We need some way to call a method on our own instance without hitting our own methods.
+
+Lox is different from C++, Java, and C#, which do not inherit constructors, but similar to Smalltalk and Ruby, which do.
+
+As in Java, you use super for that.
+
+class Brunch < Breakfast {
+  init(meat, bread, drink) {
+    super.init(meat, bread);
+    this.drink = drink;
+  }
+}
+That’s about it for object orientation. I tried to keep the feature set minimal. The structure of the book did force one compromise. Lox is not a pure object-oriented language. In a true OOP language every object is an instance of a class, even primitive values like numbers and Booleans.
+
+Because we don’t implement classes until well after we start working with the built-in types, that would have been hard. So values of primitive types aren’t real objects in the sense of being instances of classes. They don’t have methods or properties. If I were trying to make Lox a real language for real users, I would fix that.
+
+3 . 10The Standard Library
+We’re almost done. That’s the whole language, so all that’s left is the “core” or “standard” library—the set of functionality that is implemented directly in the interpreter and that all user-defined behavior is built on top of.
+
+This is the saddest part of Lox. Its standard library goes beyond minimalism and veers close to outright nihilism. For the sample code in the book, we only need to demonstrate that code is running and doing what it’s supposed to do. For that, we already have the built-in print statement.
+
+Later, when we start optimizing, we’ll write some benchmarks and see how long it takes to execute code. That means we need to track time, so we’ll define one built-in function, clock(), that returns the number of seconds since the program started.
+
+And . . . that’s it. I know, right? It’s embarrassing.
+
+If you wanted to turn Lox into an actual useful language, the very first thing you should do is flesh this out. String manipulation, trigonometric functions, file I/O, networking, heck, even reading input from the user would help. But we don’t need any of that for this book, and adding it wouldn’t teach you anything interesting, so I’ve left it out.
+
+Don’t worry, we’ll have plenty of exciting stuff in the language itself to keep us busy.
+
+CHALLENGES
+Write some sample Lox programs and run them (you can use the implementations of Lox in my repository). Try to come up with edge case behavior I didn’t specify here. Does it do what you expect? Why or why not?
+
+This informal introduction leaves a lot unspecified. List several open questions you have about the language’s syntax and semantics. What do you think the answers should be?
+
+Lox is a pretty tiny language. What features do you think it is missing that would make it annoying to use for real programs? (Aside from the standard library, of course.)
+
+DESIGN NOTE: EXPRESSIONS AND STATEMENTS
+Lox has both expressions and statements. Some languages omit the latter. Instead, they treat declarations and control flow constructs as expressions too. These “everything is an expression” languages tend to have functional pedigrees and include most Lisps, SML, Haskell, Ruby, and CoffeeScript.
+
+To do that, for each “statement-like” construct in the language, you need to decide what value it evaluates to. Some of those are easy:
+
+An if expression evaluates to the result of whichever branch is chosen. Likewise, a switch or other multi-way branch evaluates to whichever case is picked.
+
+A variable declaration evaluates to the value of the variable.
+
+A block evaluates to the result of the last expression in the sequence.
+
+Some get a little stranger. What should a loop evaluate to? A while loop in CoffeeScript evaluates to an array containing each element that the body evaluated to. That can be handy, or a waste of memory if you don’t need the array.
+
+You also have to decide how these statement-like expressions compose with other expressions—you have to fit them into the grammar’s precedence table. For example, Ruby allows:
+
+puts 1 + if true then 2 else 3 end + 4
+Is this what you’d expect? Is it what your users expect? How does this affect how you design the syntax for your “statements”? Note that Ruby has an explicit end to tell when the if expression is complete. Without it, the + 4 would likely be parsed as part of the else clause.
+
+Turning every statement into an expression forces you to answer a few hairy questions like that. In return, you eliminate some redundancy. C has both blocks for sequencing statements, and the comma operator for sequencing expressions. It has both the if statement and the ?: conditional operator. If everything was an expression in C, you could unify each of those.
+
+Languages that do away with statements usually also feature implicit returns—a function automatically returns whatever value its body evaluates to without need for some explicit return syntax. For small functions and methods, this is really handy. In fact, many languages that do have statements have added syntax like => to be able to define functions whose body is the result of evaluating a single expression.
+
+But making all functions work that way can be a little strange. If you aren’t careful, your function will leak a return value even if you only intend it to produce a side effect. In practice, though, users of these languages don’t find it to be a problem.
+
+For Lox, I gave it statements for prosaic reasons. I picked a C-like syntax for familiarity’s sake, and trying to take the existing C statement syntax and interpret it like expressions gets weird pretty fast.`,
+        the_title: `The Lox Language`,
     }
 ];
 
 
 
-// randomStory(stories_array[0])()
+// randomStory(stories_array[0])
+console.log(randomStory(stories_array[0]));
 
 
 
+const comments_array = [
+    {
+        body: `Please use the embed code option to provide us more parts of your code. E.g. CSS, JavaScript`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `Where is that code which renders NA ? `,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `Maybe by posting the code?`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `What do you mean by that? Can you give me some more specific clues?`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `Post your code... I don't know what line 38 looks like. Nobody can help you here until you post some code. It's hard to understand what you are trying to do just with your words.`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `It is likely that a semi-infinite recursion in the javascript is causing the stack overflow, but no answer can be provided without showing us your code.`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `What if I have a folder named server and I want the folders and files generated by sequelize init inside server folder.`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `Then you have to CD into your server folder and run sequelize init`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `Is there a way to run the seed only once? Or should I run an undo seed on every startup to avoid having duplicate data?`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: `i get the error TypeError: Cannot read property 'create' of undefined please help me`,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    },
+    {
+        body: ``,
+        userId: `${randomNumber(43)}`,
+        storyId: `${randomNumber(43)}`,
+        createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
+        updatedAt: new Date()
+    }
 
-
+]
 
 
 
