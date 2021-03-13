@@ -17,15 +17,15 @@ append head
             div(class="Main-Content")
                 div(class= "signupForm")
                 if errors
-                    div(class='alert alert-danger' role='alert')
+                    div(class='alert-alert-danger' role='alert')
                         p The following error(s) occurred:
                         ul
                             each error in errors
                                 li= error
-                div(class= "singupForm")
+                div(class= "signupForm")
                     form(class='hidden' id='signUpForm' method='POST', action="/users/signup")
                         input(type="hidden" name="_csrf" value=csrfToken)
-                        input(type='string' name='email' placeholder='email' required)
+                        input(type='string' name='email' placeholder='Email' required)
                         input(type='string' name='firstName' placeholder='First Name')
                         input(type='string' name='lastName' placeholder='Last Name')
                         input(type='password' name='password' placeholder='Password' required)

@@ -40,7 +40,7 @@ router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
 }))
 
 //DO NOT TOUCH THIS ROUTE!!!!
-router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
+router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async (req, res) => {
   const {
     email,
     firstName,
@@ -71,7 +71,6 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
     console.log(`You hit the user registration error route`)
     const errors = validationErrors.array().map((error) => error.msg);
     res.render('splash', {
-      user,
       errors,
       csrfToken: req.csrfToken()
     })
@@ -79,7 +78,7 @@ router.post('/signup', createUserValidators, asyncHandler(async (req, res) => {
 }))
 
 // POST localhost:8080/users/login || working
-router.post('/login', loginValidators, asyncHandler(async (req, res) => {
+router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, res) => {
   let user = {
     email,
     password
@@ -103,14 +102,19 @@ router.post('/login', loginValidators, asyncHandler(async (req, res) => {
         loginUser(req, res, user)
         req.session.save(() => {
           if (req.session) res.redirect("/feed")
-          else next(res.err)
         })
+      }
+      else {
+        let errors = ['One of your login fields is incorrect!']
+        res.render('splash', {
+          errors,
+          csrfToken: req.csrfToken()
+        });
       }
     }
   } else {
-    const errors = validationErrors.array().map((error) => error.msg);
-    res.render('error', {
-      user,
+      const errors = validationErrors.array().map((error) => error.msg);
+    res.render('splash', {
       errors,
       csrfToken: req.csrfToken()
     })
@@ -139,9 +143,6 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 
 
 
-// change this
-
-
 // GET localhost:8080/users/profile/
 
 router.get('/profile', asyncHandler(async (req, res) => res.render("userProfile")));
@@ -168,7 +169,7 @@ router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (re
 }))
 
 // // // PUT localhost:8080/users/profile/:id || not working because no id to reference?
-router.post('/profile/:id(\\d+)', updateUserValidators, asyncHandler(async (req, res) => {
+router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHandler(async (req, res) => {
   const {
     email,
     firstName,
@@ -178,8 +179,8 @@ router.post('/profile/:id(\\d+)', updateUserValidators, asyncHandler(async (req,
     avatar
   } = req.body;
   const validationErrors = validationResult(req)
+  const user = await findByPk(req.params.id)
   if (validationErrors.isEmpty()) {
-    const user = await findByPk(req.params.id)
     user.update({
       email,
       firstName,
@@ -192,8 +193,7 @@ router.post('/profile/:id(\\d+)', updateUserValidators, asyncHandler(async (req,
     else next(res.err)
   } else {
     const errors = validationErrors.array().map((error) => error.msg);
-    res.render('error', {
-      user,
+    res.render('editUserForm', {
       errors,
       csrfToken: req.csrfToken()
     })

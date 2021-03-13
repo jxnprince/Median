@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {
+    csrfProtection,
     asyncHandler,
     createCommentValidator
 } = require('../../utils')
@@ -23,18 +24,18 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 }))
 
 //POST localhost:8080/api/comments || working
-router.post('/:id(\\d+)', createCommentValidator, asyncHandler(async (req, res) => {
+router.post('/:id(\\d+)', createCommentValidator, csrfProtection, asyncHandler(async (req, res) => {
     //logic for creating a comment
     const storyId = req.params.id
     const userId = req.session.auth.userId
     // const userId = 1 //Testing in postman
     const validationErrors = validationResult(req)
 
+    const {
+        //!make sure to rename later
+        comment
+    } = req.body
     if (validationErrors.isEmpty()) {
-        const {
-            //!make sure to rename later
-            comment
-        } = req.body
         const newComment = await Comment.create({
             body: comment,
             userId,
@@ -53,17 +54,16 @@ router.post('/:id(\\d+)', createCommentValidator, asyncHandler(async (req, res) 
     } else {
         console.log(`You hit the comment registration error route`)
         const errors = validationErrors.array().map((error) => error.msg);
-        res.json({
-          newComment,
-          errors,
-          csrfToken: req.csrfToken()
-        })
+        res.render('singlestory', {
+            errors,
+            csrfToken: req.csrfToken(),
+          });
     }
 }))
 
 //PUT localhost:8080/api/comments/:id || working?
 //patch?
-router.put('/:id', createCommentValidator, asyncHandler(async (req, res) => {
+router.put('/:id', createCommentValidator, csrfProtection, asyncHandler(async (req, res) => {
     const commentId = req.params.id;
     const userId = req.session.auth.userId
     // const userId = 1 //Testing in postman
@@ -87,11 +87,10 @@ router.put('/:id', createCommentValidator, asyncHandler(async (req, res) => {
     } else {
         console.log(`You hit the comment registration error route`)
         const errors = validationErrors.array().map((error) => error.msg);
-        res.json({
-          comment,
-          errors,
-          csrfToken: req.csrfToken()
-        });
+        res.render('singlestory', {
+            errors,
+            csrfToken: req.csrfToken(),
+          });
     }
 }))
 
