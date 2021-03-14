@@ -14,6 +14,19 @@ const createStoryValidator = [
   .withMessage('Please input post content')
 ]
 
+const updateStoryValidator = [
+  check('the_title')
+  .exists({ checkFalsy: true })
+  .withMessage('Please input a valid title')
+  .isLength({ max: 100 })
+  .withMessage('Please provide a title under 100 characters'),
+  check('the_story_post')
+  .exists({ checkFalsy: true })
+  .withMessage('Please input post content')
+];
+
+
+
 const createCommentValidator = [
   check('body')
   .exists({ checkFalsy: true })
@@ -117,5 +130,6 @@ module.exports = {
     loginValidators,
     updateUserValidators,
     createStoryValidator,
-    createCommentValidator
+    createCommentValidator,
+    updateStoryValidator
 };

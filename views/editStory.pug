@@ -29,10 +29,9 @@ append head
                 div(class="Submit-form")
                     div(id="api-div" class=`${storyId}-${userId}`)
                     div(class='edit-story-container' id='edit-story-container')
-                        input(type="hidden" name="_csrf" value=csrfToken)
-                        input(type="text" name="title" placeholder= "Title" class="edit-story-title" id="edit-story-title" required)
-                        input(type="text" name="imgUrl" placeholder='Image Url' class="edit-story-img" id="edit-story-img")
-                        textArea(type="text" name="postBody" placeholder='Your story here' class="edit-story-post" id="edit-story-post" required)
+                        input(type="text" name="the_title" placeholder= "Title" class="edit-story-title" id="edit-story-title" required)
+                        input(type="text" name="the_story_img" placeholder='Image Url' class="edit-story-img" id="edit-story-img")
+                        textArea(type="text" name="the_story_post" placeholder='Your story here' class="edit-story-post" id="edit-story-post" required)
                         button(class='edit-story-button' id='edit-story-button') Update Story
 
             div(class="Right-Sidebar")

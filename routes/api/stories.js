@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Story, User } = require('../../db/models')
-const { csrfProtection, asyncHandler, createStoryValidator } = require('../../utils');
+const { csrfProtection, asyncHandler, createStoryValidator, updateStoryValidator } = require('../../utils');
 const { check, validationResult } = require('express-validator');
 
 
@@ -112,36 +112,56 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 
 
+//updates a specific user story
 
-//PUT localhost:8080/api/stories/:id || works
-router.put('/:id(\\d+)', createStoryValidator, csrfProtection, asyncHandler(async (req, res) => {
-    //updates a specific user story
-    const storyId = req.params.id
-    const { imgUrl, postBody, title } = req.body
-    const validationErrors = validationResult(req)
+//PUT localhost:8080/api/stories/:storyId/users/:userId
+router.put('/:storyId(\\d+)/users/:userId(\\d+)', updateStoryValidator, asyncHandler(async (req, res) => {
+    const storyId = req.params.storyId;
+    const userId = req.params.userId;
 
-    if (validationErrors.isEmpty()) {
-        const updatedStory = await Story.findByPk(storyId)
-        updatedStory.update({ imgUrl, postBody, title })
+    const { the_story_img, the_story_post, the_title } = req.body;
+    // console.log(the_story_img);
+    // console.log(the_story_post);
+    // console.log(the_title);
+
+    const validationErrors = validationResult(req);
+    // console.log(validationErrors);
+
+    if (validationErrors.errors.length === 0) {
+        const updatedStory = await Story.findByPk(storyId, {
+            where: { userId },
+        });
+        // console.log(updatedStory);
+
         if (updatedStory) {
+
+            updatedStory.update({
+                imgUrl: the_story_img,
+                postBody: the_story_post,
+                title: the_title,
+                updatedAt: new Date()
+            });
+
             res.json({
                 message: "You updated a story",
                 updatedStory
-            })
+            });
+
+
         } else {
             res.json({
                 message: "Story was not updated"
-            })
+            });
+
         }
-    } else{
+    } else {
+
         console.log(`You hit the story registration error route`)
+
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('editStory', {
-          errors,
-          csrfToken: req.csrfToken(),
-        });
+        res.render('editStory', { errors });
     }
-}))
+}));
 
 
 
