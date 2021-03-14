@@ -1,6 +1,8 @@
 extends layout
 append head
     //- script(src='/JS/splash.js' type='module')
+    script(src='/JS/edit-story.js' type='module')
+
     link(href='/stylesheets/header-footer.css' rel='stylesheet')
     link(rel='stylesheet' href='/stylesheets/reset.css')
     body
@@ -25,12 +27,13 @@ append head
                             each error in errors
                                 li= error
                 div(class="Submit-form")
-                    form(method='POST' action='')
+                    div(id="api-div" class=`${storyId}-${userId}`)
+                    div(class='edit-story-container' id='edit-story-container')
                         input(type="hidden" name="_csrf" value=csrfToken)
-                        input(type="text" name="title" placeholder= "Title" required)
-                        input(type="text" name="imgUrl" placeholder='Image Url')
-                        textArea(type="text" name="postBody" required)
-                        button(type="submit") Update Story
+                        input(type="text" name="title" placeholder= "Title" class="edit-story-title" id="edit-story-title" required)
+                        input(type="text" name="imgUrl" placeholder='Image Url' class="edit-story-img" id="edit-story-img")
+                        textArea(type="text" name="postBody" placeholder='Your story here' class="edit-story-post" id="edit-story-post" required)
+                        button(class='edit-story-button' id='edit-story-button') Update Story
 
             div(class="Right-Sidebar")
             div(class="Footer")
