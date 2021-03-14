@@ -4,6 +4,9 @@ append head
     link(href='/stylesheets/header-footer.css' rel='stylesheet')
     link(rel='stylesheet' href='/stylesheets/reset.css')
     body
+      if otherUser
+        div(id="otherUser" class=`${otherUser}`)
+
       div(class="grid-container")
         div(class="Header")
             div(class="left-items")
