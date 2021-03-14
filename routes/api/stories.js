@@ -61,16 +61,16 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
         userId
     } = req.body
     // const validationErrors = validationResult(res);
-    
+
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
-        
-            const story = await Story.create({
-                imgUrl,
-                postBody,
-                title,
-                userId:req.session.auth.userId
-            })
+
+        const story = await Story.create({
+            imgUrl,
+            postBody,
+            title,
+            userId: req.session.auth.userId
+        })
         if (story) {
             res.json({
                 message: "You created a new story",
@@ -81,12 +81,12 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
                 message: "Story not created"
             })
         }
-    } else{
-        console.log(`You hit the story registration error route`)
+    } else {
+        // console.log(`You hit the story registration error route`)
         const errors = validationErrors.array().map((error) => error.msg);
         res.render('submitStory', {
-          errors,
-          csrfToken: req.csrfToken(),
+            errors,
+            csrfToken: req.csrfToken(),
         });
     }
 
@@ -95,6 +95,7 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     //test that you are pulling the id paramater
     //return a list of the most recent stories by a user.
+    console.log('---------------------------------------------');
     const storyId = req.params.id;
     const userStories = await Story.findByPk(storyId);
     res.json(userStories)
@@ -115,41 +116,44 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     }
 }))
 //PUT localhost:8080/api/stories/:id || works
-router.put('/:id(\\d+)', createStoryValidator, csrfProtection, asyncHandler(async (req, res) => {
+router.post('/:id(\\d+)', csrfProtection, createStoryValidator, asyncHandler(async (req, res) => {
     //updates a specific user story
     const storyId = req.params.id
+    // console.log(req.body);
     const {
-        imgUrl,
         postBody,
         title
     } = req.body
+
+    // console.log(storyId, postBody, title);
     const validationErrors = validationResult(req)
 
+    const story = await Story.findByPk(storyId)
+    // console.log(story);
     if (validationErrors.isEmpty()) {
-        const updatedStory = await Story.findByPk(storyId)
-        updatedStory.update({
-            imgUrl,
+        story.update({
             postBody,
             title
         })
-        if (updatedStory) {
-            res.json({
-                message: "You updated a story",
-                updatedStory
+        if (story) {
+            res.render('singlestory', {
+                apiNumber: storyId
             })
         } else {
-            res.json({
+            res.render({
                 message: "Story was not updated"
             })
         }
-    } else{
-        console.log(`You hit the story registration error route`)
+    } else {
+        // console.log(`You hit the story registration error route`)
         const errors = validationErrors.array().map((error) => error.msg);
         res.render('editStory', {
-          errors,
-          csrfToken: req.csrfToken(),
+            errors,
+            story,
+            csrfToken: req.csrfToken()
         });
     }
+    // res.send('data')
 }))
 
 

@@ -19,24 +19,7 @@ router.get('/submit-story', csrfProtection, (req, res) => {
 //maybe add csrf for comments
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
-    console.log('=============', id);
-
-    // var config = {
-    //     method: 'get',
-    //     url: '/api/stories/1',
-    //     headers: {},
-    //     data: data
-    // };
-
-    // const response = await axios(config)
-    // try {
-    //     const response = await axios.get(`/api/stories/${id}`)
-    //     console.log(response);
-    // } catch (e) {
-    //     console.log('---------------------------');
-    //     console.error(e)
-    // }
-    const userId = req.params.userId
+    // console.log('=============', id);
     let isUser;
     if (req.session.auth.userId === Number(id)) isUser = true;
 
@@ -49,7 +32,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const story = await Story.findByPk(req.params.id)
-    console.log(story.toJSON())
+    // console.log(story.toJSON())
     res.render('editStory', {
         csrfToken: req.csrfToken(),
         story

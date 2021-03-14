@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     // console.log(data);
 
 
-    if(data.status === 200){
+    if (data.status === 200) {
         // make / render the html containing the feed information -
         //const welcomeMessage = document.createElement("h3");
         const firstName = data.current_user.firstName;
@@ -44,17 +44,17 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         const unorderedList = document.createElement("ul");
         const commentsList = document.createElement("ul");
         const feedCommentsList = document.createElement("ul");
-        unorderedList.setAttribute('class','story-feed-ul')
+        unorderedList.setAttribute('class', 'story-feed-ul')
 
         // loop through the stories in the API
         // this is just the first result in the API -- do the rest below for different structure
-        for (let i = 0; i === 0; i++){
+        for (let i = 0; i === 0; i++) {
             let story = data.the_stories[i];
             const eachItem = document.createElement("li");
 
-            if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
+            if (story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
             if (story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
-            
+
             eachItem.innerHTML = `<a href="/stories/${story.id}">
                     <div id="story-img" class="featured-story-img">
                         <img src="${story.imgUrl}">
@@ -102,9 +102,9 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         }
 
 
-// html for the rest of the results from the API
+        // html for the rest of the results from the API
         const feedList = document.createElement("ul");
-        feedList.setAttribute('class','story-feed-ul')
+        feedList.setAttribute('class', 'story-feed-ul')
 
         for (let i = 1; i < data.the_stories.length; i++) {
             let story = data.the_stories[i];
@@ -112,8 +112,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             //
             // REPLACE DEFAULT IMAGES
             //
-            if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
-            if(story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
+            if (story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
+            if (story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
             eachItem.innerHTML = `
             <div id="shortened-story" class="shortened-story">
                 <a href="/stories/${story.id}">
@@ -162,7 +162,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
         mainDiv.appendChild(featuredContainer);
         mainDiv.appendChild(feedItems);
-        const aaLogo = document.getElementById('aaLogoDiv')
+        const aaLogo = document.querySelector('.aaLogo-div')
         aaLogo.innerHTML = `<img src='https://i.imgur.com/Hcuwo4G.png' class= 'aaLogo'>`
     } else {
         const errorMessage = document.createElement("h3");

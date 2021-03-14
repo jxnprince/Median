@@ -164,7 +164,7 @@ router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (re
     birthdate,
     avatar
   } = user;
-  res.render('editUserForm', {
+  res.render('/editUserForm', {
     email,
     firstName,
     lastName,

@@ -12,13 +12,14 @@ append head
                 form(method='POST', action="/users/logout" class="logout")
                     input(type="hidden" name="_csrf" value=csrfToken)
                     button(type="submit") Logout
-                a(href='/profile' id='user-profile-button' class='link-button') Profile
+                a(href='/users/profile' id='user-profile-button' class='link-button') Profile
                 div(class="Left-Sidebar")
         div(class="Main-Content")
             div(class="Submit-form")
-                form(method='POST' action='')
-                    input(type="text" name="Title" value=story.title placeholder="Title" required )
-                    textArea(type="text" name="Body" required)= story.postBody
+                form(method='POST' action=`/api/stories/${story.id}`)
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    input(type="text" name="title" value=story.title placeholder="Title" required )
+                    textArea(type="text" name="postBody" required)= story.postBody
                     button(type="submit") Update Story
         div(class="Right-Sidebar")
         div(class="Footer")
