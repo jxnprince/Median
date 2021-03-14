@@ -1,8 +1,8 @@
 extends layout
 append head
-    //- script(src='/JS/splash.js' type='module')
-    link(href='/stylesheets/header-footer.css' rel='stylesheet')
     link(rel='stylesheet' href='/stylesheets/reset.css')
+    link(href='/stylesheets/header-footer.css' rel='stylesheet')
+    link(href='/stylesheets/story-submit-edit.css' rel='stylesheet')
     body
         div(class="grid-container")
             div(class="Header")
@@ -26,6 +26,7 @@ append head
                             each error in errors
                                 li= error
                 div(class="Submit-form")
+                    h1 Submit your story
                     form(method="Post" action="/api/stories/")
                         input(type="hidden" name="_csrf" value=csrfToken)
                         input(type="text" name="title" placeholder= "Title" required)

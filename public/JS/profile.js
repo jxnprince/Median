@@ -54,8 +54,9 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
 
     bookmarks.their_bookmarks.Stories.forEach((eachBookmark) => {
-        bookmarksContainer.innerHTML = `<div id="container" class="container">
-            <a href="/stories/${eachBookmark.Bookmark.storyId}"> <img src="${eachBookmark.imgUrl}"> <span> ${eachBookmark.title} </span> </a>
+        bookmarksContainer.innerHTML = `<div id="container" class="bookmark-container">
+            <h3>Bookmarks </h3>
+            <a href="/stories/${eachBookmark.Bookmark.storyId}"> <img src="${eachBookmark.imgUrl}" class='bookmark-img'> <span class= 'bookmark-title'> ${eachBookmark.title} </span> </a>
         </div>`;
     });
 
@@ -74,7 +75,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
     users_stories.their_stories.forEach((eachStory) => {
         const listItem = document.createElement('li');
         listItem.innerHTML = ` <a href="/stories/${eachStory.id}">
-            <img src="${eachStory.imgUrl}">
+            <img class ='your-stories-img' src="${eachStory.imgUrl}">
             <span> ${eachStory.title} </span>
         </a> `;
 
@@ -112,7 +113,4 @@ window.addEventListener("DOMContentLoaded", async(event) => {
     });
 
     usersFollowees.appendChild(followeeStoriesList);
-
-
-
 });
