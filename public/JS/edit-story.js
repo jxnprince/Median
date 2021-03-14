@@ -11,6 +11,7 @@ const makeFetch = async (url) => {
 window.addEventListener("DOMContentLoaded", async (event) => {
 
     // HTML selectors here
+    const editStoryContainer = document.getElementById('edit-story-container');
     const api_info = document.getElementById('api-div').classList[0];
     const title = document.getElementById('edit-story-title');
     const storyImg = document.getElementById('edit-story-img');
@@ -46,7 +47,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
 
         // make fetch to the route -- use put
-        const result = await fetch(`/api/stories/${storyId}/users/${userId}`, {
+        const response = await fetch(`/api/stories/${storyId}/users/${userId}`, {
             method: 'PUT',
             mode: 'same-origin',
             credentials: 'same-origin',
@@ -56,9 +57,19 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             body: JSON.stringify({ the_title, the_story_post, the_story_img })
         });
 
-        console.log(result);
+        console.log(response);
+
+
+        if(response.status === 200) {
+            const message = document.createElement('h3');
+            message.innerText = 'Your story has been sucessfully updated.'
+            editStoryContainer.appendChild();
+        } else {
+            editStoryContainer.appendChild();
+        }
 
     });
+
 
 
 });

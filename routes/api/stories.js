@@ -120,21 +120,16 @@ router.put('/:storyId(\\d+)/users/:userId(\\d+)', updateStoryValidator, asyncHan
     const userId = req.params.userId;
 
     const { the_story_img, the_story_post, the_title } = req.body;
-    // console.log(the_story_img);
-    // console.log(the_story_post);
-    // console.log(the_title);
 
     const validationErrors = validationResult(req);
-    // console.log(validationErrors);
 
     if (validationErrors.errors.length === 0) {
         const updatedStory = await Story.findByPk(storyId, {
             where: { userId },
         });
-        // console.log(updatedStory);
+
 
         if (updatedStory) {
-
             updatedStory.update({
                 imgUrl: the_story_img,
                 postBody: the_story_post,
