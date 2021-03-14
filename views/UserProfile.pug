@@ -1,7 +1,9 @@
 extends layout
 append head
-    script(src='/JS/profile.js' type='module')
+    link(href='/stylesheets/reset.css' rel='stylesheet')
     link(href='/stylesheets/header-footer.css' rel='stylesheet')
+    link(href='/stylesheets/userProfile.css' rel='stylesheet')
+    script(src='/JS/profile.js' type='module')
     link(rel='stylesheet' href='/stylesheets/reset.css')
     body
       if otherUser

@@ -1,9 +1,24 @@
-body {
-    font-family: 'Roboto Mono', monospace;
-    color: #F0EAE4;
-    background: #494A8F;
+.Submit-form {
+    margin: 10%;
+    flex-flow: column;
+    justify-content: center;
 }
 
-.story-form {
-    display: flex
+h1 {
+    margin: 5% 15%
+}
+
+input {
+    width: 100%;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 10px;
+    height: 4rem;
+}
+
+button {
+    margin: 5% 40%
 }
