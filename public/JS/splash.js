@@ -5,7 +5,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   const logoDiv = document.getElementById('logoDiv');
   const backButton= document.getElementById('backToSplash');
   const loginForm= document.getElementById('login-form');
-  const loginButton= document.getElementById('displayLoginFormButton');
+  const loginButton = document.getElementById('displayLoginFormButton');
+  const strobe = document.getElementById('logoblur')
   
   displayFormButton.addEventListener('click', async (event) =>{
     displayFormButton.setAttribute('class', 'hidden');
@@ -22,7 +23,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     logoDiv.classList.remove('hidden');
     signUpForm.classList.remove('signupForm');
     signUpForm.setAttribute('class', 'hidden');
-    console.log('I got clicked');
+    strobe.setAttribute('class', 'hidden');
   })
   loginButton.addEventListener('click', async (event) =>{
     loginButton.setAttribute('class', 'hidden');

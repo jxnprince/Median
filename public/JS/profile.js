@@ -49,7 +49,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
     profileImg.innerHTML = `
     <div class= 'profile-div'>
-        <img src="${user_info.user.avatar}">
+        <img src="${user_info.user.avatar}" class="mainProfileImg">
     </div>`;
 
     followEditLinks.innerHTML = `
@@ -105,7 +105,8 @@ window.addEventListener("DOMContentLoaded", async(event) => {
     const followeeStoriesList = document.createElement('ul');
     user_info.followeeStories.forEach((eachStory) => {
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<a href="/stories/${eachStory.id}">
+        listItem.innerHTML = `
+        <a href="/stories/${eachStory.id}">
             <img class= 'followers-img'src="${eachStory.imgUrl}">
             <span> ${eachStory.title} </span>
         </a>`;
@@ -116,8 +117,9 @@ window.addEventListener("DOMContentLoaded", async(event) => {
         // loop through followeesUserInfo on user_info
         user_info.followeesUserInfo.forEach((eachUser) => {
             const author_info = document.createElement('li');
-            author_info.innerHTML = `<a href="/users/profile/${eachUser.id}">
-                <img src="${eachUser.avatar}">
+            author_info.innerHTML = `
+            <a href="/users/profile/${eachUser.id}">
+                <img src="${eachUser.avatar}" class='miniavatar'>
                 <span> ${eachUser.firstName} ${eachUser.lastName} </span>
             </a> `;
 
