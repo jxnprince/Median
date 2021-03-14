@@ -1,9 +1,9 @@
 const faker = require('faker');
-// console.log(faker.name.firstName());
+//  console.log(faker.name.firstName());
 
 
-const emailAddress = faker.internet.email();
-const toggle = true;
+
+
 
 
 
@@ -231,72 +231,6 @@ const getRandomName = (gender) => {
 
 
 
-
-
-
-// change this so that the corresponding character name matches with the character photo
-// make their name the key and the photo the value in an object ----
-
-const getStarwarsNames = () => {
-
-    const starwars_names = [
-        'Oola',
-        'Jango Fett',
-        'Padmé Amidala',
-        'Sebulba',
-        'Admiral Motti',
-        'Qira',
-        'Uncle Owen',
-        'Admiral Firmus Piett',
-        'Wedge Antilles',
-        'Admiral Holdo',
-        'IG-88',
-        'EV-9D9',
-        'Mon Mothma',
-        'Count Dooku',
-        'Nien Nunb',
-        'Lobot',
-        'Ponda Baba',
-        'Max Rebo',
-        'Salacious B. Crumb',
-        'Enfys Nest',
-        'Figrin D’an and the Modal Nodes',
-        'Wicket W. Warrick',
-        'Poe Dameron',
-        'General Grievous',
-        'Qui-Gon Jinn',
-        'Bib Fortuna',
-        'Admiral Ackbar',
-        'Finn',
-        'Kylo Ren',
-        'Chirrut Îmwe',
-        'The Emperor',
-        'Mace Windu',
-        'Grand Moff Tarkin',
-        'Chewbacca',
-        'Jabba the Hut',
-        'Greedo',
-        'K-2SO',
-        'Lando Calrissian',
-        'C-3PO',
-        'Darth Maul',
-        'BB-8',
-        'Obi-Wan Kenobi',
-        'R2-D2',
-        'Rey',
-        'Luke Skywalker',
-        'Princess Leia',
-        'Yoda',
-        'Boba Fett',
-        'Darth Vader',
-        'Han Solo'
-    ];
-    let starwars_characters = starwars_names[Math.floor(Math.random() * starwars_names.length)];
-    return starwars_characters;
-};
-
-
-
 const randomNumber = (max) => {
     return Math.floor(Math.random() * Math.floor(max));
 };
@@ -430,8 +364,8 @@ const randomDay = () => {
 
 
 const getRandomMaleImg = () => {
-    //https://www.gq-magazine.co.uk/gallery/35-men-under-38-and-a-half?image=5d13a04895d78b5054d7328b
-    // above is the link to the site
+    // https:www.gq-magazine.co.ukgallery35-men-under-38-and-a-half?image=5d13a04895d78b5054d7328b
+    //  above is the link to the site
     const images = [
         'https://media.gq-magazine.co.uk/photos/5d13a047533a2374b9c62d51/master/w_1280%2cc_limit/kanye-west-GQ-2March15-Rex_b.jpg',
         'https://media.gq-magazine.co.uk/photos/5d13a047976fa3850bf3a5cc/master/w_1280%2cc_limit/Chris-Pratt-GQ-2March15-Rex_b.jpg',
@@ -632,7 +566,7 @@ We will abstain from using them here. I want to ensure there are no dark corners
 
 A book has different constraints from the “real world” and so the coding style here might not always reflect the best way to write maintainable production software. If I seem a little cavalier about, say, omitting private or declaring a global variable, understand I do so to keep the code easier on your eyes. The pages here aren’t as wide as your IDE and every character counts.
 
-Also, the code doesn’t have many comments. That’s because each handful of lines is surrounded by several paragraphs of honest-to-God prose explaining it. When you write a book to accompany your program, you are welcome to omit comments too. Otherwise, you should probably use // a little more than I do.
+Also, the code doesn’t have many comments. That’s because each handful of lines is surrounded by several paragraphs of honest-to-God prose explaining it. When you write a book to accompany your program, you are welcome to omit comments too. Otherwise, you should probably use  a little more than I do.
 
 While the book contains every line of code and teaches what each means, it does not describe the machinery needed to compile and run the interpreter. I assume you can slap together a makefile or a project in your IDE of choice in order to get the code to run. Those kinds of instructions get out of date quickly, and I want this book to age like XO brandy, not backyard hooch.
 
@@ -642,15 +576,10 @@ Since the book contains literally every line of code needed for the implementati
 A snippet with all the bells and whistles looks like this:
 
       default:
-lox/Scanner.java
+loxScanner.java
 in scanToken()
 replace 1 line
-        if (isDigit(c)) {
-          number();
-        } else {
-          Lox.error(line, "Unexpected character.");
-        }
-        break;
+
 In the center, you have the new code to add. It may have a few faded out lines above or below to show where it goes in the existing surrounding code. There is also a little blurb telling you in which file and where to place the snippet. If that blurb says “replace _ lines”, there is some existing code between the faded lines that you need to remove and replace with the new snippet.
 
 1 . 2 . 3Asides
@@ -758,7 +687,7 @@ const stories_array = [
         the_title: "5 Amazing Front-End Development Apps You Probably Need to Use",
     },
     {
-        the_body: "I work at Voodoo, a French company that creates mobile video games. We have a lot of challenges with performance, availability, and scalability because of the insane amount of traffic our infrastructure supports (billions of events/requests per day …… no joke!). In this setting, every metric is important and gives us a lot of information about the state of our system. When working with Node.js one of the most critical resources to monitor is the CPU.Most of the time, when working on a low traffic API or project we don’t realize how many simple lines of code can have a huge impact on CPU.On the other hand, when traffic increases, a simple mistake can cost dearly.",
+        the_body: "I work at Voodoo, a French company that creates mobile video games. We have a lot of challenges with performance, availability, and scalability because of the insane amount of traffic our infrastructure supports (billions of eventsrequests per day …… no joke!). In this setting, every metric is important and gives us a lot of information about the state of our system. When working with Node.js one of the most critical resources to monitor is the CPU.Most of the time, when working on a low traffic API or project we don’t realize how many simple lines of code can have a huge impact on CPU.On the other hand, when traffic increases, a simple mistake can cost dearly.",
         the_title: "Node.js and CPU profiling on production (in real-time without downtime)",
     },
     {
@@ -766,90 +695,90 @@ const stories_array = [
         the_title: "Can I interest you in a Set? The set vs. the array in Javascript",
     },
     {
-        the_body: "PrimeVue is a UI framework that’s compatible with Vue 3. In this article, we’ll look at how to get started with developing Vue 3 apps with PrimeVue. Getting Started We install the required packages by running: npm install primevue@^ 3.1.1 --save npm install primeicons--save This will install the library with all the components and the icons. Next, we add the PrimeVue plugin into our app: main.js import { createApp } from 'vue'; import App from './App.vue'; import PrimeVue from 'primevue/config'; import InputText from 'primevue/inputtext'; import 'primevue/resources/primevue.min.css' import 'primevue/resources/themes/bootstrap4-light-blue/theme.css' import 'primeicons/primeicons.css' const app = createApp(App); app.use(PrimeVue); app.component('InputText', InputText); app.mount('#app'); App.vue < template > <div> <InputText type='text' v-model='text' /> <p>{{ text }}</p> </div></template ><script>export default {name: 'App',data() {return {text: '',};},};</script> In main.js m we call app.use to add the plugin. Then we call app.component to register the InputText component. import ‘primevue / resources / primevue.min.css’ imports the core CSS. import ‘primevue / resources / themes / bootstrap4 - light - blue / theme.css’ is the CSS for the theme. import ‘primeicons / primeicons.css’ add the icons. We can also include the script tag for the individual components: <!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /> <title>calendar demo</title> <link href='https://unpkg.com/primevue/resources/themes/saga-blue/theme.css 'rel='stylesheet'/><link href='https://unpkg.com/primevue/resources/primevue.min.css ' rel='stylesheet'/> <link href='https://unpkg.com/primeicons/primeicons.css ' rel='stylesheet'/> <script src='https://unpkg.com/vue@next'></script> <script src='https://unpkg.com/primevue@3.1.1/components/inputtext/inputtext.umd.min.js'></script> </head> <body> <div id='app'> <p-inputtext v-model='text'></p-inputtext> <p>{{ text }}</p> </div> <script> Vue.createApp({ data() { return { text: '' };}, components: { 'p-inputtext': inputtext } }).mount('#app');</script></body></html> We add the script tags for Vue 3 and PrimeVue’s inputtext component.Then we can use it in our code. PrimeFlex We can install the primeflex package to add CSS to let us create layouts easily without writing everything from scratch. To install it, we run:npm install primeflex --save Then we cal add the CSS by writing: main.js import { createApp } from 'vue'; import App from './App.vue'; import PrimeVue from 'primevue/config'; import InputText from 'primevue/inputtext'; import 'primeflex/primeflex.css'; const app = createApp(App); app.use(PrimeVue); app.component('InputText', InputText); app.mount('#app'); Now we can use the classes by writing: App.vue < template > <div class='card'> <InputText type='text' v-model='text' class='p-ml-2 p-d-inline' /> <p>{{ text }}</p> </div> </template > <script> export default { name: 'App', data() { return { text: '', };},};</script> p - ml - 2 adds some margin on the left side. p - d - inline makes the input display inline. We can add shadows with the p - shadow - { x } class, where x can be 1 to 24. p - d - flex lets us create a flex layout. p - d - inline - flex lets us create an inline flex layout. p - flex - { direction } lets us set the flex - direction.Where direction can be one of: row(default ) row - reverse column column - reverse The order of items inside a flex container can be changed with the p - order - { value } classes. We can also add layouts that change according to breakpoints: <template> <div class='p-d-flex'> <div class='p-mr-2 p-order-3 p-order-md-2'>Item 1</div> <div class='p-mr-2 p-order-1 p-order-md-3'>Item 2</div> <div class='p-mr-2 p-order-2 p-order-md-1'>Item 3</div> </div> </template> <script> export default { name: 'App', }; </script> We change the order depending on whether the breakpoint is md and up or otherwise. If it’s md or higher, then we get: Item 3 Item 1 Item 2 Otherwise, we get: Item 2 Item 3 Item 1 Conclusion PrimeVue is one of the earliest UI frameworks to be compatible with Vue 3. Enjoyed this article ? If so, get more similar content by subscribing to our YouTube channel!",
+        the_body: "PrimeVue is a UI framework that’s compatible with Vue 3. In this article, we’ll look at how to get started with developing Vue 3 apps with PrimeVue. Getting Started We install the required packages by running: npm install primevue@^ 3.1.1 --save npm install primeicons--save This will install the library with all the components and the icons. Next, we add the PrimeVue plugin into our app: main.js import { createApp } from 'vue'; import App from '.App.vue'; import PrimeVue from 'primevueconfig'; import InputText from 'primevueinputtext'; import 'primevueresourcesprimevue.min.css' import 'primevueresourcesthemesbootstrap4-light-bluetheme.css' import 'primeiconsprimeicons.css' const app = createApp(App); app.use(PrimeVue); app.component('InputText', InputText); app.mount('#app'); App.vue  template  div InputText type='text' v-model='text'  p{{ text }}p divtemplate scriptexport default {name: 'App',data() {return {text: '',};},};script In main.js m we call app.use to add the plugin. Then we call app.component to register the InputText component. import ‘primevue  resources  primevue.min.css’ imports the core CSS. import ‘primevue  resources  themes  bootstrap4 - light - blue  theme.css’ is the CSS for the theme. import ‘primeicons  primeicons.css’ add the icons. We can also include the script tag for the individual components: !DOCTYPE htmlhtml lang='en'headmeta charset='utf-8'  titlecalendar demotitle link href='https:unpkg.comprimevueresourcesthemessaga-bluetheme.css 'rel='stylesheet'link href='https:unpkg.comprimevueresourcesprimevue.min.css ' rel='stylesheet' link href='https:unpkg.comprimeiconsprimeicons.css ' rel='stylesheet' script src='https:unpkg.comvue@next'script script src='https:unpkg.comprimevue@3.1.1componentsinputtextinputtext.umd.min.js'script head body div id='app' p-inputtext v-model='text'p-inputtext p{{ text }}p div script Vue.createApp({ data() { return { text: '' };}, components: { 'p-inputtext': inputtext } }).mount('#app');scriptbodyhtml We add the script tags for Vue 3 and PrimeVue’s inputtext component.Then we can use it in our code. PrimeFlex We can install the primeflex package to add CSS to let us create layouts easily without writing everything from scratch. To install it, we run:npm install primeflex --save Then we cal add the CSS by writing: main.js import { createApp } from 'vue'; import App from '.App.vue'; import PrimeVue from 'primevueconfig'; import InputText from 'primevueinputtext'; import 'primeflexprimeflex.css'; const app = createApp(App); app.use(PrimeVue); app.component('InputText', InputText); app.mount('#app'); Now we can use the classes by writing: App.vue  template  div class='card' InputText type='text' v-model='text' class='p-ml-2 p-d-inline'  p{{ text }}p div template  script export default { name: 'App', data() { return { text: '', };},};script p - ml - 2 adds some margin on the left side. p - d - inline makes the input display inline. We can add shadows with the p - shadow - { x } class, where x can be 1 to 24. p - d - flex lets us create a flex layout. p - d - inline - flex lets us create an inline flex layout. p - flex - { direction } lets us set the flex - direction.Where direction can be one of: row(default ) row - reverse column column - reverse The order of items inside a flex container can be changed with the p - order - { value } classes. We can also add layouts that change according to breakpoints: template div class='p-d-flex' div class='p-mr-2 p-order-3 p-order-md-2'Item 1div div class='p-mr-2 p-order-1 p-order-md-3'Item 2div div class='p-mr-2 p-order-2 p-order-md-1'Item 3div div template script export default { name: 'App', }; script We change the order depending on whether the breakpoint is md and up or otherwise. If it’s md or higher, then we get: Item 3 Item 1 Item 2 Otherwise, we get: Item 2 Item 3 Item 1 Conclusion PrimeVue is one of the earliest UI frameworks to be compatible with Vue 3. Enjoyed this article ? If so, get more similar content by subscribing to our YouTube channel!",
         the_title: "Getting Started with Vue 3 Development with the PrimeVue Framework",
     },
     {
         the_body: `Vue 3 is the latest version of
         the easy to use Vue JavaScript framework
-         that lets us create front end apps. In this article, we’ll look at how to create a guess a number game with Vue 3 and JavaScript.Create the ProjectWe can create the Vue project with Vue CLI.To install it, we run:npm install - g @vue/cliwith NPM or:yarn global add @vue/cliwith Yarn.Then we run:vue create number - guessing - gameand select all the default options to create the project.Create the Guess a Number GameTo create the guess a number game, we write:<template><div v-if='started'><form @submit.prevent='submit'><div><label>answer</label><input v-model.number='answer' /></div><button type='submit'>check</button></form><p>{{ status }}</p></div><div v-else><button type='button' @click='start'>start</button><p>{{ status }}</p></div ></template ><script>export default {name: 'App',data() {return {rightAnswer: undefined,answer: 0,status: '',started: false,};},computed: {formValid() { return +this.answer >= 0; },},methods: {start() {this.rightAnswer = Math.ceil(Math.random() * 10);console.log(this.rightAnswer);this.started = true;},submit() {if (!this.formValid) {return;}const {answer, rightAnswer} = this;if (answer === rightAnswer) {this.status = 'you got it';this.started = false;} else if (answer < rightAnswer) {this.status = 'too low';} else {this.status = 'too high'; }},},}; </script> We start by adding the form div that’s shown when the game is started. It’s started when started is true. Inside it, we have a form element. We listen to the submit evbent with the @sumbit directive. The prevent modifier prevents server - side submission and let us do client - side form submission. We have an input to let the player enter the answer. We bind the inputted value to the answer reactive property with v - model. The number modifier automatically converts the entered value to a number. Then we add a button with type set to submit to let the player submit the form. We also display the status in the form. If the game isn’t started, we display the status and a button to let us start the game. Then we move on to adding the component options object. Inside it, we have the data method to return the reactive properties and their initial values. Next, we add the formValid to check the answer reactive property to see if it’s bigger than or equal to 0. The start method lets us start the game by generating the rightAnswer and set started to true to start the game. Next, we add the submit method to compareanswer with the rightAnswer. First, we check if the value is a valid number with formValid. If it’s not, then we stop running the function. And we display different messages depending on whether answer is equal, less than, or bigger than the rightAnswer. If the player got the right answer, then we set started to false to end the game. Conclusion We can create a guess the number game easily with Vue 3 and JavaScript. Enjoyed this article ? If so, get more similar content by subscribing to our YouTube channel!`,
+         that lets us create front end apps. In this article, we’ll look at how to create a guess a number game with Vue 3 and JavaScript.Create the ProjectWe can create the Vue project with Vue CLI.To install it, we run:npm install - g @vuecliwith NPM or:yarn global add @vuecliwith Yarn.Then we run:vue create number - guessing - gameand select all the default options to create the project.Create the Guess a Number GameTo create the guess a number game, we write:templatediv v-if='started'form @submit.prevent='submit'divlabelanswerlabelinput v-model.number='answer' divbutton type='submit'checkbuttonformp{{ status }}pdivdiv v-elsebutton type='button' @click='start'startbuttonp{{ status }}pdiv template scriptexport default {name: 'App',data() {return {rightAnswer: undefined,answer: 0,status: '',started: false,};},computed: {formValid() { return +this.answer = 0; },},methods: {start() {this.rightAnswer = Math.ceil(Math.random() * 10);console.log(this.rightAnswer);this.started = true;},submit() {if (!this.formValid) {return;}const {answer, rightAnswer} = this;if (answer === rightAnswer) {this.status = 'you got it';this.started = false;} else if (answer  rightAnswer) {this.status = 'too low';} else {this.status = 'too high'; }},},}; script We start by adding the form div that’s shown when the game is started. It’s started when started is true. Inside it, we have a form element. We listen to the submit evbent with the @sumbit directive. The prevent modifier prevents server - side submission and let us do client - side form submission. We have an input to let the player enter the answer. We bind the inputted value to the answer reactive property with v - model. The number modifier automatically converts the entered value to a number. Then we add a button with type set to submit to let the player submit the form. We also display the status in the form. If the game isn’t started, we display the status and a button to let us start the game. Then we move on to adding the component options object. Inside it, we have the data method to return the reactive properties and their initial values. Next, we add the formValid to check the answer reactive property to see if it’s bigger than or equal to 0. The start method lets us start the game by generating the rightAnswer and set started to true to start the game. Next, we add the submit method to compareanswer with the rightAnswer. First, we check if the value is a valid number with formValid. If it’s not, then we stop running the function. And we display different messages depending on whether answer is equal, less than, or bigger than the rightAnswer. If the player got the right answer, then we set started to false to end the game. Conclusion We can create a guess the number game easily with Vue 3 and JavaScript. Enjoyed this article ? If so, get more similar content by subscribing to our YouTube channel!`,
         the_title: "Create a Guess a Number Game with Vue 3 and JavaScript",
     },
     {
         the_body: `Summary: in this tutorial, you will learn how to use the JavaScript arrow function to write more concise code for function expressions. Introduction to JavaScript arrow functions ES6 arrow functions provide you with an alternative way to write a shorter syntax compared to the function expression. The following example defines a function expression that adds two numbers:let add = function(x,y) { return x + y;}
-            console.log(add(10,20)); // 30
+            console.log(add(10,20));  30
             Code language: JavaScript (javascript)
             The following example uses an arrow function which is equivalent to the above add() function expression:
-            let add = (x,y) => x + y;
-            console.log(add(10,20)); // 30;
+            let add = (x,y) = x + y;
+            console.log(add(10,20));  30;
             Code language: JavaScript (javascript)
             In this example, the arrow function has one expression x + y so it returns the result of the expression.
             However, if you use the block syntax, you need to specify the return keyword:
-            let add = (x, y) => { return x + y; };
+            let add = (x, y) = { return x + y; };
             Code language: JavaScript (javascript)
             The  typeof operator returns function indicating the type of arrow function.
-            console.log(typeof add); // function
+            console.log(typeof add);  function
             Code language: JavaScript (javascript)
             The arrow function is also an instance of the Function type as shown in the following example:
-            console.log(add instanceof Function); // true
+            console.log(add instanceof Function);  true
             Code language: JavaScript (javascript)
             JavaScript arrow functions with multiple parameters
             If an arrow function has two or more parameters, you use the following syntax:
-            (p1, p2, ..., pn) => expression;
+            (p1, p2, ..., pn) = expression;
             Code language: PHP (php)
             The following expression:
-            => expression
+            = expression
             Code language: PHP (php)
             is equivalent to the following expression:
-            => { return expression; }
+            = { return expression; }
             Code language: PHP (php)
             For example, to sort an array of numbers in the descending order, you use the sort() method of the array object as follows:
             let numbers = [4,2,6];
             numbers.sort(function(a,b){
                 return b - a;
             });
-            console.log(numbers); // [6,4,2]
+            console.log(numbers);  [6,4,2]
             Code language: JavaScript (javascript)
             The code is more concise with the arrow function syntax:
             let numbers = [4,2,6];
-            numbers.sort((a,b) => b - a);
-            console.log(numbers); // [6,4,2]
+            numbers.sort((a,b) = b - a);
+            console.log(numbers);  [6,4,2]
             Code language: JavaScript (javascript)
             JavaScript arrow functions with a single parameter
             If an arrow function takes a single parameter, you use the following syntax:
-            (p1) => { statements }
+            (p1) = { statements }
             Code language: PHP (php)
             Note that you can omit the parentheses as follows:
-            p => { statements }
+            p = { statements }
             Code language: PHP (php)
             The following example uses an arrow function as an argument of the map() method that transforms an array of strings into an array of the string’s lengths.
             let names = ['John', 'Mac', 'Peter'];
-            let lengths = names.map(name => name.length);
+            let lengths = names.map(name = name.length);
             console.log(lengths);
             Code language: JavaScript (javascript)
             JavaScript arrow functions with no parameter
             If the arrow function has no parameter, you must use the parentheses, like this:
-            () => { statements }
+            () = { statements }
             Code language: PHP (php)
             See the following example.
-            let logDoc = () => console.log(window.document);
+            let logDoc = () = console.log(window.document);
             logDoc();
             Code language: JavaScript (javascript)
             Line break between parameter definition and arrow
-            JavaScript doesn’t allow you to use a line break between the parameter definition and the arrow ( =>) in an arrow function.
+            JavaScript doesn’t allow you to use a line break between the parameter definition and the arrow ( =) in an arrow function.
             For example, the following code causes a SyntaxError:
             let multiply = (x,y)
-            => x * y;
+            = x * y;
             Code language: JavaScript (javascript)
             However, the following code works perfectly fine:
-            let multiply = (x,y) =>
+            let multiply = (x,y) =
             x * y;
             Code language: JavaScript (javascript)
             JavaScript allows you to use the line break between parameters as shown in the following example:
             let multiply = (
               x,
               y
-            ) =>
+            ) =
             x * y;
             Code language: JavaScript (javascript)
             Statements & expressions in the arrow function body
@@ -859,26 +788,26 @@ const stories_array = [
             if (x === y) { console.log('x equals y'); }
             Code language: JavaScript (javascript)
             If you use an expression in the body of an arrow function, you don’t need to use the curly braces.
-            let square = x => x * x;
+            let square = x = x * x;
             Code language: JavaScript (javascript)
             However, if you use a statement, you must wrap it inside a pair of curly braces as in the following example:
-            let except = msg => { throw msg; };
+            let except = msg = { throw msg; };
             Code language: JavaScript (javascript)
             JavaScript arrow functions and object literal
             Consider the following example:
             let setColor = function (color) { return {value: color} };
             let backgroundColor = setColor('Red');
-            console.log(backgroundColor.value); // "Red"
+            console.log(backgroundColor.value);  "Red"
             Code language: JavaScript (javascript)
             The setColor() function expression returns an object that has the value property set to the color argument. If you try the following syntax to return an object literal from an arrow function, you will get an error.
-            p => {object:literal}
+            p = {object:literal}
             Code language: PHP (php)
             For example, the following code causes an error.
-            let setColor = color => {value: color };
+            let setColor = color = {value: color };
             Code language: JavaScript (javascript)
             Since both block and object literal use curly brackets, the JavasScript engine cannot distinguish between a block and an object.
             To fix this, you need to wrap the object literal in parentheses as follows:
-            let setColor = color => ({value: color });
+            let setColor = color = ({value: color });
             Code language: JavaScript (javascript)
             Arrow function vs. regular function
             There are two main differences between an arrow function and a regular function.
@@ -890,9 +819,9 @@ const stories_array = [
             this.speedUp = function (speed) {
             this.speed = speed;
             setTimeout(function () {
-            console.log(this.speed); // undefined
+            console.log(this.speed);  undefined
             }, 1000);};}
-            let car = new Car(); car.speedUp(50); Code language: JavaScript (javascript) Inside the anonymous function of the setTimeOut() function, the this.speed is undefined. The reason is that the this of the anonymous function shadows the this of the speedUp() method. To fix this, you often assign the this value to a variable that doesn’t shadow inside the anonymous function as follows: function Car() { this.speed = 0; this.speedUp = function (speed) { this.speed = speed; let self = this; setTimeout(function () { console.log(self.speed); }, 1000); }; } let car = new Car(); car.speedUp(50); // 50; Code language: JavaScript (javascript) Unlike an anonymous function, an arrow function captures the this value of the enclosing context instead of creating its own this context. The following code should work as expected: function Car() { this.speed = 0; this.speedUp = function (speed) { this.speed = speed; setTimeout( () => console.log(this.speed), 1000); }; } let car = new Car(); car.speedUp(50); // 50; Code language: JavaScript (javascript) JavaScript arrow functions and the arguments object An arrow function doesn’t have the arguments object. Therefore, the arguments is a reference of the name in the enclosing scope. For example: function show() { return x => x + arguments[0]; } let display = show(10, 20); let result = display(5); console.log(result); // 15 Code language: JavaScript (javascript) The arrow function inside the showMe() function references the arguments object. However, this arguments object belongs to the show() function, not the arrow function. JavaScript arrow functions and the prototype When you define a function using a function keyword, the function has a property called prototype: function dump( message ) { console.log(message); } console.log(dump.hasOwnProperty('prototype')); // true Code language: JavaScript (javascript) However, arrow functions don’t have the prototype property: let dump = message => console.log(message); console.log(dump.hasOwnProperty('prototype')); // false Code language: JavaScript (javascript)It is a good practice to use arrow functions for callbacks and closures because the syntax of arrow functions are cleaner.In this tutorial, you have learned about the JavaScript arrow function syntax and how to apply arrow functions to make the code cleaner.
+            let car = new Car(); car.speedUp(50); Code language: JavaScript (javascript) Inside the anonymous function of the setTimeOut() function, the this.speed is undefined. The reason is that the this of the anonymous function shadows the this of the speedUp() method. To fix this, you often assign the this value to a variable that doesn’t shadow inside the anonymous function as follows: function Car() { this.speed = 0; this.speedUp = function (speed) { this.speed = speed; let self = this; setTimeout(function () { console.log(self.speed); }, 1000); }; } let car = new Car(); car.speedUp(50);  50; Code language: JavaScript (javascript) Unlike an anonymous function, an arrow function captures the this value of the enclosing context instead of creating its own this context. The following code should work as expected: function Car() { this.speed = 0; this.speedUp = function (speed) { this.speed = speed; setTimeout( () = console.log(this.speed), 1000); }; } let car = new Car(); car.speedUp(50);  50; Code language: JavaScript (javascript) JavaScript arrow functions and the arguments object An arrow function doesn’t have the arguments object. Therefore, the arguments is a reference of the name in the enclosing scope. For example: function show() { return x = x + arguments[0]; } let display = show(10, 20); let result = display(5); console.log(result);  15 Code language: JavaScript (javascript) The arrow function inside the showMe() function references the arguments object. However, this arguments object belongs to the show() function, not the arrow function. JavaScript arrow functions and the prototype When you define a function using a function keyword, the function has a property called prototype: function dump( message ) { console.log(message); } console.log(dump.hasOwnProperty('prototype'));  true Code language: JavaScript (javascript) However, arrow functions don’t have the prototype property: let dump = message = console.log(message); console.log(dump.hasOwnProperty('prototype'));  false Code language: JavaScript (javascript)It is a good practice to use arrow functions for callbacks and closures because the syntax of arrow functions are cleaner.In this tutorial, you have learned about the JavaScript arrow function syntax and how to apply arrow functions to make the code cleaner.
             `,
         the_title: "JavaScript: Arrow Functions",
     },
@@ -923,7 +852,7 @@ Collaborative tools. This Node.js use case example is also related to its abilit
 Data streaming applications. The term “streaming” means exactly that – sending large amounts of data in smaller packages instead of a single batch. This ability is especially critical for audio or video streaming applications. Node.js is perfectly suited for this task with built-in modules supporting data streaming and allowing to create both readable and writable data streams. If we add that Netflix, a global media service provider, uses Node.js, you may get the idea of how powerful this environment is.
 Applications relying on scalability. The superb scalability supported by Node.js answers the “why Node.js” question for apps required to withstand high peak loads. This is the reason why Uber chose Node.js to develop its app. The global taxi network is always growing and expanding its presence; at the same time, the nature of the taxi business causes high demand peaks during holidays. Node.js handles these challenges quite well.
 Visit our blog for the detailed research on the companies that have chosen Node.js as the platform to develop their applications.
-While there are quite a number of use cases that Node.js fits perfectly, there are situations when you should look for other platforms, as Node.js will not provide the best performance.Applications with heavy computing server-side. Since Node.js uses only one CPU core, heavy computations on the server will block all other requests. In this case, the event-driven non-blocking I/O model which is the strongest side of Node.js will become useless, and the application performance will suffer.
+While there are quite a number of use cases that Node.js fits perfectly, there are situations when you should look for other platforms, as Node.js will not provide the best performance.Applications with heavy computing server-side. Since Node.js uses only one CPU core, heavy computations on the server will block all other requests. In this case, the event-driven non-blocking IO model which is the strongest side of Node.js will become useless, and the application performance will suffer.
 CRUD applications. In this case, using Node.js does not automatically mean poor performance. However, if you are building a simple CRUD app with data coming directly from the server and no API is needed, Node.js may be excessive, as its powerful features will be simply wasted.
 Server-side web applications with relational databases. The reason for Node.js poor performance in this case is that its relational database tools are not as advanced as those created for other platforms. However, the recent news suggests that the latest version of Sequelize ORM may fill this gap and create the possibilities of using Node.js with relational databases.
 Other considerations to remember when choosing Node.js
@@ -945,13 +874,13 @@ If you are planning a web application project and thinking to hire a Node.js dev
     },
     {
         the_body: `In this article, I will arrange all the previous articles and videos in a way that can help people understand Micro-Frontends, gradually, and implement Hands-On projects to understand more about the concept:
-Here is the YouTube Playlist: https://youtu.be/AZDDIgJSKU0
+Here is the YouTube Playlist: https:youtu.beAZDDIgJSKU0
 1 — Micro-Frontends’ Basics: What, Why, and How
 This article can be a very good place to start. I explained what is Micro-Frontends, why we need to use them, and different ways to implement them in practice.2 — First NodeJs Micro-Frontends Hands-on Project
 This article is the first hands-on project to help see things in action. Explanation of most of the items will follow in other articles. In this article, I created 2 micro-frontends components that exposed simple items and a container that renders them. To make it simple I just used NodeJs and JavaScript to explain the main concept. It is written in a way to help very new web developers to build and try the concepts, easily.3 — React Micro-Frontends
 In this article, I started using React and adding babel-loader to the Webpack configuration files, which I explained in the articles that followed.4 — Explaining all Webpack configurations in the previous articles
 In the following videos and articles, I explained in detail each line in the Webpack configurations.5 — Deploying to AWS S3
-One of the biggest challenges with Micro-Frontends is deploying to production. There is not much articles or tutorials that will go that far. I wanted to give the end to end experience with zero costs if you used AWS free tier and S3 as a web server. The final product is actually online at http://mfe1.s3-website-us-east-1.amazonaws.com/
+One of the biggest challenges with Micro-Frontends is deploying to production. There is not much articles or tutorials that will go that far. I wanted to give the end to end experience with zero costs if you used AWS free tier and S3 as a web server. The final product is actually online at http:mfe1.s3-website-us-east-1.amazonaws.com
 1 — Install and Configure AWS CLI
 This will be needed to use AWS CLI to copy content to AWS S3`,
         the_title: `Micro-Frontends From Beginner to Expert`,
@@ -1001,9 +930,9 @@ Local Scope — when variables are only accessible within a specific context (li
 Function Scope — a type of local scope. Variables declared inside of a function cannot be accessed outside of that function.
 function sayMyName(){
    let myName = "Julia"
-   console.log(myName) // "Julia"
+   console.log(myName)  "Julia"
 }
-console.log(myName) // undefined
+console.log(myName)  undefined
 Block Scope — a type of local scope, and a subset of function scope. Variables declared inside of curly braces are not accessible outside of those braces (just like in the function above.)
 You promised to talk about closure…
 So I did. Here’s MDN’s definition, and then we’ll unpack it:
@@ -1013,8 +942,8 @@ As you can hopefully see, even though the outer function was invoked on line 14 
 Solving the “Calculating With Functions” problem using closure
 I came across this question only a month or two into my journey as a programmer. My brain melted while trying to come up with a solution, and the question sat marinating in the back of my head for months. Recently, after re-visiting the subject of closure, I realized that was the piece I was missing.
 The instructions are to create functions that when called in the example way below, will return the correct answer.
-e.g. seven(plus(five())); // must return 12
-four(times(nine())); // must return 36
+e.g. seven(plus(five()));  must return 12
+four(times(nine()));  must return 36
 Here are some additional stipulations:
 There must be a function for each number from 0 (“zero”) to 9 (“nine”)
 There must be a function for each of the following mathematical operations: plus, minus, times, dividedBy (divided_by in Ruby and Python)
@@ -1075,15 +1004,15 @@ Step 3: Decode the URLs
 URL stands for Universal Resource Locator or Uniform Resource Locator and represents the web address that you use to navigate to a particular website on the internet. The URL can be more than just an address. It can also contain some parameters, passed to the database behind the website, that control the results returned.
 While you navigate the website, you need to pay close attention to the site’s URLs as it changes. This is how you can learn more about the parameters passed to the database.
 There are multiple ways to decode an URL like browser extensions, websites or simply using the JavaScript decodeURI() and encodeURI() methods as shown in the example below:
-const uri = 'https://mozilla.org/?x=шеллы';
+const uri = 'https:mozilla.org?x=шеллы';
 const encoded = encodeURI(uri);
 console.log(encoded);
-// expected output: "https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B"
+ expected output: "https:mozilla.org?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B"
 
 try {
   console.log(decodeURI(encoded));
-  // expected output: "https://mozilla.org/?x=шеллы"
-} catch (e) { // catches a malformed URI
+   expected output: "https:mozilla.org?x=шеллы"
+} catch (e) {  catches a malformed URI
   console.error(e);
 }
 If you know the parameters that the web servers are looking for, you don’t need to use the web page to submit requests to the web server. You can generate a URL and directly submit it to the server using the address bar of your browser or a script.
@@ -1103,8 +1032,8 @@ const axios = require('axios');
 const jsdom = require('jsdom');
 const {JSDOM} = jsdom;
 
-(async () => {
- const html = await axios.get('https://www.example.com');
+(async () = {
+ const html = await axios.get('https:www.example.com');
  const dom = new JSDOM(html.data);
 
  const title = dom.window.document.querySelector('h1');
@@ -1115,9 +1044,9 @@ const {JSDOM} = jsdom;
 })();
 JSDom is the closest thing to a headless browser, meaning that it gives a very accurate representation of what’s actually on the page while remaining lean and quick.
 Its most powerful ability is that it can execute scripts inside the JSDom, meaning that these scripts can modify that page’s content.
-const dom = new JSDOM('< body >
-            <script>document.body.appendChild(document.createElement("hr"));</script>
-</body >');
+const dom = new JSDOM(' body
+            scriptdocument.body.appendChild(document.createElement("hr"));script
+body ');
 Other desirable features include setting timers, inject user actions, access logs from the console, and many more. It can perform the same operations as PhantomJS (a headless browser) in half the time.
 Unfortunately, the JSDom does not have WebSockets support, so you can’t return content loaded through WebSockets.
 Cheerio
@@ -1125,11 +1054,11 @@ Cheerio is similar to JSDom, but it was designed to be more lightweight. It is l
 const axios = require('axios');
 const cheerio = require('axios');
 
-(async () => {
-   const html = await axios.get('https://www.example.com/');
+(async () = {
+   const html = await axios.get('https:www.example.com');
    const $ = await cheerio.load(html.data);
    let data = []
-$("body").each((i,elem) => {
+$("body").each((i,elem) = {
        data.push({
            title: $(elem).find("h1").text(),
            paragraph: $(elem).find("p").text(),
@@ -1146,10 +1075,10 @@ Using Puppeteer, you can do most of the things you can manually with your browse
 Example — navigating to example.com and saving a screenshot as example.png
 const puppeteer = require('puppeteer');
 
-(async () => {
+(async () = {
    const browser = await puppeteer.launch();
    const page = await browser.newPage();
-   await page.goto('https://example.com');
+   await page.goto('https:example.com');
    await page.screenshot({ path: 'example.png' });
 
    await browser.close();
@@ -1157,15 +1086,15 @@ const puppeteer = require('puppeteer');
 People using other browser testing frameworks will find Puppeteer very familiar. You create an instance of a browser, open pages, and then manipulate them with Puppeteer’s API.
 Playwright
 Playwright is a Node.js library built to work with Chromium, Firefox, and Safari (WebKit) with a single API. Its design makes sure to enable cross-browser web automation.
-While working with Playwright, you need to declare which browser you are using explicitly. The code below navigates to https://example.com in Firefox and executes a script in the page context.
+While working with Playwright, you need to declare which browser you are using explicitly. The code below navigates to https:example.com in Firefox and executes a script in the page context.
 const { firefox } = require('playwright');
 
-(async () => {
+(async () = {
   const browser = await firefox.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
-  await page.goto('https://www.example.com/');
-  const dimensions = await page.evaluate(() => {
+  await page.goto('https:www.example.com');
+  const dimensions = await page.evaluate(() = {
     return {
       width: document.documentElement.clientWidth,
       height: document.documentElement.clientHeight,
@@ -1183,14 +1112,14 @@ const Nightmare = require('nightmare')
 const nightmare = Nightmare({ show: true })
 
 nightmare
-  .goto('https://duckduckgo.com')
+  .goto('https:duckduckgo.com')
   .type('#search_form_input_homepage', 'github nightmare')
   .click('#search_button_homepage')
   .wait('#r1-0 a.result__a')
-  .evaluate(() => document.querySelector('#r1-0 a.result__a').href)
+  .evaluate(() = document.querySelector('#r1-0 a.result__a').href)
   .end()
   .then(console.log)
-  .catch(error => {
+  .catch(error = {
     console.error('Search failed:', error)
   })
 It uses Electron, which is a faster and more modern alternative to PhantomJS.
@@ -1200,32 +1129,32 @@ X-ray provides a composable API, supporting pagination, concurrency, throttles, 
 You can extract data in any way you choose since the schema is not tied to the scraped page’s structure.
 Here are some examples:
 Scrape a single tag
-xray('http://google.com', 'title')(function(err, title) {
-  console.log(title) // Google
+xray('http:google.com', 'title')(function(err, title) {
+  console.log(title)  Google
 })
 Scrape an attribute
-xray('http://techcrunch.com', 'img.logo@src')(fn)
+xray('http:techcrunch.com', 'img.logo@src')(fn)
 Scrape innerHTML
-xray('http://news.ycombinator.com', 'body@html')(fn)
+xray('http:news.ycombinator.com', 'body@html')(fn)
 The flow is predictable, following a breadth-first crawl through each of the pages.
 Osmosis
-Osmosis is a HTML/XML parser written in Node.js, packed with CSS3/Xpath selector and lightweight HTTP wrapper. If you’re familiar with jQuery, Osmosis will feel somehow similar.
+Osmosis is a HTMLXML parser written in Node.js, packed with CSS3Xpath selector and lightweight HTTP wrapper. If you’re familiar with jQuery, Osmosis will feel somehow similar.
 Features like loading and searching AJAX content, embedded and remote scripts, redirects, cookies, form submission, single or multiple proxies, basic authentication, and many more are included in the Osmosis library.
 const osmosis = require('osmosis');
 
 osmosis
-   .get('https://www.example.com/')
+   .get('https:www.example.com')
    .set({
        title: 'h1',
        description: 'p',
        link: 'a@href'
    })
-   .data(item => console.log(item))
+   .data(item = console.log(item))
 Osmosis is lightweight and easy to use. The main advantage is that it has no large dependencies like jQuery, Cheerio, or JSDom.
 Suggestions and recommendations
 Now that we’ve gone through all seven web scraping tools in Node.Js, let’s get back to the most significant curiosity: what would be the most suitable tool for you?
 Let’s be honest. Only you can make that right decision. If you think you’ve got all the information you need so far, let me give you the following advice. If you need something lightweight, easy to use with some basic functionality, you could go for Cheerio, Osmosis, or X-RAY.
-If you have something more complex in mind, you could go for JSDom, Puppeteer/Playwright or Nightmare, since they have more features and provide high-level API control. As mentioned above, JSDom is the closest to a headless browser.
+If you have something more complex in mind, you could go for JSDom, PuppeteerPlaywright or Nightmare, since they have more features and provide high-level API control. As mentioned above, JSDom is the closest to a headless browser.
 It is also essential to know that there are always alternatives for what you are looking for. For example, if you don’t have the time to build a web scraper by yourself, and simply want to make your life easier, a great alternative could be a premade web scraping API. These are tools that carry out the heavy lifting for you and bring you closer to web data.
 Let me give you the following example for a better understanding of this alternative — WebScrapingAPI.
 WebScrapingAPI is a handy web scraping tool, and as the name suggests, an API that allows you to scrape any online source. You don’t have to download, install, or set it up, and it comes with lots of benefits: it is easy to use, reliable and you can customize it on request.
@@ -1246,9 +1175,9 @@ This pattern can be seen very clearly in one of the most commonly cited
 examples of a recursive function, the factorial function, shown here in JavaScript:
 
 function factorial(n) {
-  // Base case
+   Base case
   if (n === 0 || n === 1) return 1;
-  // Recursive case
+   Recursive case
   return n * factorial(n — 1);
 }
 Most of the time, I have heard people teaching recursion focus far too much on the base case, and not enough on the recursive case. People usually don’t have much trouble realizing what the base case should be — the harder part is deciding how the recursive call should be structured in order to accomplish the computation you want. Unfortunately, it is difficult to find useful advice about how we should go about doing this. This is what I would like to talk about here — how we should think when writing a recursive algorithm.
@@ -1259,13 +1188,13 @@ Ask myself: Since I know I can solve the simpler problem, how would I solve the 
 To illustrate this thought process, let’s look at an example. Suppose that we want to write a recursive function that will return a reversed copy of a given string:
 
 function reverse(string) {
-  // Recursive stuff here
+   Recursive stuff here
 }
 I won’t be surprised if you’re wondering, “Why do we need a recursive function to reverse a string? Wouldn’t it be easier to write a loop?” I completely agree! However, it’s important for us to look at a straightforward example first, before we tackle any algorithms that really require recursion.
 First, let’s get the base case out of the way: If the string is only one character (or, for that matter, if it is empty), then we don’t need to do anything to reverse the string, and we can simply return it:
 function reverse(string) {
-  // Base case
-  if (string.length < 2) return string;
+   Base case
+  if (string.length  2) return string;
 }
 Now, for the more challenging part — figuring out how to write the recursive call to accomplish the rest of the task. Let’s go through the thought process that we outlined above:
 I am trying to reverse a string. A problem one step simpler would be to reverse a string that is one letter shorter.
@@ -1275,9 +1204,9 @@ currently trying to reverse.
 I ask myself: Since I know and believe that my function can correctly reverse a string that is one letter shorter than the one I am currently trying to reverse, how can I reverse the whole string? Well, I can take all of the characters except the first one, reverse those (which I know and believe that my function can do), and then tack the first character on to the end! In code, it would look like this:
 
 function reverse(string) {
-  // Base case
-  if (string.length < 2) return string;
-  // Recursive case
+   Base case
+  if (string.length  2) return string;
+   Recursive case
   return reverse(string.slice(1, string.length)) + string[0];
 }
 Think carefully and make sure that you understand steps 1–3 of the thought process above, and how those logical steps resulted in the code shown. If there is anything unclear about it, read it again and think about it some more. Or, leave a question below!
@@ -1362,7 +1291,7 @@ When writing a function name, try to be a descriptive name. to know what the fun
 Resources suggested splitting a long horizontal. Usually, the length of the line is between 80 to 120 characters. As a team, you can agree on different considerations.
 5. Comments
 We use comments to explain how and why a code is working. Good comments will help to maintain the code easily.
-Comments can be single-line: starting with // and multiline: /* … */.
+Comments can be single-line: starting with  and multiline: * … *.
 In general, the excellent code will have fewer comments or not at all. And you can achieve that by writing a descriptive naming for functions and variables. Also, by splitting your codes into small blocks of code, each one does only one thing.
 It is still good to comment :
 The unclear piece of code.
@@ -1386,14 +1315,14 @@ I have also created a new account for the History Bot rather than use my persona
 For the full code of this tutorial, you can check out the GitHub repository. If you haven’t checked out part 1 then I suggest you go over it a little.
 Deploying The Bot
 I will be deploying the bot that we created last time to alwaysdata. It’s free and provides a lot of options that we need like scheduled tasks. However, you’re free to deploy the bot to whatever server you want.
-After creating an account if you don’t have one, go to Accounts in the sidebar in the “Customer Area” section. You’ll find a list of accounts if you have any or you can create a new one. These accounts are basically apps in your own main account. If you don’t have any, click on “Add account”You will then need to enter the account name which we will call “history-bot”. alwaysdata will also use this account name for the subdomain you will get for free. Then in the Product dropdown choose Free Public Cloud. Check the checkboxes at the bottom and once you’re done click “Submit”Once you click submit a new account will be created where you can add the bot to. Make sure that the account you created is selected in the sidebar menu in the dropdown field. If not, change to the account you created.Now go to Sites under Web in the sidebar, and you will find a newly created site. Click edit to configure the site.You can change the Name of the site and add any domain names if you own any. Then, go to the Configuration section and change the Type to “Node.js”. In the Command field, enter node ~/history-bot/index.js but make sure to replace history-bot with the name of the app you created. In the working directory enter /home/history-bot/history-bot the reason behind this is that I'm going to clone the history-bot repository into the history-bot app, so feel free to rename them based on what you have. The first one is the name of the app you created and the second one is the name of the repository.Once you are done click Submit. Then in the Sites listing, click on Restart to restart our site with the new configuration.After restarting the site, we need to deploy the bot we created to it. To do this, we will need access to it with SSH. In the sidebar, go to SSH under Remote Access. Then, click on Edit and in the edit screen check the “Enable Password login” checkbox.If you don’t enter a password in the Password field, you will use your alwaysdata account password for SSH. To use a different password, enter it in the Password field.
+After creating an account if you don’t have one, go to Accounts in the sidebar in the “Customer Area” section. You’ll find a list of accounts if you have any or you can create a new one. These accounts are basically apps in your own main account. If you don’t have any, click on “Add account”You will then need to enter the account name which we will call “history-bot”. alwaysdata will also use this account name for the subdomain you will get for free. Then in the Product dropdown choose Free Public Cloud. Check the checkboxes at the bottom and once you’re done click “Submit”Once you click submit a new account will be created where you can add the bot to. Make sure that the account you created is selected in the sidebar menu in the dropdown field. If not, change to the account you created.Now go to Sites under Web in the sidebar, and you will find a newly created site. Click edit to configure the site.You can change the Name of the site and add any domain names if you own any. Then, go to the Configuration section and change the Type to “Node.js”. In the Command field, enter node ~history-botindex.js but make sure to replace history-bot with the name of the app you created. In the working directory enter homehistory-bothistory-bot the reason behind this is that I'm going to clone the history-bot repository into the history-bot app, so feel free to rename them based on what you have. The first one is the name of the app you created and the second one is the name of the repository.Once you are done click Submit. Then in the Sites listing, click on Restart to restart our site with the new configuration.After restarting the site, we need to deploy the bot we created to it. To do this, we will need access to it with SSH. In the sidebar, go to SSH under Remote Access. Then, click on Edit and in the edit screen check the “Enable Password login” checkbox.If you don’t enter a password in the Password field, you will use your alwaysdata account password for SSH. To use a different password, enter it in the Password field.
 Once you’re done click Submit.
 There are two ways to access your site with SSH. One is through a web interface alwaysdata have that you can see on the main page on the “SSH” sectionWhen you click on it it will ask you for you SSH name and password and if you enter them correctly, you can use the web terminal.
 Another way to do this is by accessing from your terminal using ssh command:
 ssh user@host
 Where user can be found under Name in the table and host can be found in the yellow alert above the table. You will then be prompted to enter your password and when you do, you will be logged in.
 Once you’re in, enter the following command to clone your repository:
-git clone https://github.com/shahednasser/history-bot.git
+git clone https:github.comshahednasserhistory-bot.git
 If you don’t have a repository for your bot, you should create one.
 Then, go to the directory of the cloned repository:
 cd history-bot
@@ -1410,14 +1339,14 @@ node index.js
 And if everything is working correctly, a new tweet should be sent to the account the keys belong to:If any error occurs, make sure that the keys entered are correct. For more help, you can check part 1 to make sure everything is configured correctly.
 Scheduling Tweets
 So, this is great but a bot should run on its own, not be activated manually. So, we will need to schedule for the bot to run every day.
-Go back to alwaysdata and click on Scheduled Tasks under “Advanced”. Then click on “Add a scheduled task”In the first section, choose “Execute the command” as a type of task, and in Value type node ~/history-bot/index.jsIn the Environment section, choose the SSH user you are using, and enter the Working directory we entered before.
+Go back to alwaysdata and click on Scheduled Tasks under “Advanced”. Then click on “Add a scheduled task”In the first section, choose “Execute the command” as a type of task, and in Value type node ~history-botindex.jsIn the Environment section, choose the SSH user you are using, and enter the Working directory we entered before.
 Then in the Frequency section, choose Everyday and enter the time you want it to run at. Keep in mind that this time is relative to the timezone of the app you created, which by default is in Paris. To figure out what time it is in the app’s timezone, run the following in the SSH terminal:
-date "+%H:%M:%S %d/%m/%y"
+date "+%H:%M:%S %d%m%y"
 I suggest for testing it now, set the time a few minutes after when you are going through this tutorial so that you can check that it works
 Once you’re done click Submit, and go back to the Sites section under Web and restart your app.
 It should be noted that due to the simplicity we used to create the bot, we’re always sending the first event we are receiving from the API. So, if you ran the bot before creating this task and a tweet went out, the scheduled task will run but will receive an error from Twitter that the “Status is a duplicate”. To avoid this, make sure to remove the tweet you put out when testing the bot earlier.
 Now, you have to wait until it’s the time you chose for the bot to run at. Once it’s time, give it a few seconds and check your account. If you find a new tweet then the bot is working!
-If not, you can check the logs by going to ~/admin/logs/jobs/2021 in your app and check the logs there. Make sure that everything is configured correctly.
+If not, you can check the logs by going to ~adminlogsjobs2021 in your app and check the logs there. Make sure that everything is configured correctly.
 Now, everyday at the time you sent, a Today in History tweet will go out to the account you specified!`,
         the_title: `Simple Twitter Bot Tutorial With Node.js Part 2: Deploy to Server and Schedule Tweets`,
     },
@@ -1426,11 +1355,11 @@ Now, everyday at the time you sent, a Today in History tweet will go out to the 
 What exactly destructuring? To fully understand this concept, first, we should understand what issues it solves. When you starting working on real-life projects or any project which relies mostly on Javascript you find yourself using a lot of arrays and objects. Well, this is not a problem, but the bigger, deeper, and more complex these objects and arrays get, the harder it gets to access their data. And you find your self unpacking your arrays and objects in order to reduce repentance like this:
 const arr = ["A", "B", "C"];
 const obj = {name: "John", age: 40};
-//...
+...
 const letterA = arr[0];
 const letterB = arr[1];
 const letterC = arr[2];
-//...
+...
 const name = obj.name;
 const age = obj.age;
 Good for you, we have a better way of doing this.
@@ -1438,7 +1367,7 @@ Array
 You can get the same result by doing this:
 const arr = ["A", "B", "C"];
 const [letterA, letterB, letterC] = arr;
-console.log(letterB); //B
+console.log(letterB); B
 As you can see we are just creating constants but declaring them inside an array, and they get values from array items of the same index. You can name them however you want. Only the order(index) decides which values go to what. Also, you don’t have to declare them as a constant, you can declare them as variables too. But keep in mind that we are just taking the values of the array and assigning them to new variables, which means if you change values in the array those variables won’t be updated to new values. One more thing, you don’t have to unpack all values from the array you can do it like this.
 const arr = ["A", "B", "C"];
 const [letterA, letterB] = arr;
@@ -1446,22 +1375,22 @@ Object
 With objects, it works almost the same:
 const obj = {name: "John", age: 40};
 const {name, age} = obj;
-console.log(name); //John
+console.log(name); John
 The same concept here as well. In objects, newly declared constants should be the same name as the object field in order to get the value of them, which means order doesn’t matter here. You don’t have to unpack all fields, here as well.
 Nesting
 As you have already got by the mini title, we can also use destructuring inside destructured objects and arrays, making it possible to go as deep as we need.
 const arr = ["a", ["b1", "b2"], ["c1", ["c21", "c22"]]];
 const [a, [b1,b2], [c1, c2]] = arr;
-console.log(c2); //["c21", "c22"]
+console.log(c2); ["c21", "c22"]
 In objects, it is a bit different:In order to go deeper, we have to write the field name that we are going to unpack. But, as you can see, we are not declaring a new constant on the way of going deeper which is nice. See the ‘address’ field which is undefined.
 Common usage
 Object destructuring is commonly used when passing object arguments to functions. Without destructuring:
-const someFunc = (props) => {
+const someFunc = (props) = {
 doSomething(props.name);
 const dummy = Math.floor(props.age);
 }
 With destructuring:
-const someFunc = ({name, age}) => {
+const someFunc = ({name, age}) = {
 doSomething(name);
 const dummy = Math.floor(age);
 }
@@ -1536,23 +1465,23 @@ These methods are not for everybody. Maybe none of these will work for you, and 
         the_title: `5 Ways to Earn Money as a Developer`,
     },
     {
-        the_body: `Forms are an essential part of any website or application. You will see them used everywhere from login/signup screens to adding and updating data.
+        the_body: `Forms are an essential part of any website or application. You will see them used everywhere from loginsignup screens to adding and updating data.
 When using React, typically we would want to create a controlled component when dealing with inputs.
 For example, we will need to create a state variable and set this as the value of the input. Then we will need to add an onChange event listener to the input. Now, whenever the input is updated, we have a controlled state within our application.import React, { useState } from 'react';
 
-const App = () => {
+const App = () = {
   const [username, setUsername] = useState('');
   return (
-    <form className="App">
-      <input
+    form className="App"
+      input
         type="text"
         placeholder="Username"
         name="username"
         value={username}
-        onChange={e => setUsername(e.target.value)}
-      />
-      <input type="submit" />
-    </form>
+        onChange={e = setUsername(e.target.value)}
+
+      input type="submit"
+    form
   );
 };
 
@@ -1562,14 +1491,14 @@ To make things a lot simpler, welcome the React Hook Form library. It is describ
 Sounds good, doesn’t it? In this article, we will take a look at the React Hook Form library. We will start off with learning how to implement it in our app, then take a look at how to handle validation.
 Getting Started
 To show off this library, we will build a simple form. First off, let’s create a form in our React project like below. It is a simple form with three input fields and a submit button.
-const App = () => {
+const App = () = {
   return (
-    <form className="App">
-      <input type="text" placeholder="Username" name="username" />
-      <input type="email" placeholder="Email" name="email" />
-      <input type="password" placeholder="Password" name="password" />
-      <input type="submit" />
-    </form>
+    form className="App"
+      input type="text" placeholder="Username" name="username"
+      input type="email" placeholder="Email" name="email"
+      input type="password" placeholder="Password" name="password"
+      input type="submit"
+    form
   );
 };
 I added a few basic stylings too, just to make it look a little nicer. Now if we open up our application it will look something like this.Using React Hook Form
@@ -1579,32 +1508,32 @@ import { useForm } from 'react-hook-form';
 Then, call it inside of a function component. This hook will give us three variables when we call it, register handleSubmit and errors.
 const { register, handleSubmit, errors } = useForm();
 To track the changes to our inputs, we will pass register as a ref to each input that we want to track. Now each input will look like this.
-<input
+input
   type="text"
   placeholder="Username"
   name="username"
   ref={register}
-/>
+
 Next, let’s take care of the handle submit functionality of the form. We will create a onSubmit function, which will accept data. For now, we will just output it to the console.
-const onSubmit = (data) => {
+const onSubmit = (data) = {
   console.log(data);
 };
 On the form, add the handleSubmit function as a prop and pass onSubmit as a callback function.
-<form className="App" onSubmit={handleSubmit(onSubmit)}>
+form className="App" onSubmit={handleSubmit(onSubmit)}
 Now, when we add data to the form and submit it, we will see the output in our console. We now have a nice object with all of our form data.Don’t forget to add a name prop to the inputs. The name we pass to the inputs will be used as the key in our data object.
 Adding Validation
 To add validation rules to the form, we can pass an optional object as an argument to register.
 For example, if we want to make an input required, we can simply add the following to any input.
-<input
+input
   type="text"
   placeholder="Username"
   name="username"
   ref={register({ required: true })}
-/>
+
 Now, if we try to submit the form without a username, it will not work.
 We can display an error message by using the errors value from before. Any errors that occur will become a prop on the errors object and we can use this to display errors.
 For example, if a user does not write in a username (which we made required), we can display an error like so.
-{errors.username && <p>Username required</p>}The list of supported validation rules are:
+{errors.username && pUsername requiredp}The list of supported validation rules are:
 required
 min
 max
@@ -1614,38 +1543,38 @@ pattern
 validate
 If you were following along with the code, we should now have a form with the validation set up like below.import { useForm } from 'react-hook-form';
 
-const App = () => {
+const App = () = {
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit = data = {
     console.log(data);
   };
 
   return (
-    <form className="App" onSubmit={handleSubmit(onSubmit)}>
-      <input
+    form className="App" onSubmit={handleSubmit(onSubmit)}
+      input
         type="text"
         placeholder="Username"
         name="username"
         ref={register({ required: true })}
-      />
-      {errors.username && <p>Username required</p>}
-      <input
+
+      {errors.username && pUsername requiredp}
+      input
         type="email"
         placeholder="Email"
         name="email"
         ref={register({ required: true })}
-      />
-      {errors.email && <p>Email required</p>}
-      <input
+
+      {errors.email && pEmail requiredp}
+      input
         type="password"
         placeholder="Password"
         name="password"
         ref={register({ required: true })}
-      />
-      {errors.password && <p>Password required</p>}
-      <input type="submit" />
-    </form>
+
+      {errors.password && pPassword requiredp}
+      input type="submit"
+    form
   );
 };
 
@@ -1818,11 +1747,11 @@ If you must return to your HTML to change the presentation (or styling) of the p
 9. Use the Right Doctype
 The doctype declaration greatly affects whether or not your markup and CSS will validate. In fact, the entire look and feel of your site can change greatly depending on the doctype that you declare.
 
-Learn more about which doctype to use at A List Apart. You can simply start using <!DOCTYPE html> when creating pages based on HTML5.
+Learn more about which doctype to use at A List Apart. You can simply start using !DOCTYPE html when creating pages based on HTML5.
 
 10. Use Shorthand
 You can shrink your code considerably by using shorthand when crafting your CSS. For elements like padding, margin, font, and some others, you can combine styles in one line. For example, a div might have these styles:11. Comment Your CSS
-Just like any other language, it's a great idea to comment your code in sections. To add a comment, simply add /* behind the comment, and */ to close it, like so:12. Understand the Difference Between Block and Inline Elements
+Just like any other language, it's a great idea to comment your code in sections. To add a comment, simply add * behind the comment, and * to close it, like so:12. Understand the Difference Between Block and Inline Elements
 Block elements are elements that naturally clear each line after they're declared, spanning the whole width of the available space. Inline elements take only as much space as they need, and don't force a new line after they're used.
 
 Here are the lists of elements that are typically inline:13. Alphabetize Your Properties
@@ -1888,7 +1817,7 @@ For example, I might having a polling program that would have a unique set of st
 However, be sure to consider the number of HTTP requests that are being made. Many designers prefer to develop with multiple stylesheets, and then combine them into one file. This reduces the number of HTTP requests to one. Also, the entire file will be cached on the user's computer.
 
 29. Check for Closed Elements First When Debugging
-If you're noticing that your design looks a tad wonky, there's a good chance it's because you've left off a closing </div>. You can use the XHTML validator to help sniff out all sorts of errors like this.
+If you're noticing that your design looks a tad wonky, there's a good chance it's because you've left off a closing div. You can use the XHTML validator to help sniff out all sorts of errors like this.
 
 30. Try to Use Flexbox and Grid Layout Instead of Floats
 In the past, it was very common and necessary to use floats to create any kind of layout. Unfortunately, floats come with a lot of problems. You can instead start using the much more powerful layout modules called flexbox and grid layout. Flexbox will help you create one-dimensional layouts, and grid will help you with two-dimensional layouts.`,
@@ -1898,17 +1827,17 @@ In the past, it was very common and necessary to use floats to create any kind o
         the_body: `JavaScript’s another beautiful part which make us love with language.
 When it come to hoisting it make us confused most of the time. This is the one of the favourite question of interviewer. So today we’ll try to understand hoisting in simple layman language.
 Let’s start with some JS code to understand the hoisting.
-// JS Hoisting
+ JS Hoisting
 var m = 10;
 function miniScript() {
   console.log(“miniScript is exploring JS”);
 }
-// Let's invoke the functions and variables
+ Let's invoke the functions and variables
 miniScript();
 console.log(m);
 It’s simple JS code in which we’ve declared simple variable and function. Output of this as expectedSo this is all we know but the big question what is hoisting?
 To understand this let’s modify the piece of code which we wrote above to this.
-//Call the function and variables even before we declaring them.
+Call the function and variables even before we declaring them.
 console.log(m);
 miniScript();
 function miniScript() {
@@ -1925,16 +1854,16 @@ Let’s put the debugger on the first line of code and stop the browser to execu
 I am attaching the screen recording of putting debugger into the first line of codeSo as you can see in the Global scope if we scroll down a bit we can found our variables and function.
 Variable was undefined which means JavaScript engine assigned a memory to this variable and give it a placeholder undefined.
 Now if we console.log our complete function then you’ll see something interested will happen.
-// Let's see how our function will look in Global scope before executing.
+ Let's see how our function will look in Global scope before executing.
 console.log(miniScript);
 function miniScript() {
    console.log("miniScript is exploring JS");
 }
 JavaScript will assign memory to functions and variables even before start executing the code. This is called Hoisting.
 Now let’s see if we use arrow functions and then what will happen in global stack. This will not behave as traditional functions.
-// Arrow function behave like variables.
+ Arrow function behave like variables.
 console.log(miniScript);
-var miniScript = () => {
+var miniScript = () = {
    console.log("miniScript is exploring JS");
 }
 You can see arrow function just behaves like variables as it’s value is undefined. What this means is function assigned memory in execution context and undefined is placeholder for this.
@@ -1942,7 +1871,7 @@ Hoisting is a concept of JavaScript in which JS host all function expression and
 This all is happening because of Hoisting.
 Next time if someone asks you hoisting — Hoisting is assigning the memory to variables and functions even before initialising them.
 Let’s deep more dive and see what happen in the case of let and const ?
-// Use case for let or Const - I am using const
+ Use case for let or Const - I am using const
 console.log(m);
 const m = 'miniScript';
 What do you think the output will be? will they behave same as var or functions?
@@ -1957,7 +1886,7 @@ If you like this post please give me a Thumbs up 👍 . It will motivate me to w
         the_body: `For programmers — especially self-taught programmers — our first introduction to the world of ‘recursion’ is often in the form of something math-related. It’s not uncommon for programmers to intrinsically call upon some of our favourite F words when we think of recursion — no not that F word, these ones:
 Fibonacci
 function fibonacci(position) {
-  if (position < 3) return 1;
+  if (position  3) return 1;
   return fibonacci(position - 1) + fibonacci(position - 2);
 }
 Factorial
@@ -1971,8 +1900,8 @@ Note: An iterative algorithm, or function, is one that makes use of a loop to ge
 Let’s go back to our recursive Fibonacci function and write it as an iterative Fibonacci function instead:
 function fibonacci(index = 1) {
   let sequence = [0, 1, 1];
-  if (index < 3) return 1;
-  for (let i = 2; i < index; i++) {
+  if (index  3) return 1;
+  for (let i = 2; i  index; i++) {
     sequence.push(sequence[sequence.length - 1] + sequence[sequence.length - 2]);
   }
   return sequence[index];
@@ -1980,7 +1909,7 @@ function fibonacci(index = 1) {
 Let’s also take our recursive Factorial function and write that as an iterative Factorial function:
 function factorial(num) {
   if (num === 1) return 1;
-  for (let i = num - 1; i >= 1; i--) {
+  for (let i = num - 1; i = 1; i--) {
     num = num * i;
   }
   return num;
@@ -2027,21 +1956,21 @@ So, how do you tackle this?
 Well, from what we can see, a subdepartment appears to take the form of an object, while arrays have been used to store email addresses. So I could try and write some sort of iterative function that loops through each department, and checks if it is a subdepartment (object) or a list of email addresses (array). If it’s an array, we can then loop through the array and send an email to each email address. If it’s an object, we could create another loop to tackle that subdepartment, using the same ‘check if it’s an object or an array’ tactic we used earlier. From what we can tell, our data structure doesn’t go any deeper than two sub levels. So one more iteration should satisfy all levels and do what we want it to.
 Our final code might look something like this:
 function sendEmail(emailAddress) {
-  console.log('sending email to ${emailAddress}');
+  console.log('sending email to ');
 }
 function gatherEmailAddresses(departments) {
   let departmentKeys = Object.keys(departments);
-  for (let i = 0; i < departmentKeys.length; i++) {
+  for (let i = 0; i  departmentKeys.length; i++) {
     if (Array.isArray(departments[departmentKeys[i]])) {
-      departments[departmentKeys[i]].forEach((email) => sendEmail(email));
+      departments[departmentKeys[i]].forEach((email) = sendEmail(email));
     } else {
       for (let dept in departments[departmentKeys[i]]) {
         if (Array.isArray(departments[departmentKeys[i]][dept])) {
-          departments[departmentKeys[i]][dept].forEach((email) => sendEmail(email));
+          departments[departmentKeys[i]][dept].forEach((email) = sendEmail(email));
         } else {
           for (let subDept in departments[departmentKeys[i]][dept])
             if (Array.isArray(departments[departmentKeys[i]][dept][subDept])) {
-              departments[departmentKeys[i]][dept][subDept].forEach((email) => sendEmail(email));
+              departments[departmentKeys[i]][dept][subDept].forEach((email) = sendEmail(email));
             }
         }
       }
@@ -2054,13 +1983,13 @@ Five minutes later and your boss returns and mentions that they also want the fu
 Suddenly my iterative function no longer satisfies the criteria.
 But lo and behold, a recursive solution enters!
 function sendEmail(emailAddress) {
-  console.log('sending email to ${emailAddress}');
+  console.log('sending email to ');
 }
 function gatherEmailAddresses(departments) {
   let departmentKeys = Object.keys(departments);
-  departmentKeys.forEach((dept) => {
+  departmentKeys.forEach((dept) = {
     if (Array.isArray(departments[dept])) {
-      return departments[dept].forEach((email) => sendEmail(email));
+      return departments[dept].forEach((email) = sendEmail(email));
     }
     return gatherEmailAddresses(departments[dept]);
   });
@@ -2071,7 +2000,7 @@ This function provides us with two benefits on our previous iterative counterpar
 It caters to the additional criteria imposed by our boss. As long as it continues to follow the same pattern, the function can still handle any new objects or arrays added to it without the need to change a single line of code;
 It is easier to read. We don’t have a bunch of nested loops that our brains have to try and keep track of.
 You’ll also notice that our function actually contains iterative and recursive elements. There’s no reason why an algorithm has to be exclusively one or the other. It’s perfectly fine to have something iterative such as a forEach function that contains recursive calls to itself.
-Let’s just pick up on my second point for a moment. It’s only easier to read if you understand how recursion works outside of the confines of fibonacci, factorial, and any other clinical coding trials you might find in a ‘How To Crack The Coding Interview’ book/course. So let’s spend some time explaining exactly what is happening inside of our recursive function.
+Let’s just pick up on my second point for a moment. It’s only easier to read if you understand how recursion works outside of the confines of fibonacci, factorial, and any other clinical coding trials you might find in a ‘How To Crack The Coding Interview’ bookcourse. So let’s spend some time explaining exactly what is happening inside of our recursive function.
 Our function takes one value — an object — as its only parameter. The object we pass in is the entire companyEmailAddresses variable, which is this grotesque monster:
 const companyEmailAddresses = {
   finance: ["jill@companyx.com", "frank@companyx.com"],
@@ -2121,7 +2050,7 @@ engineering: {
                  ],
   },
 As we have now recursively called our function again, we do not pass onto the third department yet as our recursive function needs to be handled first — ie, we are still handling the second department. The technical way to explain this is that our recursive call is added to our call stack.
-If you recall, the first thing our function does is Object.keys() on the object passed in. This gives us ["qa", "development"]. We then loop through each department (or subdepartment in this case). We check if the "qa" department/subdepartment is an array with Array.isArray(). It is, so would return true, so we can then use the sendEmail() function. The same would also occur with "development", as that is also an array.
+If you recall, the first thing our function does is Object.keys() on the object passed in. This gives us ["qa", "development"]. We then loop through each department (or subdepartment in this case). We check if the "qa" departmentsubdepartment is an array with Array.isArray(). It is, so would return true, so we can then use the sendEmail() function. The same would also occur with "development", as that is also an array.
   engineering: {
     qa: [
          "ahmed@companyx.com",
@@ -2145,14 +2074,14 @@ npx create-react-app my-app --template typescript
 Okay now thats completed. CD into the directory.
 cd my-app
 Let’s install our dependencies
-yarn add react-redux redux redux-saga reselect axios styled-components react-grid-system @fortawesome/react-fontawesom @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
+yarn add react-redux redux redux-saga reselect axios styled-components react-grid-system @fortawesomereact-fontawesom @fortawesomefree-solid-svg-icons @fortawesomefontawesome-svg-core
 *you can of course use another styling method and icon library. But for this example I’ll be using the above.
 And then our dev dependencies.
-yarn add redux-devtools-extension @types/react-redux @types/redux @types/redux-saga @types/reselect @types/axios @types/styled-components" --dev
+yarn add redux-devtools-extension @typesreact-redux @typesredux @typesredux-saga @typesreselect @typesaxios @typesstyled-components" --dev
 So if you were to run a yarn start now the frontend will render in the browser. However we will need to add some magic here and there to connect all these technologies together.
-Firstly, we want to create store.ts file in the ./src/ directory.
+Firstly, we want to create store.ts file in the .src directory.
 import { applyMiddleware, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import { composeWithDevTools } from "redux-devtools-extensiondevelopmentOnly";
 import createSagaMiddleware from "redux-saga";
 
 import { AppState, rootReducer } from "modules";
@@ -2173,14 +2102,14 @@ export default function store(initialState: AppState) {
 }
 
 I’m using absolute paths imports see line 5 and 6. Add this to your tsconfig.ts to introduce absolute path imports.
-"baseUrl": "./src",
+"baseUrl": ".src",
 But basically in this new store script we are connecting our reducer and saga middleware.
 Essentially redux-saga is a redux middleware, which means this thread can be started, paused and cancelled from the main application with normal redux actions, it has access to the full redux application state and it can dispatch redux actions as well.
 So we have to stack all these technologies in our store.ts script and call the createStore function.
 The function takes the following arguments createStore(reducer, [preloadedState], [enhancer]) Read more here.
 So now we have a basic store in our app, Woo hoo! If you run the app now and have the Redux DevTools chrome extension installed, you should a simple, yet functioning store.
 Okay lets have a look at the first argument of the createStore() function, our reducer.import { combineReducers } from "redux";
-import { weatherReducer, WeatherState } from "modules/weather/weatherReducer";
+import { weatherReducer, WeatherState } from "modulesweatherweatherReducer";
 
 export interface AppState {
   weather: WeatherState;
@@ -2191,8 +2120,8 @@ export const rootReducer = combineReducers({
 });So pretty simple stuff. We have our combineReducers(reducers) combining all our reducers into one readable object for the createStore() function.
 The combineReducers helper function turns an object whose values are different reducing functions into a single reducing function you can pass to createStore. Read more here.
 We also see our AppState type which we import into our store.ts file. Essentially we are creating a typed contract for our reducer using the typescript Interface feature.
-Okay now lets check out the weatherReducer :)import { WeatherActions } from "./weatherActions";
-import { Forecast } from "./weatherTypes";
+Okay now lets check out the weatherReducer :)import { WeatherActions } from ".weatherActions";
+import { Forecast } from ".weatherTypes";
 
 export interface WeatherState {
   forecast: Forecast | {};
@@ -2213,7 +2142,7 @@ export function weatherReducer(
   action: WeatherActions
 ) {
   switch (action.type) {
-    case "WEATHER/GET_FORECAST_REQUEST": {
+    case "WEATHERGET_FORECAST_REQUEST": {
       return {
         ...state,
         loading: {
@@ -2222,7 +2151,7 @@ export function weatherReducer(
       };
     }
 
-    case "WEATHER/GET_FORECAST_SUCCESS": {
+    case "WEATHERGET_FORECAST_SUCCESS": {
       const newState = {
         ...state,
         forecast: {
@@ -2235,7 +2164,7 @@ export function weatherReducer(
       return newState;
     }
 
-    case "WEATHER/GET_FORECAST_FAIL": {
+    case "WEATHERGET_FORECAST_FAIL": {
       return {
         ...state,
         loading: {
@@ -2250,24 +2179,24 @@ export function weatherReducer(
 }
 
 export default weatherReducer;It’s pretty standard stuff here, we are again using the interface concept to create a state contract.
-And here we have our actions file.// remove any
-import { Forecast } from "./weatherTypes";
+And here we have our actions file. remove any
+import { Forecast } from ".weatherTypes";
 
 export type WeatherActions =
   | {
-      type: "WEATHER/GET_FORECAST_REQUEST";
+      type: "WEATHERGET_FORECAST_REQUEST";
       lat: string;
       lon: string;
     }
   | {
-      type: "WEATHER/GET_FORECAST_SUCCESS";
+      type: "WEATHERGET_FORECAST_SUCCESS";
       forecast: Forecast;
     }
-  | { type: "WEATHER/GET_FORECAST_FAIL"; error: any };
+  | { type: "WEATHERGET_FORECAST_FAIL"; error: any };
 
 export function getForecastRequest(lat: string, lon: string): WeatherActions {
   return {
-    type: "WEATHER/GET_FORECAST_REQUEST",
+    type: "WEATHERGET_FORECAST_REQUEST",
     lat,
     lon,
   };
@@ -2275,13 +2204,13 @@ export function getForecastRequest(lat: string, lon: string): WeatherActions {
 
 export function getForecastSuccess(forecast: Forecast): WeatherActions {
   return {
-    type: "WEATHER/GET_FORECAST_SUCCESS",
+    type: "WEATHERGET_FORECAST_SUCCESS",
     forecast,
   };
 }
 
 export function getForecastFail(error: any): WeatherActions {
-  return { type: "WEATHER/GET_FORECAST_FAIL", error };
+  return { type: "WEATHERGET_FORECAST_FAIL", error };
 }A pretty simple set up here too, not relying on any dependencies. To me it seems very readable which can be an issue with TypeScript sometimes.
 (I am using ananytype on this file, I would never recommended this is just as the type of the error object is unknown to me as it’s a third party API)
 We are using a custom type Forecast :export interface Forecast {
@@ -2331,58 +2260,58 @@ We are using a custom type Forecast :export interface Forecast {
   };
   geometry: {
     type: string;
-    coordinates: Array<number>;
+    coordinates: Arraynumber;
   };
   type: string;
 }Okay so we have our types, actions, and reducer set up. Let’s call one of our actions and see what happens.import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { getForecastRequest } from "modules/weather/weatherActions";
-import { useSelectForecast } from "modules/weather/weatherSelectors";
+import { getForecastRequest } from "modulesweatherweatherActions";
+import { useSelectForecast } from "modulesweatherweatherSelectors";
 
-import { WeatherReport } from "components/weather";
+import { WeatherReport } from "componentsweather";
 import { Container, Row, Col } from "react-grid-system";
 
 function App() {
   const dispatch = useDispatch();
 
-  const [toggle, setToggle] = useState<boolean>(true);
+  const [toggle, setToggle] = useStateboolean(true);
 
-  useEffect(() => {
+  useEffect(() = {
     dispatch(getForecastRequest("59.92609", "10.73436"));
   }, []);
 
   const forecast = useSelectForecast();
 
   return (
-    <Container>
-      <Row>
-        <Col md={12}>
-          {toggle && Object.keys(forecast).length > 0 && (
-            <WeatherReport forecasts={[forecast]} />
+    Container
+      Row
+        Col md={12}
+          {toggle && Object.keys(forecast).length  0 && (
+            WeatherReport forecasts={[forecast]}
           )}
-        </Col>
-        <Col md={12}>
-          <button onClick={() => setToggle(!toggle)}>
-            {${ toggle? "Hide": "Show" } weather forecast}
-          </button>
-        </Col>
-      </Row>
-    </Container>
+        Col
+        Col md={12}
+          button onClick={() = setToggle(!toggle)}
+             "Hide": "Show"  weather forecast}
+          button
+        Col
+      Row
+    Container
   );
 }
 
 export default App;Okay so here is our App.tsx file. We are doing a simple dispatch of the action getForecastRequest(lat: string, lon: string) We will see no linting errors when calling this function, as we are using two strings as parameters.
-We will manage the side effect of this action using redux-saga.import { takeLatest, call, put } from "redux-saga/effects";
-import * as actions from "../modules/weather/weatherActions";
+We will manage the side effect of this action using redux-saga.import { takeLatest, call, put } from "redux-sagaeffects";
+import * as actions from "..modulesweatherweatherActions";
 
-import { getCompleteForecast } from "modules/weather/weatherService";
+import { getCompleteForecast } from "modulesweatherweatherService";
 
 export function* workerGetForeCastRequest({
   lat,
   lon,
 }: {
-  type: "WEATHER/GET_FORECAST_REQUEST";
+  type: "WEATHERGET_FORECAST_REQUEST";
   lat: string;
   lon: string;
 }) {
@@ -2396,12 +2325,12 @@ export function* workerGetForeCastRequest({
 }
 
 export default function* WatcherWeatherRequest() {
-  yield takeLatest("WEATHER/GET_FORECAST_REQUEST", workerGetForeCastRequest);
+  yield takeLatest("WEATHERGET_FORECAST_REQUEST", workerGetForeCastRequest);
 }The only difference here to a vanilla JS redux-saga worker is the destructuring of the action object. Conventionally a worker has an action parameter which is an object supplied by the takeLatest or takeEvery function. We will destructure the parameter which allows us to assign the correct types.
-As you can see clearly here I have decided against the convention that “define every action type as a string constant”, see below as example. Although feel free to mix these guidelines however suits you and/or your team.
-const ADD_TODO = 'TODOS/ADD_TODO'
-const REMOVE_TODO = 'TODOS/REMOVE_TODO'
-const LOAD_ARTICLE = 'TODOS/LOAD_ARTICLE'
+As you can see clearly here I have decided against the convention that “define every action type as a string constant”, see below as example. Although feel free to mix these guidelines however suits you andor your team.
+const ADD_TODO = 'TODOSADD_TODO'
+const REMOVE_TODO = 'TODOSREMOVE_TODO'
+const LOAD_ARTICLE = 'TODOSLOAD_ARTICLE'
 Okay so now we have nearly completed the flow of an asynchronous redux action. Lastly we need to select the data in our reducer using a selector. I will use the reselect library with a basic createSelector example to highlight how you can gain some performance improvements. Here is a short explanation of what reselect and the createSelector function is:
 Selectors created using Reselect’s createSelector function are memoized. That’s a fancy word to mean that the function remembers the arguments passed-in the last time it was invoked and doesn’t recalculate if the arguments are the same. You can view it a little bit like caching.
 
@@ -2409,23 +2338,23 @@ import { createSelector } from "reselect";
 import { useSelector } from "react-redux";
 
 import { AppState } from "modules";
-import { Forecast } from "./weatherTypes";
+import { Forecast } from ".weatherTypes";
 
-const forecastSelector = (state: AppState) => state.weather.forecast;
+const forecastSelector = (state: AppState) = state.weather.forecast;
 
-export const selectAllForecast = () => {
+export const selectAllForecast = () = {
   return createSelector(
     [forecastSelector],
-    (forecast: Forecast | {}) => forecast
+    (forecast: Forecast | {}) = forecast
   );
 };
 
 export function useSelectForecast() {
   return useSelector(selectAllForecast());
-}So here we are selecting the forecast state from the app state slice, typing our app state slice with our AppState from our root reducer file. We then use that data as our first argument in the createSelector ensuring that our useSelectForecast function doesn’t recalculate if the forecast hasn’t changed. This becomes much more useful when you are doing a lot of computing logic in your selector function and/or have dynamic arguments being sent in by the user inputs.
+}So here we are selecting the forecast state from the app state slice, typing our app state slice with our AppState from our root reducer file. We then use that data as our first argument in the createSelector ensuring that our useSelectForecast function doesn’t recalculate if the forecast hasn’t changed. This becomes much more useful when you are doing a lot of computing logic in your selector function andor have dynamic arguments being sent in by the user inputs.
 Secondly in our createSelector function because the selected forecast data can be either a Forecast type or an empty object as described in our weatherReducer.ts we specify that typing in the createSelector function.
-import { WeatherActions } from "./weatherActions";
-import { Forecast } from "./weatherTypes";
+import { WeatherActions } from ".weatherActions";
+import { Forecast } from ".weatherTypes";
 
 export interface WeatherState {
   forecast: Forecast | {};
@@ -2440,9 +2369,9 @@ export const initialStateWeather: WeatherState = {
     forecast: false,
   },
 };Lastly just to finish some of the high level typescript react features, let’s take a quick look at typing a useState function.
-const [toggle, setToggle] = useState<boolean>(true);
-It’s a simple declaration in the <> brackets. Of course you could pass multiple types, and include globals types, like so.
-const [data, setData] = useState<Forecast | []>([]);
+const [toggle, setToggle] = useStateboolean(true);
+It’s a simple declaration in the  brackets. Of course you could pass multiple types, and include globals types, like so.
+const [data, setData] = useStateForecast | []([]);
 Conclusion
 Using TypeScript doesn’t have to be so intimidating and can be fun. Have a play with these techniques. Please do reach out if you have any questions or further ideas.
 `,
@@ -2450,7 +2379,7 @@ Using TypeScript doesn’t have to be so intimidating and can be fun. Have a pla
     },
     {
         the_body: `Prerequisites
-Please make sure that Node.js (>= 10.13.0) is installed on your operating system and docker.
+Please make sure that Node.js (= 10.13.0) is installed on your operating system and docker.
 Init project
 We need to create our project, firstly create blog directory.
 mkdir blog
@@ -2462,7 +2391,7 @@ The last command going to create a package.json file, its purpose is to handle t
 Install dependencies
 To our API Rest, we need the next dependencies, express, pg, typeorm, typescript.
 Install dependencies dev dependencies.
-npm install typescript @types/express @types/node --save-dev
+npm install typescript @typesexpress @typesnode --save-dev
 We will only use the last dependencies to develop our API.
 Now, install the dependencies that we’ll use in the production environment.
 npm install express pg typeorm
@@ -2470,7 +2399,7 @@ express: This is a web application framework for NodeJS.
 pg: It is a collection of NodeJS modules for interfacing with your PostgreSQL database.
 Typescript: It’s a language for application-scale JavaScript, this module helps us to add optional types to JavaScript that support tools for large-scale JavaScript applications for any browser.
 typeorm: It’s an ORM that runs in Node JS that can use with TypeScript and JavaScript (ES5, ES6, ES7, ES8).
-@types/express, @types/node: these packages help us with the type definitions for Express and NodeJS.
+@typesexpress, @typesnode: these packages help us with the type definitions for Express and NodeJS.
 
 Configuring TypeScript
 First, we need to add a command into the package.json file to execute commands of the typescript module. In the section of scripts add the next line.
@@ -2479,8 +2408,8 @@ Now, we going to configure TypeScript in our project, execute the command below:
 npm run tsc -- --init
 The last command generates tsctsconfig.json, this file indicates that we are going to working with TypeScript. This file contains the working setup for TypeScript transpillation.
 In the file, we add the next lines, those lines help us with the configuration of the build and root directories.
-“outDir”: “./build”,
-“rootDirs”: [“./src”],
+“outDir”: “.build”,
+“rootDirs”: [“.src”],
 rootDirs: This configuration list who combined represent the project.
 outDir: This line redirects the output of compiled files.
 Configuring our server
@@ -2495,16 +2424,16 @@ Once created the class and methods execute the command below to convert our Type
 npm run tsc
 Remember the tsctsconfig.json configurations, the JavaScript files will generate into the build directory.
 Now, start the server with the next command.
-node ./build/server.js
-After that. try to go to the next link http://localhost:3000/.
+node .buildserver.js
+After that. try to go to the next link http:localhost:3000.
 Create controllers
 In this example of API, we going to use controllers to handle the routes, we need to create the controller directory and the post.controller.ts file.
 In this controller, we going to handle the methods to the CRUD.
 
 Next, execute the command below:
 npm run tsc
-node ./build/server.js
-And try to access the new routes of the post controller. http://localhost:3001/api/posts
+node .buildserver.js
+And try to access the new routes of the post controller. http:localhost:3001apiposts
 If you want to prove all the methods of post controller use postman.
 Create services
 In some cases, we need to get data from different places thus database or another API, for this reason, we need to handle this operation in an exclusive file. In this practice, we’ll use services to handle these tasks.
@@ -2512,14 +2441,14 @@ Create a new directory called services and the file post.service.ts.
 
 Now execute commands to tranpillate our code and start the server.
 npm run tsc
-node ./build/server.
+node .buildserver.
 
 
 In the next section we’ll configure the database and execute som queries.
 Create the database
 For this practice, we going to use Docker containers, you can get some information about how to install docker in the documentation.
 Once Docker installed, run the next command:
-docker run -d -p 5433:5432 — name blog -e POSTGRES_USER=blog -e POSTGRES_PASSWORD=blog — mount src=db-blog,dst=/var/lib/postgresql/data postgres
+docker run -d -p 5433:5432 — name blog -e POSTGRES_USER=blog -e POSTGRES_PASSWORD=blog — mount src=db-blog,dst=varlibpostgresqldata postgres
 The flag -d indicates that the container going to execute in detach mode in the background.
 The flag -p 5433:5432 specifies that the container will configure the port 5432 and we can access it with the 5444 from localhost.
 — name blog specify the name of our container.
@@ -2537,14 +2466,14 @@ Our method database Configuration going to execute into routes method and wait u
 If you want to know more about the different ways to create a connection vist typeorm’s documetnation.
 Create entities
 Well, we have the database connection, so the next step is configure the entities of our application. According TypeOrm’s documentation a entity is a class tha maps to a database table, you can define a entity using the annotation @Entity().
-If you remember, in the configuration of the database we have this line entities: [“build/database/entities/**/*.js”], so we need to create the directory src/database/entites, and this directory will contain our entitites.
+If you remember, in the configuration of the database we have this line entities: [“builddatabaseentities***.js”], so we need to create the directory srcdatabaseentites, and this directory will contain our entitites.
 Create a class called PostEntity and in this class we define our table posts.
 
 
 @PrimaryGeneratedColumn() genrate a primary column which value will be automatically generated and @Column() define a column of our database.
 Create custom repository
 All the actions that we need to do, we’ll do in the repository file, in this file we connect to a specific table and execute some actions such as update, create, delete and other DML operations.
-Create the src/repository directory and a file called post.repository.ts and create the class PostRepository like class bellow.
+Create the srcrepository directory and a file called post.repository.ts and create the class PostRepository like class bellow.
 
 The class PostRepository extends from Repository class, this class lets us to work with our entity objects. Find entities, insert, update, delete, etc, and @EntityRepository() is used to declare a class as a custom repository.
 Integrate services with the repositories
@@ -2554,8 +2483,8 @@ First we’ll inport PostRepository into the class PostService, and initialize t
 
 Now transpille the code and start the server.
 npm run tsc
-node ./build/server.js
-Insert some data into posts table and you can access to the next url http://localhost:3000/api/posts and get data.
+node .buildserver.js
+Insert some data into posts table and you can access to the next url http:localhost:3000apiposts and get data.
 
 With this we finish the practice, but you can see the complete code on GitHub.
 Conclusion
@@ -2584,41 +2513,41 @@ The final structure looks like this:
 
 import { useState, useContext } from 'react';
 import { Stage, Rect } from 'react-konva';
-import ColourContext, { ColourConsumer, ColourProvider } from './contexts/ColourContext';
+import ColourContext, { ColourConsumer, ColourProvider } from '.contextsColourContext';
 
 function Screen() {
  const { colour } = useContext(ColourContext);
   return (
-    <Rect
+    Rect
       x={0}
       y={0}
       width={200}
       height={200}
       fill={colour}
-    />
+
   )
 }
 
 function Canvas() {
  return (
-    <ColourConsumer>
-   {(colourValue) => (
-      <Stage>
-        <ColourProvider value={colourValue}>
-          <Screen />
-        </ColourProvider>
-      </Stage>
+    ColourConsumer
+   {(colourValue) = (
+      Stage
+        ColourProvider value={colourValue}
+          Screen
+        ColourProvider
+      Stage
     )}
-    </ColourConsumer>
+    ColourConsumer
  )
 }
 
 function App() {
  const [colour, setColour] = useState('#FF0000');
  return (
-   <ColourProvider value={{ colour, setColour }}>
-    <Canvas />
-   </ColourProvider>
+   ColourProvider value={{ colour, setColour }}
+    Canvas
+   ColourProvider
  )
 }
 
@@ -2634,32 +2563,32 @@ Within the canvas components we take the colour value from the context and use i
 function Screen() {
  const { colour } = useContext(ColourContext);
   return (
-    <Rect
+    Rect
       x={0}
       y={0}
       width={200}
       height={200}
       fill={colour}
-    />
+
   )
 }
 
-// This requires the context to be relayed within the Konva Stage
+ This requires the context to be relayed within the Konva Stage
 function Canvas() {
  return (
-    <ColourConsumer>
-   {(colourValue) => (
-      <Stage>
-        <ColourProvider value={colourValue}>
-          <Screen />
-        </ColourProvider>
-      </Stage>
+    ColourConsumer
+   {(colourValue) = (
+      Stage
+        ColourProvider value={colourValue}
+          Screen
+        ColourProvider
+      Stage
     )}
-    </ColourConsumer>
+    ColourConsumer
  )
 }
 
-// No need to relay, can just use useContext
+ No need to relay, can just use useContext
 function ColourForm() {
   const {colour, setColour} = useContext(ColourContext);
 
@@ -2668,21 +2597,21 @@ function ColourForm() {
   }
 
   return (
-    <select value={colour} onChange={handleChange}>
-      <option value='#ff0000'>Red</option>
-      <option value='#00ff00'>Green</option>
-      <option value='#0000ff'>Blue</option>
-    </select>
+    select value={colour} onChange={handleChange}
+      option value='#ff0000'Redoption
+      option value='#00ff00'Greenoption
+      option value='#0000ff'Blueoption
+    select
    )
 }
 
 function App() {
  const [colour, setColour] = useState('#ff0000');
  return (
-   <ColourProvider value={{ colour, setColour }}>
-    <Canvas />
-    <ColourForm />
-   </ColourProvider>
+   ColourProvider value={{ colour, setColour }}
+    Canvas
+    ColourForm
+   ColourProvider
  )
 }
 
@@ -2698,38 +2627,38 @@ You can find a demo of the shared state in the example User Journey Map I’ve b
         the_body: `Modules are the building blocks of an application. Modules are isolated pieces of code that when put together construct the larger functioning application. Node.js accomplishes this abstraction through the CommonJS standard or recently introduced ES module system.
 The main idea of modules is to break down large pieces of code into smaller pieces. So by storing relevant code in individual files, code can be plugged into other portions of an application via importing. Importing a file means loading in code that is made available for use within the file.
 A simple import statement with CommonJS would be something like the following.
-const sample = require('./sample.js');
-// if sample.js provided a function
+const sample = require('.sample.js');
+ if sample.js provided a function
 sample();
-// if sample.js provided a variable
+ if sample.js provided a variable
 console.log(sample);
-// etc
+ etc
 In CommonJS, importing a file involves using the require() function, which takes in a module identifier, and loads in that module within the current module.
 When importing the built-in or third-party modules, the process is the same, a single word module identifier is passed into require().
-// built-in module used for creating HTTP servers
+ built-in module used for creating HTTP servers
 const http = require('http');
-// third-party package used for making HTTP requests
+ third-party package used for making HTTP requests
 const axios = require('axios');
 The other side of this process is the exportation of code so that other modules can access it within their scope.
-// sample.js
+ sample.js
 const sample = 'sample variable string';
 const sample2 = 'sample2 variable string';
 module.exports = sample;
-// importing module
-const sample = require('./sample.js');
-console.log(sample);  // => sample variable string
-console.log(sample2); // => Reference error
+ importing module
+const sample = require('.sample.js');
+console.log(sample);   = sample variable string
+console.log(sample2);  = Reference error
 Expanding on the example above, here we see the structure within “sample.js” that allows other modules to import its API for use. Any code that is defined within a module is private to other modules unless it is explicitly exported. When I tried to log the “sample2” variable, a reference error was thrown because it was not explicitly exported via assignment to the “exports” property on the module object. This is how Node.js allows files access to encapsulated code. Node.js also provides the same exporting functionality via the shorthand “exports” object.
-// sample.js
+ sample.js
 const sample = 'sample variable string';
 exports.sample = sample;
 As of Node.js version 14.x, the standard JavaScript module system, ES modules, has also been adopted and provides alternatives to utilizing modules along with some key differences. The ES module system utilizes the “import” statement to import modules and does so asynchronously as opposed to the synchronous require() function.
 A simple import statement with CommonJS would be something like the following:
-// importing with ES Modules
-import sample from './sample.mjs';
+ importing with ES Modules
+import sample from '.sample.mjs';
 Aside from the syntactical differences, CommonJS and ES modules provide other key differences. Like the “module” object which is injected by default into each CommonJS module by Node, other values are made available within the modules. The __filename and __dirname are variables that are made available within every CommonJS module, useful for various configurations.
-// within a CommonJS module
-// by default .js extensionconsole.log(__filename, __dirname); // double underscore
+ within a CommonJS module
+ by default .js extensionconsole.log(__filename, __dirname);  double underscore
 When working with ES modules, these variables are not available and need to be computed. This is carried out by the only value that is injected within ES modules, the “import.meta” property which helps identify the URL which maps to the current module.`,
         the_title: `Modules in Node.js`,
     },
@@ -2737,7 +2666,7 @@ When working with ES modules, these variables are not available and need to be c
         the_body: `Being able to implement private variables and methods is very helpful for restricting access to code. By making a variable private it limits the amount of code that can mutate it. There are several ways to implement private variables and methods in JavaScript. One of such ways is by using closures.
 What is a closure?
 A closure is the combination of a function bundled with its surrounding state. This means that we can access the scope in which the function is defined, from inside that function. Let’s look at a simple example:Here we have an outer function add and an inner function addFive. Assigning add to a variable will return the inner function addFive.Invoking the variable and passing a number will execute addFive. At first, it seems accessing x should not be possible since x belongs to the scope of the outer function which has already finished executing. But, because the function addFive forms a closure, it also has access to the environment or scope in which it was declared (also known as the lexical environment).
-If a function forms a closure, it can access variables and functions declared in the parent/outer function even after that parent/outer function finishes executing. This principle allows us to implement private variables.
+If a function forms a closure, it can access variables and functions declared in the parentouter function even after that parentouter function finishes executing. This principle allows us to implement private variables.
 Implementing private variables
 In JavaScript, private variables are not natively available. But knowing how closures work, we can emulate them.
 This example applies the concept we looked at in the previous section. An IIFE(Immediately Invoked Function Expression) is assigned to the constant Door. The IIFE executes immediately and returns an object with two methods. This returned object has a function and a variable in its lexical environment.
@@ -2914,7 +2843,7 @@ mkdir django-react && cd $_
 Once done create and activate the new Python environment:
 
 python3 -m venv venv
-source venv/bin/activate
+source venvbinactivate
 NOTE: from now on make sure to be always in the django-react folder and to have the Python environment active.
 
 Now let's pull in the dependencies:
@@ -2936,12 +2865,12 @@ In our case, still in the project folder run:
 django-admin startapp leads
 This will create our new leads app in the django-react folder. Your project structure now should be:
 
-(venv) your@prompt:~/Code/django-react$ tree -d -L 1
+(venv) your@prompt:~Codedjango-react$ tree -d -L 1
 .
 ├── django_react
 ├── leads
 └── venv
-Now let’s tell Django how to use the new app. Open up django_react/settings.py and add the app in INSTALLED_APPS:
+Now let’s tell Django how to use the new app. Open up django_reactsettings.py and add the app in INSTALLED_APPS:
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -2966,7 +2895,7 @@ an email
 a message
 (Feel free to add extra fields! Like phone for example). Let's not forget a timestamp field as well! Django does not add a created_at column by default.
 
-Open up leads/models.py and create the Lead model:
+Open up leadsmodels.py and create the Lead model:
 
 from django.db import models
 
@@ -3031,7 +2960,7 @@ A serializer works the other way around too: it converts JSON to objects. This w
 
 display Django models in a browser by converting them to JSON
 make CRUD request with a JSON payload to the API
-To recap: a Django REST serializer is mandatory for operating on models through the API. Create a new file named leads/serializers.py. The LeadSerializer takes our Lead model and some fields:
+To recap: a Django REST serializer is mandatory for operating on models through the API. Create a new file named leadsserializers.py. The LeadSerializer takes our Lead model and some fields:
 
 from rest_framework import serializers
 from .models import Lead
@@ -3066,7 +2995,7 @@ list a collection of models
 create new objects in the database
 By taking a look at the generic API views documentation we can see that there's a view for listing and creating models: ListCreateAPIView, which takes a queryset, and a serializer_class.
 
-Open up leads/views.py and create the view:
+Open up leadsviews.py and create the view:
 
 from .models import Lead
 from .serializers import LeadSerializer
@@ -3080,24 +3009,24 @@ That is. With 3 lines of code we created a view for handling GET and POST reques
 How? Head over to the next section.
 
 Setting up the rout... ehm the urls
-Our goal is to wire up LeadListCreate to api/lead/. In other words we want to make GET and POST requests to api/lead/ for listing and creating models.
+Our goal is to wire up LeadListCreate to apilead. In other words we want to make GET and POST requests to apilead for listing and creating models.
 
-To configure the URL mapping include the app urls in django_react/urls.py:
+To configure the URL mapping include the app urls in django_reacturls.py:
 
 from django.urls import path, include
 
 urlpatterns = [
     path('', include('leads.urls')),
 ]
-Next up create a new file named leads/urls.py. In this file we'll wire up LeadListCreate to api/lead/:
+Next up create a new file named leadsurls.py. In this file we'll wire up LeadListCreate to apilead:
 
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('api/lead/', views.LeadListCreate.as_view() ),
+    path('apilead', views.LeadListCreate.as_view() ),
 ]
-Finally let's enable rest_framework in INSTALLED_APPS. Open up django_react/settings.py and add the app there:
+Finally let's enable rest_framework in INSTALLED_APPS. Open up django_reactsettings.py and add the app there:
 
 # Application definition
 
@@ -3109,7 +3038,7 @@ INSTALLED_APPS = [
 Now you should be able to run a sanity check with:
 
 python manage.py runserver
-Head over http://127.0.0.1:8000/api/lead/ and you'll see the browsable API:
+Head over http:127.0.0.1:8000apilead and you'll see the browsable API:
 
 Django REST framework browseable API
 
@@ -3138,7 +3067,7 @@ Option 3. Mix and match: mini React apps inside Django templates (difficulty: si
 And here are my advices. If you're just starting out with Django REST and React avoid option 2. Instead go for option number 1 (React in its own "frontend" Django app) if:
 
 you're building an app-like website
-the interface has lot of user interactions/AJAX
+the interface has lot of user interactionsAJAX
 you're ok with Session based authentication
 there are no SEO concerns
 you're fine with React Router
@@ -3160,7 +3089,7 @@ We already know how to create a Django app so let's do it again for the frontend
 django-admin startapp frontend
 You'll see a new directory called frontend inside your project folder:
 
-(venv) your@prompt:~/Code/django-react$ tree -d -L 1
+(venv) your@prompt:~Codedjango-react$ tree -d -L 1
 .
 ├── django_react
 ├── frontend
@@ -3168,36 +3097,36 @@ You'll see a new directory called frontend inside your project folder:
 └── venv
 Let's also prepare a directory structure for holding React components:
 
-mkdir -p ./frontend/src/components
+mkdir -p .frontendsrccomponents
 and static files:
 
-mkdir -p ./frontend/{static,templates}/frontend
+mkdir -p .frontend{static,templates}frontend
 Next up we'll set up React, webpack and babel. Move in the frontend folder and initialize the environment:
 
-cd ./frontend && npm init -y
+cd .frontend && npm init -y
 Next up install webpack and webpack cli:
 
 npm i webpack webpack-cli --save-dev
 Now open up package.json and configure two scripts, one for production and one for development:
 
 "scripts": {
-    "dev": "webpack --mode development --entry ./src/index.js --output-path ./static/frontend",
-    "build": "webpack --mode production --entry ./src/index.js --output-path ./static/frontend"
+    "dev": "webpack --mode development --entry .srcindex.js --output-path .staticfrontend",
+    "build": "webpack --mode production --entry .srcindex.js --output-path .staticfrontend"
 },
 Close the file and save it. Now let's install babel for transpiling our code:
 
-npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+npm i @babelcore babel-loader @babelpreset-env @babelpreset-react --save-dev
 Next up pull in React:
 
 npm i react react-dom --save-dev
-Now configure babel with a .babelrc (still inside ./frontend):
+Now configure babel with a .babelrc (still inside .frontend):
 
 {
     "presets": [
-        "@babel/preset-env", "@babel/preset-react"
+        "@babelpreset-env", "@babelpreset-react"
     ]
 }
-NOTE: if you're getting regeneratorRuntime is not defined with async/await in your React components replace the above babel configuration with the version presented in this post.
+NOTE: if you're getting regeneratorRuntime is not defined with asyncawait in your React components replace the above babel configuration with the version presented in this post.
 
 And finally create a webpack.config.js for configuring babel-loader:
 
@@ -3205,8 +3134,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: \.js$,
+        exclude: node_modules,
         use: {
           loader: "babel-loader"
         }
@@ -3217,37 +3146,37 @@ module.exports = {
 Now we're ready to roll! (Welcome to modern frontend!).
 
 Django REST with React: preparing the frontend app
-First things first create a view in ./frontend/views.py:
+First things first create a view in .frontendviews.py:
 
 from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'frontend/index.html')
-Then create a template in ./frontend/templates/frontend/index.html:
+    return render(request, 'frontendindex.html')
+Then create a template in .frontendtemplatesfrontendindex.html:
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Django REST with React</title>
-</head>
-<body>
-<div id="app">
-    <!-- React will load here -->
-</div>
-</body>
+!DOCTYPE html
+html
+head
+  meta charset="utf-8"
+  meta name="viewport" content="width=device-width, initial-scale=1"
+  titleDjango REST with Reacttitle
+head
+body
+div id="app"
+    !-- React will load here --
+div
+body
 {% load static %}
-<script src="{% static "frontend/main.js" %}"></script>
-</html>
-As you can see the template will call ./frontend/main.js which is our webpack bundle. Configure the new URL mapping to include the frontend in ./project/urls.py:
+script src="{% static "frontendmain.js" %}"script
+html
+As you can see the template will call .frontendmain.js which is our webpack bundle. Configure the new URL mapping to include the frontend in .projecturls.py:
 
 urlpatterns = [
     path('', include('leads.urls')),
     path('', include('frontend.urls')),
 ]
-Next up create a new file named ./frontend/urls.py:
+Next up create a new file named .frontendurls.py:
 
 from django.urls import path
 from . import views
@@ -3256,7 +3185,7 @@ from . import views
 urlpatterns = [
     path('', views.index ),
 ]
-Finally enable the frontend app in ./project/settings.py:
+Finally enable the frontend app in .projectsettings.py:
 
 # Application definition
 
@@ -3266,16 +3195,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend', # enable the frontend app
 ]
-At this point you can give it a shot on http://127.0.0.1:8000/ (while still running Django development server). You'll see a blank page for now.
+At this point you can give it a shot on http:127.0.0.1:8000 (while still running Django development server). You'll see a blank page for now.
 
 In the next section we'll finally add React to the mix.
 
 Django REST with React: the React frontend
 To keep things simple we'll create a simple React component that will display our data. If you haven't got anything in the database it's a good moment to populate your application with some contact.
 
-Run the development server and head over http://127.0.0.1:8000/api/lead/ to insert some leads.
+Run the development server and head over http:127.0.0.1:8000apilead to insert some leads.
 
-Now create a new file in ./frontend/src/components/App.js. It will be a React component for fetching and displaying data:
+Now create a new file in .frontendsrccomponentsApp.js. It will be a React component for fetching and displaying data:
 
 import React, { Component } from "react";
 import { render } from "react-dom";
@@ -3291,17 +3220,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("api/lead")
-      .then(response => {
-        if (response.status > 400) {
-          return this.setState(() => {
+    fetch("apilead")
+      .then(response = {
+        if (response.status  400) {
+          return this.setState(() = {
             return { placeholder: "Something went wrong!" };
           });
         }
         return response.json();
       })
-      .then(data => {
-        this.setState(() => {
+      .then(data = {
+        this.setState(() = {
           return {
             data,
             loaded: true
@@ -3312,15 +3241,15 @@ class App extends Component {
 
   render() {
     return (
-      <ul>
-        {this.state.data.map(contact => {
+      ul
+        {this.state.data.map(contact = {
           return (
-            <li key={contact.id}>
+            li key={contact.id}
               {contact.name} - {contact.email}
-            </li>
+            li
           );
         })}
-      </ul>
+      ul
     );
   }
 }
@@ -3328,19 +3257,19 @@ class App extends Component {
 export default App;
 
 const container = document.getElementById("app");
-render(<App />, container);
+render(App , container);
 NOTE: you can write the very same component as a function with the useEffect hook.
 
-Save and close the file. Now create the entry point for webpack in ./frontend/src/index.js and import your component:
+Save and close the file. Now create the entry point for webpack in .frontendsrcindex.js and import your component:
 
-import App from "./components/App";
+import App from ".componentsApp";
 Now we're ready to test things out. Run webpack with:
 
 npm run dev
 start the development server:
 
 python manage.py runserver
-and head over http://127.0.0.1:8000/. (If you see "Something went wrong" make sure to migrate and populate your database)
+and head over http:127.0.0.1:8000. (If you see "Something went wrong" make sure to migrate and populate your database)
 
 You should finally see your data in a React component:
 
@@ -3349,7 +3278,7 @@ Simple React component
 Pretty simple. But it works!
 
 Django REST with React: conclusions, where to go from here
-In this tutorial we built a simple Django REST/React project. You learned how to:
+In this tutorial we built a simple Django RESTReact project. You learned how to:
 
 build a simple Django REST API
 structure a Django project with React
@@ -3372,11 +3301,11 @@ When you create a Form class, the most important part is defining the fields of 
 Field.clean(value)¶
 Although the primary way you’ll use Field classes is in Form classes, you can also instantiate them and use them directly to get a better idea of how they work. Each Field instance has a clean() method, which takes a single argument and either raises a django.core.exceptions.ValidationError exception or returns the clean value:
 
->>> from django import forms
->>> f = forms.EmailField()
->>> f.clean('foo@example.com')
+ from django import forms
+ f = forms.EmailField()
+ f.clean('foo@example.com')
 'foo@example.com'
->>> f.clean('invalid email address')
+ f.clean('invalid email address')
 Traceback (most recent call last):
 ...
 ValidationError: ['Enter a valid email address.']
@@ -3387,40 +3316,40 @@ required¶
 Field.required¶
 By default, each Field class assumes the value is required, so if you pass an empty value – either None or the empty string ("") – then clean() will raise a ValidationError exception:
 
->>> from django import forms
->>> f = forms.CharField()
->>> f.clean('foo')
+ from django import forms
+ f = forms.CharField()
+ f.clean('foo')
 'foo'
->>> f.clean('')
+ f.clean('')
 Traceback (most recent call last):
 ...
 ValidationError: ['This field is required.']
->>> f.clean(None)
+ f.clean(None)
 Traceback (most recent call last):
 ...
 ValidationError: ['This field is required.']
->>> f.clean(' ')
+ f.clean(' ')
 ' '
->>> f.clean(0)
+ f.clean(0)
 '0'
->>> f.clean(True)
+ f.clean(True)
 'True'
->>> f.clean(False)
+ f.clean(False)
 'False'
 To specify that a field is not required, pass required=False to the Field constructor:
 
->>> f = forms.CharField(required=False)
->>> f.clean('foo')
+ f = forms.CharField(required=False)
+ f.clean('foo')
 'foo'
->>> f.clean('')
+ f.clean('')
 ''
->>> f.clean(None)
+ f.clean(None)
 ''
->>> f.clean(0)
+ f.clean(0)
 '0'
->>> f.clean(True)
+ f.clean(True)
 'True'
->>> f.clean(False)
+ f.clean(False)
 'False'
 If a Field has required=False and you pass clean() an empty value, then clean() will return a normalized empty value rather than raising ValidationError. For CharField, this will return empty_value which defaults to an empty string. For other Field classes, it might be None. (This varies from field to field.)
 
@@ -3434,29 +3363,29 @@ As explained in “Outputting forms as HTML” above, the default label for a Fi
 
 Here’s a full example Form that implements label for two of its fields. We’ve specified auto_id=False to simplify the output:
 
->>> from django import forms
->>> class CommentForm(forms.Form):
+ from django import forms
+ class CommentForm(forms.Form):
 ...     name = forms.CharField(label='Your name')
 ...     url = forms.URLField(label='Your website', required=False)
 ...     comment = forms.CharField()
->>> f = CommentForm(auto_id=False)
->>> print(f)
-<tr><th>Your name:</th><td><input type="text" name="name" required></td></tr>
-<tr><th>Your website:</th><td><input type="url" name="url"></td></tr>
-<tr><th>Comment:</th><td><input type="text" name="comment" required></td></tr>
+ f = CommentForm(auto_id=False)
+ print(f)
+trthYour name:thtdinput type="text" name="name" requiredtdtr
+trthYour website:thtdinput type="url" name="url"tdtr
+trthComment:thtdinput type="text" name="comment" requiredtdtr
 label_suffix¶
 Field.label_suffix¶
 The label_suffix argument lets you override the form’s label_suffix on a per-field basis:
 
->>> class ContactForm(forms.Form):
+ class ContactForm(forms.Form):
 ...     age = forms.IntegerField()
 ...     nationality = forms.CharField()
 ...     captcha_answer = forms.IntegerField(label='2 + 2', label_suffix=' =')
->>> f = ContactForm(label_suffix='?')
->>> print(f.as_p())
-<p><label for="id_age">Age?</label> <input id="id_age" name="age" type="number" required></p>
-<p><label for="id_nationality">Nationality?</label> <input id="id_nationality" name="nationality" type="text" required></p>
-<p><label for="id_captcha_answer">2 + 2 =</label> <input id="id_captcha_answer" name="captcha_answer" type="number" required></p>
+ f = ContactForm(label_suffix='?')
+ print(f.as_p())
+plabel for="id_age"Age?label input id="id_age" name="age" type="number" requiredp
+plabel for="id_nationality"Nationality?label input id="id_nationality" name="nationality" type="text" requiredp
+plabel for="id_captcha_answer"2 + 2 =label input id="id_captcha_answer" name="captcha_answer" type="number" requiredp
 initial¶
 Field.initial¶
 The initial argument lets you specify the initial value to use when rendering this Field in an unbound Form.
@@ -3465,50 +3394,50 @@ To specify dynamic initial data, see the Form.initial parameter.
 
 The use-case for this is when you want to display an “empty” form in which a field is initialized to a particular value. For example:
 
->>> from django import forms
->>> class CommentForm(forms.Form):
+ from django import forms
+ class CommentForm(forms.Form):
 ...     name = forms.CharField(initial='Your name')
-...     url = forms.URLField(initial='http://')
+...     url = forms.URLField(initial='http:')
 ...     comment = forms.CharField()
->>> f = CommentForm(auto_id=False)
->>> print(f)
-<tr><th>Name:</th><td><input type="text" name="name" value="Your name" required></td></tr>
-<tr><th>Url:</th><td><input type="url" name="url" value="http://" required></td></tr>
-<tr><th>Comment:</th><td><input type="text" name="comment" required></td></tr>
+ f = CommentForm(auto_id=False)
+ print(f)
+trthName:thtdinput type="text" name="name" value="Your name" requiredtdtr
+trthUrl:thtdinput type="url" name="url" value="http:" requiredtdtr
+trthComment:thtdinput type="text" name="comment" requiredtdtr
 You may be thinking, why not just pass a dictionary of the initial values as data when displaying the form? Well, if you do that, you’ll trigger validation, and the HTML output will include any validation errors:
 
->>> class CommentForm(forms.Form):
+ class CommentForm(forms.Form):
 ...     name = forms.CharField()
 ...     url = forms.URLField()
 ...     comment = forms.CharField()
->>> default_data = {'name': 'Your name', 'url': 'http://'}
->>> f = CommentForm(default_data, auto_id=False)
->>> print(f)
-<tr><th>Name:</th><td><input type="text" name="name" value="Your name" required></td></tr>
-<tr><th>Url:</th><td><ul class="errorlist"><li>Enter a valid URL.</li></ul><input type="url" name="url" value="http://" required></td></tr>
-<tr><th>Comment:</th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="text" name="comment" required></td></tr>
+ default_data = {'name': 'Your name', 'url': 'http:'}
+ f = CommentForm(default_data, auto_id=False)
+ print(f)
+trthName:thtdinput type="text" name="name" value="Your name" requiredtdtr
+trthUrl:thtdul class="errorlist"liEnter a valid URL.liulinput type="url" name="url" value="http:" requiredtdtr
+trthComment:thtdul class="errorlist"liThis field is required.liulinput type="text" name="comment" requiredtdtr
 This is why initial values are only displayed for unbound forms. For bound forms, the HTML output will use the bound data.
 
 Also note that initial values are not used as “fallback” data in validation if a particular field’s value is not given. initial values are only intended for initial form display:
 
->>> class CommentForm(forms.Form):
+ class CommentForm(forms.Form):
 ...     name = forms.CharField(initial='Your name')
-...     url = forms.URLField(initial='http://')
+...     url = forms.URLField(initial='http:')
 ...     comment = forms.CharField()
->>> data = {'name': '', 'url': '', 'comment': 'Foo'}
->>> f = CommentForm(data)
->>> f.is_valid()
+ data = {'name': '', 'url': '', 'comment': 'Foo'}
+ f = CommentForm(data)
+ f.is_valid()
 False
 # The form does *not* fall back to using the initial values.
->>> f.errors
+ f.errors
 {'url': ['This field is required.'], 'name': ['This field is required.']}
 Instead of a constant, you can also pass any callable:
 
->>> import datetime
->>> class DateForm(forms.Form):
+ import datetime
+ class DateForm(forms.Form):
 ...     day = forms.DateField(initial=datetime.date.today)
->>> print(DateForm())
-<tr><th>Day:</th><td><input type="text" name="day" value="12/23/2008" required><td></tr>
+ print(DateForm())
+trthDay:thtdinput type="text" name="day" value="12232008" requiredtdtr
 The callable will be evaluated only when the unbound form is displayed, not when it is defined.
 
 widget¶
@@ -3523,42 +3452,42 @@ Like the model field’s help_text, this value isn’t HTML-escaped in automatic
 
 Here’s a full example Form that implements help_text for two of its fields. We’ve specified auto_id=False to simplify the output:
 
->>> from django import forms
->>> class HelpTextContactForm(forms.Form):
+ from django import forms
+ class HelpTextContactForm(forms.Form):
 ...     subject = forms.CharField(max_length=100, help_text='100 characters max.')
 ...     message = forms.CharField()
 ...     sender = forms.EmailField(help_text='A valid email address, please.')
 ...     cc_myself = forms.BooleanField(required=False)
->>> f = HelpTextContactForm(auto_id=False)
->>> print(f.as_table())
-<tr><th>Subject:</th><td><input type="text" name="subject" maxlength="100" required><br><span class="helptext">100 characters max.</span></td></tr>
-<tr><th>Message:</th><td><input type="text" name="message" required></td></tr>
-<tr><th>Sender:</th><td><input type="email" name="sender" required><br>A valid email address, please.</td></tr>
-<tr><th>Cc myself:</th><td><input type="checkbox" name="cc_myself"></td></tr>
->>> print(f.as_ul()))
-<li>Subject: <input type="text" name="subject" maxlength="100" required> <span class="helptext">100 characters max.</span></li>
-<li>Message: <input type="text" name="message" required></li>
-<li>Sender: <input type="email" name="sender" required> A valid email address, please.</li>
-<li>Cc myself: <input type="checkbox" name="cc_myself"></li>
->>> print(f.as_p())
-<p>Subject: <input type="text" name="subject" maxlength="100" required> <span class="helptext">100 characters max.</span></p>
-<p>Message: <input type="text" name="message" required></p>
-<p>Sender: <input type="email" name="sender" required> A valid email address, please.</p>
-<p>Cc myself: <input type="checkbox" name="cc_myself"></p>
+ f = HelpTextContactForm(auto_id=False)
+ print(f.as_table())
+tr th Subject:th td input type="text" name="subject" maxlength="100" required br span class="helptext" 100 characters max.span td tr
+tr th Message:th td input type="text" name="message" required td tr
+tr th Sender:th td input type="email" name="sender" required br A valid email address, please.td tr
+tr th Cc myself:th td input type="checkbox" name="cc_myself" td tr
+ print(f.as_ul()))
+li Subject: input type="text" name="subject" maxlength="100" required  span class="helptext" 100 characters max.span li
+li Message: input type="text" name="message" required li
+li Sender: input type="email" name="sender" required  A valid email address, please.li
+li Cc myself: input type="checkbox" name="cc_myself" li
+ print(f.as_p())
+p Subject: input type="text" name="subject" maxlength="100" required  span class="helptext" 100 characters max.span p
+p Message: input type="text" name="message" required p
+p Sender: input type="email" name="sender" required  A valid email address, please.p
+p Cc myself: input type="checkbox" name="cc_myself" p
 error_messages¶
 Field.error_messages¶
 The error_messages argument lets you override the default messages that the field will raise. Pass in a dictionary with keys matching the error messages you want to override. For example, here is the default error message:
 
->>> from django import forms
->>> generic = forms.CharField()
->>> generic.clean('')
+ from django import forms
+ generic = forms.CharField()
+ generic.clean('')
 Traceback (most recent call last):
   ...
 ValidationError: ['This field is required.']
 And here is a custom error message:
 
->>> name = forms.CharField(error_messages={'required': 'Please enter your name'})
->>> name.clean('')
+ name = forms.CharField(error_messages={'required': 'Please enter your name'})
+ name.clean('')
 Traceback (most recent call last):
   ...
 ValidationError: ['Please enter your name']
@@ -3795,30 +3724,30 @@ When you use an ImageField on a form, you must also remember to bind the file da
 
 After the field has been cleaned and validated, the UploadedFile object will have an additional image attribute containing the Pillow Image instance used to check if the file was a valid image. Pillow closes the underlying file descriptor after verifying an image, so whilst non-image data attributes, such as format, height, and width, are available, methods that access the underlying image data, such as getdata() or getpixel(), cannot be used without reopening the file. For example:
 
->>> from PIL import Image
->>> from django import forms
->>> from django.core.files.uploadedfile import SimpleUploadedFile
->>> class ImageForm(forms.Form):
+ from PIL import Image
+ from django import forms
+ from django.core.files.uploadedfile import SimpleUploadedFile
+ class ImageForm(forms.Form):
 ...     img = forms.ImageField()
->>> file_data = {'img': SimpleUploadedFile('test.png', <file data>)}
->>> form = ImageForm({}, file_data)
+ file_data = {'img': SimpleUploadedFile('test.png', file data)}
+ form = ImageForm({}, file_data)
 # Pillow closes the underlying file descriptor.
->>> form.is_valid()
+ form.is_valid()
 True
->>> image_field = form.cleaned_data['img']
->>> image_field.image
-<PIL.PngImagePlugin.PngImageFile image mode=RGBA size=191x287 at 0x7F5985045C18>
->>> image_field.image.width
+ image_field = form.cleaned_data['img']
+ image_field.image
+PIL.PngImagePlugin.PngImageFile image mode=RGBA size=191x287 at 0x7F5985045C18
+ image_field.image.width
 191
->>> image_field.image.height
+ image_field.image.height
 287
->>> image_field.image.format
+ image_field.image.format
 'PNG'
->>> image_field.image.getdata()
+ image_field.image.getdata()
 # Raises AttributeError: 'NoneType' object has no attribute 'seek'.
->>> image = Image.open(image_field)
->>> image.getdata()
-<ImagingCore object at 0x7f5984f874b0>
+ image = Image.open(image_field)
+ image.getdata()
+ImagingCore object at 0x7f5984f874b0
 Additionally, UploadedFile.content_type will be updated with the image’s content type if Pillow can determine it, otherwise it will be set to None.
 
 IntegerField¶
@@ -4006,11 +3935,11 @@ Takes one extra required argument:
 fields¶
 The list of fields that should be used to validate the field’s value (in the order in which they are provided).
 
->>> from django.forms import ComboField
->>> f = ComboField(fields=[CharField(max_length=20), EmailField()])
->>> f.clean('test@example.com')
+ from django.forms import ComboField
+ f = ComboField(fields=[CharField(max_length=20), EmailField()])
+ f.clean('test@example.com')
 'test@example.com'
->>> f.clean('longemailaddress@example.com')
+ f.clean('longemailaddress@example.com')
 Traceback (most recent call last):
 ...
 ValidationError: ['Ensure this value has at most 20 characters (it has 28).']
@@ -4125,7 +4054,7 @@ A QuerySet of model objects from which the choices for the field are derived and
 ModelChoiceField also takes two optional arguments:
 
 empty_label¶
-By default the <select> widget used by ModelChoiceField will have an empty choice at the top of the list. You can change the text of this label (which is "---------" by default) with the empty_label attribute, or you can disable the empty label entirely by setting empty_label to None:
+By default the select widget used by ModelChoiceField will have an empty choice at the top of the list. You can change the text of this label (which is "---------" by default) with the empty_label attribute, or you can disable the empty label entirely by setting empty_label to None:
 
 # A custom empty label
 field1 = forms.ModelChoiceField(queryset=..., empty_label="(Nothing)")
@@ -4141,22 +4070,22 @@ This optional argument is used to specify the field to use as the value of the c
 field1 = forms.ModelChoiceField(queryset=...)
 would yield:
 
-<select id="id_field1" name="field1">
-<option value="obj1.pk">Object1</option>
-<option value="obj2.pk">Object2</option>
+select id="id_field1" name="field1"
+option value="obj1.pk"Object1option
+option value="obj2.pk"Object2option
 ...
-</select>
+select
 and:
 
 # to_field_name provided
 field2 = forms.ModelChoiceField(queryset=..., to_field_name="name")
 would yield:
 
-<select id="id_field2" name="field2">
-<option value="obj1.name">Object1</option>
-<option value="obj2.name">Object2</option>
+select id="id_field2" name="field2"
+option value="obj1.name"Object1option
+option value="obj2.name"Object2option
 ...
-</select>
+select
 ModelChoiceField also has the attribute:
 
 iterator¶
@@ -4201,7 +4130,7 @@ The list message is deprecated, use invalid_list instead.
 Iterating relationship choices¶
 By default, ModelChoiceField and ModelMultipleChoiceField use ModelChoiceIterator to generate their field choices.
 
-When iterated, ModelChoiceIterator yields 2-tuple choices containing ModelChoiceIteratorValue instances as the first value element in each choice. ModelChoiceIteratorValue wraps the choice value whilst maintaining a reference to the source model instance that can be used in custom widget implementations, for example, to add data-* attributes to <option> elements.
+When iterated, ModelChoiceIterator yields 2-tuple choices containing ModelChoiceIteratorValue instances as the first value element in each choice. ModelChoiceIteratorValue wraps the choice value whilst maintaining a reference to the source model instance that can be used in custom widget implementations, for example, to add data-* attributes to option elements.
 
 For example, consider the following models:
 
@@ -4216,7 +4145,7 @@ class Topping(models.Model):
 
 class Pizza(models.Model):
     topping = models.ForeignKey(Topping, on_delete=models.CASCADE)
-You can use a Select widget subclass to include the value of Topping.price as the HTML attribute data-price for each <option> element:
+You can use a Select widget subclass to include the value of Topping.price as the HTML attribute data-price for each option element:
 
 from django import forms
 
@@ -4234,13 +4163,13 @@ class PizzaForm(forms.ModelForm):
         widgets = {'topping': ToppingSelect}
 This will render the Pizza.topping select as:
 
-<select id="id_topping" name="topping" required>
-<option value="" selected>---------</option>
-<option value="1" data-price="1.50">mushrooms</option>
-<option value="2" data-price="1.25">onions</option>
-<option value="3" data-price="1.75">peppers</option>
-<option value="4" data-price="2.00">pineapple</option>
-</select>
+select id="id_topping" name="topping" required
+option value="" selected---------option
+option value="1" data-price="1.50"mushroomsoption
+option value="2" data-price="1.25"onionsoption
+option value="3" data-price="1.75"peppersoption
+option value="4" data-price="2.00"pineappleoption
+select
 For more advanced usage you may subclass ModelChoiceIterator in order to customize the yielded 2-tuple choices.
 
 ModelChoiceIterator¶
@@ -4266,7 +4195,7 @@ New in Django 3.1.
 Two arguments are required:
 
 value¶
-The value of the choice. This value is used to render the value attribute of an HTML <option> element.
+The value of the choice. This value is used to render the value attribute of an HTML option element.
 
 instance¶
 The model instance from the queryset. The instance can be accessed in custom ChoiceWidget.create_option() implementations to adjust the rendered HTML.
@@ -4368,7 +4297,7 @@ We will abstain from using them here. I want to ensure there are no dark corners
 
 A book has different constraints from the “real world” and so the coding style here might not always reflect the best way to write maintainable production software. If I seem a little cavalier about, say, omitting private or declaring a global variable, understand I do so to keep the code easier on your eyes. The pages here aren’t as wide as your IDE and every character counts.
 
-Also, the code doesn’t have many comments. That’s because each handful of lines is surrounded by several paragraphs of honest-to-God prose explaining it. When you write a book to accompany your program, you are welcome to omit comments too. Otherwise, you should probably use // a little more than I do.
+Also, the code doesn’t have many comments. That’s because each handful of lines is surrounded by several paragraphs of honest-to-God prose explaining it. When you write a book to accompany your program, you are welcome to omit comments too. Otherwise, you should probably use  a little more than I do.
 
 While the book contains every line of code and teaches what each means, it does not describe the machinery needed to compile and run the interpreter. I assume you can slap together a makefile or a project in your IDE of choice in order to get the code to run. Those kinds of instructions get out of date quickly, and I want this book to age like XO brandy, not backyard hooch.
 
@@ -4378,7 +4307,7 @@ Since the book contains literally every line of code needed for the implementati
 A snippet with all the bells and whistles looks like this:
 
       default:
-lox/Scanner.java
+loxScanner.java
 in scanToken()
 replace 1 line
         if (isDigit(c)) {
@@ -4495,7 +4424,7 @@ Eventually we reach the peak. We have a bird’s-eye view of the user’s progra
 The branching paths a language may take over the mountain.
 Let’s trace through each of those trails and points of interest. Our journey begins on the left with the bare text of the user’s source code:
 
-var average = (min + max) / 2;
+var average = (min + max)  2;
 2 . 1 . 1Scanning
 The first step is scanning, also known as lexing, or (if you’re trying to impress someone) lexical analysis. They all mean pretty much the same thing. I like “lexing” because it sounds like something an evil supervillain would do, but I’ll use “scanning” because it seems to be marginally more commonplace.
 
@@ -4505,7 +4434,7 @@ A scanner (or lexer) takes in the linear stream of characters and chunks them to
 
 Some characters in a source file don’t actually mean anything. Whitespace is often insignificant, and comments, by definition, are ignored by the language. The scanner usually discards these, leaving a clean sequence of meaningful tokens.
 
-[var] [average] [=] [(] [min] [+] [max] [)] [/] [2] [;]
+[var] [average] [=] [(] [min] [+] [max] [)] [] [2] [;]
 2 . 1 . 2Parsing
 The next step is parsing. This is where our syntax gets a grammar—the ability to compose larger expressions and statements out of smaller parts. Did you ever diagram sentences in English class? If so, you’ve done what a parser does, except that English has thousands and thousands of “keywords” and an overflowing cornucopia of ambiguity. Programming languages are much simpler.
 
@@ -4557,7 +4486,7 @@ Once we understand what the user’s program means, we are free to swap it out w
 
 A simple example is constant folding: if some expression always evaluates to the exact same value, we can do the evaluation at compile time and replace the code for the expression with its result. If the user typed in this:
 
-pennyArea = 3.14159 * (0.75 / 2) * (0.75 / 2);
+pennyArea = 3.14159 * (0.75  2) * (0.75  2);
 we could do all of that arithmetic in the compiler and change the code to:
 
 pennyArea = 0.4417860938;
@@ -4628,7 +4557,7 @@ They used to call this a source-to-source compiler or a transcompiler. After the
 
 The first transcompiler, XLT86, translated 8080 assembly into 8086 assembly. That might seem straightforward, but keep in mind the 8080 was an 8-bit chip and the 8086 a 16-bit chip that could use each register as a pair of 8-bit ones. XLT86 did data flow analysis to track register usage in the source program and then efficiently map it to the register set of the 8086.
 
-It was written by Gary Kildall, a tragic hero of computer science if there ever was one. One of the first people to recognize the promise of microcomputers, he created PL/M and CP/M, the first high-level language and OS for them.
+It was written by Gary Kildall, a tragic hero of computer science if there ever was one. One of the first people to recognize the promise of microcomputers, he created PLM and CPM, the first high-level language and OS for them.
 
 He was a sea captain, business owner, licensed pilot, and motorcyclist. A TV host with the Kris Kristofferson-esque look sported by dashing bearded dudes in the ’80s. He took on Bill Gates and, like many, lost, before meeting his end in a biker bar under mysterious circumstances. He died too young, but sure as hell lived before he did.
 
@@ -4722,9 +4651,9 @@ Here’s your very first taste of Lox:
 
 Your first taste of Lox, the language, that is. I don’t know if you’ve ever had the cured, cold-smoked salmon before. If not, give it a try too.
 
-// Your first Lox program!
+ Your first Lox program!
 print "Hello, world!";
-As that // line comment and the trailing semicolon imply, Lox’s syntax is a member of the C family. (There are no parentheses around the string because print is a built-in statement, and not a library function.)
+As that  line comment and the trailing semicolon imply, Lox’s syntax is a member of the C family. (There are no parentheses around the string because print is a built-in statement, and not a library function.)
 
 Now, I won’t claim that C has a great syntax. If we wanted something elegant, we’d probably mimic Pascal or Smalltalk. If we wanted to go full Scandinavian-furniture-minimalism, we’d do a Scheme. Those all have their virtues.
 
@@ -4774,19 +4703,19 @@ Boolean variables are the only data type in Lox named after a person, George Boo
 
 There are two Boolean values, obviously, and a literal for each one.
 
-true;  // Not false.
-false; // Not *not* false.
+true;   Not false.
+false;  Not *not* false.
 Numbers. Lox has only one kind of number: double-precision floating point. Since floating-point numbers can also represent a wide range of integers, that covers a lot of territory, while keeping things simple.
 
 Full-featured languages have lots of syntax for numbers—hexadecimal, scientific notation, octal, all sorts of fun stuff. We’ll settle for basic integer and decimal literals.
 
-1234;  // An integer.
-12.34; // A decimal number.
+1234;   An integer.
+12.34;  A decimal number.
 Strings. We’ve already seen one string literal in the first example. Like most languages, they are enclosed in double quotes.
 
 "I am a string";
-"";    // The empty string.
-"123"; // This is a string, not a number.
+"";     The empty string.
+"123";  This is a string, not a number.
 As we’ll see when we get to implementing them, there is quite a lot of complexity hiding in that innocuous sequence of characters.
 
 Even that word “character” is a trickster. Is it ASCII? Unicode? A code point or a “grapheme cluster”? How are characters encoded? Is each character a fixed size, or can they vary?
@@ -4804,7 +4733,7 @@ Lox features the basic arithmetic operators you know and love from C and other l
 add + me;
 subtract - me;
 multiply * me;
-divide / me;
+divide  me;
 The subexpressions on either side of the operator are operands. Because there are two of them, these are called binary operators. (It has nothing to do with the ones-and-zeroes use of “binary”.) Because the operator is fixed in the middle of the operands, these are also called infix operators (as opposed to prefix operators where the operator comes before the operands, and postfix where it comes after).
 
 There are some operators that have more than two operands and the operators are interleaved between them. The only one in wide usage is the “conditional” or “ternary” operator of C and friends:
@@ -4820,35 +4749,35 @@ All of these operators work on numbers, and it’s an error to pass any other ty
 3 . 4 . 2Comparison and equality
 Moving along, we have a few more operators that always return a Boolean result. We can compare numbers (and only numbers), using Ye Olde Comparison Operators.
 
-less < than;
-lessThan <= orEqual;
-greater > than;
-greaterThan >= orEqual;
+less  than;
+lessThan = orEqual;
+greater  than;
+greaterThan = orEqual;
 We can test two values of any kind for equality or inequality.
 
-1 == 2;         // false.
-"cat" != "dog"; // true.
+1 == 2;          false.
+"cat" != "dog";  true.
 Even different types.
 
-314 == "pi"; // false.
+314 == "pi";  false.
 Values of different types are never equivalent.
 
-123 == "123"; // false.
+123 == "123";  false.
 I’m generally against implicit conversions.
 
 3 . 4 . 3Logical operators
 The not operator, a prefix !, returns false if its operand is true, and vice versa.
 
-!true;  // false.
-!false; // true.
+!true;   false.
+!false;  true.
 The other two logical operators really are control flow constructs in the guise of expressions. An and expression determines if two values are both true. It returns the left operand if it’s false, or the right operand otherwise.
 
-true and false; // false.
-true and true;  // true.
+true and false;  false.
+true and true;   true.
 And an or expression determines if either of two values (or both) are true. It returns the left operand if it is true and the right operand otherwise.
 
-false or false; // false.
-true or false;  // true.
+false or false;  false.
+true or false;   true.
 I used and and or for these instead of && and || because Lox doesn’t use & and | for bitwise operators. It felt weird to introduce the double-character forms without the single-character ones.
 
 I also kind of like using words for these since they are really control flow structures and not simple operators.
@@ -4858,7 +4787,7 @@ The reason and and or are like control flow structures is that they short-circui
 3 . 4 . 4Precedence and grouping
 All of these operators have the same precedence and associativity that you’d expect coming from C. (When we get to parsing, we’ll get way more precise about that.) In cases where the precedence isn’t what you want, you can use () to group stuff.
 
-var average = (min + max) / 2;
+var average = (min + max)  2;
 Since they aren’t very technically interesting, I’ve cut the remainder of the typical operator menagerie out of our little language. No bitwise, shift, modulo, or conditional operators. I’m not grading you, but you will get bonus points in my heart if you augment your own implementation of Lox with them.
 
 Those are the expression forms (except for a couple related to specific features that we’ll get to later), so let’s move up a level.
@@ -4895,9 +4824,9 @@ Once declared, you can, naturally, access and assign a variable using its name.
 
 
 var breakfast = "bagels";
-print breakfast; // "bagels".
+print breakfast;  "bagels".
 breakfast = "beignets";
-print breakfast; // "beignets".
+print breakfast;  "beignets".
 Can you tell that I tend to work on this book in the morning before I’ve had anything to eat?
 
 I won’t get into the rules for variable scope here, because we’re going to spend a surprising amount of time in later chapters mapping every square inch of the rules. In most cases, it works like you would expect coming from C or Java.
@@ -4919,7 +4848,7 @@ if (condition) {
 A while loop executes the body repeatedly as long as the condition expression evaluates to true.
 
 var a = 1;
-while (a < 10) {
+while (a  10) {
   print a;
   a = a + 1;
 }
@@ -4927,7 +4856,7 @@ I left do while loops out of Lox because they aren’t that common and wouldn’
 
 Finally, we have for loops.
 
-for (var a = 1; a < 10; a = a + 1) {
+for (var a = 1; a  10; a = a + 1) {
   print a;
 }
 This loop does the same thing as the previous while loop. Most modern languages also have some sort of for-in or foreach loop for explicitly iterating over various sequence types. In a real language, that’s nicer than the crude C-style for loop we got here. Lox keeps it basic.
@@ -4980,7 +4909,7 @@ fun identity(a) {
   return a;
 }
 
-print identity(addPair)(1, 2); // Prints "3".
+print identity(addPair)(1, 2);  Prints "3".
 Since function declarations are statements, you can declare local functions inside another function.
 
 fun outerFunction() {
@@ -5050,7 +4979,7 @@ But I’ve looked at a lot of code written in prototypal languages—including s
 
 I don’t know why that is, but people naturally seem to prefer a class-based (Classic? Classy?) style. Prototypes are simpler in the language, but they seem to accomplish that only by pushing the complexity onto the user. So, for Lox, we’ll save our users the trouble and bake classes right in.
 
-Larry Wall, Perl’s inventor/prophet calls this the “waterbed theory”. Some complexity is essential and cannot be eliminated. If you push it down in one place, it swells up in another.
+Larry Wall, Perl’s inventorprophet calls this the “waterbed theory”. Some complexity is essential and cannot be eliminated. If you push it down in one place, it swells up in another.
 
 Prototypal languages don’t so much eliminate the complexity of classes as they do make the user take that complexity by building their own class-like metaprogramming libraries.
 
@@ -5070,15 +4999,15 @@ The body of a class contains its methods. They look like function declarations b
 
 They are still just as fun, though.
 
-// Store it in variables.
+ Store it in variables.
 var someVariable = Breakfast;
 
-// Pass it to functions.
+ Pass it to functions.
 someFunction(Breakfast);
 Next, we need a way to create instances. We could add some sort of new keyword, but to keep things simple, in Lox the class itself is a factory function for instances. Call a class like a function, and it produces a new instance of itself.
 
 var breakfast = Breakfast();
-print breakfast; // "Breakfast instance".
+print breakfast;  "Breakfast instance".
 3 . 9 . 5Instantiation and initialization
 Classes that only have behavior aren’t super useful. The idea behind object-oriented programming is encapsulating behavior and state together. To do that, you need fields. Lox, like other dynamically typed languages, lets you freely add properties onto objects.
 
@@ -5094,7 +5023,7 @@ class Breakfast {
         this.bread + ", " + who + ".";
   }
 
-  // ...
+   ...
 }
 Part of encapsulating data within an object is ensuring the object is in a valid state when it’s created. To do that, you can define an initializer. If your class has a method named init(), it is called automatically when the object is constructed. Any parameters passed to the class are forwarded to its initializer.
 
@@ -5104,23 +5033,23 @@ class Breakfast {
     this.bread = bread;
   }
 
-  // ...
+   ...
 }
 
 var baconAndToast = Breakfast("bacon", "toast");
 baconAndToast.serve("Dear Reader");
-// "Enjoy your bacon and toast, Dear Reader."
+ "Enjoy your bacon and toast, Dear Reader."
 3 . 9 . 6Inheritance
-Every object-oriented language lets you not only define methods, but reuse them across multiple classes or objects. For that, Lox supports single inheritance. When you declare a class, you can specify a class that it inherits from using a less-than (<) operator.
+Every object-oriented language lets you not only define methods, but reuse them across multiple classes or objects. For that, Lox supports single inheritance. When you declare a class, you can specify a class that it inherits from using a less-than () operator.
 
-class Brunch < Breakfast {
+class Brunch  Breakfast {
   drink() {
     print "How about a Bloody Mary?";
   }
 }
-Why the < operator? I didn’t feel like introducing a new keyword like extends. Lox doesn’t use : for anything else so I didn’t want to reserve that either. Instead, I took a page from Ruby and used <.
+Why the  operator? I didn’t feel like introducing a new keyword like extends. Lox doesn’t use : for anything else so I didn’t want to reserve that either. Instead, I took a page from Ruby and used .
 
-If you know any type theory, you’ll notice it’s not a totally arbitrary choice. Every instance of a subclass is an instance of its superclass too, but there may be instances of the superclass that are not instances of the subclass. That means, in the universe of objects, the set of subclass objects is smaller than the superclass’s set, though type nerds usually use <: for that relation.
+If you know any type theory, you’ll notice it’s not a totally arbitrary choice. Every instance of a subclass is an instance of its superclass too, but there may be instances of the superclass that are not instances of the subclass. That means, in the universe of objects, the set of subclass objects is smaller than the superclass’s set, though type nerds usually use : for that relation.
 
 Here, Brunch is the derived class or subclass, and Breakfast is the base class or superclass.
 
@@ -5134,7 +5063,7 @@ Lox is different from C++, Java, and C#, which do not inherit constructors, but 
 
 As in Java, you use super for that.
 
-class Brunch < Breakfast {
+class Brunch  Breakfast {
   init(meat, bread, drink) {
     super.init(meat, bread);
     this.drink = drink;
@@ -5153,7 +5082,7 @@ Later, when we start optimizing, we’ll write some benchmarks and see how long 
 
 And . . . that’s it. I know, right? It’s embarrassing.
 
-If you wanted to turn Lox into an actual useful language, the very first thing you should do is flesh this out. String manipulation, trigonometric functions, file I/O, networking, heck, even reading input from the user would help. But we don’t need any of that for this book, and adding it wouldn’t teach you anything interesting, so I’ve left it out.
+If you wanted to turn Lox into an actual useful language, the very first thing you should do is flesh this out. String manipulation, trigonometric functions, file IO, networking, heck, even reading input from the user would help. But we don’t need any of that for this book, and adding it wouldn’t teach you anything interesting, so I’ve left it out.
 
 Don’t worry, we’ll have plenty of exciting stuff in the language itself to keep us busy.
 
@@ -5184,7 +5113,7 @@ Is this what you’d expect? Is it what your users expect? How does this affect 
 
 Turning every statement into an expression forces you to answer a few hairy questions like that. In return, you eliminate some redundancy. C has both blocks for sequencing statements, and the comma operator for sequencing expressions. It has both the if statement and the ?: conditional operator. If everything was an expression in C, you could unify each of those.
 
-Languages that do away with statements usually also feature implicit returns—a function automatically returns whatever value its body evaluates to without need for some explicit return syntax. For small functions and methods, this is really handy. In fact, many languages that do have statements have added syntax like => to be able to define functions whose body is the result of evaluating a single expression.
+Languages that do away with statements usually also feature implicit returns—a function automatically returns whatever value its body evaluates to without need for some explicit return syntax. For small functions and methods, this is really handy. In fact, many languages that do have statements have added syntax like = to be able to define functions whose body is the result of evaluating a single expression.
 
 But making all functions work that way can be a little strange. If you aren’t careful, your function will leak a return value even if you only intend it to produce a side effect. In practice, though, users of these languages don’t find it to be a problem.
 
@@ -5193,7 +5122,7 @@ For Lox, I gave it statements for prosaic reasons. I picked a C-like syntax for 
     }
 ];
 
-// randomStory(stories_array[0])
+//  randomStory(stories_array[0])
 
 
 
@@ -5256,296 +5185,296 @@ const comments_array = [
         contact info.
         Name: ${faker.name.findName() + faker.name.lastName()}
         Previous ocupation: ${faker.name.jobTitle()}
-        Git Hub: https://github.com/.
+        Git Hub: https:github.com.
         Phone Number: ${faker.phone.phoneNumber()}
         Here are some of the projects I have contibuted to: ${faker.git.commitMessage()}.`
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     },
     {
         body: `@${faker.name.firstName()}
                 ${faker.lorem.sentences()}
-                ${faker.system.directoryPath()} / ${faker.system.commonFileName()}
+                ${faker.system.directoryPath()}  ${faker.system.commonFileName()}
                 `
     }
 ];
@@ -5553,8 +5482,8 @@ const comments_array = [
 
 
 
-// randomComment(comments_array[0])
-// console.log(randomComment(comments_array[13]))
+ randomComment(comments_array[0])
+//  console.log(randomComment(comments_array[13]))
 
 
 
@@ -5576,8 +5505,8 @@ const initCounter = () => {
 };
 
 
-// const count = initCounter();
-// console.log(count());
+//  const count = initCounter();
+//  console.log(count());
 
 
 
@@ -5588,7 +5517,6 @@ const initCounter = () => {
 
 module.exports = {
     getRandomName,
-    getStarwarsNames,
     randomNumber,
     randomYear,
     randomMonth,

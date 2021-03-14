@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const { getRandomName, getStarwarsNames, randomNumber, randomYear, randomMonth, randomDay,
+const { getRandomName, randomNumber, randomYear, randomMonth, randomDay,
   getRandomMaleImg, getRandomFemaleImg } = require('../../data/index.js');
 
 
@@ -20,7 +20,7 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('Password1!', 10),
         gender: 'female',
         birthdate: '1985-03-08',
-        avatar: null,
+        avatar: `https://i.imgur.com/zB0xU1K.png?1`,
         createdAt: new Date(),
         updatedAt: new Date()
       },{
@@ -30,7 +30,7 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('Password1!', 10),
         gender: 'male',
         birthdate: '1991-06-15',
-        avatar: null,
+        avatar: `https://i.imgur.com/zB0xU1K.png?1`,
         createdAt: new Date(),
         updatedAt: new Date()
       },

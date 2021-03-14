@@ -46,9 +46,10 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
 
 
+
     profileImg.innerHTML = `
     <div class= 'profile-div'>
-        <img src="${user_info.avatar}">
+        <img src="${user_info.user.avatar}">
     </div>`;
 
     followEditLinks.innerHTML = `
