@@ -22,7 +22,7 @@ append head
 					ul
 						each error in errors
 							li= error
-			form(method='POST', action="/profile/:id/editUser")
+			form(method='POST', action="/users/profile/:id/editUser")
 				input(type="hidden" name="_csrf" value=csrfToken)
 				input(type='string' name='email' placeholder='email' required value= email)
 				input(type='string' name='firstName' placeholder='First Name' value= firstName)

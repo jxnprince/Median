@@ -152,7 +152,7 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 // GET localhost:8080/users/profile/
 
 router.get('/profile', (req, res) => {
-  res.render("UserProfile")
+  res.render("userProfile")
 });
 
 router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (req, res) => {

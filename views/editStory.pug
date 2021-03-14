@@ -12,7 +12,7 @@ append head
                 form(method='POST', action="/users/logout" class="logout")
                     input(type="hidden" name="_csrf" value=csrfToken)
                     button(type="submit") Logout
-                a(href='/profile' id='user-profile-button' class='link-button') Profile
+                a(href='/users/profile' id='user-profile-button' class='link-button') Profile
                 div(class="Left-Sidebar")
         div(class="Main-Content")
             div(class="Submit-form")
