@@ -36,7 +36,9 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
 router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
   if (req.session.auth) res.redirect("/feed");
-  res.render('loginForm', {csrfToken: req.csrfProtection()})
+  res.render('loginForm', {
+    csrfToken: req.csrfProtection()
+  })
 }))
 
 //DO NOT TOUCH THIS ROUTE!!!!
@@ -103,8 +105,7 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
         req.session.save(() => {
           if (req.session) res.redirect("/feed")
         })
-      }
-      else {
+      } else {
         let errors = ['One of your login fields is incorrect!']
         res.render('splash', {
           errors,
@@ -113,7 +114,7 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
       }
     }
   } else {
-      const errors = validationErrors.array().map((error) => error.msg);
+    const errors = validationErrors.array().map((error) => error.msg);
     res.render('splash', {
       errors,
       csrfToken: req.csrfToken()
@@ -150,7 +151,9 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 
 // GET localhost:8080/users/profile/
 
-router.get('/profile', asyncHandler(async (req, res) => res.render("userProfile")));
+router.get('/profile', (req, res) => {
+  res.render("UserProfile")
+});
 
 router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (req, res) => {
   const user = await findByPk(req.params.id)
