@@ -1,0 +1,29 @@
+.bookmarks-container {
+	display: flex;
+	flex-direction: column-wrap;
+	max-width: 1rem;
+}
+
+.bookmark-img {
+	max-height: 25px;
+	max-width: 25px;
+}
+
+.bookmark-title {
+	max-height: 25px;
+	max-width: 25px;
+}
+
+.your-stories-img {
+	max-height: 25px;
+	max-width: 25px;
+}
+
+.followee-story {
+	background-color: aqua;
+}
+
+.followee-story-img {
+	max-height: 25px;
+	max-width: 25px;
+}

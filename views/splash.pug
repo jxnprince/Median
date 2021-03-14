@@ -7,9 +7,9 @@ append head
     body
         div(class="grid-container")
             div(class="Header")
-                img(class='miniLogo' src='https://i.imgur.com/IgoFy68.png')
-                //- img(class='displayLoginFormButton' src='https://i.imgur.com/Yr0lEE7.png?1)')
-                button(type='click', id='displayLoginFormButton') Login
+                //- img(class='miniLogo' src='https://i.imgur.com/IgoFy68.png')
+                //- button(type='click', id='displayLoginFormButton') Login
+                img(id='displayLoginFormButton' class='displayLoginFormButton' src='https://i.imgur.com/Yr0lEE7.png?1)')
                 form(class='hidden' id='login-form' method='POST', action="/users/login")
                     input(type="hidden" name="_csrf" value=csrfToken)
                     input(type='string' name='email' class='loginHeader' placeholder='email' required)
@@ -17,6 +17,7 @@ append head
                     button(type="submit" id='submit-login') Login
             div(class="Left-Sidebar")
             div(class="Main-Content")
+                div(class='buffer')
                 div(class= "signupForm")
                 if errors
                     div(class='alert-alert-danger' role='alert')
