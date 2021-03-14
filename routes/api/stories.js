@@ -95,7 +95,6 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     //test that you are pulling the id paramater
     //return a list of the most recent stories by a user.
-    console.log('---------------------------------------------');
     const storyId = req.params.id;
     const userStories = await Story.findByPk(storyId);
     res.json(userStories)
@@ -103,16 +102,20 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 //DELETE localhost:8080/api/stories/:id || works
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const story = await Story.findByPk(req.params.id)
-    await story.destroy()
-    if (story) {
-        res.json({
-            message: 'error'
-        })
-    } else {
-        res.json({
-            message: 'story was deleted'
-        })
+    try {
+        const story = await Story.findByPk(req.params.id)
+        if (story) {
+            const response = await story.destroy()
+            if (!response.length) {
+                console.log('=================== DELETED')
+                res.redirect(303, '/feed')
+            } else {
+                console.log('============XXXXXXX NOT DELETED')
+            }
+        }
+
+    } catch (error) {
+        console.log('============XXXXXXX NOT DELETED', error)
     }
 }))
 //PUT localhost:8080/api/stories/:id || works
