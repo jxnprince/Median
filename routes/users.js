@@ -16,9 +16,8 @@ const {
 const {
   Model
 } = require('sequelize');
-const {
-  validationResult
-} = require('express-validator');
+const { check, validationResult } = require('express-validator');
+// const { check, validationResult } = require('express-validator');
 const express = require('express');
 const bcrypt = require('bcryptjs')
 const sequelize = require('sequelize');
@@ -49,8 +48,13 @@ router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async 
     gender,
     avatar
   } = req.body
-  const validationErrors = validationResult(req)
-
+  console.log(req.body);
+  ///^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g'
+  console.log(email, firstName, lastName, password)
+  // const validationErrors = validationResult(req)
+  const validationErrors = validationResult(req);
+  console.log(validationErrors);
+  console.log(email, firstName, lastName, password)
   if (validationErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10)
     const user = await User.create({

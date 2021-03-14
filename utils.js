@@ -51,26 +51,20 @@ const createUserValidators = [
   .withMessage('Please input a valid last name')
   .isLength({ max: 75 })
   .withMessage('Please provide a last name under 75 characters'),
-  check('hashedPassword')
+  check('password')
   .exists({ checkFalsy: true })
   .withMessage('Please input a valid password')
   .isLength({ max: 255 })
   .withMessage('Please provide a password under 255 characters')
   .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
   .withMessage('Password must contain at least one lowercase letter, one uppercase letter, and one special character(!#%^%$...))'),
-  check('confirmPassword')
+  check('confPassword')
   .exists({ checkFalsy: true })
   .withMessage('Please confirm password')
   .custom((value, { req }) => {
     if (value !== req.body.password) throw Error('Passwords do not match')
     return true;
-  }),
-  check('gender')
-  .isLength({ max: 20 })
-  .withMessage('Please provide a gender under 20 characters'),
-  check('avatar')
-  .isLength({ max: 255 })
-  .withMessage('Please provide an address under 255 characters')
+  })
 ];
 
 const loginValidators = [
