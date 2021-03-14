@@ -20,6 +20,7 @@ append head
 
                 if isUser
                     div(class="edit-delete")
+                        //- a(href=`/stories/edit/${apiNumber}`) Edit
                         form(method='GET', action=(`/stories/edit/${apiNumber}`))
                             button(type='submit' id='edit-story-button') Edit
                         form(method='GET', action=(`/stories/${apiNumber}`))
