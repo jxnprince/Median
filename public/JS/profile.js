@@ -5,16 +5,35 @@ const makeFetch = async (url) => {
 };
 
 
-
 // main window listener here 'DOMContentLoaded
 window.addEventListener("DOMContentLoaded", async(event) => {
-    // all of the fetches for needed data
-    // get the currently logged in users id for use later
-    const user = await makeFetch(`/api/users/`);
-    // get the current users info from the API's
-    const user_info = await makeFetch(`/api/users/${user.userId}`);
-    const users_stories = await makeFetch(`/api/users/${user.userId}/stories`);
-    const bookmarks = await makeFetch(`/api/users/${user.userId}/bookmarks`);
+
+    let user;
+    let user_info;
+    let users_stories;
+    let bookmarks;
+    // select to check if this is for a user that is not the currently logged in user
+    const otherUser = document.getElementById("otherUser");
+
+
+    if (otherUser === null) {
+        user = await makeFetch(`/api/users/`);
+        user_info = await makeFetch(`/api/users/${user.userId}`);
+        users_stories = await makeFetch(`/api/users/${user.userId}/stories`);
+        bookmarks = await makeFetch(`/api/users/${user.userId}/bookmarks`);
+
+    } else if (otherUser.className === '0') {
+        window.location.href = `/users`
+    } else {
+        user = otherUser.classList;
+        user_info = await makeFetch(`/api/users/${user}`);
+        users_stories = await makeFetch(`/api/users/${user}/stories`);
+        bookmarks = await makeFetch(`/api/users/${user}/bookmarks`);
+
+    }
+
+
+
 
     // html selectors here
     const leftContainer = document.getElementById('left-container');
@@ -36,7 +55,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
     bookmarks.their_bookmarks.Stories.forEach((eachBookmark) => {
         bookmarksContainer.innerHTML = `<div id="container" class="container">
-            <a href=""> <img src="${eachBookmark.imgUrl}"> <span> ${eachBookmark.title} </span> </a>
+            <a href="/stories/${eachBookmark.Bookmark.storyId}"> <img src="${eachBookmark.imgUrl}"> <span> ${eachBookmark.title} </span> </a>
         </div>`;
     });
 

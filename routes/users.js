@@ -148,9 +148,20 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 
 
 
-// GET localhost:8080/users/profile/
 
+// GET localhost:8080/users/profile/
 router.get('/profile', asyncHandler(async (req, res) => res.render("userProfile")));
+
+
+// GET localhost:8080/users/profile/:id
+router.get('/profile/:userId(\\d+)', asyncHandler(async (req, res) => {
+  res.render("userProfile", { otherUser: req.params.userId });
+}));
+
+
+
+
+
 
 router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (req, res) => {
   const user = await findByPk(req.params.id)
