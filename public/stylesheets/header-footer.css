@@ -6,6 +6,8 @@
 	grid-area: Header;
 	display: flex;
 	justify-content: space-between;
+	z-index: 100;
+	overflow: hidden;
 }
 
 .left-Items {

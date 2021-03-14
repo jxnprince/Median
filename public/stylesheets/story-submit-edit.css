@@ -2,6 +2,7 @@
     margin: 10%;
     flex-flow: column;
     justify-content: center;
+    overflow: hidden;
 }
 
 h1 {
