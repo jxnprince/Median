@@ -12,6 +12,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
     // HTML selectors here
     const editStoryContainer = document.getElementById('edit-story-container');
+    const message = document.getElementById('edit-message');
     const api_info = document.getElementById('api-div').classList[0];
     const title = document.getElementById('edit-story-title');
     const storyImg = document.getElementById('edit-story-img');
@@ -61,11 +62,17 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
 
         if(response.status === 200) {
-            const message = document.createElement('h3');
-            message.innerText = 'Your story has been sucessfully updated.'
-            editStoryContainer.appendChild();
+            message.innerText = 'Your story has been successfully updated.';
         } else {
-            editStoryContainer.appendChild();
+            message.innerText = 'Error updating your story, please try again.';
+            const errorList = document.getElementById('errors-list');
+            // fetch to the errors api
+            const errdata = await makeFetch(`/api/stories/errors`);
+            errdata.updateStoryErrors.forEach((error) => {
+                errorList.innerHTML = `<li>
+                    ${error}
+                </li>`;
+            })
         }
 
     });
