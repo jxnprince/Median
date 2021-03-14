@@ -1,10 +1,10 @@
-const { randomNumber, randomYear, randomMonth, randomDay, initCounter } = require('../../data/index.js');
+const { randomYear, randomMonth, randomDay, initCounter } = require('../../data/index.js');
 
 'use strict';
 
 
 const makeUserId = initCounter()
-// const makeStoryId = initCounter()
+const makeStoryId = initCounter()
 
 
 module.exports = {
@@ -12,259 +12,259 @@ module.exports = {
     return queryInterface.bulkInsert('Likes',
     [
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()
       },
       {
-        storyId: randomNumber(43),
+        storyId: makeStoryId(),
         userId: makeUserId(),
         createdAt: `${randomYear()}-${randomMonth()}-${randomDay()}`,
         updatedAt: new Date()

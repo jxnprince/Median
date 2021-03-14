@@ -23,8 +23,8 @@ append head
                         //- a(href=`/stories/edit/${apiNumber}`) Edit
                         form(method='GET', action=(`/stories/edit/${apiNumber}`))
                             button(type='submit' id='edit-story-button') Edit
-                        form(method='GET', action=(`/stories/${apiNumber}`))
-                            button(type='submit' id='delete-story-button' formmethod='DELETE') Delete
+                        div(id=`stories-delete-${apiNumber}`)
+                            button(id='delete-story-button') Delete
                 div(class="edit-delete")
             div(class="Main-Content" id="Main-Content")
                 if errors

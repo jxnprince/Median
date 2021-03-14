@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
 
 
-    profileImg.innerHTML = `<img src="${user_info.avatar}">`;
+    profileImg.innerHTML = `<img src="${user_info.user.avatar}">`;
     followEditLinks.innerHTML = `<a href=""> Follow </a>
         <a href=""> Edit Bio </a>`;
 

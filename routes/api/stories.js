@@ -110,7 +110,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 
 
-
+// must be here because the put will assign any errors to the updateStoryErrors
 let updateStoryErrors = [];
 //updates a specific user story
 

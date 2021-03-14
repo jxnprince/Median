@@ -18,16 +18,19 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 
 	mainContentDiv.innerHTML = `
 	<div class= 'Container'>
-		<div class= 'Story-Img'>
+		<div class='featured-story-img'>
 			<img src="${data.imgUrl}">
+		</div>
 				<div class= 'Story-title'>
 					<h1>${data.title}</h1>
 					<div class= 'Story-body'>
 						<p>${data.postBody}</p>
 					</div>
 				</div>
-		</div>
+
 	</div>`;
 
-	console.log(data);
+
+
+
 });
