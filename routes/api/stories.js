@@ -43,10 +43,7 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
         const story = await Story.create({ imgUrl, postBody, title, userId: id });
 
         if (story) {
-            res.json({
-                message: "You created a new story",
-                story
-            });
+            res.redirect('/users')
 
         } else {
             res.json({
@@ -57,6 +54,7 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
     } else{
         console.log(`You hit the story registration error route`)
         const errors = validationErrors.array().map((error) => error.msg);
+        console.log(validationErrors);
         res.render('submitStory', { errors, csrfToken: req.csrfToken() });
 
     }
