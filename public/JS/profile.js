@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
     bookmarks.their_bookmarks.Stories.forEach((eachBookmark) => {
         bookmarksContainer.innerHTML = `<div id="container" class="container">
-            <a href="/stories/"> <img src="${eachBookmark.imgUrl}"> <span> ${eachBookmark.title} </span> </a>
+            <a href="/stories/${eachBookmark.Bookmark.storyId}"> <img src="${eachBookmark.imgUrl}"> <span> ${eachBookmark.title} </span> </a>
         </div>`;
     });
 

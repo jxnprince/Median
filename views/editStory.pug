@@ -25,11 +25,13 @@ append head
                             each error in errors
                                 li= error
                 div(class="Submit-form")
-                    //- form(method='POST' action='')
-                    //-     input(type="text" name="Title" placeholder= "Title" required)
-                    //-     input(type="text" name="Imgurl" placeholder='Image Url')
-                    //-     textArea(type="text" name="Body" required)
-                    //-     button(type="submit") Update Story
+                    form(method='POST' action='')
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        input(type="text" name="title" placeholder= "Title" required)
+                        input(type="text" name="imgUrl" placeholder='Image Url')
+                        textArea(type="text" name="postBody" required)
+                        button(type="submit") Update Story
+
             div(class="Right-Sidebar")
             div(class="Footer")
                 div(class='aaLogo-div')

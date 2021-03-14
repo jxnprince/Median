@@ -145,4 +145,25 @@ router.put('/:id(\\d+)', createStoryValidator, csrfProtection, asyncHandler(asyn
 
 
 
+
+// used to prepopulate the edit story form
+router.get('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const storyId = req.params.storyId;
+
+    const the_story = await Story.findByPk(storyId, { where: { userId } });
+
+    if (the_story) {
+        res.json({ the_story });
+    } else {
+        res.json({ status: 404 });
+    }
+
+
+}));
+
+
+
+
+
 module.exports = router;

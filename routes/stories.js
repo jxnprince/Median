@@ -33,6 +33,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
 
 
 router.get('/edit/:id(\\d+)', csrfProtection, (req, res)=> {
+    // const
 
     res.render('editStory', { csrfToken: req.csrfToken() });
 });
