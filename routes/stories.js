@@ -32,11 +32,11 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
 
 
 
-router.get('/edit/:storyId(\\d+)', csrfProtection, (req, res)=> {
+router.get('/edit/:storyId(\\d+)', (req, res)=> {
     const userId = req.session.auth.userId
     const storyId = req.params.storyId
 
-    res.render('editStory', { csrfToken: req.csrfToken(), userId, storyId });
+    res.render('editStory', { userId, storyId });
 });
 
 
