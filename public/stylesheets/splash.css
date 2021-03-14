@@ -54,11 +54,10 @@ body {
 
 /* #submit-login {} */
 
-input {
+/* input {
   width: 50%;
   margin: 2px auto;
-  background-color: #F0EAE4;
-}
+} */
 
 #displayLoginFormButton {
   position: absolute;

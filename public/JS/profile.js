@@ -46,25 +46,39 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
 
 
-    profileImg.innerHTML = `<img src="${user_info.user.avatar}">`;
-    followEditLinks.innerHTML = `<a href=""> Follow </a>
-        <a href=""> Edit Bio </a>`;
+
+    profileImg.innerHTML = `
+    <div class= 'profile-div'>
+        <img src="${user_info.user.avatar}">
+    </div>`;
+
+    followEditLinks.innerHTML = `
+    <div class= 'main-profile-info'>
+        <a href=""> Follow </a>
+        <a href=""> Edit Bio </a>
+    </div>`;
 
     profileImg.appendChild(followEditLinks);
 
 
     bookmarks.their_bookmarks.Stories.forEach((eachBookmark) => {
-        bookmarksContainer.innerHTML = `<div id="container" class="bookmark-container">
+        bookmarksContainer.innerHTML = `
+        <div id="container" class="bookmark-container">
             <h3>Bookmarks </h3>
-            <a href="/stories/${eachBookmark.Bookmark.storyId}"> <img src="${eachBookmark.imgUrl}" class='bookmark-img'> <span class= 'bookmark-title'> ${eachBookmark.title} </span> </a>
+            <div class='bookmarks-content'>
+                <a href="/stories/${eachBookmark.Bookmark.storyId}"> <img src="${eachBookmark.imgUrl}" class='bookmark-img'> <span class= 'bookmark-title'> ${eachBookmark.title} </span> </a>
+            </div>
         </div>`;
     });
 
-    userInfoContainer.innerHTML = `<ul>
-        <li> ${user_info.user.firstName} ${user_info.user.lastName} </li>
-        <li> ${user_info.user.email} </li>
-        <li> ${user_info.user.gender} </li>
-    </ul>`;
+    userInfoContainer.innerHTML = `
+    <div class='userinfo'>
+        <ul>
+            <li> ${user_info.user.firstName} ${user_info.user.lastName} </li>
+            <li> ${user_info.user.email} </li>
+            <li> ${user_info.user.gender} </li>
+        </ul>
+    </div>`;
 
 
 
@@ -92,7 +106,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
     user_info.followeeStories.forEach((eachStory) => {
         const listItem = document.createElement("li");
         listItem.innerHTML = `<a href="/stories/${eachStory.id}">
-            <img src="${eachStory.imgUrl}">
+            <img class= 'followers-img'src="${eachStory.imgUrl}">
             <span> ${eachStory.title} </span>
         </a>`;
 
