@@ -7,7 +7,7 @@
 ​
     Median allows its users/creators to write, post, edit, and delete their own stories.
 ​
-    Median allows its users/creatora to interact with creators by liking, following, and commenting on their stories. Bookmarking stories is a goal functionality as well, and is implemented in the schema.
+    Median allows its users/creatora to read other users stories. There is also front-end and schema implementation of follow and like features. Bookmarking stories is a goal functionality as well, and is implemented in the schema.
 ​
 ​
 #  Resources Used
@@ -21,9 +21,30 @@
 # In Development features
 - **Use of a third party api**
 - **Social media integration**
-- **More dynamic creating/editing tools**
+- **More dynamic creation/editing tools**
 - **Bookmarking**
-​
+- **Like functionality**
+- **Comment functionality**
+
+​# Instructions
+### Git Repo
+- Clone git repo from https://github.com/jxnprince/Median.git
+### Installation
+ -install node.js version 12.18.4
+ -create .env file in the Median directory with the below information from the .env.example file
+ -DB_USERNAME=median_app
+ -DB_PASSWORD=password
+ -DB_DATABASE=median_development
+ -DB_HOST=localhost
+ -SESSION_SECRET=superSecretSecret
+ -run npm install to install dependencies
+ -npm install faker
+ -run npx dotenv sequelize-cli db:create  to mount database
+ -npx dotenv sequelize-cli db:migrate to migrate database
+ -npx dotenv sequelize-cli db:seed:all to seed database
+ -run npm start
+ -load http://localhost:8080/ into your browsers
+
 # Routes
 ​
 ## Users Routes
@@ -44,7 +65,7 @@
    - **POST** - Submits login form, doesn't render to the front end
 ### `users/logout`
    - **POST** - Deletes req.session.auth token, logging the current user out
-      - They are then redirected to '/'
+      - They are then redirected to 'users/'
 ​
 ### `users/profile/:id`
    - **GET** - -Displays profile page for specified user.
