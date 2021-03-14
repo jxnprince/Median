@@ -141,3 +141,10 @@ textarea:focus {
   border: 1px solid #494A8F;
   outline: #494A8F;
 }
+
+.miniavatar {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  border: 1px solid #1f1f35
+}
