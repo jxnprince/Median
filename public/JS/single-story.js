@@ -1,14 +1,21 @@
 const makeFetch = async (url) => {
 	const res = await fetch(url)
 	return res.json()
-}
+};
+
+
+
+
 
 window.addEventListener("DOMContentLoaded", async (ev) => {
 	//HTML selectors
-	const mainContentDiv = document.getElementById('Main-Content')
-	const storyObj = document.getElementById('current-story-api-number')
+	const mainContentDiv = document.getElementById('Main-Content');
+	const storyObj = document.getElementById('current-story-api-number');
+
 	//Fetches here:
-	const data = await makeFetch(`/api/stories/${storyObj.className}`)
+	const data = await makeFetch(`/api/stories/${storyObj.className}`);
+
+
 	mainContentDiv.innerHTML = `
 	<div class= 'Container'>
 		<div class= 'Story-Img'>
@@ -20,6 +27,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 					</div>
 				</div>
 		</div>
-	</div>`
-	console.log(data)
-})	
+	</div>`;
+
+	console.log(data);
+});

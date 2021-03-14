@@ -7,11 +7,11 @@ const makeFetch = async (url) => {
 
 // main window listener here 'DOMContentLoaded
 window.addEventListener("DOMContentLoaded", async(event) => {
-    // I am using var on purpose -- so that scoping is not an issue
-    var user;
-    var user_info;
-    var users_stories;
-    var bookmarks;
+
+    let user;
+    let user_info;
+    let users_stories;
+    let bookmarks;
     // select to check if this is for a user that is not the currently logged in user
     const otherUser = document.getElementById("otherUser");
 
@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
     bookmarks.their_bookmarks.Stories.forEach((eachBookmark) => {
         bookmarksContainer.innerHTML = `<div id="container" class="container">
-            <a href=""> <img src="${eachBookmark.imgUrl}"> <span> ${eachBookmark.title} </span> </a>
+            <a href="/stories/"> <img src="${eachBookmark.imgUrl}"> <span> ${eachBookmark.title} </span> </a>
         </div>`;
     });
 

@@ -17,11 +17,13 @@ append head
                     a(href='/users/profile' id='user-profile-button' class='link-button')
                         img(class= 'profileButton' src = 'https://i.imgur.com/zB0xU1K.png?1')
             div(class="Left-Sidebar")
-                div(class="edit-delete")
-                    form(method='GET', action=(`/stories/edit/${apiNumber}`))
-                        button(type='submit' id='edit-story-button') Edit
-                    form(method='GET', action=(`/stories/${apiNumber}`))
-                        button(type='submit' id='delete-story-button' formmethod='DELETE') Delete
+
+                if isUser
+                    div(class="edit-delete")
+                        form(method='GET', action=(`/stories/edit/${apiNumber}`))
+                            button(type='submit' id='edit-story-button') Edit
+                        form(method='GET', action=(`/stories/${apiNumber}`))
+                            button(type='submit' id='delete-story-button' formmethod='DELETE') Delete
                 div(class="edit-delete")
             div(class="Main-Content" id="Main-Content")
                 if errors

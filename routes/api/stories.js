@@ -1,104 +1,93 @@
 const express = require('express');
 const router = express.Router();
-const {
-    Story,
-    User
-} = require('../../db/models')
-const {
-    csrfProtection,
-    asyncHandler,
-    createStoryValidator
-} = require('../../utils');
-const {
-    check,
-    validationResult
-} = require('express-validator');
+const { Story, User } = require('../../db/models')
+const { csrfProtection, asyncHandler, createStoryValidator } = require('../../utils');
+const { check, validationResult } = require('express-validator');
+
+
 
 
 //!Get X number of stories by userID
 // GET localhost:8080/api/stories?userId=<userID>&limit=<X>
 // GET localhost:8080/api/stories/ || works
-router.get(
-    '/',
-    csrfProtection,
-    asyncHandler(async (req, res) => {
-        const {
-            userId,
-            limit
-        } = req.query
-        const params = {
-            order: [
-                ['createdAt']
-            ],
-            limit,
-        }
-        if (userId !== undefined) params.where = {
-            userId
-        }
-        const mostRecentStories = await Story.findAll(params)
+router.get('/', csrfProtection, asyncHandler(async (req, res) => {
+
+    const mostRecentStories = await Story.findAll({ order: [['createdAt']], limit: 5 });
         //return a list of the most recent stories
         if (mostRecentStories) {
-            res.json({
-                mostRecentStories,
-                message: 'Stories',
-            })
+            res.json({ mostRecentStories });
         } else {
-            res.json('Story not found')
+            res.json({
+                message: "Error, Server Error.",
+                status: 500,
+                stack: "Server Error"
+            });
         }
     })
 )
 //return a list of the most recent stories
 
 
+
+
+
+
 //POST localhost:8080/api/stories/ || works
 router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, res) => {
-    //submits a story via a form
-    //submitted stories will then populate the general feed?
-    const {
-        imgUrl,
-        postBody,
-        title,
-        userId
-    } = req.body
+    const { imgUrl, postBody, title } = req.body;
+    const id = req.session.auth.userId;
     // const validationErrors = validationResult(res);
-    
+
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
-        
-            const story = await Story.create({
-                imgUrl,
-                postBody,
-                title,
-                userId:req.session.auth.userId
-            })
+        const story = await Story.create({ imgUrl, postBody, title, userId: id });
+
         if (story) {
             res.json({
                 message: "You created a new story",
                 story
-            })
+            });
+
         } else {
             res.json({
                 message: "Story not created"
-            })
+            });
         }
+
     } else{
         console.log(`You hit the story registration error route`)
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('submitStory', {
-          errors,
-          csrfToken: req.csrfToken(),
-        });
+        res.render('submitStory', { errors, csrfToken: req.csrfToken() });
+
     }
 
-}))
+}));
+
+
+
+
+
+
+
+
+
 //GET localhost:8080/api/stories/:id || works
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-    //test that you are pulling the id paramater
-    //return a list of the most recent stories by a user.
     const storyId = req.params.id;
     const userStories = await Story.findByPk(storyId);
     res.json(userStories)
-}))
+}));
+
+
+
+
+
+
+
+
+
+
+
 
 //DELETE localhost:8080/api/stories/:id || works
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
@@ -114,24 +103,26 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
         })
     }
 }))
+
+
+
+
+
+
+
+
+
+
 //PUT localhost:8080/api/stories/:id || works
 router.put('/:id(\\d+)', createStoryValidator, csrfProtection, asyncHandler(async (req, res) => {
     //updates a specific user story
     const storyId = req.params.id
-    const {
-        imgUrl,
-        postBody,
-        title
-    } = req.body
+    const { imgUrl, postBody, title } = req.body
     const validationErrors = validationResult(req)
 
     if (validationErrors.isEmpty()) {
         const updatedStory = await Story.findByPk(storyId)
-        updatedStory.update({
-            imgUrl,
-            postBody,
-            title
-        })
+        updatedStory.update({ imgUrl, postBody, title })
         if (updatedStory) {
             res.json({
                 message: "You updated a story",
