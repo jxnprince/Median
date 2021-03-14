@@ -23,6 +23,8 @@
 .featured-story-img {
 	padding-top: 5%;
 	align-self: center;
+	margin: 2rem;
+	border-radius: 3%;
 }
 
 .avatar {
@@ -51,8 +53,9 @@
 }
 
 .shortened-story-img {
-	max-height: 15px;
-	max-width: 15px;
+	height: 50px;
+	width: 100%;
+	border-radius: 3%;
 }
 
 #miniLogo {
