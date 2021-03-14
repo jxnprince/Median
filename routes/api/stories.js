@@ -111,55 +111,52 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 
 
-
+let updateStoryErrors = [];
 //updates a specific user story
 
 //PUT localhost:8080/api/stories/:storyId/users/:userId
 router.put('/:storyId(\\d+)/users/:userId(\\d+)', updateStoryValidator, asyncHandler(async (req, res) => {
     const storyId = req.params.storyId;
     const userId = req.params.userId;
+    const session = req.session.auth;
 
     const { the_story_img, the_story_post, the_title } = req.body;
-    // console.log(the_story_img);
-    // console.log(the_story_post);
-    // console.log(the_title);
 
     const validationErrors = validationResult(req);
-    // console.log(validationErrors);
+
 
     if (validationErrors.errors.length === 0) {
-        const updatedStory = await Story.findByPk(storyId, {
-            where: { userId },
-        });
-        // console.log(updatedStory);
+        const updatedStory = await Story.findByPk(storyId, { where: { userId }, });
 
-        if (updatedStory) {
+        if (updatedStory && session) {
+                updatedStory.update({
+                    imgUrl: the_story_img,
+                    postBody: the_story_post,
+                    title: the_title,
+                    updatedAt: new Date()
+                });
 
-            updatedStory.update({
-                imgUrl: the_story_img,
-                postBody: the_story_post,
-                title: the_title,
-                updatedAt: new Date()
-            });
-
-            res.json({
-                message: "You updated a story",
-                updatedStory
-            });
-
-
-        } else {
-            res.json({
-                message: "Story was not updated"
-            });
-
+            res.status(200).send();
         }
+
     } else {
 
         console.log(`You hit the story registration error route`)
 
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('editStory', { errors });
+        updateStoryErrors = errors;
+        res.status(404).send();
+        res.render('editStory');
+    }
+}));
+
+
+// used to display specific errors to the user for updating their story
+router.get('/errors', updateStoryErrors, asyncHandler(async (req, res) => {
+    if(updateStoryErrors.length > 0){
+        res.json({updateStoryErrors});
+    } else if(updateStoryErrors.length === 0) {
+        res.json({ message: "There are no validation errors."});
     }
 }));
 

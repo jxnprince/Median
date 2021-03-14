@@ -1,6 +1,6 @@
 extends layout
 append head
-    script(src='/JS/edit-reset.js' type='module')
+    script(src='/JS/edit-story.js' type='module')
     link(href='/stylesheets/reset.css' rel='stylesheet')
     link(href='/stylesheets/header-footer.css' rel='stylesheet')
     link(href='/stylesheets/story-submit-edit.css' rel='stylesheet')
@@ -20,15 +20,13 @@ append head
                         img(class= 'profileButton' src = 'https://i.imgur.com/zB0xU1K.png?1')
             div(class="Left-Sidebar")
             div(class="Main-Content")
-                if errors
-                    div(class='alert-alert-danger' role='alert')
-                        p The following error(s) occurred:
-                        ul
-                            each error in errors
-                                li= error
+
                 div(class="Submit-form")
                     div(id="api-div" class=`${storyId}-${userId}`)
                     div(class='edit-story-container' id='edit-story-container')
+                        h3(id="edit-message")
+                        ul(id="errors-list")
+
                         input(type="text" name="the_title" placeholder= "Title" class="edit-story-title" id="edit-story-title" required)
                         input(type="text" name="the_story_img" placeholder='Image Url' class="edit-story-img" id="edit-story-img")
                         textArea(type="text" name="the_story_post" placeholder='Your story here' class="edit-story-post" id="edit-story-post" required)
