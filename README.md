@@ -5,7 +5,7 @@
 ​
     publishing platform for almost ten years.
 ​
-    Median allows its users/creators to write, post, edit, and delete their own stories.
+    Median allows its users/creators to write, edit, and post their own stories, with delete functionality implemented in the backend and soon the frontend.
 ​
     Median allows its users/creatora to read other users stories. There is also front-end and schema implementation of follow and like features. Bookmarking stories is a goal functionality as well, and is implemented in the schema.
 ​
@@ -25,6 +25,7 @@
 - **Bookmarking**
 - **Like functionality**
 - **Comment functionality**
+- **Button-click delete**
 
 ​# Instructions
 ### Git Repo
@@ -52,14 +53,17 @@
    - **GET**
       - *if user **is** logged in*
          - Redirects to users' Median feed
+         ![Feed](/notes/images/Screen Shot 2021-03-15 at 10.18.29 AM.png)
       - *if user **is not** logged in*
          - Displays splash page form with login/register
          - Has a "login as demo user" button
             - Demo user auto populates the form with Demo user information and makes the post to '/login' with demo user credentials
+        ![Splash](/notes/images/Screen Shot 2021-03-15 at 9.59.58 AM.png)
    - **POST** - Create a new user
 ​
 ### `users/signup`
    - **GET** - Loads signup form
+   ![Signup](/notes/images/Screen Shot 2021-03-15 at 10.03.10 AM.png)
 ​
 ### `users/login`
    - **POST** - Submits login form, doesn't render to the front end
@@ -73,22 +77,25 @@
          - Followed users
          - Logged in user's stories
          - Maybe bookmarks :question:
+        ![Profile](/notes/images/Screen Shot 2021-03-15 at 10.01.39 AM.png)
    - **PUT** - Header will dynamically change to let the user CRUD all aspects of their account
    - **DELETE** - Allows user to delete account
-      - Popup to confirm delete or keep
 ​
 ## Story Routes
 ​
 ### `stories/submit-story`
    - **GET** - Displays a form to submit a new story
       - Activated through a button that persists across every page in the header
+        ![SubmitStory](/notes/images/Screen Shot 2021-03-15 at 10.01.56 AM.png)
 ​
 ## API Routes
 ​
 ### `api/stories/`
    - **GET** - Return a list of the most recent stories
+    ![Story](notes/images/Screen Shot 2021-03-15 at 10.02.34 AM.png)
    - **POST** - Submits story via a form
    - Story will then populate the feed
+
 ### `api/stories/:id`
    - **GET** - Return a list of the most recent stories from a user
    - **DELETE** - Deletes a specific user story
