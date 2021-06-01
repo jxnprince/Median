@@ -11,6 +11,11 @@ const formatDate = (the_date) => {
 };
 
 
+
+
+
+
+
 // main DOMContentLoaded event here:
 window.addEventListener("DOMContentLoaded", async (event) => {
     // html dom selections here:
@@ -79,8 +84,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                             </div>
                         </a>
 
-                        <a href="">
-                            <div class= 'likediv'>
+                        <a href="/">
+                            <div class='likediv'>
                                 <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
                                 <span class= 'likeScore'> ${story.UserLikes.length} </span>
                             </div>
