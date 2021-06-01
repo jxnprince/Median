@@ -1,21 +1,7 @@
-const {
-  csrfProtection,
-  asyncHandler,
-  createUserValidators,
-  loginValidators,
-  updateUserValidators
-} = require('../utils.js');
-const {
-  User,
-  Story
-} = require('../db/models');
-const {
-  loginUser,
-  logoutUser
-} = require('../auth.js');
-const {
-  Model
-} = require('sequelize');
+const { csrfProtection, asyncHandler, createUserValidators, loginValidators, updateUserValidators } = require('../utils.js');
+const { User, Story } = require('../db/models');
+const { loginUser, logoutUser } = require('../auth.js');
+const { Model } = require('sequelize');
 const { check, validationResult } = require('express-validator');
 // const { check, validationResult } = require('express-validator');
 const express = require('express');
@@ -23,6 +9,9 @@ const bcrypt = require('bcryptjs')
 const sequelize = require('sequelize');
 const router = express.Router();
 const Op = sequelize.Op;
+
+
+
 
 // GET localhost:8080/users/ ||works
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
@@ -33,10 +22,14 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   });
 }));
 
+
+
+
 router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
   if (req.session.auth) res.redirect("/feed");
   res.render('loginForm', {csrfToken: req.csrfProtection()})
 }))
+
 
 //DO NOT TOUCH THIS ROUTE!!!!
 router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async (req, res) => {
@@ -80,6 +73,8 @@ router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async 
     })
   }
 }))
+
+
 
 // POST localhost:8080/users/login || working
 router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, res) => {
@@ -125,16 +120,23 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
   }
 }))
 
+
+
+
 // POST localhost:8080/users/logout || working
 router.post('/logout', (req, res) => {
   logoutUser(req, res)
   res.redirect('/')
 })
 
+
+
 router.get('/logout', (req, res) => {
   logoutUser(req, res)
   res.redirect('/')
 })
+
+
 
 router.post('/demo-user', asyncHandler(async (req, res, next) => {
   const user = await User.findOne({
@@ -154,12 +156,14 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 
 
 // GET localhost:8080/users/profile/
-router.get('/profile', asyncHandler(async (req, res) => res.render("userProfile")));
+router.get('/profile', asyncHandler(async (req, res) => res.render("UserProfile")));
+
+
 
 
 // GET localhost:8080/users/profile/:id
 router.get('/profile/:userId(\\d+)', asyncHandler(async (req, res) => {
-  res.render("userProfile", { otherUser: req.params.userId });
+  res.render("UserProfile", { otherUser: req.params.userId });
 }));
 
 
@@ -187,6 +191,9 @@ router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (re
     title: 'edit profile'
   })
 }))
+
+
+
 
 // // // PUT localhost:8080/users/profile/:id || not working because no id to reference?
 router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHandler(async (req, res) => {
@@ -220,11 +227,18 @@ router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHan
   }
 }))
 
+
+
+
 // DELETE localhost:8080/users/profile/:id || not working because no id to reference?
 router.delete('/profile/:id(\\d+)', asyncHandler(async (req, res) => {
   const user = await User.findByPk(req.params.id)
   await user.destroy()
   res.redirect('/')
 }))
+
+
+
+
 
 module.exports = router;
