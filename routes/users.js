@@ -195,6 +195,9 @@ router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (re
 
 
 
+
+
+// remove / move this to the api routes should not be in the routes for the pages
 // // // PUT localhost:8080/users/profile/:id || not working because no id to reference?
 router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHandler(async (req, res) => {
   const {
@@ -229,7 +232,7 @@ router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHan
 
 
 
-
+// remove / move this to the api routes should not be in the routes for the pages
 // DELETE localhost:8080/users/profile/:id || not working because no id to reference?
 router.delete('/profile/:id(\\d+)', asyncHandler(async (req, res) => {
   const user = await User.findByPk(req.params.id)

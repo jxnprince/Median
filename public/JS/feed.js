@@ -119,22 +119,32 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             //
             if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
             if(story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
+
             eachItem.innerHTML = `
             <div id="shortened-story" class="shortened-story">
                 <a href="/stories/${story.id}">
-                <div id="shortened-story-heading" class="shortened-story-heading">
-                <div id="shortened-story-img" class="shortened-story-img-div">
-                    <img src="${story.imgUrl}" class="shortened-story-img">
-                </div>
-                <h2 class="shortened-story-title"> ${story.title} </h2>
-                        <img src="${story.User.avatar}" class="shortened-story-avatar">
-                        <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
-                        <div class= 'likediv'>
-                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
-                        <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                    <div id="shortened-story-heading" class="shortened-story-heading">
+                        <div id="shortened-story-img" class="shortened-story-img-div">
+                            <img src="${story.imgUrl}" class="shortened-story-img">
                         </div>
+
+                        <h2 class="shortened-story-title"> ${story.title} </h2>
                     </div>
                 </a>
+
+                <div>
+                    <a href="/users/profile/${story.userId}">
+                        <div>
+                            <img src="${story.User.avatar}" class="shortened-story-avatar">
+                                <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
+                        </div>
+                    </a>
+
+                    <div class= 'likediv'>
+                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
+                            <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                    </div>
+                </div>
             </div>`;
 
 
