@@ -6,12 +6,17 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     userId: DataTypes.INTEGER,
   }, {});
+
+
   Story.associate = function (models) {
+
     Story.belongsTo(models.User, {
       foreignKey: "userId",
-      onDelete: 'CASCADE',
-      hooks: true
+      // onDelete: 'CASCADE',
+      // hooks: true
     });
+
+
     Story.belongsToMany(models.User, {
       through: "Like",
       foreignKey: "storyId",
@@ -21,11 +26,13 @@ module.exports = (sequelize, DataTypes) => {
       // hooks: true
     });
 
+
     Story.hasMany(models.Comment, {
       foreignKey: "storyId",
       // onDelete: 'CASCADE',
       // hooks: true
     });
+
 
 
     Story.belongsToMany(models.User, {
@@ -35,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
       // onDelete: 'CASCADE',
       // hooks: true
     });
+
 
   };
   return Story;

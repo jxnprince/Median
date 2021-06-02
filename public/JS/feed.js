@@ -11,6 +11,11 @@ const formatDate = (the_date) => {
 };
 
 
+
+
+
+
+
 // main DOMContentLoaded event here:
 window.addEventListener("DOMContentLoaded", async (event) => {
     // html dom selections here:
@@ -54,34 +59,39 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
             if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
             if (story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
-            
-            eachItem.innerHTML = `<a href="/stories/${story.id}">
-                    <div id="story-img" class="featured-story-img">
-                        <img src="${story.imgUrl}">
-                    </div>
 
-                    <div id="story-heading" class="featured-story-heading">
-                    <h1> ${story.title} </h1>
+
+            eachItem.innerHTML = `<a href="/stories/${story.id}">
+                        <div id="story-img" class="featured-story-img">
+                            <img src="${story.imgUrl}">
+                        </div>
+
+                        <div id="story-heading" class="featured-story-heading">
+                            <h1> ${story.title} </h1>
+                        </div>
+
+                        <div id="story-text" class="featured-story-text">
+                            <p> ${story.postBody} </p>
+                        </div>
+                    </a>
+
 
                     <div class='story-information'>
-                        <div "user-information">
-                        <img class="avatar" src="${story.User.avatar}">
+                        <a href="/users/profile/${story.userId}">
+                            <div "user-information">
+                                <img class="avatar" src="${story.User.avatar}">
+                                <span> ${story.User.firstName} ${story.User.lastName} </span>
+                            </div>
+                        </a>
 
-                        <span> ${story.User.firstName} ${story.User.lastName} </span>
-
-                        </div>
-                        <div class= 'likediv'>
-                            <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
-                            <span class= 'likeScore'> ${story.UserLikes.length} </span>
-                        </div>
+                        <a href="/">
+                            <div class='likediv'>
+                                <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
+                                <span class= 'likeScore'> ${story.UserLikes.length} </span>
+                            </div>
+                        </a>
                     </div>
-                </div>
-
-                    <div id="story-text" class="featured-story-text">
-                        <p> ${story.postBody} </p>
-                    </div>
-
-                </a>`;
+                `;
 
 
             story.Comments.forEach(comment => {
@@ -114,22 +124,32 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             //
             if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
             if(story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
+
             eachItem.innerHTML = `
             <div id="shortened-story" class="shortened-story">
                 <a href="/stories/${story.id}">
-                <div id="shortened-story-heading" class="shortened-story-heading">
-                <div id="shortened-story-img" class="shortened-story-img-div">
-                    <img src="${story.imgUrl}" class="shortened-story-img">
-                </div>
-                <h2 class="shortened-story-title"> ${story.title} </h2>
-                        <img src="${story.User.avatar}" class="shortened-story-avatar">
-                        <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
-                        <div class= 'likediv'>
-                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
-                        <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                    <div id="shortened-story-heading" class="shortened-story-heading">
+                        <div id="shortened-story-img" class="shortened-story-img-div">
+                            <img src="${story.imgUrl}" class="shortened-story-img">
                         </div>
+
+                        <h2 class="shortened-story-title"> ${story.title} </h2>
                     </div>
                 </a>
+
+                <div>
+                    <a href="/users/profile/${story.userId}">
+                        <div>
+                            <img src="${story.User.avatar}" class="shortened-story-avatar">
+                                <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
+                        </div>
+                    </a>
+
+                    <div class= 'likediv'>
+                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
+                            <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                    </div>
+                </div>
             </div>`;
 
 

@@ -7,9 +7,9 @@ const { check, validationResult } = require('express-validator');
 
 
 
-//!Get X number of stories by userID
-// GET localhost:8080/api/stories?userId=<userID>&limit=<X>
-// GET localhost:8080/api/stories/ || works
+
+
+// GET localhost:8080/api/stories/
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
     const mostRecentStories = await Story.findAll({ order: [['createdAt']], limit: 5 });
@@ -32,7 +32,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
 
 
-//POST localhost:8080/api/stories/ || works
+//POST localhost:8080/api/stories/
 router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, res) => {
     const { imgUrl, postBody, title } = req.body;
     const id = req.session.auth.userId;
@@ -69,7 +69,7 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
 
 
 
-//GET localhost:8080/api/stories/:id || works
+//GET localhost:8080/api/stories/:id
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const storyId = req.params.id;
     const userStories = await Story.findByPk(storyId);
@@ -87,7 +87,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 
 
-//DELETE localhost:8080/api/stories/:id || works
+//DELETE localhost:8080/api/stories/:id
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const story = await Story.findByPk(req.params.id)
     await story.destroy()
