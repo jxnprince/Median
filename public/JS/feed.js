@@ -15,7 +15,6 @@ const formatDate = (the_date) => {
 
 
 
-
 // main DOMContentLoaded event here:
 window.addEventListener("DOMContentLoaded", async (event) => {
     // html dom selections here:
@@ -37,14 +36,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
 
     if(data.status === 200){
-        // make / render the html containing the feed information -
-        //const welcomeMessage = document.createElement("h3");
-        const firstName = data.current_user.firstName;
-        const lastName = data.current_user.lastName;
-
-
-        //welcomeMessage.innerText = `Welcome ${firstName} ${lastName}`;
-        //mainDiv.appendChild(welcomeMessage);
+        // const firstName = data.current_user.firstName;
+        // const lastName = data.current_user.lastName;
 
         const unorderedList = document.createElement("ul");
         const commentsList = document.createElement("ul");
@@ -84,12 +77,13 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                             </div>
                         </a>
 
-                        <a href="/">
-                            <div class='likediv'>
+                        <div id='featured-like-link'>
+                            <div id='featured-like-link-storyId' class='${story.id}'></div>
+                            <div id='featured-likediv' class='likediv'>
                                 <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
                                 <span class= 'likeScore'> ${story.UserLikes.length} </span>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 `;
 
@@ -135,6 +129,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
                         <h2 class="shortened-story-title"> ${story.title} </h2>
                     </div>
+
+                    <div class='likediv'>
+                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
+                        <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                    </div>
                 </a>
 
                 <div>
@@ -144,27 +143,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                                 <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
                         </div>
                     </a>
-
-                    <div class= 'likediv'>
-                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
-                            <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
-                    </div>
                 </div>
             </div>`;
-
-
-            // story.Comments.forEach(comment => {
-            //     const commentItem = document.createElement("li");
-
-            //     commentItem.innerHTML = `<div id="featured-comment" class= "shortened-story-featured-comment">
-            //         <img src="${comment.User.avatar}" class= "shortened-story-comment-avatar">
-            //         <span class= "shortened-story-comment-name"> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
-            //         Created on: <span class= "shortened-story-comment-date"> ${formatDate(comment.createdAt)} </span>
-            //             <p class= "shortened-story-comment-body"> ${comment.body} </p>
-            //     </div> `;
-
-            //     feedCommentsList.appendChild(commentItem);
-            // });
 
 
             feedList.appendChild(eachItem);
@@ -182,11 +162,44 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
         mainDiv.appendChild(featuredContainer);
         mainDiv.appendChild(feedItems);
-        const aaLogo = document.getElementById('aaLogoDiv')
-        aaLogo.innerHTML = `<img src='https://i.imgur.com/Hcuwo4G.png' class= 'aaLogo'>`
+
+
+        const likeOrUnlikeFeatured = document.getElementById('featured-like-link');
+        const featuredStoryId = document.getElementById('featured-like-link-storyId');
+
+
+        likeOrUnlikeFeatured.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const storyId = featuredStoryId.className;
+            const userId = data.current_user.id;
+            const featuredLikeDiv = document.getElementById('featured-likediv');
+
+            const response = await fetch(`/api/likes/${storyId}/${userId}`, { method: 'POST' });
+            if (response.status === 200) {
+                const data = await getStories('/api/feed');
+                if (data.status === 200) {
+                    featuredLikeDiv.innerHTML = '';
+
+                    for (let i = 0; i === 0; i++) {
+                        let story = data.the_stories[i];
+                        featuredLikeDiv.innerHTML = `
+                                <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
+                                <span class= 'likeScore'> ${story.UserLikes.length} </span>`;
+                    }
+                } else {
+                    const errorMessage = document.createElement("h3");
+                    errorMessage.innerText = "Failed to fetch Story data. Please try again.";
+                    mainDiv.appendChild(errorMessage);
+                }
+            }
+        });
+
     } else {
         const errorMessage = document.createElement("h3");
         errorMessage.innerText = "Failed to fetch Story data. Please try again.";
         mainDiv.appendChild(errorMessage);
     }
+
+
+
 });
