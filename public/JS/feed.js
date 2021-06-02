@@ -15,7 +15,6 @@ const formatDate = (the_date) => {
 
 
 
-
 // main DOMContentLoaded event here:
 window.addEventListener("DOMContentLoaded", async (event) => {
     // html dom selections here:
@@ -84,12 +83,12 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                             </div>
                         </a>
 
-                        <a href="/">
+                        <div id='featured-like-link'>
                             <div class='likediv'>
                                 <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
                                 <span class= 'likeScore'> ${story.UserLikes.length} </span>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 `;
 
@@ -182,11 +181,21 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
         mainDiv.appendChild(featuredContainer);
         mainDiv.appendChild(feedItems);
-        const aaLogo = document.getElementById('aaLogoDiv')
-        aaLogo.innerHTML = `<img src='https://i.imgur.com/Hcuwo4G.png' class= 'aaLogo'>`
+
+
+        const likeOrUnlike = document.getElementById('featured-like-link');
+        likeOrUnlike.addEventListener('click', async (event) => {
+            event.preventDefault();
+
+        });
+
+
     } else {
         const errorMessage = document.createElement("h3");
         errorMessage.innerText = "Failed to fetch Story data. Please try again.";
         mainDiv.appendChild(errorMessage);
     }
+
+
+
 });
