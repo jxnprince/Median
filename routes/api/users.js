@@ -90,7 +90,8 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
                 "lastName",
                 "avatar",
                 "email",
-                "gender"
+                "gender",
+                "id"
             ] }
         );
 
