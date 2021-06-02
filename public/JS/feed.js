@@ -36,14 +36,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
 
     if(data.status === 200){
-        // make / render the html containing the feed information -
-        //const welcomeMessage = document.createElement("h3");
-        const firstName = data.current_user.firstName;
-        const lastName = data.current_user.lastName;
-
-
-        //welcomeMessage.innerText = `Welcome ${firstName} ${lastName}`;
-        //mainDiv.appendChild(welcomeMessage);
+        // const firstName = data.current_user.firstName;
+        // const lastName = data.current_user.lastName;
 
         const unorderedList = document.createElement("ul");
         const commentsList = document.createElement("ul");
@@ -84,7 +78,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                         </a>
 
                         <div id='featured-like-link'>
-                            <div class='likediv'>
+                            <div id='featured-like-link-storyId' class='${story.id}'></div>
+                            <div id='featured-likediv' class='likediv'>
                                 <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
                                 <span class= 'likeScore'> ${story.UserLikes.length} </span>
                             </div>
@@ -144,9 +139,12 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                         </div>
                     </a>
 
-                    <div class= 'likediv'>
-                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
+                    <div id='feed-like-link'>
+                    <div id='feed-like-link-storyId' class='${story.id}'></div>
+                        <div id='feed-likediv' class='likediv'>
+                            <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
                             <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                        </div>
                     </div>
                 </div>
             </div>`;
@@ -183,10 +181,69 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         mainDiv.appendChild(feedItems);
 
 
-        const likeOrUnlike = document.getElementById('featured-like-link');
-        likeOrUnlike.addEventListener('click', async (event) => {
-            event.preventDefault();
+        const likeOrUnlikeFeatured = document.getElementById('featured-like-link');
+        const featuredStoryId = document.getElementById('featured-like-link-storyId');
 
+        const likeOrUnlikeFeed = document.getElementById('feed-like-link');
+
+
+
+
+        likeOrUnlikeFeatured.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const storyId = featuredStoryId.className;
+            const userId = data.current_user.id;
+            const featuredLikeDiv = document.getElementById('featured-likediv');
+
+            const response = await fetch(`/api/likes/${storyId}/${userId}`, { method: 'POST' });
+            if (response.status === 200) {
+                const data = await getStories('/api/feed');
+                if (data.status === 200) {
+                    featuredLikeDiv.innerHTML = '';
+
+                    for (let i = 0; i === 0; i++) {
+                        let story = data.the_stories[i];
+                        featuredLikeDiv.innerHTML = `
+                                <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
+                                <span class= 'likeScore'> ${story.UserLikes.length} </span>`;
+                    }
+                } else {
+                    const errorMessage = document.createElement("h3");
+                    errorMessage.innerText = "Failed to fetch Story data. Please try again.";
+                    mainDiv.appendChild(errorMessage);
+                }
+            }
+        });
+
+        likeOrUnlikeFeed.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const feedStoryId = document.getElementById('feed-like-link-storyId');
+            const storyId = feedStoryId.className;
+            const userId = data.current_user.id;
+            const feedLikeDiv = document.getElementById('feed-likediv');
+            console.log(userId);
+            console.log(storyId);
+            // console.log()
+            // const response = await fetch(`/api/likes/${storyId}/${userId}`, { method: 'POST' });
+
+            // if (response.status === 200) {
+                // const data = await getStories('/api/feed');
+
+                // if (data.status === 200) {
+                    // feedLikeDiv.innerHTML = '';
+
+                    // for (let i = 1; i < data.the_stories.length; i++) {
+                    //     let story = data.the_stories[i];
+                    //     feedLikeDiv.innerHTML = `
+                    //             <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
+                    //             <span class= 'likeScore'> ${story.UserLikes.length} </span>`;
+                    // }
+                // } else {
+                //     const errorMessage = document.createElement("h3");
+                //     errorMessage.innerText = "Failed to fetch Story data. Please try again.";
+                //     mainDiv.appendChild(errorMessage);
+                // }
+            // }
         });
 
 
