@@ -26,15 +26,14 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 //POST localhost:8080/api/comments || working
 router.post('/:id(\\d+)', createCommentValidator, csrfProtection, asyncHandler(async (req, res) => {
     //logic for creating a comment
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body.body)
     const storyId = req.params.id
     const userId = req.session.auth.userId
     // const userId = 1 //Testing in postman
     const validationErrors = validationResult(req)
 
-    const {
-        //!make sure to rename later
-        comment
-    } = req.body
+    const comment = req.body.body
+    console.log(comment)
     if (validationErrors.isEmpty()) {
         const newComment = await Comment.create({
             body: comment,
@@ -64,6 +63,7 @@ router.post('/:id(\\d+)', createCommentValidator, csrfProtection, asyncHandler(a
 //PUT localhost:8080/api/comments/:id || working?
 //patch?
 router.put('/:id', createCommentValidator, csrfProtection, asyncHandler(async (req, res) => {
+    console.log(req)
     const commentId = req.params.id;
     const userId = req.session.auth.userId
     // const userId = 1 //Testing in postman

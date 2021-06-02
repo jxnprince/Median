@@ -12,7 +12,8 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 	const mainContentDiv = document.getElementById('Main-Content');
 	const storyObj = document.getElementById('current-story-api-number');
 	const deleteStoryButton = document.getElementById(`delete-story-button`);
-
+	const csrf = document.cookie.split('=')
+	console.log(storyObj)
 	//Fetches here:
 	const data = await makeFetch(`/api/stories/${storyObj.className}`);
 	const comments = await makeFetch(`/api/comments/${storyObj.className}`)
@@ -37,7 +38,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 		for (let i = 0; i < comments.length; i++){
 			commentsDiv += `<div class="comment"><p>${comments[i].body}</p><span>${userObj[comments[i].userId].firstName}</div>`
 		}
-		console.log('############################', commentsDiv)
+		console.log('############################', storyObj.className)
 
 	mainContentDiv.innerHTML = `
 	<div class= 'Container'>
@@ -52,6 +53,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 					<div class='comments-container'>
 						${commentsDiv}
 					</div>
+
 				</div>
 	</div>`;
 
@@ -59,6 +61,12 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 	deleteStoryButton.addEventListener("click", async (event) => {
 		const response = await fetch(`/api/stories/${storyObj.className}`, {
 			method: "DELETE",
+			credentials: "include",
+		});
+	});
+	commentButton.addEventListener("click", async (event) => {
+		const response = await fetch(`/api/stories/${storyObj.className}`, {
+			method: "POST",
 			credentials: "include",
 		});
 	});
