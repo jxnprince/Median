@@ -6,15 +6,16 @@
 #CF6A86 
 #9674AB 
 #494A8F 
-#1f1f35 */
+#1f1f35 
+*/
 
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 body {
   font-family: 'Roboto Mono', monospace;
-  /* color: #F0EAE4; */
+  color: #F0EAE4;
   font-weight: 600;
   background-color: #1f1f35;
   margin: 0;
@@ -27,11 +28,6 @@ a {
 
 li {
   list-style: none;
-}
-
-img {
-  max-height: 700px;
-  max-width: 700px;
 }
 
 .hidden {
@@ -63,6 +59,7 @@ img {
   grid-area: Right-Sidebar;
 }
 
+
 .alert-alert-danger {
   color: red;
 }
@@ -71,21 +68,21 @@ h1 {
   font-size: 2rem;
 }
 
-.miniavatar {
+/* .miniavatar {
   height: 25px;
   width: 25px;
   border-radius: 50%;
   border: 1px solid #1f1f35
-}
+} */
 
 
-.thumbsup {
+/* .thumbsup {
   height: 25px;
   width: 25px;
-}
+} */
 
 
-button {
+/* button {
   position: relative;
   display: block;
   color: #F0EAE4;
@@ -95,21 +92,21 @@ button {
   border-radius: 3.5px;
   background-color: #494A8F;
   transition: 0.25s all ease;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #1f1f35;
   padding: 1px 6px;
   color: #494A8F;
-}
+} */
 
-form {
+/* form {
   color: #F0EAE4;
   border-radius: 5px;
   margin-block-end: 0;
-}
+} */
 
-input,
+/* input,
 input[type=text],
 input[type=password],
 input[type=number],
@@ -125,9 +122,9 @@ input:-webkit-autofill{
   font-size: .5em;
   transition: all 0.3s 0.2s ease;
   margin: 1.5px
-}
+} */
 
-input:focus,
+/* input:focus,
 input:active,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active{
@@ -135,16 +132,16 @@ input:-webkit-autofill:active{
   -webkit-text-fill-color:#494A8F;
   width: 21vw;
   margin: 2px;
-}
+} */
 
-textarea{
+/* textarea{
   resize: none;
   width: 50vw;
   height: 50vh;
   transition: all 0.3s 0.2s ease;
-}
+} */
 
-textarea:focus,
+/* textarea:focus,
 textarea:active,
 textarea:-webkit-autofill:focus,
 textarea:-webkit-autofill:active {
@@ -153,4 +150,4 @@ textarea:-webkit-autofill:active {
   width: 50vw;
   height: 50vh;
   margin: 2px;
-}
+} */

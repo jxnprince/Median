@@ -162,8 +162,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
         mainDiv.appendChild(featuredContainer);
         mainDiv.appendChild(feedItems);
-        const aaLogo = document.getElementById('aaLogoDiv')
-        aaLogo.innerHTML = `<img src='https://i.imgur.com/Hcuwo4G.png' class= 'aaLogo'>`
+        // const aaLogo = document.getElementById('aaLogoDiv')
+        // aaLogo.innerHTML = `<img src='https://i.imgur.com/Hcuwo4G.png' class= 'aaLogo'>`
     } else {
         const errorMessage = document.createElement("h3");
         errorMessage.innerText = "Failed to fetch Story data. Please try again.";

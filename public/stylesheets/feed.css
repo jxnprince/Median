@@ -1,4 +1,4 @@
-.mainContent {
+/* .mainContent {
 	display: flex;
 	justify-content: center;
 	align-items: stretch;
@@ -62,8 +62,6 @@
 
 #miniLogo {
 	height: 100%;
-	/* background-color: #F0EAE4; */
-	/* margin: 0 auto; */
 }
 
 .avatar {
@@ -97,7 +95,6 @@
 	transition: background-color 0.5s;
 	display: flex;
 	margin: 5px;
-	/* justify-content: flex-end; */
 }
 
 .likediv:hover {
@@ -149,4 +146,4 @@
 
 .shortened-story-likes-amount {
 	margin: 5px;
-}
+} */
