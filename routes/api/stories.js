@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Story, User } = require('../../db/models')
+const { Story, User, Like } = require('../../db/models')
 const { csrfProtection, asyncHandler, createStoryValidator, updateStoryValidator } = require('../../utils');
 const { check, validationResult } = require('express-validator');
 
@@ -72,7 +72,13 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
 //GET localhost:8080/api/stories/:id
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const storyId = req.params.id;
-    const userStories = await Story.findByPk(storyId);
+    const userStories = await Story.findByPk(storyId, {
+        include: {
+            model: User,
+            as: "UserLikes",
+            attributes: ["firstName", "lastName", "avatar"]
+        }
+    });
     res.json(userStories)
 }));
 

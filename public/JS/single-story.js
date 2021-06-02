@@ -24,13 +24,19 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 		<div class='featured-story-img'>
 			<img src="${data.imgUrl}">
 		</div>
+				<div>
+					<div id='featured-likediv' class='likediv'>
+            <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
+            <span class= 'likeScore'> ${data.UserLikes.length} </span>
+          </div>
+				</div>
+
 				<div class= 'Story-title'>
 					<h1>${data.title}</h1>
 					<div class= 'Story-body'>
 						<p>${data.postBody}</p>
 					</div>
 				</div>
-
 	</div>`;
 
 
