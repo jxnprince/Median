@@ -24,20 +24,20 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 		
 		// })
 		for (let i = 0; i < comments.length; i++){
-		console.log('############################', comments[i])
-		const user = await makeFetch(`/api/users/${comments[i].userId}/`)
-		users.push(user);
-	}
-	console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', comments, users)
-	const userObj = {}
-	user.forEach(user =>{
-		userObj[user.userId] = user
-	})
-
-	let commentsDiv = ''
-	for (let i = 0; i < comments.length; i++){
-		commentDiv += `<div class="comment"><p>${comment[i].body}</p><span>$${userObj[comment[i].userId]}</div>`
-	}
+			const user = await makeFetch(`/api/users/${comments[i].userId}/`)
+			users.push(user);
+		}
+		const userObj = {}
+		users.forEach(user =>{
+			console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', user.user)
+			userObj[user.user.id] = user.user
+		})
+		
+		let commentsDiv = ''
+		for (let i = 0; i < comments.length; i++){
+			commentsDiv += `<div class="comment"><p>${comments[i].body}</p><span>${userObj[comments[i].userId].firstName}</div>`
+		}
+		console.log('############################', commentsDiv)
 
 	mainContentDiv.innerHTML = `
 	<div class= 'Container'>
@@ -49,11 +49,10 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 					<div class= 'Story-body'>
 						<p>${data.postBody}</p>
 					</div>
+					<div class='comments-container'>
+						${commentsDiv}
+					</div>
 				</div>
-				<div class='comments-container>
-
-				</div>
-
 	</div>`;
 
 
