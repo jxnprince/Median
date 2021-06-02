@@ -129,6 +129,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
                         <h2 class="shortened-story-title"> ${story.title} </h2>
                     </div>
+
+                    <div class='likediv'>
+                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
+                        <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                    </div>
                 </a>
 
                 <div>
@@ -138,30 +143,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                                 <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
                         </div>
                     </a>
-
-                    <div id='feed-like-link'>
-                    <div id='feed-like-link-storyId' class='${story.id}'></div>
-                        <div id='feed-likediv' class='likediv'>
-                            <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
-                            <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
-                        </div>
-                    </div>
                 </div>
             </div>`;
-
-
-            // story.Comments.forEach(comment => {
-            //     const commentItem = document.createElement("li");
-
-            //     commentItem.innerHTML = `<div id="featured-comment" class= "shortened-story-featured-comment">
-            //         <img src="${comment.User.avatar}" class= "shortened-story-comment-avatar">
-            //         <span class= "shortened-story-comment-name"> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
-            //         Created on: <span class= "shortened-story-comment-date"> ${formatDate(comment.createdAt)} </span>
-            //             <p class= "shortened-story-comment-body"> ${comment.body} </p>
-            //     </div> `;
-
-            //     feedCommentsList.appendChild(commentItem);
-            // });
 
 
             feedList.appendChild(eachItem);
@@ -183,10 +166,6 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
         const likeOrUnlikeFeatured = document.getElementById('featured-like-link');
         const featuredStoryId = document.getElementById('featured-like-link-storyId');
-
-        const likeOrUnlikeFeed = document.getElementById('feed-like-link');
-
-
 
 
         likeOrUnlikeFeatured.addEventListener('click', async (event) => {
@@ -214,38 +193,6 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                 }
             }
         });
-
-        likeOrUnlikeFeed.addEventListener('click', async (event) => {
-            event.preventDefault();
-            const feedStoryId = document.getElementById('feed-like-link-storyId');
-            const storyId = feedStoryId.className;
-            const userId = data.current_user.id;
-            const feedLikeDiv = document.getElementById('feed-likediv');
-            console.log(userId);
-            console.log(storyId);
-            // console.log()
-            // const response = await fetch(`/api/likes/${storyId}/${userId}`, { method: 'POST' });
-
-            // if (response.status === 200) {
-                // const data = await getStories('/api/feed');
-
-                // if (data.status === 200) {
-                    // feedLikeDiv.innerHTML = '';
-
-                    // for (let i = 1; i < data.the_stories.length; i++) {
-                    //     let story = data.the_stories[i];
-                    //     feedLikeDiv.innerHTML = `
-                    //             <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
-                    //             <span class= 'likeScore'> ${story.UserLikes.length} </span>`;
-                    // }
-                // } else {
-                //     const errorMessage = document.createElement("h3");
-                //     errorMessage.innerText = "Failed to fetch Story data. Please try again.";
-                //     mainDiv.appendChild(errorMessage);
-                // }
-            // }
-        });
-
 
     } else {
         const errorMessage = document.createElement("h3");
