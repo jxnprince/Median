@@ -52,13 +52,17 @@ li {
 
 .Main-Content {
   grid-area: Main-Content;
-  margin-top: 0;
+  top: 0;
+  max-height: 100vh;
+  max-width: 75vw;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 
 .Right-Sidebar {
   grid-area: Right-Sidebar;
 }
-
 
 .alert-alert-danger {
   color: red;
