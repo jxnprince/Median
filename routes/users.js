@@ -144,7 +144,6 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
   });
   loginUser(req, res, user);
   return req.session.save(() => {
-    //Not logging user in.  Redirecting to wrong place???
     if (req.session) res.redirect("/feed")
     else next(res.error)
   })
@@ -188,7 +187,6 @@ router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (re
   })
 }))
 
-// // // PUT localhost:8080/users/profile/:id || not working because no id to reference?
 router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHandler(async (req, res) => {
   const {
     email,

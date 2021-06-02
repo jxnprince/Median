@@ -12,15 +12,11 @@
   box-sizing: border-box;
 }
 
-/* .miniLogo {
-  height: 55px;
-  width: 70px;
-} */
-
 body {
   font-family: 'Roboto Mono', monospace;
-  color: #F0EAE4;
-  background: #1f1f35;
+  /* color: #F0EAE4; */
+  font-weight: 600;
+  background-color: #1f1f35;
   margin: 0;
 }
 
@@ -43,7 +39,6 @@ img {
 }
 
 .grid-container {
-  background: #1f1f35;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
@@ -57,18 +52,15 @@ img {
 
 .Left-Sidebar {
   grid-area: Left-Sidebar;
-  background-color: #1f1f35;
 }
 
 .Main-Content {
   grid-area: Main-Content;
-  background-color: #1f1f35;
   margin-top: 0;
 }
 
 .Right-Sidebar {
   grid-area: Right-Sidebar;
-  background-color: #1f1f35;
 }
 
 .alert-alert-danger {
@@ -79,39 +71,41 @@ h1 {
   font-size: 2rem;
 }
 
+.miniavatar {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  border: 1px solid #1f1f35
+}
+
 
 .thumbsup {
   height: 25px;
   width: 25px;
 }
 
+
 button {
   position: relative;
   display: block;
   color: #F0EAE4;
-  font-size: 10px;
+  font-size: 0.75rem;
   text-decoration: none;
-  margin: 3px 0;
-  border: 2px solid #494A8F;
-  border-radius: 5%;
+  border: none;
+  border-radius: 3.5px;
   background-color: #494A8F;
-  padding: 1.4px 6px;
-  transition: 1s all ease;
+  transition: 0.25s all ease;
 }
 
 button:hover {
   background-color: #1f1f35;
-  padding: 2px 12px;
+  padding: 1px 6px;
+  color: #494A8F;
 }
-
-/* input {
-  background-color: #F0EAE4;
-} */
 
 form {
   color: #F0EAE4;
-  /* border: 1px solid #494A8F; */
-  border-radius: 3%;
+  border-radius: 5px;
   margin-block-end: 0;
 }
 
@@ -120,31 +114,43 @@ input[type=text],
 input[type=password],
 input[type=number],
 input[type=email],
-textarea {
+textarea,
+input:-webkit-autofill{
   color: #F0EAE4;
   background: 0;
   border: 1px solid#494A8F;
   border: 5%;
   outline: #494A8F;
-  width: 75%;
+  width: 20vw;
   font-size: .5em;
   transition: all 0.3s 0.2s ease;
-  margin: 1px
+  margin: 1.5px
 }
 
 input:focus,
-textarea:focus {
-  color: #F0EAE4;
+input:active,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
   background-color: #494A8F;
-  width: 99%;
+  -webkit-text-fill-color:#494A8F;
+  width: 21vw;
   margin: 2px;
-  border: 1px solid #494A8F;
-  outline: #494A8F;
 }
 
-.miniavatar {
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
-  border: 1px solid #1f1f35
+textarea{
+  resize: none;
+  width: 50vw;
+  height: 50vh;
+  transition: all 0.3s 0.2s ease;
+}
+
+textarea:focus,
+textarea:active,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  background-color: #494A8F;
+  -webkit-text-fill-color:#494A8F;
+  width: 50vw;
+  height: 50vh;
+  margin: 2px;
 }
