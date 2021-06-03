@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 	const mainContentDiv = document.getElementById('Main-Content');
 	const storyObj = document.getElementById('current-story-api-number');
 	const deleteStoryButton = document.getElementById(`delete-story-button`);
-	const csrf = document.cookie.split('=')
+	// const csrf = document.cookie.split('=')
 
 
 
@@ -39,6 +39,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 		const commentsDiv = document.createElement("div");
 		const commentsList = document.createElement("ul");
 
+
 		for (let i = 0; i < comments.length; i++){
 			const eachItem = document.createElement("li");
 
@@ -51,6 +52,19 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 			if (comments[i].userId === current_user.userId) {
 				const deleteButton = document.createElement('button');
 				deleteButton.innerText = 'delete';
+				deleteButton.addEventListener('click', async (event) => {
+					const response = await fetch(`/api/comments/${comments[i].id}`, {
+						method: 'DELETE',
+						credentials: "include",
+					});
+
+					if(response.status === 200){
+						window.location.reload();
+					} else {
+						console.log(response.message);
+					}
+				});
+
 				eachItem.appendChild(deleteButton);
 			}
 

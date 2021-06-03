@@ -4,7 +4,8 @@ const { csrfProtection, asyncHandler, createCommentValidator } = require('../../
 const { Comment } = require('../../db/models');
 const { validationResult } = require('express-validator');
 
-//GET localhost:8080/api/comments/:id
+
+//GET localhost:8080/api/comments/:storyId
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const storyId = req.params.id;
     const allComments = await Comment.findAll({
@@ -69,13 +70,20 @@ router.put('/:id(\\d+)', createCommentValidator, csrfProtection, asyncHandler(as
 
 
 
-//DELETE localhost:8080/api/comments/:id
+//DELETE localhost:8080/api/comments/:commentId
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const commentId = req.params.id;
     const userId = req.session.auth.userId;
-    const commentQuery = await Comment.findByPk(commentId);
-    commentQuery.destroy()
+    const commentQuery = await Comment.findByPk(commentId, {
+        where: { userId }
+    });
 
+    if (commentQuery) {
+        commentQuery.destroy()
+        res.json({ "status": 200 });
+    } else {
+        res.json({ "status": 500, "message": "Error, could not delete comment." });
+    }
 
 }));
 
