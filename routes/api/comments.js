@@ -71,13 +71,13 @@ router.put('/:id(\\d+)', createCommentValidator, csrfProtection, asyncHandler(as
 
 //DELETE localhost:8080/api/comments/:id
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const commentId = req.params.id
-    const userId = req.session.auth.userId
-    const commentQuery = await Comment.findByPk(commentId)
+    const commentId = req.params.id;
+    const userId = req.session.auth.userId;
+    const commentQuery = await Comment.findByPk(commentId);
     commentQuery.destroy()
 
-    res.send('Comment deleted')
-}))
+
+}));
 
 
 

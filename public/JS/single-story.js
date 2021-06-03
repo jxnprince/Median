@@ -13,33 +13,55 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 	const storyObj = document.getElementById('current-story-api-number');
 	const deleteStoryButton = document.getElementById(`delete-story-button`);
 	const csrf = document.cookie.split('=')
-	console.log(storyObj)
+
+
+
+
 	//Fetches here:
 	const data = await makeFetch(`/api/stories/${storyObj.className}`);
 	const comments = await makeFetch(`/api/comments/${storyObj.className}`);
 	const current_user = await makeFetch('/api/users/');
 	const users = [];
-	//  = comments.map((comment)=> {
-		// 	console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', comment)
-		// 	// const user = await makeFetch(`/api/users/${comment.userId}/`)
-		// 	// return user;
 
-		// })
+
 		for (let i = 0; i < comments.length; i++){
 			const user = await makeFetch(`/api/users/${comments[i].userId}/`)
 			users.push(user);
 		}
+
+
 		const userObj = {}
 		users.forEach(user =>{
-			console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', user.user)
 			userObj[user.user.id] = user.user
 		})
 
-		let commentsDiv = ''
+
+		const commentsDiv = document.createElement("div");
+		const commentsList = document.createElement("ul");
+
 		for (let i = 0; i < comments.length; i++){
-			commentsDiv += `<div class="comment"><p>${comments[i].body}</p><span>${userObj[comments[i].userId].firstName}</div>`
+			const eachItem = document.createElement("li");
+
+			eachItem.innerHTML = `<div class="comment">
+					<p>${comments[i].body}</p>
+					<span>${userObj[comments[i].userId].firstName}
+				</div>`;
+
+
+			if (comments[i].userId === current_user.userId) {
+				const deleteButton = document.createElement('button');
+				deleteButton.innerText = 'delete';
+				eachItem.appendChild(deleteButton);
+			}
+
+			commentsList.appendChild(eachItem);
 		}
-		console.log('############################', storyObj.className)
+
+
+	commentsDiv.appendChild(commentsList);
+
+
+
 
 	mainContentDiv.innerHTML = `
 	<div class= 'Container'>
@@ -58,12 +80,17 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 					<div class= 'Story-body'>
 						<p>${data.postBody}</p>
 					</div>
-					<div class='comments-container'>
-						${commentsDiv}
-					</div>
 
+					<div id='comments-container' class='comments-container'> </div>
 				</div>
 	</div>`;
+
+
+
+	const commentContainer = document.getElementById('comments-container');
+	commentContainer.appendChild(commentsDiv);
+
+
 
 
 	const likeDiv = document.getElementById('likediv');
