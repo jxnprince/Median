@@ -16,13 +16,14 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 	console.log(storyObj)
 	//Fetches here:
 	const data = await makeFetch(`/api/stories/${storyObj.className}`);
-	const comments = await makeFetch(`/api/comments/${storyObj.className}`)
-	const users = []
+	const comments = await makeFetch(`/api/comments/${storyObj.className}`);
+	const current_user = await makeFetch('/api/users/');
+	const users = [];
 	//  = comments.map((comment)=> {
 		// 	console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', comment)
 		// 	// const user = await makeFetch(`/api/users/${comment.userId}/`)
 		// 	// return user;
-		
+
 		// })
 		for (let i = 0; i < comments.length; i++){
 			const user = await makeFetch(`/api/users/${comments[i].userId}/`)
@@ -33,7 +34,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 			console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', user.user)
 			userObj[user.user.id] = user.user
 		})
-		
+
 		let commentsDiv = ''
 		for (let i = 0; i < comments.length; i++){
 			commentsDiv += `<div class="comment"><p>${comments[i].body}</p><span>${userObj[comments[i].userId].firstName}</div>`
@@ -46,7 +47,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 			<img src="${data.imgUrl}">
 		</div>
 				<div>
-					<div id='featured-likediv' class='likediv'>
+					<div id='likediv' class='likediv'>
             <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
             <span class= 'likeScore'> ${data.UserLikes.length} </span>
           </div>
@@ -65,19 +66,46 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 	</div>`;
 
 
-	deleteStoryButton.addEventListener("click", async (event) => {
-		const response = await fetch(`/api/stories/${storyObj.className}`, {
-			method: "DELETE",
-			credentials: "include",
-		});
-	});
-	commentButton.addEventListener("click", async (event) => {
-		const response = await fetch(`/api/stories/${storyObj.className}`, {
-			method: "POST",
-			credentials: "include",
-		});
+	const likeDiv = document.getElementById('likediv');
+	likeDiv.addEventListener('click', async (event) => {
+		event.preventDefault();
+		const storyId = data.id;
+		const userId = current_user.userId;
+		const response = await fetch(`/api/likes/${storyId}/${userId}`, { method: 'POST' });
+		if (response.status === 200) {
+			const data = await makeFetch(`/api/stories/${storyObj.className}`);
+			likeDiv.innerHTML = '';
+			likeDiv.innerHTML = `
+					<img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
+					<span class= 'likeScore'> ${data.UserLikes.length} </span> `;
+		}
+
 	});
 
+
+
+	if (deleteStoryButton !== null) {
+		deleteStoryButton.addEventListener("click", async (event) => {
+			const response = await fetch(`/api/stories/${storyObj.className}`, {
+				method: "DELETE",
+				credentials: "include",
+			});
+		});
+	}
+
+
+
+
+	// if (commentButton === null) {
+
+	// } else {
+	// 	commentButton.addEventListener("click", async (event) => {
+	// 		const response = await fetch(`/api/stories/${storyObj.className}`, {
+	// 			method: "POST",
+	// 			credentials: "include",
+	// 		});
+	// 	});
+	// }
 
 
 
