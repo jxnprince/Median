@@ -28,6 +28,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   loginButton.addEventListener('click', async (event) =>{
     loginButton.setAttribute('class', 'hidden');
     loginForm.classList.remove('hidden');
+    loginForm.classList.add('show');
     console.log('I got clicked');
   })
   
