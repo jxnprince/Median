@@ -1,5 +1,5 @@
 .Header {
-	position: static;
+	position: fixed;
 	top: 0;
 	width: 100vw;
 	height: 6vh;
@@ -8,6 +8,7 @@
 	grid-area: Header;
 	display: flex;
 	overflow: scroll;
+	z-index: 1;
 }
 
 #displayLoginFormButton {
@@ -127,6 +128,8 @@
   width: 100vw;
   display: flex;
   justify-content: space-around;
+  box-shadow: 1vw -2vh 25px 10px #1f1f35;
+  z-index: 1;
 }
 
 

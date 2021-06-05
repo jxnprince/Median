@@ -1,0 +1,29 @@
+.Container{
+    height: 80vh;
+    box-shadow: 1vw 2vh 50vh 5px #1f1f35;
+}
+
+.featured-story-img>img{
+    height: 35vh;
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+
+.Story-title>h1{
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+/* .Story-body{
+    font-weight: 350;
+} */
+
+.Story-body>p{
+    font-weight: 350;
+    padding-bottom: 5vh;
+}

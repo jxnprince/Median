@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
 /* 
 #F0EAE4 
 #E0C653 
@@ -9,12 +9,11 @@
 #1f1f35 
 */
 
-/* * {
-  box-sizing: border-box;
-} */
+* {
+  font-family: 'Roboto', monospace;
+}
 
 body {
-  font-family: 'Roboto Mono', monospace;
   color: #F0EAE4;
   font-weight: 600;
   background-color: #1f1f35;

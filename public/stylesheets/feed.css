@@ -7,6 +7,7 @@
   padding: 0;
   overflow: hidden;
   width: 60vw;
+  margin-top: 10vh;
   margin-left: 20vw;
   transition: all 0.5s;
 }
@@ -37,6 +38,7 @@
 
 .featured-story-heading>h1{
   font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .story-information {
@@ -49,6 +51,7 @@
   display: flex;
 	align-items: center;
 	margin: 1vh;
+	font-weight: 400;
 }
 
 .avatar {
@@ -88,8 +91,9 @@
 }
 
 .featured-story-text{
-  margin: 2.5vh;
+  margin: 2.5vh 3.5vw;
   font-size: 0.8rem;
+  font-weight: 375;
 }
 
 .featured-comments{
@@ -97,8 +101,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 1.5vw;
+  margin-left: 1.5vw;
 }
 
+@media only screen and (min-width: 1250px) {
+  .featured-story-text{
+    margin-right: 6vw;
+  }
+  .featured-comments{
+    display: flex;
+    align-items: flex-start;
+}
+}
 .featured-comments>ul{
   margin: 0 2vh 1vh -5vh;
 }
@@ -119,15 +134,18 @@
 }
 
 .featured-comment-userName{
-  font-size: 0.75rem
+  font-size: 0.75rem;
+  font-weight: 300;
 }
 
 .featured-comment-date{
-  font-size: 0.4rem;
+  font-size: 0.35rem;
+  font-weight: 100;
 }
 
 .featured-comment-body{
   font-size: 0.66rem;
+  font-weight: 300;
 }
 
 /*=========================Feed==============================*/
@@ -144,20 +162,20 @@
 	background-color: rgba(73, 74, 143, 0.4);
 	border-radius: 2.5px;
 	margin-bottom: 2.5vh;
-	height: 20vh;
+	height: 12vh;
 	transition: all 0.5s;
+	overflow: hidden;
 }
 
 .shortened-story:hover {
 	background-color: rgba(73, 74, 143, 0.75);
 	border-radius: 1px;
 	padding: -1px;
-	height: 20vh;
 }
 
 .shortened-story-heading{
   display: flex; 
-  align-items: center;
+  align-items: flex-start;
   padding: 0;
 }
 
@@ -165,12 +183,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 40vw;
+  width: 50vw;
 }
 
 .shortened-story-img {
 	height: 20vh;
-  width: 12vw;
+  width: 8vw;
   object-fit: cover;
   object-position: 33% 33%;
   border-radius: 2.5px;
@@ -179,6 +197,7 @@
 
 .shortened-story-title {
 	font-size: 1.25rem;
+	font-weight: 400;
 	margin-left: 2vh;
 	margin-right: 1vw;
 }
@@ -192,15 +211,15 @@
 }
 
 .shortened-story-avatar {
-  height: 3vh;
-  width: 3vh;
+  height: 2.5vh;
+  width: 2.5vh;
   object-fit: cover;
   border-radius: 50px;
   border: 0;
 }
 
 .shortened-story-name {
-	font-size: 0.8rem;
+	font-size: 0.65rem;
 	margin-left: 0.5vw;
 }
 
@@ -209,13 +228,14 @@
   width: 12vw;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-start;
   margin-right: 1vw;
+  margin-top: 4.5vh;
 }
 
 .shortened-story-thumbsup{
   opacity: 75%;
-  width: 1.5vw;
+  width: 2.5vh;
   margin-right: 0.25vw;
 }
 .shortened-story-thumbsup:hover{
