@@ -48,6 +48,7 @@ li {
 
 .Left-Sidebar {
   grid-area: Left-Sidebar;
+  width: 10vw;
 }
 
 .Main-Content {

@@ -101,7 +101,7 @@
 
 .logout-button {
   height: 4.5vh;
-  margin-top: 1.5vh;
+  margin-top: 0.75vh;
 }
 
 .logout-button:hover {
@@ -110,7 +110,7 @@
 
 .profileButton {
   height: 4.5vh;
-  margin-top: 1.5vh;
+  margin-top: 0.75vh;
   margin-left: 2.5vh;
   margin-right: 2.5vh;
 }
