@@ -39,7 +39,7 @@ append head
             //- div(id="buffer")
             div(class="Right-Sidebar")
                 div(class=`comment-form`)
-                    form(method="Post" action=`/api/comments/${apiNumber}`)
+                    form(method="POST" action=`/api/comments/${apiNumber}`)
                         input(type="hidden" name="_csrf" value=csrfToken)
                         textArea(type="text" name="body" placeholder='Your comment here' required)
                         button(type="submit") Comment

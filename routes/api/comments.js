@@ -1,19 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {
-    csrfProtection,
-    asyncHandler,
-    createCommentValidator
-} = require('../../utils')
-const {
-    Comment
-} = require('../../db/models')
+const { csrfProtection, asyncHandler, createCommentValidator } = require('../../utils');
+const { Comment } = require('../../db/models');
 const { validationResult } = require('express-validator');
-//GET localhost:8080/api/comments/:id || working
-//GET localhost:8080/api/comments?storyId=<id>&userId=<id>  || convention
+
+
+//GET localhost:8080/api/comments/:storyId
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-    //return a list of comments
-    //api/comments?storyId=storyId=<storyId>
     const storyId = req.params.id;
     const allComments = await Comment.findAll({
         where: {
@@ -21,90 +14,80 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
         }
     })
     res.json(allComments);
-}))
+}));
 
-//POST localhost:8080/api/comments || working
+
+
+//POST localhost:8080/api/comments/:id
 router.post('/:id(\\d+)', createCommentValidator, csrfProtection, asyncHandler(async (req, res) => {
-    //logic for creating a comment
-    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body.body)
-    const storyId = req.params.id
-    const userId = req.session.auth.userId
-    // const userId = 1 //Testing in postman
+    const storyId = req.params.id;
+    const userId = req.session.auth.userId;
+    const comment = req.body.body;
+
     const validationErrors = validationResult(req)
 
-    const comment = req.body.body
-    console.log(comment)
+
     if (validationErrors.isEmpty()) {
-        const newComment = await Comment.create({
-            body: comment,
-            userId,
-            storyId
-        });
+        const newComment = await Comment.create({ body: comment, userId, storyId });
         if (newComment) {
-            res.json({
-                message: "You created a new comment",
-                newComment
-            })
+            res.redirect(`/stories/${storyId}`);
+
         } else {
-            res.json({
-                messsage: "Comment not created"
-            })
+            res.json({ messsage: "Comment not created" });
         }
     } else {
-        console.log(`You hit the comment registration error route`)
+
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('singlestory', {
-            errors,
-            csrfToken: req.csrfToken(),
-          });
+        res.render('singlestory', { errors, csrfToken: req.csrfToken() });
     }
 }))
 
-//PUT localhost:8080/api/comments/:id || working?
-//patch?
-router.put('/:id', createCommentValidator, csrfProtection, asyncHandler(async (req, res) => {
-    console.log(req)
+
+//PUT localhost:8080/api/comments/:id
+router.put('/:id(\\d+)', createCommentValidator, csrfProtection, asyncHandler(async (req, res) => {
     const commentId = req.params.id;
     const userId = req.session.auth.userId
-    // const userId = 1 //Testing in postman
+    const { comment } = req.body
 
-    //logic for editing comments
-    const {
-        comment
-    } = req.body
+
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
     const commentQuery = await Comment.findByPk(commentId)
-    //Only edit comment if userId matches userId on comment
+
     if (commentQuery.userId === userId) {
         commentQuery.body = comment
         commentQuery.save()
     }
 
-    res.json({
-        commentQuery
-    })
+    res.json({ commentQuery });
+
     } else {
-        console.log(`You hit the comment registration error route`)
+
         const errors = validationErrors.array().map((error) => error.msg);
-        res.render('singlestory', {
-            errors,
-            csrfToken: req.csrfToken(),
-          });
+        res.render('singlestory', { errors, csrfToken: req.csrfToken() });
     }
-}))
+}));
 
-//DELETE localhost:8080/api/comments/:id || working?
-//! Need to discuss urgently, ondelete: cascade
-router.delete('/:id', asyncHandler(async (req, res) => {
-    const commentId = req.params.id
-    const userId = req.session.auth.userId
-    // const userId = 1 //Testing in postman
-    //logic for deleting a comment
-    const commentQuery = await Comment.findByPk(commentId)
-    commentQuery.destroy()
 
-    res.send('Comment deleted')
-}))
+
+//DELETE localhost:8080/api/comments/:commentId
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const commentId = req.params.id;
+    const userId = req.session.auth.userId;
+    const commentQuery = await Comment.findByPk(commentId, {
+        where: { userId }
+    });
+
+    if (commentQuery) {
+        commentQuery.destroy()
+        res.json({ "status": 200 });
+    } else {
+        res.json({ "status": 500, "message": "Error, could not delete comment." });
+    }
+
+}));
+
+
+
 
 module.exports = router;
