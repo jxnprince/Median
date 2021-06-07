@@ -1,6 +1,6 @@
 .Submit-form>form, 
 .Submit-form>h1{
-    margin: 10vh;
+    margin: 5vh;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -131,16 +131,14 @@
 }
 
 .edit-story-container>button{
+    background-color: #494A8F;
     color: #F0EAE4;
     font-size: 0.75rem;
-    text-decoration: none;
-    border: none;
-    border-radius: 3.5px;
-    background-color: #494A8F;
-    transition: 0.25s all ease;
-    margin: 1vh;
     height: 4vh;
-    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    border-radius: 3.5px;
+    transition: 0.25s all ease;
 }
 
 .edit-story-container>button:hover{

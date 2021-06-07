@@ -1,12 +1,12 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700&display=swap');
 /* 
 #F0EAE4 
 #E0C653 
 #CF6A86 
 #9674AB 
 #494A8F 
-#1f1f35 
+#1f1f35
 */
 
 * {
@@ -53,7 +53,7 @@ li {
 .Main-Content {
   grid-area: Main-Content;
   top: 0;
-  max-height: 100vh;
+  max-height: 83vh;
   max-width: 75vw;
   display: flex;
   flex-direction: column;
@@ -69,89 +69,5 @@ li {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.25rem;
 }
-
-/* .miniavatar {
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
-  border: 1px solid #1f1f35
-} */
-
-
-/* .thumbsup {
-  height: 25px;
-  width: 25px;
-} */
-
-
-/* button {
-  position: relative;
-  display: block;
-  color: #F0EAE4;
-  font-size: 0.75rem;
-  text-decoration: none;
-  border: none;
-  border-radius: 3.5px;
-  background-color: #494A8F;
-  transition: 0.25s all ease;
-} */
-
-/* button:hover {
-  background-color: #1f1f35;
-  padding: 1px 6px;
-  color: #494A8F;
-} */
-
-/* form {
-  color: #F0EAE4;
-  border-radius: 5px;
-  margin-block-end: 0;
-} */
-
-/* input,
-input[type=text],
-input[type=password],
-input[type=number],
-input[type=email],
-textarea,
-input:-webkit-autofill{
-  color: #F0EAE4;
-  background: 0;
-  border: 1px solid#494A8F;
-  border: 5%;
-  outline: #494A8F;
-  width: 20vw;
-  font-size: .5em;
-  transition: all 0.3s 0.2s ease;
-  margin: 1.5px
-} */
-
-/* input:focus,
-input:active,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
-  background-color: #494A8F;
-  -webkit-text-fill-color:#494A8F;
-  width: 21vw;
-  margin: 2px;
-} */
-
-/* textarea{
-  resize: none;
-  width: 50vw;
-  height: 50vh;
-  transition: all 0.3s 0.2s ease;
-} */
-
-/* textarea:focus,
-textarea:active,
-textarea:-webkit-autofill:focus,
-textarea:-webkit-autofill:active {
-  background-color: #494A8F;
-  -webkit-text-fill-color:#494A8F;
-  width: 50vw;
-  height: 50vh;
-  margin: 2px;
-} */

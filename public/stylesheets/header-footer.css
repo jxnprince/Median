@@ -158,16 +158,19 @@
 	border-radius: 50%;
 }
 
-/* .github {
-	justify-self: flex-start;
-	height: 80%;
-	width: 50%;
-	background-color: #7374b3;
-} */
+#joshDiv, 
+#jacksonDiv, 
+#robertDiv, 
+#troyDiv{
+  font-size: 0.75rem;
+  font-weight: 400;
+  flex-direction: column;
+  align-items: center;
+}
 
-/* .linkedin {
-	justify-self: flex-end;
-	height: 80%;
-	width: 50%;
-	background-color: #7374b3;
-} */
+#joshDiv, 
+#jacksonDiv, 
+#robertDiv, 
+#troyDiv{
+  display: flex;
+}
