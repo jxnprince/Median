@@ -1,21 +1,7 @@
-const {
-  csrfProtection,
-  asyncHandler,
-  createUserValidators,
-  loginValidators,
-  updateUserValidators
-} = require('../utils.js');
-const {
-  User,
-  Story
-} = require('../db/models');
-const {
-  loginUser,
-  logoutUser
-} = require('../auth.js');
-const {
-  Model
-} = require('sequelize');
+const { csrfProtection, asyncHandler, createUserValidators, loginValidators, updateUserValidators } = require('../utils.js');
+const { User, Story } = require('../db/models');
+const { loginUser, logoutUser } = require('../auth.js');
+const { Model } = require('sequelize');
 const { check, validationResult } = require('express-validator');
 // const { check, validationResult } = require('express-validator');
 const express = require('express');
@@ -24,19 +10,23 @@ const sequelize = require('sequelize');
 const router = express.Router();
 const Op = sequelize.Op;
 
+
+
+
 // GET localhost:8080/users/ ||works
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   if (req.session.auth) res.redirect("/feed");
-  else res.render("splash", {
-    csrfToken: req.csrfToken(),
-    title: ""
-  });
+  else res.render("splash", { csrfToken: req.csrfToken(), title: "" });
 }));
+
+
+
 
 router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
   if (req.session.auth) res.redirect("/feed");
   res.render('loginForm', {csrfToken: req.csrfProtection()})
 }))
+
 
 //DO NOT TOUCH THIS ROUTE!!!!
 router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async (req, res) => {
@@ -81,12 +71,12 @@ router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async 
   }
 }))
 
-// POST localhost:8080/users/login || working
+
+
+
+// POST localhost:8080/users/login
 router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, res) => {
-  let user = {
-    email,
-    password
-  } = req.body
+  let user = { email, password } = req.body
   const validationErrors = validationResult(req)
 
   if (validationErrors.isEmpty()) {
@@ -96,10 +86,10 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
       }
     })
 
-    // console.log('(================================)')
+
     if (dbEmail) {
       const match = await bcrypt.compare(password, dbEmail.hashedPassword.toString())
-      // console.log('<================================>')
+
 
       if (match) {
         user = dbEmail
@@ -110,31 +100,33 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, 
       }
       else {
         let errors = ['One of your login fields is incorrect!']
-        res.render('splash', {
-          errors,
-          csrfToken: req.csrfToken()
-        });
+        res.render('splash', { errors, csrfToken: req.csrfToken() });
       }
     }
+
   } else {
       const errors = validationErrors.array().map((error) => error.msg);
-    res.render('splash', {
-      errors,
-      csrfToken: req.csrfToken()
-    })
+    res.render('splash', { errors, csrfToken: req.csrfToken() });
   }
 }))
 
-// POST localhost:8080/users/logout || working
+
+
+
+// POST localhost:8080/users/logout
 router.post('/logout', (req, res) => {
   logoutUser(req, res)
   res.redirect('/')
 })
 
+
+// GET localhost:8080/users/logout
 router.get('/logout', (req, res) => {
   logoutUser(req, res)
   res.redirect('/')
 })
+
+
 
 router.post('/demo-user', asyncHandler(async (req, res, next) => {
   const user = await User.findOne({
@@ -153,12 +145,14 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
 
 
 // GET localhost:8080/users/profile/
-router.get('/profile', asyncHandler(async (req, res) => res.render("userProfile")));
+router.get('/profile', asyncHandler(async (req, res) => res.render("UserProfile")));
+
+
 
 
 // GET localhost:8080/users/profile/:id
 router.get('/profile/:userId(\\d+)', asyncHandler(async (req, res) => {
-  res.render("userProfile", { otherUser: req.params.userId });
+  res.render("UserProfile", { otherUser: req.params.userId });
 }));
 
 
@@ -166,26 +160,6 @@ router.get('/profile/:userId(\\d+)', asyncHandler(async (req, res) => {
 
 
 
-router.get('/profile/:id(\\d+)/editUser', csrfProtection, asyncHandler(async (req, res) => {
-  const user = await findByPk(req.params.id)
-  const {
-    email,
-    firstName,
-    lastName,
-    gender,
-    birthdate,
-    avatar
-  } = user;
-  res.render('editUserForm', {
-    email,
-    firstName,
-    lastName,
-    gender,
-    birthdate,
-    avatar,
-    title: 'edit profile'
-  })
-}))
 
 router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHandler(async (req, res) => {
   const {
@@ -218,11 +192,6 @@ router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHan
   }
 }))
 
-// DELETE localhost:8080/users/profile/:id || not working because no id to reference?
-router.delete('/profile/:id(\\d+)', asyncHandler(async (req, res) => {
-  const user = await User.findByPk(req.params.id)
-  await user.destroy()
-  res.redirect('/')
-}))
+
 
 module.exports = router;

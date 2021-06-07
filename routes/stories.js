@@ -13,7 +13,7 @@ router.get('/submit-story', csrfProtection, (req, res) => {
 
 
 
-router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
+router.get('/:id(\\d+)', csrfProtection, asyncHandler(async(req, res) => {
     const id = req.params.id
     let isUser;
 
@@ -26,7 +26,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
 
     }
 
-    res.render('singlestory', { isUser , apiNumber: id })
+    res.render('singlestory', { isUser , apiNumber: id, csrfToken: req.csrfToken() })
 }))
 
 
