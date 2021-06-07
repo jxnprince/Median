@@ -192,6 +192,8 @@
   object-fit: cover;
   object-position: 33% 33%;
   border-radius: 2.5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   margin-right: 0.5vw;
 }
 

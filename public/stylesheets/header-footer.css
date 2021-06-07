@@ -13,9 +13,9 @@
 
 #displayLoginFormButton {
   position: absolute;
-  height: 4.5vh;
+  height: 80%;
   right: 1%;
-  top: 1.5%;
+  top: 10%;
 }
 
 .displayLoginFormButton:hover {
@@ -37,7 +37,7 @@
   border: 1px solid#494A8F;
   border: 5%;
   outline: #1f1f35;
-  width: 25vw;
+  width: 20vw;
   font-size: .5em;
   transition: all 0.3s 0.2s ease;
   margin: 1.5px;
@@ -47,7 +47,7 @@
 #login-form>input:focus,
 #login-form>input:active{
   background-color: #494A8F;
-  width: 25.5vw;
+  width: 20.5vw;
   margin: 2px;
   border: 1px solid#1f1f35;
   border-radius: 2px;
@@ -62,7 +62,7 @@
   outline: none;
   border-radius: 3.5px;
   background-color: #1f1f35;
-  width: 25vw;
+  width: 20vw;
   transition: 0.25s all ease;
 }
 

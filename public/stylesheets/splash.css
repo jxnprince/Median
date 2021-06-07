@@ -1,32 +1,31 @@
 .splashLogo {
-  height: 100%;
-  max-height: 60vh;
-  width: 100%;
-  max-width: 75vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background-color: brown; */
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
+
 
 #mainLogo {
-  max-height: 50vh;
-  max-width: 35vw;
-  position: absolute;
-  left: 31vw;
-  top: 16vh;
-  transition: all 0.25s;
+  border-radius: 100%;  
+
 }
 
-#logoblur {
+/* #logoDiv{
+    margin-bottom: 0;
+    padding-bottom: 0;
+} */
+
+/* #logoblur {
   height: 10px;
   min-width: 75vw;
   height: 70vh;
-  animation-name: strobe;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   transition: all 0.25s;
-}
+} */
 
 .formButtons {
   display: flex;
@@ -40,7 +39,6 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  /* background-color: brown; */
 }
 
 #displaySignUpFormButton,
@@ -300,51 +298,5 @@
     font-size: 8.5px;
     width: 2rem;
     height: 2rem;
-  }
-}
-
-@keyframes strobe {
-  0% {
-    opacity: 0%;
-    z-index: -1;
-  }
-
-  12.5% {
-    opacity: 20%;
-    z-index: -1;
-  }
-
-  25% {
-    opacity: 50%;
-    z-index: -1;
-  }
-
-  35% {
-    opacity: 75%;
-    z-index: -1;
-  }
-
-  50% {
-    opacity: 100%;
-    z-index: -1;
-  }
-
-  62.5% {
-    opacity: 75%;
-    z-index: -1;
-  }
-
-  75% {
-    opacity: 50%;
-    z-index: -1;
-  }
-
-  85% {
-    opacity: 25%;
-    z-index: -1;
-  }
-
-  100% {
-    opacity: 0%
   }
 }
