@@ -136,7 +136,6 @@ router.post('/demo-user', asyncHandler(async (req, res, next) => {
   });
   loginUser(req, res, user);
   return req.session.save(() => {
-    //Not logging user in.  Redirecting to wrong place???
     if (req.session) res.redirect("/feed")
     else next(res.error)
   })
@@ -162,6 +161,36 @@ router.get('/profile/:userId(\\d+)', asyncHandler(async (req, res) => {
 
 
 
+router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHandler(async (req, res) => {
+  const {
+    email,
+    firstName,
+    lastName,
+    gender,
+    birthdate,
+    avatar
+  } = req.body;
+  const validationErrors = validationResult(req)
+  const user = await findByPk(req.params.id)
+  if (validationErrors.isEmpty()) {
+    user.update({
+      email,
+      firstName,
+      lastName,
+      gender,
+      birthdate,
+      avatar
+    })
+    if (req.session) res.redirect("/profile/:id(\\d+)")
+    else next(res.err)
+  } else {
+    const errors = validationErrors.array().map((error) => error.msg);
+    res.render('editUserForm', {
+      errors,
+      csrfToken: req.csrfToken()
+    })
+  }
+}))
 
 
 

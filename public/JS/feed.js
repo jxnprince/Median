@@ -92,10 +92,10 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                 const commentItem = document.createElement("li");
 
                 commentItem.innerHTML = `<div id="featured-comment" class="featured-comment">
-                    <img src="${comment.User.avatar}" class="featured-comment-avatar">
-                    <span class= "featured-comment-userName"> ${comment.User.firstName} ${comment.User.lastName} <br> </span>
-                    Created on: <span class= "featured-comment-date"> ${formatDate(comment.createdAt)} </span>
-                        <p class= "featured-comment-body"> ${comment.body} </p>
+                <img src="${comment.User.avatar}" class="featured-comment-avatar">
+                <span class= "featured-comment-userName"> ${comment.User.firstName[0]}. ${comment.User.lastName}: <br> </span>
+                <p class= "featured-comment-body"> ${comment.body} </p>
+                <span class= "featured-comment-date"> ${formatDate(comment.createdAt)} </span>
                 </div> `;
 
                 commentsList.appendChild(commentItem);
@@ -126,13 +126,17 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                         <div id="shortened-story-img" class="shortened-story-img-div">
                             <img src="${story.imgUrl}" class="shortened-story-img">
                         </div>
-
-                        <h2 class="shortened-story-title"> ${story.title} </h2>
-                    </div>
-
-                    <div class='likediv'>
-                        <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
-                        <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                        <div class="shortened-story-stack">
+                            <h2 class="shortened-story-title"> ${story.title} </h2>
+                            <div class="shortened-story-author">
+                                <img src="${story.User.avatar}" class="shortened-story-avatar">
+                                <span class="shortened-story-name"> ${story.User.firstName} ${story.User.lastName} </span>
+                            </div>
+                        </div>
+                        <div class= 'shortened-likediv'>
+                            <img src="https://i.imgur.com/uW1Ryn2.png?1" class="shortened-story-thumbsup">
+                            <span class="shortened-story-likes-amount"> ${story.UserLikes.length} </span>
+                        </div>
                     </div>
                 </a>
 

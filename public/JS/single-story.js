@@ -45,13 +45,13 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 
 			eachItem.innerHTML = `<div class="comment">
 					<p>${comments[i].body}</p>
-					<span>${userObj[comments[i].userId].firstName}
+					<span>-${userObj[comments[i].userId].firstName}
 				</div>`;
 
 
 			if (comments[i].userId === current_user.userId) {
 				const deleteButton = document.createElement('button');
-				deleteButton.innerText = 'delete';
+				deleteButton.innerText = 'X';
 				deleteButton.addEventListener('click', async (event) => {
 					const response = await fetch(`/api/comments/${comments[i].id}`, {
 						method: 'DELETE',
@@ -82,21 +82,22 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 		<div class='featured-story-img'>
 			<img src="${data.imgUrl}">
 		</div>
-				<div>
-					<div id='likediv' class='likediv'>
-            <img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
-            <span class= 'likeScore'> ${data.UserLikes.length} </span>
-          </div>
-				</div>
-
-				<div class= 'Story-title'>
-					<h1>${data.title}</h1>
-					<div class= 'Story-body'>
-						<p>${data.postBody}</p>
-					</div>
-
-					<div id='comments-container' class='comments-container'> </div>
-				</div>
+		
+		<div class= 'Story-title'>
+		<div id='single-story-heading'>
+			<h1>${data.title}</h1>
+			<div id='likediv' class='likediv'>
+			<img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
+			<span class= 'likeScore'> ${data.UserLikes.length} </span>
+			</div>
+		</div>
+			<div class= 'Story-body'>
+				<p>${data.postBody}</p>
+			</div>
+			<div id='comments-container' class='comments-container'> 
+				<h3>Comments:</h3>
+			</div>
+		</div>
 	</div>`;
 
 
