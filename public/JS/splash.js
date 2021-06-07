@@ -21,6 +21,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     displayFormButton.classList.remove('hidden');
     demoUserButton.classList.remove('hidden');
     logoDiv.classList.remove('hidden');
+    logoDiv.classList.add('splashLogo');
     signUpForm.classList.remove('signupForm');
     signUpForm.setAttribute('class', 'hidden');
     strobe.setAttribute('class', 'hidden');
@@ -28,7 +29,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   loginButton.addEventListener('click', async (event) =>{
     loginButton.setAttribute('class', 'hidden');
     loginForm.classList.remove('hidden');
-    console.log('I got clicked');
+    loginForm.classList.add('show');
+    // console.log('I got clicked');
   })
   
 });
