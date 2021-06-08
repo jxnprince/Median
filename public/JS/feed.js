@@ -50,7 +50,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             let story = data.the_stories[i];
             const eachItem = document.createElement("li");
 
-            if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
+            if(story.imgUrl === '') story.imgUrl = `https://miro.medium.com/max/1050/1*z2O2W5vrJBDXlcZ7rzPyxQ.jpeg`
             if (story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
 
 
@@ -116,7 +116,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             //
             // REPLACE DEFAULT IMAGES
             //
-            if(story.imgUrl === null) story.imgUrl = 'https://i.imgur.com/vkJTmXL.png'
+            if(story.imgUrl === '') story.imgUrl = `https://miro.medium.com/max/1050/1*z2O2W5vrJBDXlcZ7rzPyxQ.jpeg`
             if(story.User.avatar === null) story.User.avatar = 'https://i.imgur.com/zB0xU1K.png?1'
 
             eachItem.innerHTML = `

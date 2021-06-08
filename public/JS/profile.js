@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
     // html selectors here
     const leftContainer = document.getElementById('left-container');
     const profileImg = document.getElementById('profile-img');
-    const followEditLinks = document.getElementById('follow-edit-links');
+    // const followEditLinks = document.getElementById('follow-edit-links');
     // const bookmarksContainer = document.getElementById('bookmarks-container');
     const userInfoContainer = document.getElementById('userinfo-container');
     const usersStories = document.getElementById('users-stories');
@@ -63,13 +63,13 @@ window.addEventListener("DOMContentLoaded", async(event) => {
 
     profileImg.appendChild(userInfoContainer);
     
-    followEditLinks.innerHTML = `
-    <div class= 'main-profile-info'>
-    <a href="" id='follow'> Follow </a>
-    <p id='edit-bio'> Edit Bio </p>
-    </div>`;
+    // followEditLinks.innerHTML = `
+    // <div class= 'main-profile-info'>
+    // <p href="" id='follow'> Follow </p>
+    // <p id='edit-bio'> Edit Bio </p>
+    // </div>`;
     
-    userInfoContainer.appendChild(followEditLinks);
+    // userInfoContainer.appendChild(followEditLinks);
 
 
     // bookmarks.their_bookmarks.Stories.forEach((eachBookmark) => {
@@ -89,6 +89,7 @@ window.addEventListener("DOMContentLoaded", async(event) => {
     // loop through their_stories on users_stories
     const usersStoriesList = document.createElement('ul');
     users_stories.their_stories.forEach((eachStory) => {
+        if(eachStory.imgUrl === '') eachStory.imgUrl = `https://miro.medium.com/max/1050/1*z2O2W5vrJBDXlcZ7rzPyxQ.jpeg`
         const listItem = document.createElement('li');
         listItem.innerHTML = ` <a href="/stories/${eachStory.id}">
             <img class ='your-stories-img' src="${eachStory.imgUrl}">

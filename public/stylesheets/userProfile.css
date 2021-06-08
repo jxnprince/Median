@@ -86,6 +86,8 @@
 	background-color: #494A8F;
 	border-radius: 5px;
 	max-width: 40vw;
+	max-height: 75vh;
+	min-height: 50vh;
 	margin-left: 10vh;
 	margin-top: 3vh;
 }

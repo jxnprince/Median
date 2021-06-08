@@ -38,13 +38,7 @@ router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async 
     gender,
     avatar
   } = req.body
-  console.log(req.body);
-  ///^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g'
-  console.log(email, firstName, lastName, password)
-  // const validationErrors = validationResult(req)
   const validationErrors = validationResult(req);
-  console.log(validationErrors);
-  console.log(email, firstName, lastName, password)
   if (validationErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10)
     const user = await User.create({
@@ -60,9 +54,9 @@ router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async 
       if (req.session) res.redirect("/feed")
       else next(res.err)
     })
-    console.log(`You hit the user registration route`)
+    // console.log(`You hit the user registration route`)
   } else {
-    console.log(`You hit the user registration error route`)
+    // console.log(`You hit the user registration error route`)
     const errors = validationErrors.array().map((error) => error.msg);
     res.render('splash', {
       errors,
