@@ -113,7 +113,6 @@
 .signupForm>input:focus,
 .signupForm>input:active{
   background-color: #494A8F;
-  -webkit-text-fill-color:#494A8F;
   width: 25.5vw;
   margin: 2px;
 }

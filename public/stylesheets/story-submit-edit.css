@@ -7,7 +7,6 @@
     align-items: center;
 }
 
-
 .Submit-form>form>input {
     color: #F0EAE4;
     background: 0;
@@ -16,7 +15,7 @@
     outline: #494A8F;
     width: 35vw;
     height: 2.5vh;
-    font-size: .5em;
+    font-size: .5rem;
     transition: all 0.3s;
     margin: 1.5px
 }
@@ -136,6 +135,7 @@
     font-size: 0.75rem;
     height: 4vh;
     border: none;
+    margin-top: 0.5vh;
     text-decoration: none;
     border-radius: 3.5px;
     transition: 0.25s all ease;
@@ -157,4 +157,11 @@
     color: #E0C653 ;
     border: 1px solid #9674AB;
     border-radius: 0;
+}
+
+#edit-story-title,
+#edit-story-img,
+#edit-story-post{
+    font-size: 1rem;
+    font-weight: 300;
 }

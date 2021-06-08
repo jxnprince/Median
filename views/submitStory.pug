@@ -29,9 +29,9 @@ append head
                     h1 Submit your story
                     form(method="Post" action="/api/stories/")
                         input(type="hidden" name="_csrf" value=csrfToken)
-                        input(type="text" name="title" placeholder= "Title" required)
-                        input(type="text" name="imgUrl" placeholder='Image Url')
-                        textArea(type="text" name="postBody" placeholder='Your Story here' required)
+                        input(type="text" name="title" placeholder= "Title" id='submit-story' required)
+                        input(type="text" name="imgUrl" placeholder='Image Url' id='submit-story')
+                        textArea(type="text" name="postBody" placeholder='Your Story here' id='submit-story' required)
                         button(type="submit") Post Story
             div(class="Right-Sidebar")
             div(class="Footer")

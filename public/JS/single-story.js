@@ -3,25 +3,18 @@ const makeFetch = async (url) => {
 	return res.json()
 };
 
-
-
-
-
 window.addEventListener("DOMContentLoaded", async (ev) => {
 	//HTML selectors
 	const mainContentDiv = document.getElementById('Main-Content');
 	const storyObj = document.getElementById('current-story-api-number');
 	const deleteStoryButton = document.getElementById(`delete-story-button`);
-	// const csrf = document.cookie.split('=')
-
-
-
 
 	//Fetches here:
 	const data = await makeFetch(`/api/stories/${storyObj.className}`);
 	const comments = await makeFetch(`/api/comments/${storyObj.className}`);
 	const current_user = await makeFetch('/api/users/');
 	const users = [];
+	if (data.imgUrl === '') data.imgUrl = `https://miro.medium.com/max/1050/1*z2O2W5vrJBDXlcZ7rzPyxQ.jpeg`
 
 
 		for (let i = 0; i < comments.length; i++){
@@ -29,16 +22,13 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 			users.push(user);
 		}
 
-
 		const userObj = {}
 		users.forEach(user =>{
 			userObj[user.user.id] = user.user
 		})
 
-
 		const commentsDiv = document.createElement("div");
 		const commentsList = document.createElement("ul");
-
 
 		for (let i = 0; i < comments.length; i++){
 			const eachItem = document.createElement("li");
@@ -71,10 +61,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 			commentsList.appendChild(eachItem);
 		}
 
-
 	commentsDiv.appendChild(commentsList);
-
-
 
 
 	mainContentDiv.innerHTML = `
@@ -100,13 +87,8 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 		</div>
 	</div>`;
 
-
-
 	const commentContainer = document.getElementById('comments-container');
 	commentContainer.appendChild(commentsDiv);
-
-
-
 
 	const likeDiv = document.getElementById('likediv');
 	likeDiv.addEventListener('click', async (event) => {
@@ -121,10 +103,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 					<img src="https://i.imgur.com/uW1Ryn2.png?1" class='thumbsup'>
 					<span class= 'likeScore'> ${data.UserLikes.length} </span> `;
 		}
-
 	});
-
-
 
 	if (deleteStoryButton !== null) {
 		deleteStoryButton.addEventListener("click", async (event) => {
@@ -132,23 +111,9 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 				method: "DELETE",
 				credentials: "include",
 			});
+			window.location.reload()
+			// response.method = "GET"
+			// response.redirect("/users/profile")
 		});
 	}
-
-
-
-
-	// if (commentButton === null) {
-
-	// } else {
-	// 	commentButton.addEventListener("click", async (event) => {
-	// 		const response = await fetch(`/api/stories/${storyObj.className}`, {
-	// 			method: "POST",
-	// 			credentials: "include",
-	// 		});
-	// 	});
-	// }
-
-
-
 });

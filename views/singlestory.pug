@@ -21,12 +21,10 @@ append head
 
                 if isUser
                     div(class="edit-delete")
-                        //- a(href=`/stories/edit/${apiNumber}`) Edit
                         form(method='GET', action=(`/stories/edit/${apiNumber}`))
                             button(type='submit' id='edit-story-button') Edit
                         div(id=`stories-delete-${apiNumber}`)
                             button(id='delete-story-button') Delete
-
                 div(class="edit-delete")
             div(class="Main-Content" id="Main-Content")
                 if errors
@@ -42,7 +40,7 @@ append head
                 div(class=`comment-form`)
                     form(method="POST" action=`/api/comments/${apiNumber}`)
                         input(type="hidden" name="_csrf" value=csrfToken)
-                        textArea(type="text" name="body" placeholder='Your comment here' required)
+                        textArea(type="text" name="body" placeholder='Your comment here' id='submit-story' required)
                         button(type="submit") Comment
                 //- div(class='creators-info')
                 //-     div(class='purple-filter')

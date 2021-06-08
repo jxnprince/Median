@@ -82,7 +82,8 @@
   background-color: #494A8F;
   transition: 0.25s all ease;
   height: 2.5vh;
-  width: 5vh;
+  width: 3vw;
+  overflow: hidden;
 }
 
 #delete-story-button:hover,

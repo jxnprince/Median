@@ -43,7 +43,7 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
         const story = await Story.create({ imgUrl, postBody, title, userId: id });
 
         if (story) {
-            res.redirect('/users')
+            res.redirect('/users/profile')
 
         } else {
             res.json({
@@ -79,7 +79,10 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
             attributes: ["firstName", "lastName", "avatar"]
         }
     });
-    res.json(userStories)
+    console.log(userStories.dataValues, "==========================")
+
+    if (userStories.dataValues) res.json(userStories)
+    else res.redirect('/users/profile') 
 }));
 
 
@@ -96,16 +99,10 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 //DELETE localhost:8080/api/stories/:id
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const story = await Story.findByPk(req.params.id)
-    await story.destroy()
-    if (story) {
-        res.json({
-            message: 'error'
-        })
-    } else {
-        res.json({
-            message: 'story was deleted'
-        })
-    }
+    const destroy = await story.destroy()
+    console.log(destroy)
+    if (destroy === []) res.json({ message: 'error'})
+    else res.json({message: 'Success'})
 }))
 
 
