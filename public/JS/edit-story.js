@@ -58,11 +58,15 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             body: JSON.stringify({ the_title, the_story_post, the_story_img })
         });
 
-        console.log(response);
+
 
 
         if(response.status === 200) {
-            message.innerText = 'Your story has been successfully updated.';
+            message.innerText = 'Your story has been successfully updated, one moment please.';
+            setTimeout(() => {
+                window.location = `/stories/${storyId}`;
+            }, 1000);
+
         } else {
             message.innerText = 'Error updating your story, please try again.';
             const errorList = document.getElementById('errors-list');

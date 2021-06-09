@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 		<div class='featured-story-img'>
 			<img src="${data.imgUrl}">
 		</div>
-		
+
 		<div class= 'Story-title'>
 		<div id='single-story-heading'>
 			<h1>${data.title}</h1>
@@ -81,7 +81,7 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 			<div class= 'Story-body'>
 				<p>${data.postBody}</p>
 			</div>
-			<div id='comments-container' class='comments-container'> 
+			<div id='comments-container' class='comments-container'>
 				<h3>Comments:</h3>
 			</div>
 		</div>
@@ -111,9 +111,9 @@ window.addEventListener("DOMContentLoaded", async (ev) => {
 				method: "DELETE",
 				credentials: "include",
 			});
-			window.location.reload()
-			// response.method = "GET"
-			// response.redirect("/users/profile")
+			window.location = `/users/profile`;
+
+
 		});
 	}
 });
