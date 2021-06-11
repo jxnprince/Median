@@ -13,20 +13,6 @@
 
 }
 
-/* #logoDiv{
-    margin-bottom: 0;
-    padding-bottom: 0;
-} */
-
-/* #logoblur {
-  height: 10px;
-  min-width: 75vw;
-  height: 70vh;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  transition: all 0.25s;
-} */
-
 .formButtons {
   display: flex;
   align-items: baseline;
