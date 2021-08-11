@@ -1,45 +1,26 @@
 {
-  "name": "express-project-starter",
-  "version": "0.0.0",
-  "private": true,
+  "name": "Median",
+  "version": "1.0.0",
+  "description": "A clone of the Medium web app.",
+  "main": "index.js",
   "scripts": {
-    "start": "per-env",
-    "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "node ./bin/www",
-    "sequelize": "sequelize",
-    "sequelize-cli": "sequelize-cli",
-    "nsc-init": "npx sequelize-cli init",
-    "db:create": "npx dotenv sequelize-cli db:create",
-    "db:migrate": "npx dotenv sequelize-cli db:migrate",
-    "db:migrate:undo": "npx dotenv sequelize-cli db:migrate:undo",
-    "db:migrate:undo:all": "npx dotenv sequelize-cli db:migrate:undo:all",
-    "db:seed:all": "npx dotenv sequelize-cli db:seed:all",
-    "db:seed:undo:all": "npx dotenv sequelize-cli db:seed:undo:all",
-    "db:drop": "npx dotenv sequelize-cli db:drop && npx dotenv sequelize-cli db:create && npx dotenv sequelize-cli db:migrate && npx dotenv sequelize-cli db:seed:all"
+    "heroku-postbuild": "npm run build --prefix frontend",
+    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
+    "dev:backend": "npm install --prefix backend start",
+    "dev:frontend": "npm install --prefix frontend start",
+    "sequelize": "npm run --prefix backend sequelize",
+    "sequelize-cli": "npm run --prefix backend sequelize-cli",
+    "start": "npm start --prefix backend"
   },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "bcryptjs": "^2.4.3",
-    "connect-session-sequelize": "^7.0.4",
-    "cookie-parser": "~1.4.4",
-    "csurf": "^1.11.0",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "express-session": "^1.17.1",
-    "express-validator": "^6.9.2",
-    "faker": "^5.4.0",
-    "http-errors": "~1.6.3",
-    "js-cookie": "^2.2.1",
-    "morgan": "~1.9.1",
-    "per-env": "^1.0.2",
-    "pg": "^8.4.2",
-    "pug": "2.0.4",
-    "sequelize": "^5.22.3",
-    "sequelize-cli": "^5.5.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jxnprince/Median.git"
   },
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "dotenv-cli": "^4.0.0",
-    "nodemon": "^2.0.6"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jxnprince/Median/issues"
+  },
+  "homepage": "https://github.com/jxnprince/Median#readme"
 }
