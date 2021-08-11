@@ -5,7 +5,17 @@
   "scripts": {
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "node ./bin/www"
+    "start:production": "node ./bin/www",
+    "sequelize": "sequelize",
+    "sequelize-cli": "sequelize-cli",
+    "nsc-init": "npx sequelize-cli init",
+    "db:create": "npx dotenv sequelize-cli db:create",
+    "db:migrate": "npx dotenv sequelize-cli db:migrate",
+    "db:migrate:undo": "npx dotenv sequelize-cli db:migrate:undo",
+    "db:migrate:undo:all": "npx dotenv sequelize-cli db:migrate:undo:all",
+    "db:seed:all": "npx dotenv sequelize-cli db:seed:all",
+    "db:seed:undo:all": "npx dotenv sequelize-cli db:seed:undo:all",
+    "db:drop": "npx dotenv sequelize-cli db:drop && npx dotenv sequelize-cli db:create && npx dotenv sequelize-cli db:migrate && npx dotenv sequelize-cli db:seed:all"
   },
   "dependencies": {
     "axios": "^0.21.1",
