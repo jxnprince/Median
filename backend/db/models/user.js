@@ -1,14 +1,44 @@
 'use strict';
+const bcrypt = require('bcryptjs');
+
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3, 256]
+      },
+    },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    hashedPassword: DataTypes.STRING,
+    hashedPassword: {
+      type: DataTypes.STRING.BINARY,
+      allowNull: false,
+      validate: {
+        len: [60, 60]
+      },
+    },
     gender: DataTypes.STRING,
     birthdate: DataTypes.DATE,
     avatar: DataTypes.STRING,
-  }, {});
+  }, {
+    defaultScope: {
+      attributes: {
+        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt'],
+      },
+    },
+    scopes: {
+      currentUser: {
+        attributes: { exclude: ['hashedPassword'] },
+      },
+      loginUser: {
+        attributes: {},
+      },
+    },
+  });
+
 
 
   User.associate = function (models) {
@@ -69,5 +99,59 @@ module.exports = (sequelize, DataTypes) => {
 
 
   };
+
+
+
+  User.prototype.toSafeObject = function () {
+    const { id, firstName, lastName, gender, birthdate, email, avatar } = this; // context will be the User instance
+    return { id, firstName, lastName, gender, birthdate, email, avatar };
+  };
+
+
+
+  User.prototype.validatePassword = function (password) {
+    return bcrypt.compareSync(password, this.hashedPassword.toString());
+  };
+
+
+
+  User.getCurrentUserById = async function (id) {
+    return await User.scope('currentUser').findByPk(id);
+  };
+
+
+
+  User.login = async function ({ credential, password }) {
+    const { Op } = require('sequelize');
+    const user = await User.scope('loginUser').findOne({
+      where: {
+        [Op.or]: {
+          email: credential,
+        },
+      },
+    });
+
+    if (user && user.validatePassword(password)) {
+      return await User.scope('currentUser').findByPk(user.id);
+    }
+    // return false if the user was not in the db and the password validation failed
+    return false;
+  };
+
+
+
+
+  User.signup = async function ({ email, password }) {
+    const hashedPassword = bcrypt.hashSync(password);
+    const user = await User.create({ email, hashedPassword });
+
+    if (user) {
+      return await User.scope('currentUser').findByPk(user.id);
+    }
+
+    return false;
+  };
+
+
   return User;
 };
