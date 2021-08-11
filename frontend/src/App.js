@@ -1,4 +1,5 @@
 
+import MainRouter from "./components/MainRouter";
 
 
 
@@ -7,7 +8,7 @@ const App = () => {
 
   return (
     <>
-      <h1>testing this</h1>
+      <MainRouter />
     </>
   )
 };
