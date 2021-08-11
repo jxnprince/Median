@@ -4,6 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import { useUser } from "../../context/UserContext.js";
 
 
+import Navbar from "../Navbar";
+
+
 
 const MainRouter = () => {
   const { isUser } = useUser();
@@ -16,6 +19,8 @@ const MainRouter = () => {
 
           <Route path='/' exact>
             {/* component here */}
+            <Navbar />
+
           </Route>
 
           <Route>
@@ -34,6 +39,14 @@ const MainRouter = () => {
 
         <Route path='/' exact>
           {/* component here */}
+          <Navbar />
+
+        </Route>
+
+        <Route path='/login' exact>
+          {/* component here */}
+          <Navbar />
+
         </Route>
 
         <Route>

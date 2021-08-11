@@ -84,7 +84,7 @@ const thunk_signupUser = ({ email, password, username }) => async (dispatch) => 
 
 
 const thunk_loginDemoUser = () => async (dispatch) => {
-  const credential = 'demo-user';
+  const credential = 'test@test.net';
   const password = 'password';
 
   const response = await csrfFetch('/api/users/login', {
