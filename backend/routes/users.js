@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { User, Story } = require('../../db/models');
-const { asyncHandler } = require('../../utils.js');
+const { User, Story } = require('../db/models');
+const { asyncHandler } = require('../utils.js');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 
