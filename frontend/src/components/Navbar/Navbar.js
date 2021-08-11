@@ -6,7 +6,7 @@ import { useUser } from "../../context/UserContext";
 
 import { useDispatch } from "react-redux";
 
-import { thunk_loginDemoUser } from "../../thunks/session.js";
+import { thunk_loginDemoUser, thunk_logoutUser } from "../../thunks/session.js";
 
 
 const Navbar = () => {
@@ -19,14 +19,23 @@ const Navbar = () => {
     event.preventDefault();
     dispatch(thunk_loginDemoUser());
     history.push('/feed');
+  };
+
+
+  const handleLogout = event => {
+    event.preventDefault();
+    dispatch(thunk_logoutUser());
+    history.push('/');
   }
+
+
 
   // if the user IS logged in
   if(isUser) {
     return (
       <>
         <nav>
-          <li> <NavLink to={'/'} > Logout </NavLink> </li>
+          <li> <NavLink to={'/'} onClick={event => handleLogout(event)} > Logout </NavLink> </li>
         </nav>
       </>
     )

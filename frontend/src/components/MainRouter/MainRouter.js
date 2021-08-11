@@ -17,8 +17,7 @@ const MainRouter = () => {
       <>
         <Switch>
 
-          <Route path='/' exact>
-            {/* component here */}
+          <Route path='/feed' exact>
             <Navbar />
 
           </Route>
@@ -46,8 +45,8 @@ const MainRouter = () => {
         <Route path='/login' exact>
           {/* component here */}
           <Navbar />
-
         </Route>
+
 
         <Route>
           <h2>Page Not Found</h2>
