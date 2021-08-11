@@ -1,191 +1,135 @@
-const { csrfProtection, asyncHandler, createUserValidators, loginValidators, updateUserValidators } = require('../utils.js');
-const { User, Story } = require('../db/models');
-const { loginUser, logoutUser } = require('../auth.js');
-const { Model } = require('sequelize');
-const { check, validationResult } = require('express-validator');
-// const { check, validationResult } = require('express-validator');
 const express = require('express');
-const bcrypt = require('bcryptjs')
-const sequelize = require('sequelize');
 const router = express.Router();
+const { User, Story } = require('../../db/models');
+const { asyncHandler } = require('../../utils.js');
+const sequelize = require('sequelize');
 const Op = sequelize.Op;
 
 
-
-
-// GET localhost:8080/users/ ||works
-router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-  if (req.session.auth) res.redirect("/feed");
-  else res.render("splash", { csrfToken: req.csrfToken(), title: "" });
-}));
-
-
-
-
-router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
-  if (req.session.auth) res.redirect("/feed");
-  res.render('loginForm', {csrfToken: req.csrfProtection()})
-}))
-
-
-//DO NOT TOUCH THIS ROUTE!!!!
-router.post('/signup', createUserValidators, csrfProtection, asyncHandler(async (req, res) => {
-  const {
-    email,
-    firstName,
-    lastName,
-    password,
-    gender,
-    avatar
-  } = req.body
-  const validationErrors = validationResult(req);
-  if (validationErrors.isEmpty()) {
-    const hashedPassword = await bcrypt.hash(password, 10)
-    const user = await User.create({
-      email,
-      firstName,
-      lastName,
-      hashedPassword,
-      gender,
-      avatar
-    })
-    loginUser(req, res, user)
-    req.session.save(() => {
-      if (req.session) res.redirect("/feed")
-      else next(res.err)
-    })
-    // console.log(`You hit the user registration route`)
-  } else {
-    // console.log(`You hit the user registration error route`)
-    const errors = validationErrors.array().map((error) => error.msg);
-    res.render('splash', {
-      errors,
-      csrfToken: req.csrfToken()
-    })
-  }
-}))
-
-
-
-
-// POST localhost:8080/users/login
-router.post('/login', loginValidators, csrfProtection, asyncHandler(async (req, res) => {
-  let user = { email, password } = req.body
-  const validationErrors = validationResult(req)
-
-  if (validationErrors.isEmpty()) {
-    const dbEmail = await User.findOne({
-      where: {
-        email: email
-      }
-    })
-
-
-    if (dbEmail) {
-      const match = await bcrypt.compare(password, dbEmail.hashedPassword.toString())
-
-
-      if (match) {
-        user = dbEmail
-        loginUser(req, res, user)
-        req.session.save(() => {
-          if (req.session) res.redirect("/feed")
-        })
-      }
-      else {
-        let errors = ['One of your login fields is incorrect!']
-        res.render('splash', { errors, csrfToken: req.csrfToken() });
-      }
+// used to give the current session / logged in users id
+//GET localhost:8080/api/users/
+router.get('/', (req, res) => {
+    const session = req.session.auth;
+    if(session) {
+        res.json({
+            userId: session.userId,
+            status: 200
+        });
+    } else {
+        res.json({
+            message: "Error, you are not authorized.",
+            status: 401,
+            stack: "Not authorized."
+        });
     }
 
-  } else {
-      const errors = validationErrors.array().map((error) => error.msg);
-    res.render('splash', { errors, csrfToken: req.csrfToken() });
-  }
-}))
+});
 
+//GET localhost:8080/api/users/:id/stories
+router.get('/:id(\\d+)/stories', asyncHandler( async(req, res) => {
+    //return 5 Stories
+    //includes: link to story, quantity of likes, comments
+    //organized by current date
+    const userId = req.params.id;
+    const usersStories = await Story.findAll({
+        where: { userId }
+    });
 
-
-
-// POST localhost:8080/users/logout
-router.post('/logout', (req, res) => {
-  logoutUser(req, res)
-  res.redirect('/')
-})
-
-
-// GET localhost:8080/users/logout
-router.get('/logout', (req, res) => {
-  logoutUser(req, res)
-  res.redirect('/')
-})
-
-
-
-router.post('/demo-user', asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({
-    where: {
-      email: 'test@test.net'
+    if(usersStories) {
+        res.json({
+            their_stories: usersStories
+        });
+    } else {
+        res.json({
+            message: "Error, there are no stories associated with this user account."
+        });
     }
-  });
-  loginUser(req, res, user);
-  return req.session.save(() => {
-    if (req.session) res.redirect("/feed")
-    else next(res.error)
-  })
+
+}));
+
+
+
+//GET localhost:8080/api/users/:id/bookmarks
+router.get('/:id(\\d+)/bookmarks', asyncHandler( async(req, res) => {
+    const userId = req.params.id;
+    const usersBookmarks = await User.findByPk(userId, {
+        attributes: ["firstName", "lastName", "avatar"],
+        include: [
+            {
+                model: Story,
+                attributes: ["title", "imgUrl"]
+            }
+        ]
+    });
+
+    if (usersBookmarks) {
+        res.json({
+            their_bookmarks: usersBookmarks
+        });
+    } else {
+        res.json({
+            message: "Error no stories are associated with your account."
+        });
+    }
+
 }));
 
 
 
 
-// GET localhost:8080/users/profile/
-router.get('/profile', asyncHandler(async (req, res) => res.render("UserProfile")));
+
+//GET localhost:8080/api/users/:id/
+router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
+    const session = req.session.auth;
+    const userId = req.params.id
+
+    if(session) {
+        const the_user = await User.findByPk(userId,
+            { attributes: [
+                "firstName",
+                "lastName",
+                "avatar",
+                "email",
+                "gender",
+                "id"
+            ] }
+        );
 
 
+        let followees = await User.findByPk(userId, {
+            include: [
+                {
+                    model: User,
+                    as: "Followees",
+                    attributes: ["firstName", "lastName", "id"]
+                }
+            ]
+        });
 
+        const allfollowees = followees.Followees.map((followed) => followed.Follow.followerId);
+        const followeeStories = await Story.findAll({
+            where: { userId: { [Op.in]: allfollowees } },
+        });
 
-// GET localhost:8080/users/profile/:id
-router.get('/profile/:userId(\\d+)', asyncHandler(async (req, res) => {
-  res.render("UserProfile", { otherUser: req.params.userId });
+        const followeesUserInfo = await User.findAll({
+            where: { id: { [Op.in]: allfollowees } },
+            attributes: ["firstName", "lastName", "avatar", "id"]
+        });
+
+        res.json({
+            user: the_user,
+            followeeStories,
+            followeesUserInfo
+        });
+
+    } else {
+        res.json({
+            message: "You are not authorized.",
+            status: 401,
+            stack: "Not authorized."
+        });
+    }
+
 }));
-
-
-
-
-
-
-
-router.post('/profile/:id(\\d+)', csrfProtection, updateUserValidators, asyncHandler(async (req, res) => {
-  const {
-    email,
-    firstName,
-    lastName,
-    gender,
-    birthdate,
-    avatar
-  } = req.body;
-  const validationErrors = validationResult(req)
-  const user = await findByPk(req.params.id)
-  if (validationErrors.isEmpty()) {
-    user.update({
-      email,
-      firstName,
-      lastName,
-      gender,
-      birthdate,
-      avatar
-    })
-    if (req.session) res.redirect("/profile/:id(\\d+)")
-    else next(res.err)
-  } else {
-    const errors = validationErrors.array().map((error) => error.msg);
-    res.render('editUserForm', {
-      errors,
-      csrfToken: req.csrfToken()
-    })
-  }
-}))
-
-
 
 module.exports = router;

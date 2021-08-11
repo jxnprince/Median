@@ -1,15 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const apiRouter = require('./api')
-const storyRouter = require('./stories')
-const userRouter = require('./users');
-const feedRouter = require('./feed.js')
 
-router.use('/api', apiRouter)
-router.use('/stories', storyRouter)
-router.use('/users', userRouter)
-router.use('/feed', feedRouter);
+const apiStoriesRouter = require('./stories');
+const apiUsersRouter = require('./users');
+const apiFollowsRouter = require('./follows');
+const apiLikesRouter = require("./likes");
+const apiCommentsRouter = require('./comments');
+const apiFeedRouter = require('./feed.js');
+const apiNewsRouter = require('./news');
 
-router.get('/', (req, res) => res.redirect('/users'))
+router.use('/stories', apiStoriesRouter);
+router.use('/users', apiUsersRouter);
+router.use('/follows', apiFollowsRouter);
+router.use('/likes', apiLikesRouter);
+router.use('/comments', apiCommentsRouter);
+router.use('/feed', apiFeedRouter);
+router.use('/news', apiNewsRouter);
+
+
+
+
 
 module.exports = router
