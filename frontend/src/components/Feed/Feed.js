@@ -1,6 +1,7 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import styles from "./feed.module.css";
 
@@ -11,6 +12,7 @@ import { useUser } from '../../context/UserContext';
 
 
 const Feed = () => {
+  const [ showtext, setShowText ] = useState(false);
   const dispatch =  useDispatch();
   const { isUser } = useUser();
   const featured = useSelector(store => store.feedReducer.featured);
@@ -24,15 +26,43 @@ const Feed = () => {
 
 
 
+  const createLimitedPreview = text => {
+    const toArray = text.split(" ");
+    return toArray.splice(0, 10).join(" ") + '...';
+  }
+
+
+  const handleShowMore = event => {
+    event.preventDefault();
+    setShowText(true)
+  }
+
+
+
   if(stories !== null && featured !== null){
+
+    const limitedPreview = createLimitedPreview(featured.postBody);
+
     return (
       <>
       {/* first main story  */}
         <div className={'featured'}>
-          <div className={styles.featured_container}>
+          <div className={styles.featured_container} >
             <h1>{featured.title}</h1>
             <img src={featured.imgUrl} />
-            <p>{featured.postBody}</p>
+
+            <Link to={'/'} onClick={event => handleShowMore(event)} >
+              <p> {limitedPreview} </p>
+            </Link>
+
+
+            {showtext ?
+              <div>
+                <p>{featured.postBody}</p>
+              </div>
+            :
+              <></>
+            }
           </div>
         </div>
 
