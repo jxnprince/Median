@@ -1,14 +1,23 @@
 
-
-
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import styles from "./feed.module.css";
 
+import { thunk_getFeed } from "../../thunks/feed.js";
 
+import { useUser } from '../../context/UserContext';
 
 
 
 const Feed = () => {
+  const dispatch =  useDispatch();
+  const { isUser } = useUser();
+
+
+  useEffect(() => {
+    dispatch(thunk_getFeed(isUser.id));
+  },[dispatch]);
 
 
 

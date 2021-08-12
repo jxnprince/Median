@@ -3,12 +3,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 // import reducers here:
 import { userReducer } from '../reducers/session.js';
-
+import { feedReducer } from "../reducers/feed.js";
 
 
 
 const rootReducer = combineReducers({
   userReducer,
+  feedReducer,
 
 });
 
