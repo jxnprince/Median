@@ -1,6 +1,6 @@
 
 
-
+import styles from "./footer.module.css";
 
 
 
@@ -36,13 +36,13 @@ const Footer = () => {
 
   return (
     <>
-      <div className={'Footer'} >
+      <div className={styles.Footer} >
         {groupMembers.map(eachPerson => (
           <>
-            <div className={'purple-filter'}>
+            <div className={styles.purple_filter}>
               <a href={`${eachPerson.link}`} target={'_blank'}>
                 <div id={`${eachPerson.innerDivClass}`}>
-                  <img src={eachPerson.img} id={'person-img'} className={'person-img'} />
+                  <img src={eachPerson.img} id={'person-img'} className={styles.person_img} />
                 </div>
               </a>
             </div>
