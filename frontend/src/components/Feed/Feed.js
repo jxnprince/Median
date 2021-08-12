@@ -57,8 +57,10 @@ const Feed = () => {
       {/* first main story  */}
         <div className={'featured'}>
           <div className={styles.featured_container} >
-            <h1>{featured.title}</h1>
-            <img src={featured.imgUrl} />
+            <Link to={`/story/${featured.id}`}>
+              <h1>{featured.title}</h1>
+              <img src={featured.imgUrl} />
+            </Link>
 
             <Link to={'/'} onClick={event => handleShowMore(event)} >
               <p> {limitedPreview} </p>

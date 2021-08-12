@@ -30,6 +30,12 @@ const MainRouter = () => {
             <Feed />
           </Route>
 
+          <Route path='/story/:storyId' exact>
+            <Navbar />
+            {/* each story component here */}
+
+          </Route>
+
         </Switch>
       </>
     )
