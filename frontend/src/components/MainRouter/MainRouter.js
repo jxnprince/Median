@@ -5,6 +5,7 @@ import { useUser } from "../../context/UserContext.js";
 
 
 import Navbar from "../Navbar";
+import SplashLogo from "../SplashLogo";
 
 
 
@@ -39,7 +40,7 @@ const MainRouter = () => {
         <Route path='/' exact>
           {/* component here */}
           <Navbar />
-
+            <SplashLogo />
         </Route>
 
         <Route path='/login' exact>
