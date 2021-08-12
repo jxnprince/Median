@@ -1,6 +1,6 @@
 
 
-import { getFeed } from "../actions/feed.js";
+import { getFeed, featuredItem } from "../actions/feed.js";
 
 
 // import csrfFetch here
@@ -14,7 +14,9 @@ const thunk_getFeed = (userId) => async (dispatch) => {
 
   if (response.ok) {
     const feed = await response.json();
+    const featured = feed.featuredStories.shift();
     dispatch(getFeed(feed));
+    dispatch(featuredItem(featured));
     return;
   }
   // dispatch to error handler here

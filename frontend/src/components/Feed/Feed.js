@@ -29,11 +29,7 @@ const Feed = () => {
       {/* first main story  */}
         <div className={'featured'}>
           <div className={styles.featured_container}>
-            {Object.values(stories).map(story => (
-              <>
-                <h1>{story.title} </h1>
-              </>
-            ))}
+
           </div>
         </div>
 

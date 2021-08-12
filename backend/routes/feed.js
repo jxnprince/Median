@@ -38,12 +38,9 @@ router.get("/:userId(\\d+)", asyncHandler(async (request, response) => {
 
 
 // need to figure out how to get the number of likes associated with an story
-    const result = {};
-    allStories.forEach(eachStory => {
-        result[eachStory.id] = eachStory;
-    })
 
-    response.json({ featuredStories: result });
+
+    response.json({ featuredStories: allStories });
 
 
 }));

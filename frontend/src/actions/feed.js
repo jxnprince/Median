@@ -1,6 +1,6 @@
 
 
-import { GET_FEED } from "../types/feed.js";
+import { GET_FEED, FEATURED_ITEM } from "../types/feed.js";
 
 
 
@@ -13,8 +13,15 @@ const getFeed = (featuredStories) => ({
 
 
 
+const featuredItem = (featured) => ({
+  type: FEATURED_ITEM,
+  featured
+});
+
+
 
 export {
   getFeed,
+  featuredItem,
 
 }
