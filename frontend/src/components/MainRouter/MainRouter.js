@@ -22,6 +22,7 @@ const MainRouter = () => {
 
           <Route path='/feed' exact>
             <Navbar />
+            
           </Route>
 
 

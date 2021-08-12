@@ -8,8 +8,10 @@ const App = () => {
 
   return (
     <>
-      <MainRouter />
+      <div className={'grid-container'}>
+        <MainRouter />
         <Footer />
+      </div>
     </>
   )
 };
