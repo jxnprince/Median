@@ -6,6 +6,8 @@ import { useUser } from "../../context/UserContext.js";
 
 import Navbar from "../Navbar";
 import SplashLogo from "../SplashLogo";
+import LoginForm from "../LoginForm";
+
 
 
 
@@ -20,8 +22,8 @@ const MainRouter = () => {
 
           <Route path='/feed' exact>
             <Navbar />
-
           </Route>
+
 
           <Route>
             <h2>Page Not Found</h2>
@@ -38,19 +40,17 @@ const MainRouter = () => {
       <Switch>
 
         <Route path='/' exact>
-          {/* component here */}
           <Navbar />
             <SplashLogo />
         </Route>
 
         <Route path='/login' exact>
-          {/* component here */}
           <Navbar />
+          <LoginForm />
         </Route>
 
 
         <Route path='/signup' exact>
-          {/* component here */}
           <Navbar />
         </Route>
 
