@@ -1,5 +1,6 @@
 
 
+import styles from "./splashlogo.module.css";
 
 
 
@@ -10,8 +11,8 @@ const SplashLogo = () => {
 
   return (
     <>
-      <div id={'logoDiv'} className={'splashLogo'} >
-        <img src={'https://i.imgur.com/cJgn5hy.png'} id={'mainLogo'} className={'splashLogo'} />
+      <div id={styles.logoDiv} className={styles.splashLogo} >
+        <img src={'https://i.imgur.com/cJgn5hy.png'} id={styles.mainLogo} className={styles.splashLogo} />
       </div>
     </>
   )
