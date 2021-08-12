@@ -30,11 +30,6 @@ const MainRouter = () => {
             <Feed />
           </Route>
 
-
-          <Route>
-            <h2>Page Not Found</h2>
-          </Route>
-
         </Switch>
       </>
     )
@@ -59,11 +54,6 @@ const MainRouter = () => {
         <Route path='/signup' exact>
           <Navbar />
           <SignupForm />
-        </Route>
-
-
-        <Route>
-          <h2>Page Not Found</h2>
         </Route>
 
       </Switch>
