@@ -13,6 +13,7 @@ import { useUser } from '../../context/UserContext';
 const Feed = () => {
   const dispatch =  useDispatch();
   const { isUser } = useUser();
+  const featured = useSelector(store => store.feedReducer.featured);
   const stories = useSelector(store => store.feedReducer.featuredStories);
 
 
@@ -23,13 +24,15 @@ const Feed = () => {
 
 
 
-  if(stories !== null){
+  if(stories !== null && featured !== null){
     return (
       <>
       {/* first main story  */}
         <div className={'featured'}>
           <div className={styles.featured_container}>
-
+            <h1>{featured.title}</h1>
+            <img src={featured.imgUrl} />
+            <p>{featured.postBody}</p>
           </div>
         </div>
 
