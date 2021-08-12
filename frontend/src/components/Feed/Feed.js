@@ -9,10 +9,15 @@ import { thunk_getFeed } from "../../thunks/feed.js";
 
 import { useUser } from '../../context/UserContext';
 
+import CloseModalButton from "../CloseModalButton";
+
+
+import ReactModal from 'react-modal';
+
 
 
 const Feed = () => {
-  const [ showtext, setShowText ] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const dispatch =  useDispatch();
   const { isUser } = useUser();
   const featured = useSelector(store => store.feedReducer.featured);
@@ -25,6 +30,10 @@ const Feed = () => {
   },[dispatch]);
 
 
+  const closeModal = () => {
+    setShowModal(false);
+  }
+
 
   const createLimitedPreview = text => {
     const toArray = text.split(" ");
@@ -34,7 +43,7 @@ const Feed = () => {
 
   const handleShowMore = event => {
     event.preventDefault();
-    setShowText(true)
+    setShowModal(true)
   }
 
 
@@ -55,19 +64,18 @@ const Feed = () => {
               <p> {limitedPreview} </p>
             </Link>
 
-
-            {showtext ?
-              <div>
-                <p>{featured.postBody}</p>
-              </div>
-            :
-              <></>
-            }
+          <ReactModal isOpen={showModal} onRequestClose={closeModal} >
+            <div>
+              <p>{featured.postBody}</p>
+            </div>
+              <CloseModalButton closeModal={closeModal} />
+          </ReactModal>
           </div>
         </div>
 
 
         {/* all of the other stories */}
+
       </>
     )
 
