@@ -8,6 +8,7 @@ import Navbar from "../Navbar";
 import SplashLogo from "../SplashLogo";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
+import Feed from "../Feed";
 
 
 
@@ -22,7 +23,7 @@ const MainRouter = () => {
 
           <Route path='/feed' exact>
             <Navbar />
-            
+            <Feed />
           </Route>
 
 
