@@ -49,6 +49,12 @@ const MainRouter = () => {
         </Route>
 
 
+        <Route path='/signup' exact>
+          {/* component here */}
+          <Navbar />
+        </Route>
+
+
         <Route>
           <h2>Page Not Found</h2>
         </Route>
