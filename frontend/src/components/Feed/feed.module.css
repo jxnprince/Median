@@ -12,7 +12,7 @@
   transition: all 0.5s;
 }
 
-.featured-container:hover {
+.featured_container:hover {
 	background-color: rgba(73, 74, 143, 0.75);
 	border-radius: none;
 }
@@ -149,7 +149,7 @@
 }
 
 /*=========================Feed==============================*/
-.feed-container {
+.feed_container {
 	border-radius: 2.5px;
   margin: 5vh 10vh;
   padding: 0;

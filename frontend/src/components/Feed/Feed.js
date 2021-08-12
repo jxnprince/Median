@@ -75,7 +75,18 @@ const Feed = () => {
 
 
         {/* all of the other stories */}
-
+        <div className={'feed-items'} >
+          <div className={styles.feed_container}>
+            {Object.values(stories).map(eachStory => (
+              <>
+              <Link to={`/story/${eachStory.id}`} >
+                <h1>{eachStory.title}</h1>
+                <img src={eachStory.imgUrl} />
+              </Link>
+              </>
+            ))}
+          </div>
+        </div>
       </>
     )
 
