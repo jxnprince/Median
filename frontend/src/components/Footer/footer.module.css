@@ -1,0 +1,38 @@
+
+.Footer {
+  grid-area: Footer;
+  position: static;
+  bottom:0;
+  height: 6vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 1vw -2vh 25px 10px #1f1f35;
+  z-index: 1;
+}
+
+
+.creators-info {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	width: 90%;
+	height: 100%;
+}
+
+.purple_filter {
+	background: #1f1f35;
+	opacity: 25%;
+	border-radius: 50%;
+	transition: opacity 0.75s;
+}
+
+.purple_filter:hover {
+	opacity: 100%;
+}
+
+.person_img {
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+}

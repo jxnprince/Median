@@ -4,6 +4,13 @@ import { Route, Switch } from 'react-router-dom';
 import { useUser } from "../../context/UserContext.js";
 
 
+import Navbar from "../Navbar";
+import SplashLogo from "../SplashLogo";
+import LoginForm from "../LoginForm";
+import SignupForm from "../SignupForm";
+import Feed from "../Feed";
+
+
 
 const MainRouter = () => {
   const { isUser } = useUser();
@@ -14,9 +21,11 @@ const MainRouter = () => {
       <>
         <Switch>
 
-          <Route path='/' exact>
-            {/* component here */}
+          <Route path='/feed' exact>
+            <Navbar />
+            <Feed />
           </Route>
+
 
           <Route>
             <h2>Page Not Found</h2>
@@ -33,8 +42,21 @@ const MainRouter = () => {
       <Switch>
 
         <Route path='/' exact>
-          {/* component here */}
+          <Navbar />
+            <SplashLogo />
         </Route>
+
+        <Route path='/login' exact>
+          <Navbar />
+          <LoginForm />
+        </Route>
+
+
+        <Route path='/signup' exact>
+          <Navbar />
+          <SignupForm />
+        </Route>
+
 
         <Route>
           <h2>Page Not Found</h2>

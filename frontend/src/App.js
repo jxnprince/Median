@@ -1,6 +1,6 @@
 
 import MainRouter from "./components/MainRouter";
-
+import Footer from "./components/Footer";
 
 
 
@@ -8,7 +8,10 @@ const App = () => {
 
   return (
     <>
-      <MainRouter />
+      <div className={'grid-container'}>
+        <MainRouter />
+        <Footer />
+      </div>
     </>
   )
 };
