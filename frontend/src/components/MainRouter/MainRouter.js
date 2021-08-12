@@ -20,6 +20,10 @@ const MainRouter = () => {
     return (
       <>
         <Switch>
+          <Route path='/' exact>
+            <Navbar />
+            <SplashLogo />
+          </Route>
 
           <Route path='/feed' exact>
             <Navbar />
