@@ -4,6 +4,7 @@ const { express, initApp, setErrorHandlers } = require('./lib');
 
 // router here
 const users_router = require('./routes/users.js');
+const feed_router = require('./routes/feed.js');
 
 
 const app = express();
@@ -15,6 +16,7 @@ initApp(app);
 
 // mount the api router here
 app.use('/api/users', users_router);
+app.use('/api/feed', feed_router);
 
 
 
