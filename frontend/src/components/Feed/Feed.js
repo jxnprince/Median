@@ -62,18 +62,51 @@ const Feed = () => {
               <img src={featured.imgUrl} />
             </Link>
 
+            <div className={styles.story_information}>
+              <div className={styles.user_information}>
+                <img src={featured.User.avatar} className={styles.avatar}/>
+                <span> {`${featured.User.firstName} ${featured.User.lastName}`} </span>
+              </div>
+
+              <div>
+                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
+                  <span className={styles.likeScore}> {`${featured.UserLikes.length}`} </span>
+              </div>
+            </div>
+
             <Link to={'/'} onClick={event => handleShowMore(event)} >
               <p> {limitedPreview} </p>
             </Link>
 
-          <ReactModal isOpen={showModal} onRequestClose={closeModal} >
-            <div>
-              <p>{featured.postBody}</p>
-            </div>
-              <CloseModalButton closeModal={closeModal} />
-          </ReactModal>
+
+
+              <ReactModal isOpen={showModal} onRequestClose={closeModal} >
+                <div className={styles.featured_story_text}>
+                  <p>{featured.postBody}</p>
+                </div>
+
+
+                <div className={styles.featured_comments}>
+                    {featured.Comments.map(eachComment => (
+                      <>
+                        <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
+                          <span className={styles.featured_comment_userName} >
+                            {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
+                            <br />
+                          </span>
+                            <p className={styles.featured_comment_body}> {`${eachComment.body}`} </p>
+                            <span className={styles.featured_comment_date}> {`${eachComment.createdAt}`} </span>
+                      </>
+                    ))}
+                </div>
+
+                  <CloseModalButton closeModal={closeModal} />
+              </ReactModal>
+
           </div>
         </div>
+
+
 
 
         {/* all of the other stories */}
