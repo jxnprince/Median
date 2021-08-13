@@ -9,6 +9,7 @@ import SplashLogo from "../SplashLogo";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
 import Feed from "../Feed";
+import EachStory from "../EachStory";
 
 
 
@@ -33,7 +34,7 @@ const MainRouter = () => {
           <Route path='/story/:storyId' exact>
             <Navbar />
             {/* each story component here */}
-
+            <EachStory />
           </Route>
 
         </Switch>

@@ -82,7 +82,7 @@ router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
 
 
 
-    response.json({ Story: userStories });
+    response.json({ story: userStories });
 
 
 }));
