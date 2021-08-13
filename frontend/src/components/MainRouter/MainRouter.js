@@ -33,8 +33,12 @@ const MainRouter = () => {
 
           <Route path='/story/:storyId' exact>
             <Navbar />
-            {/* each story component here */}
             <EachStory />
+          </Route>
+
+          <Route path='/profile' exact>
+            <Navbar />
+
           </Route>
 
         </Switch>
