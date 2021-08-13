@@ -10,6 +10,7 @@ import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
 import Feed from "../Feed";
 import EachStory from "../EachStory";
+import Profile from "../Profile";
 
 
 
@@ -38,7 +39,7 @@ const MainRouter = () => {
 
           <Route path='/profile' exact>
             <Navbar />
-
+            <Profile />
           </Route>
 
         </Switch>
