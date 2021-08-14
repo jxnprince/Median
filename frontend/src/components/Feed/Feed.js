@@ -115,8 +115,23 @@ const Feed = () => {
             {Object.values(stories).map(eachStory => (
               <>
               <Link to={`/story/${eachStory.id}`} >
-                <h1>{eachStory.title}</h1>
-                <img src={eachStory.imgUrl} />
+                  <div className={styles.shortened_story}>
+                    <div className={styles.shortened_story_heading}>
+
+                      <div className={styles.shortened_story_stack}>
+                        <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
+
+                        <div className={styles.shortened_story_author}>
+                          <img src={eachStory.User.avatar} className={styles.shortened_story_avatar}  />
+                              <span className="shortened-story-name"> {`${eachStory.User.firstName} ${eachStory.User.lastName}`} </span>
+                          </div>
+                        </div>
+
+                        <div className={styles.shortened_story_img}>
+                          <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
+                        </div>
+                    </div>
+                  </div>
               </Link>
               </>
             ))}
