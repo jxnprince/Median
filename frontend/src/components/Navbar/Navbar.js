@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import { thunk_loginDemoUser, thunk_logoutUser } from "../../thunks/session.js";
 
 
+
+
 const Navbar = () => {
   const { isUser } = useUser();
   const dispatch = useDispatch();
@@ -30,11 +32,17 @@ const Navbar = () => {
 
 
 
+
+
+
   // if the user IS logged in
   if(isUser) {
     return (
       <>
         <nav>
+          <li> <NavLink to={'/'} > Home </NavLink> </li>
+          <li> <NavLink to={'/feed'} > Feed </NavLink> </li>
+          <li> <NavLink to={'/profile'} > Profile </NavLink> </li>
           <li> <NavLink to={'/'} onClick={event => handleLogout(event)} > Logout </NavLink> </li>
         </nav>
       </>

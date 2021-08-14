@@ -9,6 +9,8 @@ import SplashLogo from "../SplashLogo";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
 import Feed from "../Feed";
+import EachStory from "../EachStory";
+import Profile from "../Profile";
 
 
 
@@ -20,15 +22,24 @@ const MainRouter = () => {
     return (
       <>
         <Switch>
+          <Route path='/' exact>
+            <Navbar />
+            <SplashLogo />
+          </Route>
 
           <Route path='/feed' exact>
             <Navbar />
             <Feed />
           </Route>
 
+          <Route path='/story/:storyId' exact>
+            <Navbar />
+            <EachStory />
+          </Route>
 
-          <Route>
-            <h2>Page Not Found</h2>
+          <Route path='/profile' exact>
+            <Navbar />
+            <Profile />
           </Route>
 
         </Switch>
@@ -55,11 +66,6 @@ const MainRouter = () => {
         <Route path='/signup' exact>
           <Navbar />
           <SignupForm />
-        </Route>
-
-
-        <Route>
-          <h2>Page Not Found</h2>
         </Route>
 
       </Switch>

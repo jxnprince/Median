@@ -1,8 +1,8 @@
-const express = require('express');
+const { express, asyncHandler, User, Story } = require('../lib');
+
+const { validationResult } = require('express-validator');
+
 const router = express.Router();
-const { Story, User, Like } = require('../../db/models')
-const { csrfProtection, asyncHandler, createStoryValidator, updateStoryValidator } = require('../../utils');
-const { check, validationResult } = require('express-validator');
 
 
 
@@ -10,7 +10,7 @@ const { check, validationResult } = require('express-validator');
 
 
 // GET localhost:8080/api/stories/
-router.get('/', csrfProtection, asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
 
     const mostRecentStories = await Story.findAll({ order: [['createdAt']], limit: 5 });
         //return a list of the most recent stories
@@ -33,7 +33,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
 
 //POST localhost:8080/api/stories/
-router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     const { imgUrl, postBody, title } = req.body;
     const id = req.session.auth.userId;
     // const validationErrors = validationResult(res);
@@ -69,9 +69,9 @@ router.post('/', createStoryValidator, csrfProtection, asyncHandler(async (req, 
 
 
 
-//GET localhost:8080/api/stories/:id
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const storyId = req.params.id;
+//GET localhost:5000/api/stories/:id
+router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
+    const storyId = request.params.id;
     const userStories = await Story.findByPk(storyId, {
         include: {
             model: User,
@@ -79,10 +79,12 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
             attributes: ["firstName", "lastName", "avatar"]
         }
     });
-    console.log(userStories.dataValues, "==========================")
 
-    if (userStories.dataValues) res.json(userStories)
-    else res.redirect('/users/profile') 
+
+
+    response.json({ story: userStories });
+
+
 }));
 
 
@@ -116,7 +118,7 @@ let updateStoryErrors = [];
 //updates a specific user story
 
 //PUT localhost:8080/api/stories/:storyId/users/:userId
-router.put('/:storyId(\\d+)/users/:userId(\\d+)', updateStoryValidator, asyncHandler(async (req, res) => {
+router.put('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (req, res) => {
     const storyId = req.params.storyId;
     const userId = req.params.userId;
     const session = req.session.auth;
