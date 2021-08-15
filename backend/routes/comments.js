@@ -6,15 +6,16 @@ const router = express.Router();
 
 
 
-//GET localhost:8080/api/comments/:storyId
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const storyId = req.params.id;
-    const allComments = await Comment.findAll({
+//GET localhost:5000/api/comments/:storyId
+router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
+    const storyId = request.params.id;
+    const comments = await Comment.findAll({
         where: {
             storyId
         }
-    })
-    res.json(allComments);
+    });
+
+    response.json({ comments });
 }));
 
 
