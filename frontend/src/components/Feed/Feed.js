@@ -114,6 +114,8 @@ const Feed = () => {
                     ))}
                 </div>
 
+                  <CommentForm />
+
                   <CloseModalButton closeModal={closeModal} />
               </ReactModal>
 
