@@ -1,8 +1,9 @@
-const express = require('express');
+
+
+const { express, asyncHandler, Comment } = require('../lib');
 const router = express.Router();
-const { csrfProtection, asyncHandler, createCommentValidator } = require('../../utils');
-const { Comment } = require('../../db/models');
-const { validationResult } = require('express-validator');
+
+
 
 
 //GET localhost:8080/api/comments/:storyId
