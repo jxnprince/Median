@@ -48,6 +48,15 @@ const Feed = () => {
 
 
 
+
+
+  const handleFeedItemsComment = event => {
+    event.preventDefault();
+
+  };
+
+
+
   if(stories !== null && featured !== null){
 
     const limitedPreview = createLimitedPreview(featured.postBody);
@@ -126,6 +135,10 @@ const Feed = () => {
                           <img src={eachStory.User.avatar} className={styles.shortened_story_avatar}  />
                               <span className="shortened-story-name"> {`${eachStory.User.firstName} ${eachStory.User.lastName}`} </span>
                                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.UserLikes.length}
+
+                                <div>
+                                  <Link to={'/'} onClick={event => handleFeedItemsComment(event)} > Comment </Link>
+                                </div>
                           </div>
                         </div>
 
@@ -133,7 +146,10 @@ const Feed = () => {
                           <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
                         </div>
                     </div>
+
+
                   </div>
+
               </>
             ))}
           </div>
