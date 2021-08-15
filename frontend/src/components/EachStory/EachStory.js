@@ -47,6 +47,8 @@ const EachStory = () => {
             <h3> Comments </h3>
           {comments.map(eachComment => (
             <>
+              <img src={eachComment.User.avatar} />
+              <span > {`${eachComment.User.firstName} ${eachComment.User.lastName}`} </span>
               <p> {eachComment.body} </p>
             </>
           ))}
