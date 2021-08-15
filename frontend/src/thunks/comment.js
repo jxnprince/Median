@@ -10,7 +10,7 @@ import { csrfFetch } from '../store/csrf.js';
 
 
 const thunk_getComments = (storyId) => async (dispatch) => {
-  const response = await csrfFetch();
+  const response = await csrfFetch(`/api/comments/${storyId}`);
 
   if(response.ok) {
     const comments = await response.json();

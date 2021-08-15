@@ -9,3 +9,10 @@ const getComments = (comments) => ({
   type: GET_COMMENTS,
   comments
 });
+
+
+
+export {
+  getComments,
+
+}

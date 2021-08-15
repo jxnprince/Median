@@ -6,6 +6,7 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { thunk_getSpecificStory  } from "../../thunks/story.js";
+import { thunk_getComments } from "../../thunks/comment.js";
 
 
 
@@ -20,6 +21,7 @@ const EachStory = () => {
 
   useEffect(() => {
     dispatch(thunk_getSpecificStory(storyId));
+    dispatch(thunk_getComments(storyId)); 
   },[dispatch]);
 
 
