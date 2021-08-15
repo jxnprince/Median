@@ -155,6 +155,18 @@ const Feed = () => {
 
 
                 <ReactModal isOpen={showFeedModal} onRequestClose={closeFeedModal} >
+                    <div>
+                    {eachStory.Comments.map(eachComment => (
+                      <>
+                        <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
+                        <span className={styles.featured_comment_userName} >
+                          {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
+                          <br />
+                          </span>
+                        <p> {eachComment.body} </p>
+                      </>
+                    ))}
+                    </div>
 
 
                   <CloseModalButton closeModal={closeFeedModal} />
