@@ -18,6 +18,7 @@ import ReactModal from 'react-modal';
 
 const Feed = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showFeedModal, setShowFeedModal] = useState(false);
   const dispatch =  useDispatch();
   const { isUser } = useUser();
   const featured = useSelector(store => store.feedReducer.featured);
@@ -43,7 +44,7 @@ const Feed = () => {
 
   const handleShowMore = event => {
     event.preventDefault();
-    setShowModal(true)
+    setShowModal(true);
   }
 
 
@@ -52,9 +53,13 @@ const Feed = () => {
 
   const handleFeedItemsComment = event => {
     event.preventDefault();
-
+    setShowFeedModal(true);
   };
 
+
+  const closeFeedModal = () => {
+    setShowFeedModal(false);
+  }
 
 
   if(stories !== null && featured !== null){
@@ -146,10 +151,14 @@ const Feed = () => {
                           <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
                         </div>
                     </div>
-
-
                   </div>
 
+
+                <ReactModal isOpen={showFeedModal} onRequestClose={closeFeedModal} >
+
+
+                  <CloseModalButton closeModal={closeFeedModal} />
+                </ReactModal>
               </>
             ))}
           </div>
