@@ -10,7 +10,7 @@ import { thunk_getFeed } from "../../thunks/feed.js";
 import { useUser } from '../../context/UserContext';
 
 import CloseModalButton from "../CloseModalButton";
-
+import CommentForm from "../CommentForm";
 
 import ReactModal from 'react-modal';
 
@@ -167,7 +167,7 @@ const Feed = () => {
                       </>
                     ))}
                     </div>
-
+                      <CommentForm />
 
                   <CloseModalButton closeModal={closeFeedModal} />
                 </ReactModal>
