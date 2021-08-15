@@ -1,6 +1,6 @@
 
 
-const { express, asyncHandler, Comment } = require('../lib');
+const { express, asyncHandler, Comment, User } = require('../lib');
 const router = express.Router();
 
 
@@ -12,7 +12,13 @@ router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
     const comments = await Comment.findAll({
         where: {
             storyId
-        }
+        },
+        include: [
+            {
+                model: User,
+                attributes: ["firstName", "lastName", "avatar"]
+            }
+        ]
     });
 
     response.json({ comments });
