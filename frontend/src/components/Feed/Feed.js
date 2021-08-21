@@ -10,7 +10,7 @@ import { thunk_getFeed } from "../../thunks/feed.js";
 import { useUser } from '../../context/UserContext';
 
 import CloseModalButton from "../CloseModalButton";
-
+import CommentForm from "../CommentForm";
 
 import ReactModal from 'react-modal';
 
@@ -18,6 +18,7 @@ import ReactModal from 'react-modal';
 
 const Feed = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showFeedModal, setShowFeedModal] = useState(false);
   const dispatch =  useDispatch();
   const { isUser } = useUser();
   const featured = useSelector(store => store.feedReducer.featured);
@@ -43,9 +44,22 @@ const Feed = () => {
 
   const handleShowMore = event => {
     event.preventDefault();
-    setShowModal(true)
+    setShowModal(true);
   }
 
+
+
+
+
+  const handleFeedItemsComment = event => {
+    event.preventDefault();
+    setShowFeedModal(true);
+  };
+
+
+  const closeFeedModal = () => {
+    setShowFeedModal(false);
+  }
 
 
   if(stories !== null && featured !== null){
@@ -100,6 +114,8 @@ const Feed = () => {
                     ))}
                 </div>
 
+                  <CommentForm />
+
                   <CloseModalButton closeModal={closeModal} />
               </ReactModal>
 
@@ -114,16 +130,22 @@ const Feed = () => {
           <div className={styles.feed_container}>
             {Object.values(stories).map(eachStory => (
               <>
-              <Link to={`/story/${eachStory.id}`} >
                   <div className={styles.shortened_story}>
                     <div className={styles.shortened_story_heading}>
 
                       <div className={styles.shortened_story_stack}>
-                        <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
+                        <Link to={`/story/${eachStory.id}`} >
+                          <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
+                        </Link>
 
                         <div className={styles.shortened_story_author}>
                           <img src={eachStory.User.avatar} className={styles.shortened_story_avatar}  />
                               <span className="shortened-story-name"> {`${eachStory.User.firstName} ${eachStory.User.lastName}`} </span>
+                                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.UserLikes.length}
+
+                                <div>
+                                  <Link to={'/'} onClick={event => handleFeedItemsComment(event)} > Comment </Link>
+                                </div>
                           </div>
                         </div>
 
@@ -132,7 +154,25 @@ const Feed = () => {
                         </div>
                     </div>
                   </div>
-              </Link>
+
+
+                <ReactModal isOpen={showFeedModal} onRequestClose={closeFeedModal} >
+                    <div>
+                    {eachStory.Comments.map(eachComment => (
+                      <>
+                        <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
+                        <span className={styles.featured_comment_userName} >
+                          {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
+                          <br />
+                          </span>
+                        <p> {eachComment.body} </p>
+                      </>
+                    ))}
+                    </div>
+                      <CommentForm />
+
+                  <CloseModalButton closeModal={closeFeedModal} />
+                </ReactModal>
               </>
             ))}
           </div>
