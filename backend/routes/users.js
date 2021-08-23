@@ -134,21 +134,9 @@ router.get('/:id(\\d+)/bookmarks', asyncHandler( async(req, res) => {
 
 
 
-//GET localhost:5000/api/users/:id/
-router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
-    const userId = req.params.id;
-
-    const the_user = await User.findByPk(userId,
-        { attributes: [
-            "firstName",
-            "lastName",
-            "avatar",
-            "email",
-            "gender",
-            "id"
-        ] }
-    );
-
+//GET localhost:5000/api/users/:id
+router.get('/:id(\\d+)', asyncHandler( async (request, response) => {
+    const userId = request.params.id;
 
     let followees = await User.findByPk(userId, {
         include: [
@@ -161,6 +149,7 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
     });
 
     const allfollowees = followees.Followees.map((followed) => followed.Follow.followerId);
+
     const followeeStories = await Story.findAll({
         where: { userId: { [Op.in]: allfollowees } },
     });
@@ -170,11 +159,13 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
         attributes: ["firstName", "lastName", "avatar", "id"]
     });
 
-    res.json({
-        user: the_user,
-        followeeStories,
-        followeesUserInfo
-    });
+
+    const result = {};
+    followeeStories.forEach((eachStory, idx) => {
+        result[eachStory.id] = { eachStory, User: followeesUserInfo[idx] }
+    })
+
+    response.json({ stories: result });
 
 
 }));
