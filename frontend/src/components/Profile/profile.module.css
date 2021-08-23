@@ -157,7 +157,7 @@ li>a>span{
 	padding-left: 2vw;
 }
 
-.followers-img {
+.followers_img {
 	height: 5.75vh;
 	width: 35px;
 	border-radius: 5px;
@@ -165,7 +165,7 @@ li>a>span{
 	border-bottom-right-radius: 0;
 }
 
-#followers-title{
+#followers_title{
 	max-width: 14vw;
 	font-size: .75rem;
 }

@@ -42,6 +42,11 @@ const Profile = () => {
 
 
       <div>
+
+      </div>
+
+
+      <div>
         {followers !== null ?
           <>
             <h1>Your Followers {Object.values(followers).length} </h1>
@@ -50,8 +55,15 @@ const Profile = () => {
               <>
                 <div>
                   <Link to={`/story/${eachFollower.eachStory.id}`} >
-                    <img src={eachFollower.eachStory.imgUrl } />
+                    <img src={eachFollower.eachStory.imgUrl} className={styles.followers_img} />
+                    <span id={styles.followers_title}> {eachFollower.eachStory.title} </span>
+                  </Link>
+                </div>
 
+                <div>
+                  <Link to={'/'} >
+                    <img src={eachFollower.User.avatar} className={styles.miniavatar}/>
+                      <span> {eachFollower.User.firstName} {eachFollower.User.lastName} </span>
                   </Link>
                 </div>
               </>
