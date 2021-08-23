@@ -1,6 +1,6 @@
 
 
-import { GET_FOLLOWERS } from "../types/profile.js";
+import { GET_FOLLOWERS, GET_BOOKMARKS } from "../types/profile.js";
 
 
 
@@ -12,7 +12,15 @@ const getFollowers = (stories) => ({
 
 
 
+const getBookmarks = (bookmarks) => ({
+  type: GET_BOOKMARKS,
+  bookmarks
+});
+
+
 
 export {
-  getFollowers
+  getFollowers,
+  getBookmarks,
+
 };

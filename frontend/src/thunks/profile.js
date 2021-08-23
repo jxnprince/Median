@@ -1,6 +1,6 @@
 
 
-import { getFollowers } from "../actions/profile.js";
+import { getFollowers, getBookmarks } from "../actions/profile.js";
 
 
 // import csrfFetch here
@@ -21,7 +21,23 @@ const thunk_getFollowers = (userId) => async (dispatch) => {
 
 
 
+
+const thunk_getBookmarks = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/users/${userId}/bookmarks`);
+  if(response.ok) {
+    const bookmarks = await response.json();
+    dispatch(getBookmarks(bookmarks));
+    return;
+  }
+  // dispatch error handler here
+
+};
+
+
+
+
 export {
   thunk_getFollowers,
+  thunk_getBookmarks,
 
 }

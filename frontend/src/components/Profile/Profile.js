@@ -5,7 +5,8 @@ import { useUser } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 
 
-import { thunk_getFollowers } from "../../thunks/profile.js";
+import { thunk_getFollowers, thunk_getBookmarks } from "../../thunks/profile.js";
+
 
 
 import styles from "./profile.module.css";
@@ -16,10 +17,12 @@ const Profile = () => {
   const { isUser } = useUser();
   const dispatch = useDispatch();
   const followers = useSelector(store => store.followersReducer.stories);
+  const bookmarks = useSelector(store => store.bookmarksReducer.bookmarks);
 
 
   useEffect(() => {
     dispatch(thunk_getFollowers(isUser.id));
+    dispatch(thunk_getBookmarks(isUser.id));
   },[dispatch]);
 
 
@@ -42,7 +45,23 @@ const Profile = () => {
 
 
       <div>
-
+        {bookmarks !== null ?
+          <>
+            <h1>Your Bookmarks {Object.values(bookmarks).length} </h1>
+            {Object.values(bookmarks).map(eachBookmark => (
+              <>
+                <div>
+                  <Link to={`/story/${eachBookmark.id}`} >
+                    <img src={eachBookmark.imgUrl} />
+                    <span id={styles.followers_title}> {eachBookmark.title} </span>
+                  </Link>
+                </div>
+              </>
+            ))}
+          </>
+          :
+          <></>
+        }
       </div>
 
 
