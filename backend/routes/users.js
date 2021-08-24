@@ -1,4 +1,4 @@
-const { express, asyncHandler, setTokenCookie, User, Story, restoreUser, validateLogin, validateSignup } = require('../lib');
+const { express, asyncHandler, setTokenCookie, User, Story, Bookmark, restoreUser, validateLogin, validateSignup } = require('../lib');
 
 
 
@@ -106,27 +106,32 @@ router.get('/:id(\\d+)/stories', asyncHandler( async(req, res) => {
 
 
 //GET localhost:5000/api/users/:id/bookmarks
-router.get('/:id(\\d+)/bookmarks', asyncHandler( async(req, res) => {
-    const userId = req.params.id;
+router.get('/:id(\\d+)/bookmarks', asyncHandler( async(request, response) => {
+    const userId = request.params.id;
     const usersBookmarks = await User.findByPk(userId, {
-        attributes: ["firstName", "lastName", "avatar"],
+        attributes: ["id"],
         include: [
             {
                 model: Story,
-                attributes: ["title", "imgUrl"]
+                attributes: ["title", "imgUrl", "id"]
             }
         ]
     });
 
-    if (usersBookmarks) {
-        res.json({
-            their_bookmarks: usersBookmarks
-        });
-    } else {
-        res.json({
-            message: "Error no stories are associated with your account."
-        });
-    }
+    const result = {};
+    usersBookmarks.Stories.forEach(eachBookmark => {
+        result[eachBookmark.id] = {
+            id: eachBookmark.id,
+            imgUrl: eachBookmark.imgUrl,
+            title: eachBookmark.title
+        };
+    });
+
+
+    response.json({
+        bookmarks: result
+    });
+
 
 }));
 
@@ -134,21 +139,9 @@ router.get('/:id(\\d+)/bookmarks', asyncHandler( async(req, res) => {
 
 
 
-//GET localhost:5000/api/users/:id/
-router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
-    const userId = req.params.id;
-
-    const the_user = await User.findByPk(userId,
-        { attributes: [
-            "firstName",
-            "lastName",
-            "avatar",
-            "email",
-            "gender",
-            "id"
-        ] }
-    );
-
+//GET localhost:5000/api/users/:id
+router.get('/:id(\\d+)', asyncHandler( async (request, response) => {
+    const userId = request.params.id;
 
     let followees = await User.findByPk(userId, {
         include: [
@@ -161,6 +154,7 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
     });
 
     const allfollowees = followees.Followees.map((followed) => followed.Follow.followerId);
+
     const followeeStories = await Story.findAll({
         where: { userId: { [Op.in]: allfollowees } },
     });
@@ -170,11 +164,13 @@ router.get('/:id(\\d+)', asyncHandler( async (req, res) => {
         attributes: ["firstName", "lastName", "avatar", "id"]
     });
 
-    res.json({
-        user: the_user,
-        followeeStories,
-        followeesUserInfo
-    });
+
+    const result = {};
+    followeeStories.forEach((eachStory, idx) => {
+        result[eachStory.id] = { eachStory, User: followeesUserInfo[idx] }
+    })
+
+    response.json({ stories: result });
 
 
 }));
