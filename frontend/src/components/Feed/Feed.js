@@ -7,7 +7,6 @@ import styles from "./feed.module.css";
 
 import { thunk_getFeed } from "../../thunks/feed.js";
 
-import { useUser } from '../../context/UserContext';
 
 import CloseModalButton from "../CloseModalButton";
 import CommentForm from "../CommentForm";
@@ -20,14 +19,13 @@ const Feed = () => {
   const [showModal, setShowModal] = useState(false);
   const [showFeedModal, setShowFeedModal] = useState(false);
   const dispatch =  useDispatch();
-  const { isUser } = useUser();
   const featured = useSelector(store => store.feedReducer.featured);
   const stories = useSelector(store => store.feedReducer.featuredStories);
 
 
 
   useEffect(() => {
-    dispatch(thunk_getFeed(isUser.id));
+    dispatch(thunk_getFeed());
   },[dispatch]);
 
 
@@ -49,17 +47,6 @@ const Feed = () => {
 
 
 
-
-
-  const handleFeedItemsComment = event => {
-    event.preventDefault();
-    setShowFeedModal(true);
-  };
-
-
-  const closeFeedModal = () => {
-    setShowFeedModal(false);
-  }
 
 
   if(stories !== null && featured !== null){
@@ -133,7 +120,7 @@ const Feed = () => {
         {/* all of the other stories */}
         <div className={'feed-items'} >
           <div className={styles.feed_container}>
-            {Object.values(stories).map(eachStory => (
+            {stories.map(eachStory => (
               <>
                   <div className={styles.shortened_story}>
                     <div className={styles.shortened_story_heading}>
@@ -149,10 +136,6 @@ const Feed = () => {
                               <span className="shortened-story-name"> {`${eachStory.User.firstName} ${eachStory.User.lastName}`} </span>
                           </Link>
                                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.UserLikes.length}
-
-                                <div>
-                                  <Link to={'/'} onClick={event => handleFeedItemsComment(event)} > Comment </Link>
-                                </div>
                           </div>
                         </div>
 
@@ -161,25 +144,6 @@ const Feed = () => {
                         </div>
                     </div>
                   </div>
-
-
-                <ReactModal isOpen={showFeedModal} onRequestClose={closeFeedModal} >
-                    <div>
-                    {/* {eachStory.Comments.map(eachComment => (
-                      <>
-                        <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
-                        <span className={styles.featured_comment_userName} >
-                          {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
-                          <br />
-                          </span>
-                        <p> {eachComment.body} </p>
-                      </>
-                    ))} */}
-                    </div>
-                      <CommentForm />
-
-                  <CloseModalButton closeModal={closeFeedModal} />
-                </ReactModal>
               </>
             ))}
           </div>

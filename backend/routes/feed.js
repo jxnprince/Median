@@ -7,11 +7,8 @@ const { express, asyncHandler, User, Story, Comment } = require('../lib');
 const router = express.Router();
 
 
-// GET localhost:5000/api/feed/:userId
-router.get("/:userId(\\d+)", asyncHandler(async (request, response) => {
-    const userId = request.params.userId;
-
-    const user = await User.findByPk(userId);
+// GET localhost:5000/api/feed
+router.get("", asyncHandler(async (request, response) => {
 
     const allStories = await Story.findAll({
         order: [["createdAt"] /*"Like"*/],
