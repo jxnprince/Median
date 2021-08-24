@@ -51,13 +51,13 @@ const Feed = () => {
 
   if(stories !== null && featured !== null){
 
-    // const limitedPreview = createLimitedPreview(featured.postBody);
+    const limitedPreview = createLimitedPreview(featured.postBody);
 
     return (
       <>
       {/* first main story  */}
         <div className={'featured'}>
-          {/* <div className={styles.featured_container} >
+          <div className={styles.featured_container} >
             <Link to={`/story/${featured.id}`}>
               <h1>{featured.title}</h1>
               <img src={featured.imgUrl} />
@@ -65,32 +65,32 @@ const Feed = () => {
 
             <div className={styles.story_information}>
               <div className={styles.user_information}>
-                <Link to={`/profile/${featured.User.id}`} >
-                  <img src={featured.User.avatar} className={styles.avatar}/>
-                  <span> {`${featured.User.firstName} ${featured.User.lastName}`} </span>
+                <Link to={`/profile/${featured.user.id}`} >
+                  <img src={featured.user.avatar} className={styles.avatar}/>
+                  <span> {`${featured.user.firstName} ${featured.user.lastName}`} </span>
                 </Link>
               </div>
 
               <div>
                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
-                  <span className={styles.likeScore}> {`${featured.UserLikes.length}`} </span>
+                <span className={styles.likeScore}> {`${featured.likes}`} </span>
               </div>
-            </div> */}
+            </div>
 
             <Link to={'/'} onClick={event => handleShowMore(event)} >
-              {/* <p> {limitedPreview} </p> */}
+              <p> {limitedPreview} </p>
             </Link>
 
 
 
               <ReactModal isOpen={showModal} onRequestClose={closeModal} >
-                {/* <div className={styles.featured_story_text}>
+                <div className={styles.featured_story_text}>
                   <p>{featured.postBody}</p>
                 </div>
 
 
                 <div className={styles.featured_comments}>
-                    {featured.Comments.map(eachComment => (
+                    {/* {featured.Comments.map(eachComment => (
                       <>
                         <Link to={`/profile/${eachComment.User.id}`} >
                           <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
@@ -103,15 +103,15 @@ const Feed = () => {
                             <p className={styles.featured_comment_body}> {`${eachComment.body}`} </p>
                             <span className={styles.featured_comment_date}> {`${eachComment.createdAt}`} </span>
                       </>
-                    ))}
-                </div> */}
+                    ))} */}
+                </div>
 
                   <CommentForm />
 
                   <CloseModalButton closeModal={closeModal} />
               </ReactModal>
 
-          {/* </div> */}
+          </div>
         </div>
 
 
