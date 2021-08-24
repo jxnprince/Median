@@ -14,9 +14,8 @@ const thunk_getFeed = () => async (dispatch) => {
 
   if (response.ok) {
     const feed = await response.json();
-    const featured = feed.featuredStories.shift();
     dispatch(getFeed(feed));
-    dispatch(featuredItem(featured));
+    dispatch(featuredItem(feed.featured));
     return;
   }
   // dispatch to error handler here

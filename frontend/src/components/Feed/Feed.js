@@ -51,13 +51,13 @@ const Feed = () => {
 
   if(stories !== null && featured !== null){
 
-    const limitedPreview = createLimitedPreview(featured.postBody);
+    // const limitedPreview = createLimitedPreview(featured.postBody);
 
     return (
       <>
       {/* first main story  */}
         <div className={'featured'}>
-          <div className={styles.featured_container} >
+          {/* <div className={styles.featured_container} >
             <Link to={`/story/${featured.id}`}>
               <h1>{featured.title}</h1>
               <img src={featured.imgUrl} />
@@ -75,16 +75,16 @@ const Feed = () => {
                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                   <span className={styles.likeScore}> {`${featured.UserLikes.length}`} </span>
               </div>
-            </div>
+            </div> */}
 
             <Link to={'/'} onClick={event => handleShowMore(event)} >
-              <p> {limitedPreview} </p>
+              {/* <p> {limitedPreview} </p> */}
             </Link>
 
 
 
               <ReactModal isOpen={showModal} onRequestClose={closeModal} >
-                <div className={styles.featured_story_text}>
+                {/* <div className={styles.featured_story_text}>
                   <p>{featured.postBody}</p>
                 </div>
 
@@ -104,14 +104,14 @@ const Feed = () => {
                             <span className={styles.featured_comment_date}> {`${eachComment.createdAt}`} </span>
                       </>
                     ))}
-                </div>
+                </div> */}
 
                   <CommentForm />
 
                   <CloseModalButton closeModal={closeModal} />
               </ReactModal>
 
-          </div>
+          {/* </div> */}
         </div>
 
 
@@ -120,8 +120,8 @@ const Feed = () => {
         {/* all of the other stories */}
         <div className={'feed-items'} >
           <div className={styles.feed_container}>
-            {stories.map(eachStory => (
-              <>
+
+              {/* <>
                   <div className={styles.shortened_story}>
                     <div className={styles.shortened_story_heading}>
 
@@ -144,8 +144,8 @@ const Feed = () => {
                         </div>
                     </div>
                   </div>
-              </>
-            ))}
+              </> */}
+
           </div>
         </div>
       </>

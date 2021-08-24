@@ -50,7 +50,7 @@ router.get("", asyncHandler(async (request, response) => {
     });
 
 
-    response.json({ featuredStories: result });
+    response.json({ featuredStories: result, featured: allStories.pop() });
 
 
 }));
