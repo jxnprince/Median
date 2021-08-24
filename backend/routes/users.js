@@ -78,25 +78,33 @@ router.get('/', restoreUser, (request, response) => {
 
 
 
+//GET localhost:5000/api/users/specific/:userId
+router.get('/specific/:userId(\\d+)', asyncHandler( async(request, response) => {
+    const userId = request.params.userId;
+    const user = await User.findByPk(userId);
+    response.json({ user });
+
+}));
+
 
 
 
 //GET localhost:5000/api/users/:id/stories
-router.get('/:id(\\d+)/stories', asyncHandler( async(req, res) => {
+router.get('/:id(\\d+)/stories', asyncHandler( async(request, response) => {
     //return 5 Stories
     //includes: link to story, quantity of likes, comments
     //organized by current date
-    const userId = req.params.id;
+    const userId = request.params.id;
     const usersStories = await Story.findAll({
         where: { userId }
     });
 
     if(usersStories) {
-        res.json({
+        response.json({
             their_stories: usersStories
         });
     } else {
-        res.json({
+        response.json({
             message: "Error, there are no stories associated with this user account."
         });
     }

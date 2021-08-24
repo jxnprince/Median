@@ -1,7 +1,7 @@
 
 
 
-import { GET_FOLLOWERS, GET_BOOKMARKS } from "../types/profile.js";
+import { GET_FOLLOWERS, GET_BOOKMARKS, GET_OTHERUSER } from "../types/profile.js";
 
 
 
@@ -29,6 +29,14 @@ const bookmarksReducer = (state={ bookmarks: null }, action) => {
 }
 
 
+const otherUsersProfileReducer = (state = { user: null }, action) => {
+  switch (action.type) {
+    case GET_OTHERUSER:
+      return { ...action.user };
+    default:
+      return state;
+  }
+}
 
 
 
@@ -37,6 +45,7 @@ const bookmarksReducer = (state={ bookmarks: null }, action) => {
 export {
   followersReducer,
   bookmarksReducer,
+  otherUsersProfileReducer,
 
 
 }

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useUser } from "../../context/UserContext";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 import { thunk_getFollowers, thunk_getBookmarks } from "../../thunks/profile.js";
@@ -13,17 +13,23 @@ import styles from "./profile.module.css";
 
 
 
-const Profile = () => {
+const Profile = ({ otherUser=false }) => {
   const { isUser } = useUser();
   const dispatch = useDispatch();
   const followers = useSelector(store => store.followersReducer.stories);
   const bookmarks = useSelector(store => store.bookmarksReducer.bookmarks);
+  const { userId } = useParams();
 
 
   useEffect(() => {
-    dispatch(thunk_getFollowers(isUser.id));
-    dispatch(thunk_getBookmarks(isUser.id));
-  },[dispatch]);
+    if (otherUser) {
+      dispatch(thunk_getFollowers(userId));
+      dispatch(thunk_getBookmarks(userId));
+    } else {
+      dispatch(thunk_getFollowers(isUser.id));
+      dispatch(thunk_getBookmarks(isUser.id));
+    }
+  }, [dispatch, otherUser]);
 
 
 
@@ -32,16 +38,34 @@ const Profile = () => {
   return (
     <>
 
-      <div className={styles.profile_img}>
-          <img src={isUser.avatar} className={styles.mainProfileImg} />
-      </div>
+    {otherUser ?
+      <>
+          <div className={styles.profile_img}>
+            <img src={isUser.avatar} className={styles.mainProfileImg} />
+          </div>
 
-      <div className={styles.userinfo}>
-        <h3>{isUser.firstName}</h3>
-        <h3>{isUser.lastName}</h3>
-        <h3>{isUser.gender}</h3>
-        <h3>{isUser.email}</h3>
-      </div>
+          <div className={styles.userinfo}>
+            <h3>{isUser.firstName}</h3>
+            <h3>{isUser.lastName}</h3>
+            <h3>{isUser.gender}</h3>
+            <h3>{isUser.email}</h3>
+          </div>
+      </>
+      :
+      <>
+          <div className={styles.profile_img}>
+            <img src={isUser.avatar} className={styles.mainProfileImg} />
+          </div>
+
+          <div className={styles.userinfo}>
+            <h3>{isUser.firstName}</h3>
+            <h3>{isUser.lastName}</h3>
+            <h3>{isUser.gender}</h3>
+            <h3>{isUser.email}</h3>
+          </div>
+      </>
+
+    }
 
 
       <div>
@@ -80,7 +104,7 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <Link to={'/'} >
+                  <Link to={`/profile/${eachFollower.User.id}`} >
                     <img src={eachFollower.User.avatar} className={styles.miniavatar}/>
                       <span> {eachFollower.User.firstName} {eachFollower.User.lastName} </span>
                   </Link>

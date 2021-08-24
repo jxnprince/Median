@@ -42,6 +42,14 @@ const MainRouter = () => {
             <Profile />
           </Route>
 
+
+          <Route path='/profile/:userId' exact >
+            <Navbar />
+            <Profile otherUser={true} />
+
+
+          </Route>
+
         </Switch>
       </>
     )
