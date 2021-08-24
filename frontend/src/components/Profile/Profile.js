@@ -5,7 +5,7 @@ import { useUser } from "../../context/UserContext";
 import { Link, useParams } from "react-router-dom";
 
 
-import { thunk_getFollowers, thunk_getBookmarks } from "../../thunks/profile.js";
+import { thunk_getFollowers, thunk_getBookmarks, thunk_getOtherUser } from "../../thunks/profile.js";
 
 
 
@@ -25,6 +25,7 @@ const Profile = ({ otherUser=false }) => {
     if (otherUser) {
       dispatch(thunk_getFollowers(userId));
       dispatch(thunk_getBookmarks(userId));
+      dispatch(thunk_getOtherUser(userId));
     } else {
       dispatch(thunk_getFollowers(isUser.id));
       dispatch(thunk_getBookmarks(isUser.id));
