@@ -21,17 +21,17 @@ router.get("/:userId(\\d+)", asyncHandler(async (request, response) => {
                 attributes: ["body", "createdAt"],
                 include: {
                     model: User,
-                    attributes: ["firstName", "lastName", "avatar"]
+                    attributes: ["firstName", "lastName", "avatar", "id"]
                 }
             },
             {
                 model: User,
                 as: "UserLikes",
-                attributes: ["firstName", "lastName", "avatar"]
+                attributes: ["firstName", "lastName", "avatar", "id"]
             },
             {
                 model: User,
-                attributes: ["firstName", "lastName", "avatar"]
+                attributes: ["firstName", "lastName", "avatar", "id"]
             }
         ]
     });

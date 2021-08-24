@@ -78,8 +78,10 @@ const Feed = () => {
 
             <div className={styles.story_information}>
               <div className={styles.user_information}>
+                <Link to={`/profile/${featured.User.id}`} >
                 <img src={featured.User.avatar} className={styles.avatar}/>
                 <span> {`${featured.User.firstName} ${featured.User.lastName}`} </span>
+                </Link>
               </div>
 
               <div>
