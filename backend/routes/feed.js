@@ -49,8 +49,22 @@ router.get("", asyncHandler(async (request, response) => {
         };
     });
 
+    const mostRecent = allStories.pop();
+    const featured = {
+        comments: mostRecent.Comments.length,
+        likes: mostRecent.UserLikes.length,
+        createdAt: mostRecent.createdAt,
+        id: mostRecent.id,
+        imgUrl: mostRecent.imgUrl,
+        postBody: mostRecent.postBody,
+        title: mostRecent.title,
+        updatedAt: mostRecent.updatedAt,
+        user: mostRecent.User
+    };
 
-    response.json({ featuredStories: result, featured: allStories.pop() });
+
+
+    response.json({ featuredStories: result, featured });
 
 
 }));
