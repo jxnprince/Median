@@ -18,6 +18,7 @@ const Profile = ({ otherUser=false }) => {
   const dispatch = useDispatch();
   const followers = useSelector(store => store.followersReducer.stories);
   const bookmarks = useSelector(store => store.bookmarksReducer.bookmarks);
+  const otherUsersInfo = useSelector(store => store.otherUsersProfileReducer.user);
   const { userId } = useParams();
 
 
@@ -39,17 +40,17 @@ const Profile = ({ otherUser=false }) => {
   return (
     <>
 
-    {otherUser ?
+      {otherUser && otherUsersInfo !== null?
       <>
           <div className={styles.profile_img}>
-            <img src={isUser.avatar} className={styles.mainProfileImg} />
+            <img src={otherUsersInfo.avatar} className={styles.mainProfileImg} />
           </div>
 
           <div className={styles.userinfo}>
-            <h3>{isUser.firstName}</h3>
-            <h3>{isUser.lastName}</h3>
-            <h3>{isUser.gender}</h3>
-            <h3>{isUser.email}</h3>
+            <h3>{otherUsersInfo.firstName}</h3>
+            <h3>{otherUsersInfo.lastName}</h3>
+            <h3>{otherUsersInfo.gender}</h3>
+            <h3>{otherUsersInfo.email}</h3>
           </div>
       </>
       :
@@ -72,7 +73,7 @@ const Profile = ({ otherUser=false }) => {
       <div>
         {bookmarks !== null ?
           <>
-            <h1>Your Bookmarks {Object.values(bookmarks).length} </h1>
+            <h1>Bookmarks {Object.values(bookmarks).length} </h1>
             {Object.values(bookmarks).map(eachBookmark => (
               <>
                 <div className={styles.bookmarks_container}>
@@ -93,7 +94,7 @@ const Profile = ({ otherUser=false }) => {
       <div>
         {followers !== null ?
           <>
-            <h1>Your Followers {Object.values(followers).length} </h1>
+            <h1>Followers {Object.values(followers).length} </h1>
 
             {Object.values(followers).map(eachFollower => (
               <>
