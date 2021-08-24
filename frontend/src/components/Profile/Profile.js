@@ -50,10 +50,10 @@ const Profile = () => {
             <h1>Your Bookmarks {Object.values(bookmarks).length} </h1>
             {Object.values(bookmarks).map(eachBookmark => (
               <>
-                <div>
+                <div className={styles.bookmarks_container}>
                   <Link to={`/story/${eachBookmark.id}`} >
-                    <img src={eachBookmark.imgUrl} />
-                    <span id={styles.followers_title}> {eachBookmark.title} </span>
+                    <img src={eachBookmark.imgUrl} className={styles.bookmark_img}/>
+                    <span> {eachBookmark.title} </span>
                   </Link>
                 </div>
               </>

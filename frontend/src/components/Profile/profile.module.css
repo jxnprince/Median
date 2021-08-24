@@ -67,7 +67,7 @@
 }
 
 
-/* .bookmarks-container {
+.bookmarks_container {
 	background-color: #494A8F;
 	opacity: 75%;
 	border-radius: 3%;
@@ -75,11 +75,11 @@
 	padding: 0.1rem;
 	overflow: hidden;
 }
-.bookmark-img {
+.bookmark_img {
 	max-height: 30%;
 	width: 30%;
 	margin-left: 5%;
-} */
+}
 
 .users-stories {
 	background-color: #494A8F;
