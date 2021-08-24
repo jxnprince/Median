@@ -79,8 +79,8 @@ const Feed = () => {
             <div className={styles.story_information}>
               <div className={styles.user_information}>
                 <Link to={`/profile/${featured.User.id}`} >
-                <img src={featured.User.avatar} className={styles.avatar}/>
-                <span> {`${featured.User.firstName} ${featured.User.lastName}`} </span>
+                  <img src={featured.User.avatar} className={styles.avatar}/>
+                  <span> {`${featured.User.firstName} ${featured.User.lastName}`} </span>
                 </Link>
               </div>
 
@@ -105,11 +105,14 @@ const Feed = () => {
                 <div className={styles.featured_comments}>
                     {featured.Comments.map(eachComment => (
                       <>
-                        <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
-                          <span className={styles.featured_comment_userName} >
-                            {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
-                            <br />
-                          </span>
+                        <Link to={`/profile/${eachComment.User.id}`} >
+                          <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
+                            <span className={styles.featured_comment_userName} >
+                              {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
+                            </span>
+                        </Link>
+                          <br />
+
                             <p className={styles.featured_comment_body}> {`${eachComment.body}`} </p>
                             <span className={styles.featured_comment_date}> {`${eachComment.createdAt}`} </span>
                       </>
@@ -141,8 +144,10 @@ const Feed = () => {
                         </Link>
 
                         <div className={styles.shortened_story_author}>
-                          <img src={eachStory.User.avatar} className={styles.shortened_story_avatar}  />
+                          <Link to={`/profile/${eachStory.User.id}`}>
+                            <img src={eachStory.User.avatar} className={styles.shortened_story_avatar}  />
                               <span className="shortened-story-name"> {`${eachStory.User.firstName} ${eachStory.User.lastName}`} </span>
+                          </Link>
                                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.UserLikes.length}
 
                                 <div>
