@@ -165,7 +165,7 @@ const Feed = () => {
 
                 <ReactModal isOpen={showFeedModal} onRequestClose={closeFeedModal} >
                     <div>
-                    {eachStory.Comments.map(eachComment => (
+                    {/* {eachStory.Comments.map(eachComment => (
                       <>
                         <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
                         <span className={styles.featured_comment_userName} >
@@ -174,7 +174,7 @@ const Feed = () => {
                           </span>
                         <p> {eachComment.body} </p>
                       </>
-                    ))}
+                    ))} */}
                     </div>
                       <CommentForm />
 
