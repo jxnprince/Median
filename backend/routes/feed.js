@@ -11,7 +11,7 @@ const router = express.Router();
 router.get("", asyncHandler(async (request, response) => {
 
     const allStories = await Story.findAll({
-        order: [["createdAt"] /*"Like"*/],
+        order: [["createdAt"]],
         include: [
             {
                 model: Comment,
@@ -34,10 +34,23 @@ router.get("", asyncHandler(async (request, response) => {
     });
 
 
-// need to figure out how to get the number of likes associated with an story
+    const result = {};
+    allStories.forEach(eachStory => {
+        result[eachStory.id] = {
+            comments: eachStory.Comments.length,
+            likes: eachStory.UserLikes.length,
+            createdAt: eachStory.createdAt,
+            id: eachStory.id,
+            imgUrl: eachStory.imgUrl,
+            postBody: eachStory.postBody,
+            title: eachStory.title,
+            updatedAt: eachStory.updatedAt,
+            user: eachStory.User
+        };
+    });
 
 
-    response.json({ featuredStories: allStories });
+    response.json({ featuredStories: result });
 
 
 }));

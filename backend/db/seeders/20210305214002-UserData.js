@@ -41,7 +41,7 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('password', 10),
         gender: 'male',
         birthdate: '1994-06-21',
-        avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQHIkDiWxCwkOQ/profile-displayphoto-shrink_800_800/0/1530284974122?e=1620864000&v=beta&t=laeAjVIRrk74PUUK9ZlPS7JZsXAK85wSDERGUakhFUw",
+        avatar: "https://i.imgur.com/zB0xU1K.png?1",
         createdAt: new Date(),
         updatedAt: new Date()
       },
