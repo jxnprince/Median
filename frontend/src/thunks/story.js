@@ -31,7 +31,7 @@ const thunk_getSpecificStory = (storyId) => async (dispatch) => {
 
 const thunk_createStory = (userId, { imgUrl, postBody, title }) => async (dispatch) => {
   const response = await csrfFetch(`api/stories/${userId}`, {
-    method: POST,
+    method: 'POST',
     body: JSON.stringify({ imgUrl, postBody, title })
   });
 
