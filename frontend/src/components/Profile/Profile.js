@@ -99,9 +99,9 @@ const Profile = ({ otherUser=false }) => {
             {Object.values(followers).map(eachFollower => (
               <>
                 <div>
-                  <Link to={`/story/${eachFollower.eachStory.id}`} >
-                    <img src={eachFollower.eachStory.imgUrl} className={styles.followers_img} />
-                    <span id={styles.followers_title}> {eachFollower.eachStory.title} </span>
+                  <Link to={`/story/${eachFollower.id}`} >
+                    <img src={eachFollower.imgUrl} className={styles.followers_img} />
+                    <span id={styles.followers_title}> {eachFollower.title} </span>
                   </Link>
                 </div>
 
