@@ -11,6 +11,7 @@ import SignupForm from "../SignupForm";
 import Feed from "../Feed";
 import EachStory from "../EachStory";
 import Profile from "../Profile";
+import NewStory from "../NewStory";
 
 
 
@@ -41,6 +42,19 @@ const MainRouter = () => {
             <Navbar />
             <Profile />
           </Route>
+
+
+          <Route path='/profile/:userId' exact >
+            <Navbar />
+            <Profile otherUser={true} />
+          </Route>
+
+
+          <Route path='/newstory' exact>
+            <Navbar />
+            <NewStory />
+          </Route>
+
 
         </Switch>
       </>

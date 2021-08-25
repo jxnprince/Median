@@ -2,11 +2,15 @@
 
 const GET_FOLLOWERS = 'profile/GET_FOLLOWERS';
 const GET_BOOKMARKS = 'profile/GET_BOOKMARKS';
+const GET_OTHERUSER = 'profile/GET_OTHERUSER';
+
 
 
 
 export {
   GET_FOLLOWERS,
   GET_BOOKMARKS,
+  GET_OTHERUSER,
+
 
 }

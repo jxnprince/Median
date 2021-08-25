@@ -1,6 +1,6 @@
 
 
-import { GET_FOLLOWERS, GET_BOOKMARKS } from "../types/profile.js";
+import { GET_FOLLOWERS, GET_BOOKMARKS, GET_OTHERUSER } from "../types/profile.js";
 
 
 
@@ -18,9 +18,16 @@ const getBookmarks = (bookmarks) => ({
 });
 
 
+const getOtherUser = (user) => ({
+  type: GET_OTHERUSER,
+  user
+});
+
+
 
 export {
   getFollowers,
   getBookmarks,
+  getOtherUser,
 
 };

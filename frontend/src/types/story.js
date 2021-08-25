@@ -3,10 +3,11 @@
 
 
 const GET_SPECIFIC_STORY = 'story/GET_SPECIFIC_STORY';
-
+const CREATE_STORY = 'story/CREATE_STORY';
 
 
 export {
   GET_SPECIFIC_STORY,
+  CREATE_STORY,
 
 }

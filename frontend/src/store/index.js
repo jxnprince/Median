@@ -6,7 +6,7 @@ import { userReducer } from '../reducers/session.js';
 import { feedReducer } from "../reducers/feed.js";
 import { storyReducer } from "../reducers/story.js";
 import { commentReducer } from "../reducers/comment.js";
-import { followersReducer, bookmarksReducer } from "../reducers/profile.js";
+import { followersReducer, bookmarksReducer, otherUsersProfileReducer } from "../reducers/profile.js";
 
 
 const rootReducer = combineReducers({
@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   feedReducer,
   storyReducer,
   commentReducer,
+  otherUsersProfileReducer,
   followersReducer,
   bookmarksReducer,
 

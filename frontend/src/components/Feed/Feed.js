@@ -7,7 +7,6 @@ import styles from "./feed.module.css";
 
 import { thunk_getFeed } from "../../thunks/feed.js";
 
-import { useUser } from '../../context/UserContext';
 
 import CloseModalButton from "../CloseModalButton";
 import CommentForm from "../CommentForm";
@@ -20,14 +19,13 @@ const Feed = () => {
   const [showModal, setShowModal] = useState(false);
   const [showFeedModal, setShowFeedModal] = useState(false);
   const dispatch =  useDispatch();
-  const { isUser } = useUser();
   const featured = useSelector(store => store.feedReducer.featured);
   const stories = useSelector(store => store.feedReducer.featuredStories);
 
 
 
   useEffect(() => {
-    dispatch(thunk_getFeed(isUser.id));
+    dispatch(thunk_getFeed());
   },[dispatch]);
 
 
@@ -51,17 +49,6 @@ const Feed = () => {
 
 
 
-  const handleFeedItemsComment = event => {
-    event.preventDefault();
-    setShowFeedModal(true);
-  };
-
-
-  const closeFeedModal = () => {
-    setShowFeedModal(false);
-  }
-
-
   if(stories !== null && featured !== null){
 
     const limitedPreview = createLimitedPreview(featured.postBody);
@@ -78,13 +65,15 @@ const Feed = () => {
 
             <div className={styles.story_information}>
               <div className={styles.user_information}>
-                <img src={featured.User.avatar} className={styles.avatar}/>
-                <span> {`${featured.User.firstName} ${featured.User.lastName}`} </span>
+                <Link to={`/profile/${featured.user.id}`} >
+                  <img src={featured.user.avatar} className={styles.avatar}/>
+                  <span> {`${featured.user.firstName} ${featured.user.lastName}`} </span>
+                </Link>
               </div>
 
               <div>
                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
-                  <span className={styles.likeScore}> {`${featured.UserLikes.length}`} </span>
+                <span className={styles.likeScore}> {`${featured.likes}`} </span>
               </div>
             </div>
 
@@ -101,17 +90,20 @@ const Feed = () => {
 
 
                 <div className={styles.featured_comments}>
-                    {featured.Comments.map(eachComment => (
+                    {/* {featured.Comments.map(eachComment => (
                       <>
-                        <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
-                          <span className={styles.featured_comment_userName} >
-                            {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
-                            <br />
-                          </span>
+                        <Link to={`/profile/${eachComment.User.id}`} >
+                          <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
+                            <span className={styles.featured_comment_userName} >
+                              {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
+                            </span>
+                        </Link>
+                          <br />
+
                             <p className={styles.featured_comment_body}> {`${eachComment.body}`} </p>
                             <span className={styles.featured_comment_date}> {`${eachComment.createdAt}`} </span>
                       </>
-                    ))}
+                    ))} */}
                 </div>
 
                   <CommentForm />
@@ -128,53 +120,36 @@ const Feed = () => {
         {/* all of the other stories */}
         <div className={'feed-items'} >
           <div className={styles.feed_container}>
-            {Object.values(stories).map(eachStory => (
               <>
-                  <div className={styles.shortened_story}>
                     <div className={styles.shortened_story_heading}>
 
                       <div className={styles.shortened_story_stack}>
-                        <Link to={`/story/${eachStory.id}`} >
-                          <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
-                        </Link>
+                        {stories.map(eachStory => (
+                          <>
+                            <Link to={`/story/${eachStory.id}`} >
+                              <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
+                            </Link>
 
-                        <div className={styles.shortened_story_author}>
-                          <img src={eachStory.User.avatar} className={styles.shortened_story_avatar}  />
-                              <span className="shortened-story-name"> {`${eachStory.User.firstName} ${eachStory.User.lastName}`} </span>
-                                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.UserLikes.length}
+                            <div className={styles.shortened_story_author}>
+                              <Link to={`/profile/${eachStory.user.id}`}>
+                                <img src={eachStory.user.avatar} className={styles.shortened_story_avatar}  />
+                                  <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
+                              </Link>
 
-                                <div>
-                                  <Link to={'/'} onClick={event => handleFeedItemsComment(event)} > Comment </Link>
-                                </div>
-                          </div>
+                                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.likes}
+                              </div>
+
+                              <div className={styles.shortened_story_img}>
+                                <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
+                              </div>
+                            </>
+                            ))}
                         </div>
 
-                        <div className={styles.shortened_story_img}>
-                          <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
-                        </div>
                     </div>
-                  </div>
 
-
-                <ReactModal isOpen={showFeedModal} onRequestClose={closeFeedModal} >
-                    <div>
-                    {eachStory.Comments.map(eachComment => (
-                      <>
-                        <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
-                        <span className={styles.featured_comment_userName} >
-                          {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
-                          <br />
-                          </span>
-                        <p> {eachComment.body} </p>
-                      </>
-                    ))}
-                    </div>
-                      <CommentForm />
-
-                  <CloseModalButton closeModal={closeFeedModal} />
-                </ReactModal>
               </>
-            ))}
+
           </div>
         </div>
       </>

@@ -9,14 +9,13 @@ import { csrfFetch } from '../store/csrf.js';
 
 
 
-const thunk_getFeed = (userId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/feed/${userId}`);
+const thunk_getFeed = () => async (dispatch) => {
+  const response = await csrfFetch(`/api/feed`);
 
   if (response.ok) {
     const feed = await response.json();
-    const featured = feed.featuredStories.shift();
     dispatch(getFeed(feed));
-    dispatch(featuredItem(featured));
+    dispatch(featuredItem(feed.featured));
     return;
   }
   // dispatch to error handler here

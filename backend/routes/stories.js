@@ -10,14 +10,14 @@ const router = express.Router();
 
 
 // GET localhost:8080/api/stories/
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (request, response) => {
 
     const mostRecentStories = await Story.findAll({ order: [['createdAt']], limit: 5 });
         //return a list of the most recent stories
         if (mostRecentStories) {
-            res.json({ mostRecentStories });
+            response.json({ mostRecentStories });
         } else {
-            res.json({
+            response.json({
                 message: "Error, Server Error.",
                 status: 500,
                 stack: "Server Error"
@@ -32,32 +32,13 @@ router.get('/', asyncHandler(async (req, res) => {
 
 
 
-//POST localhost:8080/api/stories/
-router.post('/', asyncHandler(async (req, res) => {
-    const { imgUrl, postBody, title } = req.body;
-    const id = req.session.auth.userId;
-    // const validationErrors = validationResult(res);
+//POST localhost:5000/api/stories/:userId
+router.post('/:userId(\\d+)', asyncHandler(async (request, response) => {
+    const { imgUrl, postBody, title } = request.body;
+    const userId = request.params.userId;
+    const story = await Story.create({ imgUrl, postBody, title, userId });
 
-    const validationErrors = validationResult(req);
-    if (validationErrors.isEmpty()) {
-        const story = await Story.create({ imgUrl, postBody, title, userId: id });
-
-        if (story) {
-            res.redirect('/users/profile')
-
-        } else {
-            res.json({
-                message: "Story not created"
-            });
-        }
-
-    } else{
-        console.log(`You hit the story registration error route`)
-        const errors = validationErrors.array().map((error) => error.msg);
-        console.log(validationErrors);
-        res.render('submitStory', { errors, csrfToken: req.csrfToken() });
-
-    }
+    response.json({ story });
 
 }));
 
@@ -99,12 +80,12 @@ router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
 
 
 //DELETE localhost:8080/api/stories/:id
-router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const story = await Story.findByPk(req.params.id)
+router.delete('/:id(\\d+)', asyncHandler(async (request, response) => {
+    const story = await Story.findByPk(request.params.id)
     const destroy = await story.destroy()
     console.log(destroy)
-    if (destroy === []) res.json({ message: 'error'})
-    else res.json({message: 'Success'})
+    if (destroy === []) response.json({ message: 'error'})
+    else response.json({message: 'Success'})
 }))
 
 
@@ -118,14 +99,14 @@ let updateStoryErrors = [];
 //updates a specific user story
 
 //PUT localhost:8080/api/stories/:storyId/users/:userId
-router.put('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (req, res) => {
-    const storyId = req.params.storyId;
-    const userId = req.params.userId;
-    const session = req.session.auth;
+router.put('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (request, response) => {
+    const storyId = request.params.storyId;
+    const userId = request.params.userId;
+    const session = request.session.auth;
 
-    const { the_story_img, the_story_post, the_title } = req.body;
+    const { the_story_img, the_story_post, the_title } = request.body;
 
-    const validationErrors = validationResult(req);
+    const validationErrors = validationResult(request);
 
 
     if (validationErrors.errors.length === 0) {
@@ -139,7 +120,7 @@ router.put('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (req, res) 
                     updatedAt: new Date()
                 });
 
-            res.status(200).send();
+            response.status(200).send();
         }
 
     } else {
@@ -148,18 +129,18 @@ router.put('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (req, res) 
 
         const errors = validationErrors.array().map((error) => error.msg);
         updateStoryErrors = errors;
-        res.status(404).send();
-        res.render('editStory');
+        response.status(404).send();
+        response.render('editStory');
     }
 }));
 
 
 // used to display specific errors to the user for updating their story
-router.get('/errors', updateStoryErrors, asyncHandler(async (req, res) => {
+router.get('/errors', updateStoryErrors, asyncHandler(async (request, response) => {
     if(updateStoryErrors.length > 0){
-        res.json({updateStoryErrors});
+        response.json({updateStoryErrors});
     } else if(updateStoryErrors.length === 0) {
-        res.json({ message: "There are no validation errors."});
+        response.json({ message: "There are no validation errors."});
     }
 }));
 
@@ -167,16 +148,16 @@ router.get('/errors', updateStoryErrors, asyncHandler(async (req, res) => {
 
 
 // used to prepopulate the edit story form
-router.get('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (req, res) => {
-    const userId = req.params.userId;
-    const storyId = req.params.storyId;
+router.get('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (request, response) => {
+    const userId = request.params.userId;
+    const storyId = request.params.storyId;
 
     const the_story = await Story.findByPk(storyId, { where: { userId } });
 
     if (the_story) {
-        res.json({ the_story });
+        response.json({ the_story });
     } else {
-        res.json({ status: 404 });
+        response.json({ status: 404 });
     }
 
 
