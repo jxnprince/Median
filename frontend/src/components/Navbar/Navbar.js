@@ -43,6 +43,8 @@ const Navbar = () => {
           <li> <NavLink to={'/'} > Home </NavLink> </li>
           <li> <NavLink to={'/feed'} > Feed </NavLink> </li>
           <li> <NavLink to={'/profile'} > Profile </NavLink> </li>
+          <li> <NavLink to={'/newstory'} > New Story </NavLink> </li>
+
           <li> <NavLink to={'/'} onClick={event => handleLogout(event)} > Logout </NavLink> </li>
         </nav>
       </>

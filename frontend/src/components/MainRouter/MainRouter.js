@@ -46,9 +46,14 @@ const MainRouter = () => {
           <Route path='/profile/:userId' exact >
             <Navbar />
             <Profile otherUser={true} />
-
-
           </Route>
+
+
+          <Route path='/newstory' exact>
+            <Navbar />
+            
+          </Route>
+
 
         </Switch>
       </>
