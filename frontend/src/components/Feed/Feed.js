@@ -120,31 +120,35 @@ const Feed = () => {
         {/* all of the other stories */}
         <div className={'feed-items'} >
           <div className={styles.feed_container}>
-
-              {/* <>
-                  <div className={styles.shortened_story}>
+              <>
                     <div className={styles.shortened_story_heading}>
 
                       <div className={styles.shortened_story_stack}>
-                        <Link to={`/story/${eachStory.id}`} >
-                          <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
-                        </Link>
+                        {stories.map(eachStory => (
+                          <>
+                            <Link to={`/story/${eachStory.id}`} >
+                              <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
+                            </Link>
 
-                        <div className={styles.shortened_story_author}>
-                          <Link to={`/profile/${eachStory.User.id}`}>
-                            <img src={eachStory.User.avatar} className={styles.shortened_story_avatar}  />
-                              <span className="shortened-story-name"> {`${eachStory.User.firstName} ${eachStory.User.lastName}`} </span>
-                          </Link>
-                                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.UserLikes.length}
-                          </div>
+                            <div className={styles.shortened_story_author}>
+                              <Link to={`/profile/${eachStory.user.id}`}>
+                                <img src={eachStory.user.avatar} className={styles.shortened_story_avatar}  />
+                                  <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
+                              </Link>
+
+                                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.likes}
+                              </div>
+
+                              <div className={styles.shortened_story_img}>
+                                <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
+                              </div>
+                            </>
+                            ))}
                         </div>
 
-                        <div className={styles.shortened_story_img}>
-                          <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
-                        </div>
                     </div>
-                  </div>
-              </> */}
+
+              </>
 
           </div>
         </div>

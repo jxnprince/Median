@@ -34,9 +34,10 @@ router.get("", asyncHandler(async (request, response) => {
     });
 
 
-    const result = {};
+
+    const featuredStories = [];
     allStories.forEach(eachStory => {
-        result[eachStory.id] = {
+        featuredStories.unshift({
             comments: eachStory.Comments.length,
             likes: eachStory.UserLikes.length,
             createdAt: eachStory.createdAt,
@@ -46,8 +47,12 @@ router.get("", asyncHandler(async (request, response) => {
             title: eachStory.title,
             updatedAt: eachStory.updatedAt,
             user: eachStory.User
-        };
+            })
     });
+    // shift off the first one because the 'featured story will be shown in a
+    // different slice in the reducer
+    featuredStories.shift();
+
 
     const mostRecent = allStories.pop();
     const featured = {
@@ -64,7 +69,7 @@ router.get("", asyncHandler(async (request, response) => {
 
 
 
-    response.json({ featuredStories: result, featured });
+    response.json({ featuredStories, featured });
 
 
 }));
