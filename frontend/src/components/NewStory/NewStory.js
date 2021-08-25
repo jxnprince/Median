@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-
 import { useDispatch } from 'react-redux';
+
 
 
 
@@ -9,9 +9,15 @@ const NewStory = () => {
   const [ title, setTitle ] = useState('');
   const dispatch = useDispatch();
 
+
+
+
   const onSubmit = event => {
     event.preventDefault();
   }
+
+
+
 
 
   return (
