@@ -17,6 +17,7 @@ const Profile = ({ otherUser=false }) => {
   const { isUser } = useUser();
   const dispatch = useDispatch();
   const followers = useSelector(store => store.followersReducer.stories);
+  const numOfFollowers = useSelector(store => store.followersReducer.length);
   const bookmarks = useSelector(store => store.bookmarksReducer.bookmarks);
   const otherUsersInfo = useSelector(store => store.otherUsersProfileReducer.user);
   const { userId } = useParams();
@@ -94,7 +95,7 @@ const Profile = ({ otherUser=false }) => {
       <div>
         {followers !== null ?
           <>
-            <h1>Followers {Object.values(followers).length} </h1>
+            <h1>Followers {numOfFollowers} </h1>
 
             {Object.values(followers).map(eachFollower => (
               <>

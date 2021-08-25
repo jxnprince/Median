@@ -178,7 +178,7 @@ router.get('/:id(\\d+)', asyncHandler( async (request, response) => {
         result[eachStory.id] = eachStory;
     })
 
-    response.json({ stories: result });
+    response.json({ stories: result, length: followers.length });
 
 
 }));
