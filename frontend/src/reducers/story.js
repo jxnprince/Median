@@ -1,6 +1,6 @@
 
 
-import { GET_SPECIFIC_STORY } from "../types/story.js";
+import { GET_SPECIFIC_STORY, CREATE_STORY } from "../types/story.js";
 
 
 

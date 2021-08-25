@@ -2,15 +2,16 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { thunk_createStory } from "../../thunks/story.js";
 
-
+import { useUser } from "../../context/UserContext.js";
 
 
 const NewStory = () => {
-  // imgUrl, postBody, title
   const [ imgUrl, setImgUrl ] = useState('');
   const [ postBody, setPostBody ] = useState('');
   const [ title, setTitle ] = useState('');
+  const { isUser } = useUser();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -19,11 +20,11 @@ const NewStory = () => {
 
   const onSubmit = event => {
     event.preventDefault();
-    //dispatch thunk here
-    
+    const payload = { imgUrl, postBody, title };
+    dispatch(thunk_createStory(isUser.id, payload))
     history.push('/profile');
+  };
 
-  }
 
 
 
