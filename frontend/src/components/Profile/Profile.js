@@ -106,9 +106,9 @@ const Profile = ({ otherUser=false }) => {
                 </div>
 
                 <div>
-                  <Link to={`/profile/${eachFollower.User.id}`} >
-                    <img src={eachFollower.User.avatar} className={styles.miniavatar}/>
-                      <span> {eachFollower.User.firstName} {eachFollower.User.lastName} </span>
+                  <Link to={`/profile/${eachFollower?.User?.id}`} >
+                    <img src={eachFollower?.User?.avatar} className={styles.miniavatar}/>
+                      <span> {eachFollower?.User?.firstName} {eachFollower?.User?.lastName} </span>
                   </Link>
                 </div>
               </>
