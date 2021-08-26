@@ -120,6 +120,11 @@ const Profile = ({ otherUser=false }) => {
         }
       </div>
 
+
+      <div>
+        
+      </div>
+
     </>
   )
 
