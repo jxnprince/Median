@@ -135,33 +135,7 @@ router.put('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (request, r
 }));
 
 
-// used to display specific errors to the user for updating their story
-router.get('/errors', updateStoryErrors, asyncHandler(async (request, response) => {
-    if(updateStoryErrors.length > 0){
-        response.json({updateStoryErrors});
-    } else if(updateStoryErrors.length === 0) {
-        response.json({ message: "There are no validation errors."});
-    }
-}));
 
-
-
-
-// used to prepopulate the edit story form
-router.get('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (request, response) => {
-    const userId = request.params.userId;
-    const storyId = request.params.storyId;
-
-    const the_story = await Story.findByPk(storyId, { where: { userId } });
-
-    if (the_story) {
-        response.json({ the_story });
-    } else {
-        response.json({ status: 404 });
-    }
-
-
-}));
 
 
 

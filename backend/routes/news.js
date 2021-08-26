@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 const {
     asyncHandler
-} = require('../../utils')
-const axios = require('axios')
+} = require('../lib');
+const axios = require('axios');
 
 //GET localhost:8080/api/news/
 

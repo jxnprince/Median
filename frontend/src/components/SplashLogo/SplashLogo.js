@@ -1,13 +1,24 @@
 
 
+import { useEffect } from 'react';
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { thunk_getNews } from "../../thunks/news.js";
+
 import styles from "./splashlogo.module.css";
 
 
 
 
 
-
 const SplashLogo = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(thunk_getNews());
+  },[dispatch]);
+
 
   return (
     <>
