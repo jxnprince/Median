@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 
 
 import { thunk_getFollowers, thunk_getBookmarks, thunk_getOtherUser } from "../../thunks/profile.js";
-
+import { thunk_getAllStories } from "../../thunks/story.js";
 
 
 import styles from "./profile.module.css";
@@ -19,6 +19,7 @@ const Profile = ({ otherUser=false }) => {
   const followers = useSelector(store => store.followersReducer.stories);
   const numOfFollowers = useSelector(store => store.followersReducer.length);
   const bookmarks = useSelector(store => store.bookmarksReducer.bookmarks);
+  const stories = useSelector(store => store.storyReducer.stories);
   const otherUsersInfo = useSelector(store => store.otherUsersProfileReducer.user);
   const { userId } = useParams();
 
@@ -27,10 +28,12 @@ const Profile = ({ otherUser=false }) => {
     if (otherUser && userId !== isUser.id) {
       dispatch(thunk_getFollowers(userId));
       dispatch(thunk_getBookmarks(userId));
+      dispatch(thunk_getAllStories(userId));
       dispatch(thunk_getOtherUser(userId));
     } else {
       dispatch(thunk_getFollowers(isUser.id));
       dispatch(thunk_getBookmarks(isUser.id));
+      dispatch(thunk_getAllStories(isUser.id));
     }
   }, [dispatch, userId]);
 
@@ -122,7 +125,14 @@ const Profile = ({ otherUser=false }) => {
 
 
       <div>
-        
+        {stories !== null ?
+          <>
+            <h1>Stories</h1>
+          </>
+          :
+          <>
+          </>
+        }
       </div>
 
     </>
