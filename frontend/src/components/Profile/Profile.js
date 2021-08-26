@@ -24,7 +24,7 @@ const Profile = ({ otherUser=false }) => {
 
 
   useEffect(() => {
-    if (otherUser) {
+    if (otherUser && userId !== isUser.id) {
       dispatch(thunk_getFollowers(userId));
       dispatch(thunk_getBookmarks(userId));
       dispatch(thunk_getOtherUser(userId));
@@ -32,7 +32,7 @@ const Profile = ({ otherUser=false }) => {
       dispatch(thunk_getFollowers(isUser.id));
       dispatch(thunk_getBookmarks(isUser.id));
     }
-  }, [dispatch, otherUser]);
+  }, [dispatch, userId]);
 
 
 
