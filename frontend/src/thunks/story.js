@@ -14,7 +14,7 @@ import { csrfFetch } from '../store/csrf.js';
 
 
 const thunk_getSpecificStory = (storyId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/stories/${storyId}`);
+  const response = await csrfFetch(`/api/stories/specific/${storyId}`);
 
   if (response.ok) {
     const story = await response.json();
