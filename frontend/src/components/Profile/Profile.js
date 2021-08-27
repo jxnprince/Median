@@ -128,6 +128,16 @@ const Profile = ({ otherUser=false }) => {
         {stories !== null ?
           <>
             <h1>Stories</h1>
+            {Object.values(stories).map(eachStory => (
+              <>
+                <div>
+                  <Link to={`/story/${eachStory.id}`} >
+                    <img src={eachStory.imgUrl} />
+                      <h3>{eachStory.title}</h3>
+                  </Link>
+                </div>
+              </>
+            ))}
           </>
           :
           <>
