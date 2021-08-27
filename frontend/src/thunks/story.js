@@ -2,7 +2,7 @@
 
 
 
-import { getSpecificStory, createStory } from "../actions/story.js";
+import { getSpecificStory, createStory, getAllStories } from "../actions/story.js";
 
 
 
@@ -14,7 +14,7 @@ import { csrfFetch } from '../store/csrf.js';
 
 
 const thunk_getSpecificStory = (storyId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/stories/${storyId}`);
+  const response = await csrfFetch(`/api/stories/specific/${storyId}`);
 
   if (response.ok) {
     const story = await response.json();
@@ -45,9 +45,25 @@ const thunk_createStory = (userId, { imgUrl, postBody, title }) => async (dispat
 }
 
 
+// localhost:5000/api/stories/:userId
+const thunk_getAllStories = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/stories/${userId}`);
+  if (response.ok) {
+    const stories = await response.json();
+    dispatch(getAllStories(stories));
+    return;
+  }
+  // dispatch to error handler here
+
+};
+
+
+
 
 export {
   thunk_getSpecificStory,
   thunk_createStory,
+  thunk_getAllStories,
+
 
 }

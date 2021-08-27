@@ -12,7 +12,7 @@ const asyncHandler = require('express-async-handler');
 // making all imports easy below
 const { setTokenCookie, restoreUser, requireAuth } = require('../auth.js');
 // all of the db models below
-const { User, Story, Comment, Bookmark } = require('../db/models');
+const { User, Story, Comment, Bookmark, Follow } = require('../db/models');
 
 
 // variable that determines if the app is in production or not
@@ -183,6 +183,7 @@ module.exports = {
   Story,
   Comment,
   Bookmark,
+  Follow,
 
 
   isProduction,

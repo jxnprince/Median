@@ -7,6 +7,9 @@ import { thunk_login } from "../../thunks/session.js";
 
 
 
+import styles from "./loginform.module.css";
+
+
 const LoginForm = () => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -25,7 +28,7 @@ const LoginForm = () => {
 
   return (
     <>
-    <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit} className={styles.login_form} >
       <input
         type="email"
         value={email}

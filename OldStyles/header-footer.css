@@ -10,7 +10,7 @@
 	overflow: scroll;
 	z-index: 1;
 }
-
+/*
 #displayLoginFormButton {
   position: absolute;
   height: 80%;
@@ -72,7 +72,7 @@
   padding: 1px 6px;
   border: 1px solid #1f1f35;
   border-radius: 5px;
-}
+} */
 
 .left-Items {
 	display: flex;

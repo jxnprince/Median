@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 
 import { thunk_loginDemoUser, thunk_logoutUser } from "../../thunks/session.js";
 
+import styles from "./navbar.module.css";
+
 
 
 
@@ -40,12 +42,25 @@ const Navbar = () => {
     return (
       <>
         <nav>
-          <li> <NavLink to={'/'} > Home </NavLink> </li>
-          <li> <NavLink to={'/feed'} > Feed </NavLink> </li>
-          <li> <NavLink to={'/profile'} > Profile </NavLink> </li>
-          <li> <NavLink to={'/newstory'} > New Story </NavLink> </li>
+          <li>
+            <NavLink to={'/'} > Home </NavLink>
+          </li>
 
-          <li> <NavLink to={'/'} onClick={event => handleLogout(event)} > Logout </NavLink> </li>
+          <li>
+            <NavLink to={'/feed'} > Feed </NavLink>
+          </li>
+
+          <li>
+            <NavLink to={'/profile'} > Profile </NavLink>
+          </li>
+
+          <li>
+            <NavLink to={'/newstory'} > New Story </NavLink>
+          </li>
+
+          <li>
+            <NavLink to={'/'} onClick={event => handleLogout(event)} > Logout </NavLink>
+          </li>
         </nav>
       </>
     )
@@ -56,10 +71,21 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <li> <NavLink to={'/'} > Home </NavLink> </li>
-        <li> <NavLink to={'/login'} > Login </NavLink> </li>
-        <li> <NavLink to={'/signup'} > Sign Up </NavLink> </li>
-        <li> <NavLink to={'/'} onClick={event => handleDemoLogin(event)} > Demo </NavLink> </li>
+        <li>
+          <NavLink to={'/'} > Home </NavLink>
+        </li>
+
+        <li>
+          <NavLink to={'/login'} > <img src={'https://i.imgur.com/Yr0lEE7.png?1'} className={styles.displayLoginFormButton}/> </NavLink>
+        </li>
+
+        <li>
+          <NavLink to={'/signup'} > Sign Up </NavLink>
+        </li>
+
+        <li>
+          <NavLink to={'/'} onClick={event => handleDemoLogin(event)} > Demo </NavLink>
+        </li>
       </nav>
     </>
   )

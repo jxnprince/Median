@@ -1,4 +1,4 @@
-const { express, asyncHandler, setTokenCookie, User, Story, Bookmark, restoreUser, validateLogin, validateSignup } = require('../lib');
+const { express, asyncHandler, setTokenCookie, User, Story, Bookmark, Follow, restoreUser, validateLogin, validateSignup } = require('../lib');
 
 
 
@@ -150,35 +150,35 @@ router.get('/:id(\\d+)/bookmarks', asyncHandler( async(request, response) => {
 //GET localhost:5000/api/users/:id
 router.get('/:id(\\d+)', asyncHandler( async (request, response) => {
     const userId = request.params.id;
+    const allFollowers = await Follow.findAll({
+        where: { userId },
+        attributes: ['followerId']
+    });
 
-    let followees = await User.findByPk(userId, {
+    const followers = []
+    allFollowers.forEach(eachFollower => {
+        followers.push(eachFollower.followerId)
+    })
+
+
+
+    const followeeStories = await Story.findAll({
+        where: { userId: { [Op.in]: followers } },
         include: [
             {
                 model: User,
-                as: "Followees",
-                attributes: ["firstName", "lastName", "id"]
+                attributes: ["firstName", "lastName", "avatar", "id"]
             }
         ]
     });
 
-    const allfollowees = followees.Followees.map((followed) => followed.Follow.followerId);
-
-    const followeeStories = await Story.findAll({
-        where: { userId: { [Op.in]: allfollowees } },
-    });
-
-    const followeesUserInfo = await User.findAll({
-        where: { id: { [Op.in]: allfollowees } },
-        attributes: ["firstName", "lastName", "avatar", "id"]
-    });
-
 
     const result = {};
-    followeeStories.forEach((eachStory, idx) => {
-        result[eachStory.id] = { eachStory, User: followeesUserInfo[idx] }
+    followeeStories.forEach( eachStory => {
+        result[eachStory.id] = eachStory;
     })
 
-    response.json({ stories: result });
+    response.json({ stories: result, length: followers.length });
 
 
 }));

@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 
 
 
+import styles from "./signupform.module.css";
+
+
 
 
 const SignupForm = () => {
@@ -14,15 +17,20 @@ const SignupForm = () => {
   const [ confPassword, setCongPassword ] = useState('');
 
 
+
+
   const handleSubmit = event => {
     event.preventDefault();
-
   }
+
+
+
 
 
 
   return (
     <>
+    <div className={styles.signupForm} >
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -59,9 +67,12 @@ const SignupForm = () => {
           placeholder="Confirm Password"
           />
 
-        <button type="submit"> Sign Up </button>
+          <div className={styles.buttons}>
+          <button type="submit"> Sign Up </button>
+        </div>
 
       </form>
+    </div>
     </>
   )
 };

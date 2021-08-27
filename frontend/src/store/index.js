@@ -3,6 +3,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 // import reducers here:
 import { userReducer } from '../reducers/session.js';
+import { newsReducer } from "../reducers/news.js";
 import { feedReducer } from "../reducers/feed.js";
 import { storyReducer } from "../reducers/story.js";
 import { commentReducer } from "../reducers/comment.js";
@@ -11,6 +12,7 @@ import { followersReducer, bookmarksReducer, otherUsersProfileReducer } from "..
 
 const rootReducer = combineReducers({
   userReducer,
+  newsReducer,
   feedReducer,
   storyReducer,
   commentReducer,
