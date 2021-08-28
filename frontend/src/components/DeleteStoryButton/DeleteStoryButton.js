@@ -7,6 +7,7 @@ import { thunk_deleteStory } from "../../thunks/story.js";
 
 
 
+
 const DeleteStoryButton = ({ storyId }) => {
   const dispatch = useDispatch();
 
@@ -15,6 +16,7 @@ const DeleteStoryButton = ({ storyId }) => {
     event.preventDefault();
     dispatch(thunk_deleteStory(storyId));
   }
+
 
 
 

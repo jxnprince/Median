@@ -16,7 +16,7 @@ const storyReducer = (state = { story: null, stories: null }, action) => {
     case DELETE_STORY:
       const id = action.storyId;
       delete state.stories[id];
-      return { ...state };
+      return { stories: { ...state.stories } };
 
     default:
       return state;
