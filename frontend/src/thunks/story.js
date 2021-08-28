@@ -2,7 +2,7 @@
 
 
 
-import { getSpecificStory, createStory, getAllStories } from "../actions/story.js";
+import { getSpecificStory, createStory, getAllStories, deleteStory } from "../actions/story.js";
 
 
 
@@ -60,10 +60,28 @@ const thunk_getAllStories = (userId) => async (dispatch) => {
 
 
 
+//DELETE localhost:5000/api/stories/:storyId
+const thunk_deleteStory = (storyId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/stories/${storyId}`, {
+    method: 'DELETE',
+    credentials: "include"
+  });
+
+  if (response.ok) {
+    dispatch(deleteStory(storyId));
+    return;
+  }
+
+  // dispatch to error handler here
+}
+
+
+
 export {
   thunk_getSpecificStory,
   thunk_createStory,
   thunk_getAllStories,
+  thunk_deleteStory,
 
 
 }

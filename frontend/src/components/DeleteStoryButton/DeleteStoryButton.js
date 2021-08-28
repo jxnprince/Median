@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-
+import { thunk_deleteStory } from "../../thunks/story.js";
 
 
 
@@ -13,6 +13,7 @@ const DeleteStoryButton = ({ storyId }) => {
 
   const handleDelete = event => {
     event.preventDefault();
+    dispatch(thunk_deleteStory(storyId));
   }
 
 

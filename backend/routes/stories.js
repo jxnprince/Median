@@ -97,9 +97,8 @@ router.get('/specific/:id(\\d+)', asyncHandler(async (request, response) => {
 
 
 
+//DELETE localhost:5000/api/stories/:id
 
-
-//DELETE localhost:8080/api/stories/:id
 router.delete('/:id(\\d+)', asyncHandler(async (request, response) => {
     const story = await Story.findByPk(request.params.id)
     const destroy = await story.destroy()
