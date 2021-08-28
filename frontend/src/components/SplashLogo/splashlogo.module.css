@@ -1,22 +1,40 @@
+
+
 .splashLogo {
-    height: 40vh;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-
-
-#mainLogo {
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
   border-radius: 100%;
-
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-/* #logoDiv{
-    margin-bottom: 0;
-    padding-bottom: 0;
-} */
+
+
+
+.newsDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.eachNewsArticle {
+  padding: 25px;
+}
+
+
+
+.eachImg {
+  object-fit: contain;
+  width: 294px;
+}
 
 /* #logoblur {
   height: 10px;

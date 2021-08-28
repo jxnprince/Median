@@ -34,14 +34,15 @@ const SplashLogo = () => {
         <img src={'https://i.imgur.com/cJgn5hy.png'} id={styles.mainLogo} className={styles.splashLogo} />
       </div>
 
-      <div>
+
+      <div className={styles.newsDiv}>
         {articles !== null ?
           <>
             {articles.map(eachArticle => (
               <>
-                <div>
+                <div className={styles.eachNewsArticle}>
                   <a href={eachArticle.url} target="_blank" >
-                    <img src={eachArticle.urlToImage} />
+                    <img src={eachArticle.urlToImage} className={styles.eachImg} />
                       <h3> {eachArticle.title} </h3>
                       <h5> {eachArticle.author} </h5>
                     <span> source: {eachArticle.source.name} </span>

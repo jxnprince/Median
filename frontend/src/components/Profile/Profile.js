@@ -12,6 +12,10 @@ import { thunk_getAllStories } from "../../thunks/story.js";
 import styles from "./profile.module.css";
 
 
+import DeleteStoryButton from "../DeleteStoryButton";
+
+
+
 
 const Profile = ({ otherUser=false }) => {
   const { isUser } = useUser();
@@ -22,6 +26,8 @@ const Profile = ({ otherUser=false }) => {
   const stories = useSelector(store => store.storyReducer.stories);
   const otherUsersInfo = useSelector(store => store.otherUsersProfileReducer.user);
   const { userId } = useParams();
+
+
 
 
   useEffect(() => {
@@ -135,6 +141,10 @@ const Profile = ({ otherUser=false }) => {
                     <img src={eachStory.imgUrl} />
                       <h3>{eachStory.title}</h3>
                   </Link>
+                </div>
+
+                <div>
+                  <DeleteStoryButton storyId={eachStory.id} />
                 </div>
               </>
             ))}
