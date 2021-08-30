@@ -144,13 +144,19 @@ const Profile = ({ otherUser=false }) => {
                   </Link>
                 </div>
 
-                <div>
-                  <DeleteStoryButton storyId={eachStory.id} />
-                </div>
+                {eachStory.userId === isUser.id ?
+                  <>
+                    <div>
+                      <DeleteStoryButton storyId={eachStory.id} />
+                    </div>
 
-                <div>
-                  <UpdateStoryButton storyId={eachStory.id} />
-                </div>
+                    <div>
+                      <UpdateStoryButton storyId={eachStory.id} />
+                    </div>
+                  </>
+                  :
+                  <></>
+                }
               </>
             ))}
           </>
