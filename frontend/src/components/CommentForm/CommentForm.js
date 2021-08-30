@@ -3,13 +3,14 @@
 
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 
 
 
 const CommentForm = () => {
   const [ comment, setComment ] = useState('');
-
+  const dispatch = useDispatch();
 
 
 

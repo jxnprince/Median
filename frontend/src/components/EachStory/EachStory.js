@@ -8,6 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunk_getSpecificStory  } from "../../thunks/story.js";
 import { thunk_getComments } from "../../thunks/comment.js";
 
+import CommentForm from "../CommentForm";
+
+
+import styles from "./eachstory.module.css";
+
 
 
 
@@ -41,7 +46,10 @@ const EachStory = () => {
           <Link to={'/'} onClick={event => goBack(event)}> Back </Link>
             <h1>{story.title}</h1>
               <img src={story.imgUrl} />
-                <h3> Likes: {Object.values(story.UserLikes).length}</h3>
+                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
+                  <span>
+                      {Object.values(story.UserLikes).length}
+                  </span>
               <p>{story.postBody}</p>
 
         </div>
@@ -56,6 +64,8 @@ const EachStory = () => {
             </>
           ))}
         </div>
+
+        <CommentForm />
       </>
     )
   }

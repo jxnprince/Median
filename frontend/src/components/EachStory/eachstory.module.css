@@ -1,0 +1,16 @@
+
+
+
+
+
+
+.thumbsup{
+  opacity: 75%;
+  width: 1.5vw;
+  transition: all 0.1s;
+}
+
+.thumbsup:hover{
+  opacity: 100%;
+  padding: -1;
+}
