@@ -14,7 +14,7 @@ import styles from "./profile.module.css";
 
 import DeleteStoryButton from "../DeleteStoryButton";
 import UpdateStoryButton from "../UpdateStoryButton";
-
+import FollowButton from "../FollowButton";
 
 
 
@@ -56,6 +56,8 @@ const Profile = ({ otherUser=false }) => {
           <div className={styles.profile_img}>
             <img src={otherUsersInfo.avatar} className={styles.mainProfileImg} />
           </div>
+
+          <FollowButton userId={otherUsersInfo.id} />
 
           <div className={styles.userinfo}>
             <h3>{otherUsersInfo.firstName}</h3>
