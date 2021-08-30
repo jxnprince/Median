@@ -29,11 +29,11 @@ const FollowButton = ({ userId }) => {
 
   return (
     <>
-      <img
+      {/* <img
         src="https://i.imgur.com/uW1Ryn2.png?1"
-        onClick={event => handleFollow(event)}
         className={styles.thumbsup}
-      />
+        /> */}
+        <button onClick={event => handleFollow(event)} > Follow </button>
     </>
   );
 
