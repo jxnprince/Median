@@ -19,7 +19,7 @@ const storyReducer = (state = { story: null, stories: null }, action) => {
       return { stories: { ...state.stories } };
 
     case UPDATE_STORY:
-      return { stories: { ...state.stories, [action.story.story.id]: action.story.story } }  ;
+      return { stories: { ...state.stories, [action.newStory.newStory.id]: action.newStory.newStory } }  ;
 
     default:
       return state;

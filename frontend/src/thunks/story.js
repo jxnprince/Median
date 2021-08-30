@@ -86,8 +86,8 @@ const thunk_updateStory = (storyId, { imgUrl, postBody, title }) => async (dispa
   });
 
   if(response.ok) {
-    const story = await response.json();
-    dispatch(updateStory(story));
+    const newStory = await response.json();
+    dispatch(updateStory(newStory));
     return;
   }
 

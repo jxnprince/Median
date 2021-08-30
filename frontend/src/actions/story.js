@@ -33,9 +33,9 @@ const deleteStory = (storyId) => ({
 
 
 
-const updateStory = (story) => ({
+const updateStory = (newStory) => ({
   type: UPDATE_STORY,
-  story
+  newStory
 });
 
 

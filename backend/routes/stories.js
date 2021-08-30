@@ -125,7 +125,7 @@ router.put('/:storyId(\\d+)', asyncHandler(async (request, response) => {
 
     updatedStory.update({ imgUrl, postBody, title, updatedAt: new Date() });
 
-    response.json({ story: updatedStory });
+    response.json({ newStory: updatedStory });
 
 }));
 
