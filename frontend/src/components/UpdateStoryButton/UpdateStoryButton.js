@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 
 
 
-const UpdateStoryButton = () => {
+const UpdateStoryButton = ({ storyId }) => {
   const dispatch = useDispatch();
 
 

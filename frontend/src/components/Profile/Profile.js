@@ -13,6 +13,7 @@ import styles from "./profile.module.css";
 
 
 import DeleteStoryButton from "../DeleteStoryButton";
+import UpdateStoryButton from "../UpdateStoryButton";
 
 
 
@@ -145,6 +146,10 @@ const Profile = ({ otherUser=false }) => {
 
                 <div>
                   <DeleteStoryButton storyId={eachStory.id} />
+                </div>
+
+                <div>
+                  <UpdateStoryButton storyId={eachStory.id} />
                 </div>
               </>
             ))}
