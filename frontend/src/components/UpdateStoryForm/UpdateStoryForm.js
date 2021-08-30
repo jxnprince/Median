@@ -1,8 +1,8 @@
 
 
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 
 
 
@@ -11,6 +11,7 @@ const UpdateStoryForm = () => {
   const [imgUrl, setImgUrl] = useState('');
   const [postBody, setPostBody] = useState('');
   const [title, setTitle] = useState('');
+  const { storyId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
 
