@@ -10,8 +10,11 @@ import { thunk_getFeed } from "../../thunks/feed.js";
 
 import CloseModalButton from "../CloseModalButton";
 import CommentForm from "../CommentForm";
+import FollowButton from "../FollowButton";
+
 
 import ReactModal from 'react-modal';
+
 
 
 
@@ -72,7 +75,8 @@ const Feed = () => {
               </div>
 
               <div>
-                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
+                {/* <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> */}
+                <FollowButton />
                 <span className={styles.likeScore}> {`${featured.likes}`} </span>
               </div>
             </div>
@@ -136,7 +140,8 @@ const Feed = () => {
                                   <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
                               </Link>
 
-                                <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.likes}
+                                {/* <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} /> {eachStory.likes} */}
+                                <FollowButton /> {eachStory.likes}
                               </div>
 
                               <div className={styles.shortened_story_img}>
