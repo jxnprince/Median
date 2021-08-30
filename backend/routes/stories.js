@@ -113,44 +113,20 @@ router.delete('/:id(\\d+)', asyncHandler(async (request, response) => {
 
 
 
-// must be here because the put will assign any errors to the updateStoryErrors
-let updateStoryErrors = [];
+
+
 //updates a specific user story
-
-//PUT localhost:8080/api/stories/:storyId/users/:userId
-router.put('/:storyId(\\d+)/users/:userId(\\d+)', asyncHandler(async (request, response) => {
+//PUT localhost:5000/api/stories/:storyId
+router.put('/:storyId(\\d+)', asyncHandler(async (request, response) => {
     const storyId = request.params.storyId;
-    const userId = request.params.userId;
-    const session = request.session.auth;
+    const { imgUrl, postBody, title } = request.body;
 
-    const { the_story_img, the_story_post, the_title } = request.body;
+    const updatedStory = await Story.findByPk(storyId);
 
-    const validationErrors = validationResult(request);
+    updatedStory.update({ imgUrl, postBody, title, updatedAt: new Date() });
 
+    response.json({ story: updatedStory });
 
-    if (validationErrors.errors.length === 0) {
-        const updatedStory = await Story.findByPk(storyId, { where: { userId }, });
-
-        if (updatedStory && session) {
-                updatedStory.update({
-                    imgUrl: the_story_img,
-                    postBody: the_story_post,
-                    title: the_title,
-                    updatedAt: new Date()
-                });
-
-            response.status(200).send();
-        }
-
-    } else {
-
-        console.log(`You hit the story registration error route`)
-
-        const errors = validationErrors.array().map((error) => error.msg);
-        updateStoryErrors = errors;
-        response.status(404).send();
-        response.render('editStory');
-    }
 }));
 
 
