@@ -10,9 +10,12 @@ import { csrfFetch } from '../store/csrf.js';
 
 
 //POST  localhost:5000/api/follows/:userId/:followerId
-const thunk_createFollower = ({ userId, followerId}) => async (dispatch) => {
+const thunk_createFollower = ({ userId, followerId }) => async (dispatch) => {
 
-  const response = await csrfFetch(`/api/follows/${userId}/${followerId}`);
+  const response = await csrfFetch(`/api/follows/${userId}/${followerId}`, {
+    method: 'POST',
+
+  });
 
   if(response.ok) {
     const follower = await response.json();

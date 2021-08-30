@@ -8,7 +8,7 @@ const router = express.Router();
 //POST  localhost:5000/api/follows/:userId/:followerId
 // userId is the user the current logged in user is following
 // followerId is the current logged in users id
-router.post('/', asyncHandler(async (request, response) => {
+router.post('/:userId(\\d+)/:followerId(\\d+)', asyncHandler(async (request, response) => {
     const userId = request.params.userId;
     const followerId = request.params.followerId;
 

@@ -75,7 +75,7 @@ const Feed = () => {
               </div>
 
               <div>
-                <FollowButton />
+                <FollowButton userId={featured.user.id} />
                 <span className={styles.likeScore}> {`${featured.likes}`} </span>
               </div>
             </div>
@@ -139,7 +139,7 @@ const Feed = () => {
                                   <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
                               </Link>
 
-                                <FollowButton /> {eachStory.likes}
+                              <FollowButton userId={eachStory.user.id} /> {eachStory.likes}
                               </div>
 
                               <div className={styles.shortened_story_img}>
