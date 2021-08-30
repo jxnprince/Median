@@ -31,7 +31,10 @@ const EachStory = () => {
   }
 
 
-  if (story !== null && comments !== null) {
+
+
+
+  if ((story !== null && story !== undefined) && (comments !== null && comments !== undefined)) {
     return (
       <>
         <div>
