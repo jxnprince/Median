@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-
+import { thunk_updateStory } from "../../thunks/story.js";
 
 
 
@@ -21,7 +21,7 @@ const UpdateStoryForm = () => {
   const onSubmit = event => {
     event.preventDefault();
     const payload = { imgUrl, postBody, title };
-    // dispatch();
+    dispatch(thunk_updateStory(storyId, payload));
     history.push('/profile');
   };
 
