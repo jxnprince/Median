@@ -1,7 +1,7 @@
 
 
 
-import { GET_SPECIFIC_STORY, CREATE_STORY, GET_ALLSTORIES, DELETE_STORY } from "../types/story.js";
+import { GET_SPECIFIC_STORY, CREATE_STORY, GET_ALLSTORIES, DELETE_STORY, UPDATE_STORY } from "../types/story.js";
 
 
 
@@ -25,10 +25,20 @@ const getAllStories = (stories) => ({
 });
 
 
+
 const deleteStory = (storyId) => ({
   type: DELETE_STORY,
   storyId
-})
+});
+
+
+
+const updateStory = (story) => ({
+  type: UPDATE_STORY,
+  story
+});
+
+
 
 
 export {
@@ -36,5 +46,6 @@ export {
   createStory,
   getAllStories,
   deleteStory,
+  updateStory,
 
 }
