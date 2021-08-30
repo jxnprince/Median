@@ -1,6 +1,6 @@
 
 
-import { getFollowers, getBookmarks, getOtherUser } from "../actions/profile.js";
+import { getFollowers, getBookmarks, getOtherUser, createFollower } from "../actions/profile.js";
 
 
 // import csrfFetch here
@@ -48,10 +48,29 @@ const thunk_getOtherUser = (userId) => async (dispatch) => {
 }
 
 
+//POST  localhost:5000/api/follows/:userId/:followerId
+const thunk_createFollower = ({ userId, followerId }) => async (dispatch) => {
+
+  const response = await csrfFetch(`/api/follows/${userId}/${followerId}`, {
+    method: 'POST',
+
+  });
+
+  if (response.ok) {
+    const follower = await response.json();
+    dispatch(createFollower(follower));
+    return;
+  }
+
+  // dispatch to error handler here
+}
+
+
 
 export {
   thunk_getFollowers,
   thunk_getBookmarks,
   thunk_getOtherUser,
+  thunk_createFollower,
 
 }

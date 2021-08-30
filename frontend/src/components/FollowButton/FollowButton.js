@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { useUser } from "../../context/UserContext.js";
 
-import { thunk_createFollower } from "../../thunks/follow.js";
+import { thunk_createFollower } from "../../thunks/profile";
 
 
 
