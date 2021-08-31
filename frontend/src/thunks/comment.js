@@ -1,6 +1,6 @@
 
 
-import { getComments } from "../actions/comment.js";
+import { getComments, newComment } from "../actions/comment.js";
 
 
 
@@ -23,8 +23,23 @@ const thunk_getComments = (storyId) => async (dispatch) => {
 
 
 
+const thunk_newComment = (storyId) => async (dispatch) => {
+  const response = await csrfFetch(``);
+
+  if(response.ok) {
+    const comment = await response.json();
+    dispatch(newComment(comment));
+    return;
+  }
+  // dispatch to error handler here
+
+};
+
+
+
 
 export {
   thunk_getComments,
+  thunk_newComment,
 
 }
