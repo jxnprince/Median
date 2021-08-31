@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import styles from "./feed.module.css";
 
 import { thunk_getFeed } from "../../thunks/feed.js";
+import { thunk_getComments } from "../../thunks/comment.js";
+
 
 
 import CloseModalButton from "../CloseModalButton";
@@ -20,9 +22,9 @@ import ReactModal from 'react-modal';
 
 const Feed = () => {
   const [showModal, setShowModal] = useState(false);
-  const [showFeedModal, setShowFeedModal] = useState(false);
   const dispatch =  useDispatch();
   const featured = useSelector(store => store.feedReducer.featured);
+  const featuredComments = useSelector(store => store.commentReducer.comments)
   const stories = useSelector(store => store.feedReducer.featuredStories);
 
 
@@ -30,6 +32,16 @@ const Feed = () => {
   useEffect(() => {
     dispatch(thunk_getFeed());
   },[dispatch]);
+
+
+
+  useEffect(() => {
+    if (featured !== null) {
+      dispatch(thunk_getComments(featured.id));
+    }
+  }, [featured]);
+
+
 
 
   const closeModal = () => {
@@ -94,20 +106,28 @@ const Feed = () => {
 
 
                 <div className={styles.featured_comments}>
-                    {/* {featured.Comments.map(eachComment => (
-                      <>
-                        <Link to={`/profile/${eachComment.User.id}`} >
-                          <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
+                  {featuredComments !== null ?
+                    <>
+                      {featuredComments.map(eachComment => (
+                        <>
+                          <Link to={`/profile/${eachComment.userId}`} >
+                            <img src={eachComment.User.avatar} className={styles.featured_comment_avatar} />
                             <span className={styles.featured_comment_userName} >
                               {`${eachComment.User.firstName}. ${eachComment.User.lastName} :`}
                             </span>
-                        </Link>
-                          <br />
+                          </Link>
+                            <br />
 
                             <p className={styles.featured_comment_body}> {`${eachComment.body}`} </p>
                             <span className={styles.featured_comment_date}> {`${eachComment.createdAt}`} </span>
-                      </>
-                    ))} */}
+                        </>
+                      ))}
+                    </>
+                    :
+                    <>
+                      <h2>Loading comments...</h2>
+                    </>
+                  }
                 </div>
 
                   <CommentForm />
