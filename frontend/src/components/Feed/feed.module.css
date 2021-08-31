@@ -69,16 +69,7 @@
   align-items: center;
 }
 
-.thumbsup{
-  opacity: 75%;
-  width: 1.5vw;
-  transition: all 0.1s;
-}
 
-.thumbsup:hover{
-  opacity: 100%;
-  padding: -1;
-}
 
 .likeScore {
 	text-decoration: bold;
@@ -244,6 +235,20 @@
   opacity: 100%;
 	padding: 1;
 }
+
+
+
+.thumbsup{
+  opacity: 75%;
+  width: 1.5vw;
+  transition: all 0.1s;
+}
+
+.thumbsup:hover{
+  opacity: 100%;
+  padding: -1;
+}
+
 
 /* .shortened_story-likes-amount {
 	margin: 1vw;

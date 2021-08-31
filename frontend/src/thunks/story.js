@@ -2,7 +2,7 @@
 
 
 
-import { getSpecificStory, createStory, getAllStories, deleteStory } from "../actions/story.js";
+import { getSpecificStory, createStory, getAllStories, deleteStory, updateStory } from "../actions/story.js";
 
 
 
@@ -77,11 +77,35 @@ const thunk_deleteStory = (storyId) => async (dispatch) => {
 
 
 
+
+//PUT localhost:5000/api/stories/:storyId
+const thunk_updateStory = (storyId, { imgUrl, postBody, title }) => async (dispatch) => {
+  const response = await csrfFetch(`/api/stories/${storyId}`, {
+    method: 'PUT',
+    body: JSON.stringify({ imgUrl, postBody, title })
+  });
+
+  if(response.ok) {
+    const newStory = await response.json();
+    dispatch(updateStory(newStory));
+    return;
+  }
+
+  // dispatch to error handler here
+};
+
+
+
+
+
+
+
 export {
   thunk_getSpecificStory,
   thunk_createStory,
   thunk_getAllStories,
   thunk_deleteStory,
+  thunk_updateStory,
 
 
 }

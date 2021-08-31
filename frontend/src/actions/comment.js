@@ -1,7 +1,7 @@
 
 
 
-import { GET_COMMENTS } from "../types/comment.js";
+import { GET_COMMENTS, NEW_COMMENT } from "../types/comment.js";
 
 
 
@@ -12,7 +12,19 @@ const getComments = (comments) => ({
 
 
 
+const newComment = (comment) => {
+  return {
+    type: NEW_COMMENT,
+    comment: { ...comment.comment, User: comment.User }
+  }
+};
+
+
+
+
 export {
   getComments,
+  newComment,
+
 
 }

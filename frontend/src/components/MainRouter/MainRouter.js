@@ -12,6 +12,7 @@ import Feed from "../Feed";
 import EachStory from "../EachStory";
 import Profile from "../Profile";
 import NewStory from "../NewStory";
+import UpdateStoryForm from "../UpdateStoryForm";
 
 
 
@@ -53,6 +54,12 @@ const MainRouter = () => {
           <Route path='/newstory' exact>
             <Navbar />
             <NewStory />
+          </Route>
+
+
+          <Route path='/updatestory/:storyId' exact>
+            <Navbar />
+            <UpdateStoryForm />
           </Route>
 
 

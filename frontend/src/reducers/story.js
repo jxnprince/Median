@@ -1,6 +1,6 @@
 
 
-import { GET_SPECIFIC_STORY, CREATE_STORY, GET_ALLSTORIES, DELETE_STORY } from "../types/story.js";
+import { GET_SPECIFIC_STORY, CREATE_STORY, GET_ALLSTORIES, DELETE_STORY, UPDATE_STORY } from "../types/story.js";
 
 
 
@@ -17,6 +17,9 @@ const storyReducer = (state = { story: null, stories: null }, action) => {
       const id = action.storyId;
       delete state.stories[id];
       return { stories: { ...state.stories } };
+
+    case UPDATE_STORY:
+      return { stories: { ...state.stories, [action.newStory.newStory.id]: action.newStory.newStory } }  ;
 
     default:
       return state;

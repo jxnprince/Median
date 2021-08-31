@@ -26,29 +26,24 @@ router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
 
 
 
-// //POST localhost:8080/api/comments/:id
-// router.post('/:id(\\d+)', createCommentValidator, csrfProtection, asyncHandler(async (req, res) => {
-//     const storyId = req.params.id;
-//     const userId = req.session.auth.userId;
-//     const comment = req.body.body;
 
-//     const validationErrors = validationResult(req)
+// POST localhost:5000/api/comments/:userId/:storyId
+router.post('/:userId(\\d+)/:storyId(\\d+)', asyncHandler(async (request, response) => {
+    const userId = request.params.userId;
+    const storyId = request.params.storyId;
+    const body = request.body.body;
+
+    const comment = await Comment.create({ body, userId, storyId });
+
+    const user = await User.findByPk(userId, { attributes: ["firstName", "lastName", "avatar"] });
+
+    const result = { comment, User: user };
+
+    response.json(result);
+
+}));
 
 
-//     if (validationErrors.isEmpty()) {
-//         const newComment = await Comment.create({ body: comment, userId, storyId });
-//         if (newComment) {
-//             res.redirect(`/stories/${storyId}`);
-
-//         } else {
-//             res.json({ messsage: "Comment not created" });
-//         }
-//     } else {
-
-//         const errors = validationErrors.array().map((error) => error.msg);
-//         res.render('singlestory', { errors, csrfToken: req.csrfToken() });
-//     }
-// }))
 
 
 // //PUT localhost:8080/api/comments/:id
@@ -78,6 +73,7 @@ router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
 
 
 
+
 // //DELETE localhost:8080/api/comments/:commentId
 // router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
 //     const commentId = req.params.id;
@@ -94,5 +90,7 @@ router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
 //     }
 
 // }));
+
+
 
 module.exports = router;
