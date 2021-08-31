@@ -12,10 +12,12 @@ const getComments = (comments) => ({
 
 
 
-const newComment = (comment) => ({
-  type: NEW_COMMENT,
-  comment
-});
+const newComment = (comment) => {
+  return {
+    type: NEW_COMMENT,
+    comment: { ...comment.comment, User: comment.User }
+  }
+};
 
 
 

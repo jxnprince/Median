@@ -23,8 +23,13 @@ const thunk_getComments = (storyId) => async (dispatch) => {
 
 
 
-const thunk_newComment = (storyId) => async (dispatch) => {
-  const response = await csrfFetch(``);
+
+// POST localhost:5000/api/comments/:userId/:storyId
+const thunk_newComment = ({ userId, storyId, body }) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${userId}/${storyId}`, {
+    method: 'POST',
+    body: JSON.stringify({ body })
+  });
 
   if(response.ok) {
     const comment = await response.json();

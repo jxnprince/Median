@@ -65,7 +65,7 @@ const EachStory = () => {
           ))}
         </div>
 
-        <CommentForm />
+        <CommentForm storyId={story.id} />
       </>
     )
   }

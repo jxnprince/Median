@@ -130,7 +130,7 @@ const Feed = () => {
                   }
                 </div>
 
-                  <CommentForm />
+                  <CommentForm storyId={featured.id} />
 
                   <CloseModalButton closeModal={closeModal} />
               </ReactModal>
