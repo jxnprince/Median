@@ -9,6 +9,7 @@ import { thunk_getSpecificStory  } from "../../thunks/story.js";
 import { thunk_getComments } from "../../thunks/comment.js";
 
 import CommentForm from "../CommentForm";
+import DeleteCommentButton from "../DeleteCommentButton";
 
 
 import styles from "./eachstory.module.css";
@@ -61,6 +62,8 @@ const EachStory = () => {
               <img src={eachComment.User.avatar} />
               <span > {`${eachComment.User.firstName} ${eachComment.User.lastName}`} </span>
               <p> {eachComment.body} </p>
+
+              <DeleteCommentButton commentId={eachComment.id} commenterId={eachComment.userId} />
             </>
           ))}
         </div>

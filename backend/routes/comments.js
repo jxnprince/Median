@@ -16,7 +16,7 @@ router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
         include: [
             {
                 model: User,
-                attributes: ["firstName", "lastName", "avatar"]
+                attributes: [ "firstName", "lastName", "avatar", "id" ]
             }
         ]
     });
@@ -74,22 +74,18 @@ router.post('/:userId(\\d+)/:storyId(\\d+)', asyncHandler(async (request, respon
 
 
 
-// //DELETE localhost:8080/api/comments/:commentId
-// router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
-//     const commentId = req.params.id;
-//     const userId = req.session.auth.userId;
-//     const commentQuery = await Comment.findByPk(commentId, {
-//         where: { userId }
-//     });
+//DELETE localhost:5000/api/comments/:commentId
+router.delete('/:id(\\d+)', asyncHandler(async (request, response) => {
+    const commentId = request.params.id;
 
-//     if (commentQuery) {
-//         commentQuery.destroy()
-//         res.json({ "status": 200 });
-//     } else {
-//         res.json({ "status": 500, "message": "Error, could not delete comment." });
-//     }
+    const comment = await Comment.findByPk(commentId);
 
-// }));
+    comment.destroy();
+
+    response.json({ commentId: commentId });
+
+
+}));
 
 
 

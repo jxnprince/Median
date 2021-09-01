@@ -12,6 +12,7 @@ import { thunk_getComments } from "../../thunks/comment.js";
 
 import CloseModalButton from "../CloseModalButton";
 import CommentForm from "../CommentForm";
+import DeleteCommentButton from "../DeleteCommentButton";
 import FollowButton from "../FollowButton";
 
 
@@ -120,6 +121,8 @@ const Feed = () => {
 
                             <p className={styles.featured_comment_body}> {`${eachComment.body}`} </p>
                             <span className={styles.featured_comment_date}> {`${eachComment.createdAt}`} </span>
+
+                          <DeleteCommentButton commentId={eachComment.id} commenterId={eachComment.userId} />
                         </>
                       ))}
                     </>
