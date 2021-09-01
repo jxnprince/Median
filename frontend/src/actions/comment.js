@@ -1,7 +1,7 @@
 
 
 
-import { GET_COMMENTS, NEW_COMMENT } from "../types/comment.js";
+import { GET_COMMENTS, NEW_COMMENT, DELETE_COMMENT } from "../types/comment.js";
 
 
 
@@ -21,10 +21,18 @@ const newComment = (comment) => {
 
 
 
+const deleteComment = (commentId) => ({
+  type: DELETE_COMMENT,
+  commentId
+});
+
+
+
 
 export {
   getComments,
   newComment,
+  deleteComment,
 
 
 }
