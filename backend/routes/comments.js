@@ -16,7 +16,7 @@ router.get('/:id(\\d+)', asyncHandler(async (request, response) => {
         include: [
             {
                 model: User,
-                attributes: ["firstName", "lastName", "avatar"]
+                attributes: [ "firstName", "lastName", "avatar", "id" ]
             }
         ]
     });
