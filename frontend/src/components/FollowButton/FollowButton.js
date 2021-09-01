@@ -12,13 +12,22 @@ import { thunk_createFollower } from "../../thunks/profile";
 
 
 
-const FollowButton = ({ userId }) => {
-  const [ followed, setFollowed ] = useState(false);
+const FollowButton = ({ userId, setFollowed }) => {
   const { isUser } = useUser();
   const followers = useSelector(store => store.followersReducer.followers);
   const dispatch = useDispatch();
   // const history = useHistory();
 
+
+
+
+
+  const handleUnfollow = event => {
+    event.preventDefault();
+    // dispatch to unfollow thunk
+
+    setFollowed(false);
+  }
 
 
 
@@ -37,13 +46,13 @@ const FollowButton = ({ userId }) => {
 
   return (
     <>
-      {followed ?
+      {followers?.[userId] === undefined ?
         <>
-        {/* unfollow button here */}
+          <button onClick={event => handleFollow(event)} > Follow </button>
         </>
         :
         <>
-          <button onClick={event => handleFollow(event)} > Follow </button>
+          <button onClick={event => handleUnfollow(event)} > Unfollow </button>
         </>
       }
     </>

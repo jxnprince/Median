@@ -25,6 +25,7 @@ import ReactModal from 'react-modal';
 
 const Feed = () => {
   const [showModal, setShowModal] = useState(false);
+  const [followed, setFollowed] = useState(null);
   const { isUser } = useUser();
   const dispatch =  useDispatch();
   const featured = useSelector(store => store.feedReducer.featured);
@@ -36,7 +37,7 @@ const Feed = () => {
   useEffect(() => {
     dispatch(thunk_getFeed());
     dispatch(thunk_getAllFollowers(isUser.id));
-  },[dispatch]);
+  }, [dispatch, followed]);
 
 
 
@@ -92,7 +93,7 @@ const Feed = () => {
               </div>
 
               <div>
-                <FollowButton userId={featured.user.id} />
+                <FollowButton userId={featured.user.id} setFollowed={setFollowed}/>
                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                 <span className={styles.likeScore}> {`${featured.likes}`} </span>
               </div>
@@ -167,7 +168,7 @@ const Feed = () => {
                                   <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
                               </Link>
 
-                                <FollowButton userId={eachStory.user.id} />
+                              <FollowButton userId={eachStory.user.id} setFollowed={setFollowed} />
                                   <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                                     {eachStory.likes}
                               </div>
