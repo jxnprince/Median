@@ -20,18 +20,6 @@ const FollowButton = ({ userId, setFollowed }) => {
 
 
 
-
-
-  const handleUnfollow = event => {
-    event.preventDefault();
-    // dispatch to unfollow thunk
-
-    setFollowed(false);
-  }
-
-
-
-
   const handleFollow = event => {
     // userId:      is the user the logged in user is going to follow
     // followerId:  is the current logged in users id
@@ -44,6 +32,15 @@ const FollowButton = ({ userId, setFollowed }) => {
 
 
 
+  const handleUnfollow = (event, followObject) => {
+    event.preventDefault();
+    // console.log(followObject.userId, " <-- followObject");
+    // dispatch to unfollow thunk
+    dispatch();
+    setFollowed(false);
+  }
+
+
   return (
     <>
       {followers?.[userId] === undefined ?
@@ -52,7 +49,7 @@ const FollowButton = ({ userId, setFollowed }) => {
         </>
         :
         <>
-          <button onClick={event => handleUnfollow(event)} > Unfollow </button>
+          <button onClick={event => handleUnfollow(event, followers?.[userId])} > Unfollow </button>
         </>
       }
     </>
