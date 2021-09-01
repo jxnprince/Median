@@ -19,7 +19,7 @@ router.get('/:userId(\\d+)', asyncHandler(async (request, response) => {
         result[eachPerson.userId] = eachPerson;
     });
 
-    response.json({ following: result });
+    response.json({ followers: result });
 }));
 
 

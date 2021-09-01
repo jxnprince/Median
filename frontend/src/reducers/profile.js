@@ -1,13 +1,13 @@
 
 
 
-import { GET_FOLLOWERS, GET_BOOKMARKS, GET_OTHERUSER, CREATE_FOLLOWER } from "../types/profile.js";
+import { GET_FOLLOWERS, GET_BOOKMARKS, GET_OTHERUSER, CREATE_FOLLOWER, GET_ALLFOLLOWERS } from "../types/profile.js";
 
 
 
 
 
-const followersReducer = (state = { stories: null, follower: null }, action) => {
+const followersReducer = (state = { stories: null, follower: null, followers: null }, action) => {
   switch (action.type) {
     case GET_FOLLOWERS:
       return { ...action.stories };
@@ -15,6 +15,8 @@ const followersReducer = (state = { stories: null, follower: null }, action) => 
     case CREATE_FOLLOWER:
       return { ...state, ...action.follower };
 
+    case GET_ALLFOLLOWERS:
+      return { ...state, ...action.followers };
     default:
       return state;
   }

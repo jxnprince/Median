@@ -2,7 +2,7 @@
 import styles from "./followbutton.module.css";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import { useUser } from "../../context/UserContext.js";
 
@@ -15,10 +15,9 @@ import { thunk_createFollower } from "../../thunks/profile";
 const FollowButton = ({ userId }) => {
   const [ followed, setFollowed ] = useState(false);
   const { isUser } = useUser();
-
+  const followers = useSelector(store => store.followersReducer.followers);
   const dispatch = useDispatch();
   // const history = useHistory();
-
 
 
 
