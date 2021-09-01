@@ -1,7 +1,7 @@
 
 
 
-import { GET_FOLLOWERS, GET_BOOKMARKS, GET_OTHERUSER, CREATE_FOLLOWER, GET_ALLFOLLOWERS } from "../types/profile.js";
+import { GET_FOLLOWERS, GET_BOOKMARKS, GET_OTHERUSER, CREATE_FOLLOWER, GET_ALLFOLLOWERS, DELETE_FOLLOWER } from "../types/profile.js";
 
 
 
@@ -17,6 +17,12 @@ const followersReducer = (state = { stories: null, follower: null, followers: nu
 
     case GET_ALLFOLLOWERS:
       return { ...state, ...action.followers };
+
+    case DELETE_FOLLOWER:
+      const id = action.followerId
+      delete state.followers[id];
+      return { followers: { ...state.followers } }
+
     default:
       return state;
   }

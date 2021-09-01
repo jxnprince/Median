@@ -1,6 +1,6 @@
 
 
-import { getFollowers, getBookmarks, getOtherUser, createFollower, getAllFollowers } from "../actions/profile.js";
+import { getFollowers, getBookmarks, getOtherUser, createFollower, getAllFollowers, deleteFollower } from "../actions/profile.js";
 
 
 // import csrfFetch here
@@ -83,6 +83,22 @@ const thunk_getAllFollowers = (userId) => async (dispatch) => {
 
 
 
+//DELETE localhost:5000/api/follows/:userId
+const thunk_deleteFollower = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/follows/${userId}`, {
+    method: 'DELETE',
+    credentials: "include"
+  });
+
+  if (response.ok) {
+    dispatch(deleteFollower(userId));
+    return;
+  }
+
+  // dispatch to error handler here
+
+}
+
 
 
 export {
@@ -91,5 +107,7 @@ export {
   thunk_getOtherUser,
   thunk_createFollower,
   thunk_getAllFollowers,
+  thunk_deleteFollower,
+
 
 }

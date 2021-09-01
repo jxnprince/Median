@@ -1,6 +1,6 @@
 
 
-import { GET_FOLLOWERS, GET_BOOKMARKS, GET_OTHERUSER, CREATE_FOLLOWER, GET_ALLFOLLOWERS } from "../types/profile.js";
+import { GET_FOLLOWERS, GET_BOOKMARKS, GET_OTHERUSER, CREATE_FOLLOWER, GET_ALLFOLLOWERS, DELETE_FOLLOWER } from "../types/profile.js";
 
 
 
@@ -40,12 +40,20 @@ const getAllFollowers = (followers) => ({
 
 
 
+const deleteFollower = (followerId) => ({
+  type: DELETE_FOLLOWER,
+  followerId
+});
+
+
+
 export {
   getFollowers,
   getBookmarks,
   getOtherUser,
   createFollower,
   getAllFollowers,
+  deleteFollower,
 
 
 };
