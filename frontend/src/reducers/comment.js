@@ -18,14 +18,16 @@ const commentReducer = (state = { comments: null }, action) => {
       const id = action.commentId;
       // normalize to find correct comment object to delete
       const normalized = {};
-
+      // need to change backend API to give normalized data -- this approach is
+      // less time efficient but change would require more code refactor in
+      // other frontend components
       state.comments.forEach(eachComment => {
         normalized[eachComment.id] = eachComment;
       });
 
       delete normalized[id];
-
-      return { comments: [ ...Object.values(normalized) ] };
+      // .reverse called here because order of comments was changing
+      return { comments: [ ...Object.values(normalized).reverse() ] };
 
 
     default:
