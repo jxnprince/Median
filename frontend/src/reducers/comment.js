@@ -12,7 +12,7 @@ const commentReducer = (state = { comments: null }, action) => {
       return { ...action.comments };
 
     case NEW_COMMENT:
-      return { comments: [ ...state.comments, action.comment ] };
+      return { comments: [ action.comment, ...state.comments ] };
 
     case DELETE_COMMENT:
       const id = action.commentId;

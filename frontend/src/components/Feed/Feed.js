@@ -124,7 +124,7 @@ const Feed = () => {
                             <p className={styles.featured_comment_body}> {`${eachComment.body}`} </p>
                             <span className={styles.featured_comment_date}> {`${eachComment.createdAt}`} </span>
 
-                          {isUser.id === eachComment.User.id ?
+                          {isUser.id === eachComment.userId ?
                             <>
                               <DeleteCommentButton commentId={eachComment.id} />
                             </>
