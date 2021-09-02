@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useUser } from "../../context/UserContext.js";
 
-import { thunk_createFollower } from "../../thunks/profile";
+import { thunk_createFollower, thunk_deleteFollower } from "../../thunks/profile";
 
 
 
@@ -34,11 +34,10 @@ const FollowButton = ({ userId, setFollowed }) => {
 
   const handleUnfollow = (event, followObject) => {
     event.preventDefault();
-    // console.log(followObject.userId, " <-- followObject");
-    // dispatch to unfollow thunk
-    dispatch();
+    dispatch(thunk_deleteFollower(followObject.userId));
     setFollowed(false);
   }
+
 
 
   return (
