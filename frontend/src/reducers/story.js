@@ -16,10 +16,10 @@ const storyReducer = (state = { story: null, stories: null }, action) => {
     case DELETE_STORY:
       const id = action.storyId;
       delete state.stories[id];
-      return { stories: { ...state.stories } };
+      return { ...state, stories: { ...state.stories } };
 
     case UPDATE_STORY:
-      return { stories: { ...state.stories, [action.newStory.newStory.id]: action.newStory.newStory } }  ;
+      return { ...state, stories: { ...state.stories, [action.newStory.newStory.id]: action.newStory.newStory } }  ;
 
     default:
       return state;

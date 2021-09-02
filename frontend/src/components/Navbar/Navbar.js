@@ -43,7 +43,7 @@ const Navbar = () => {
       <>
         <nav>
           <li>
-            <NavLink to={'/'} > Home </NavLink>
+            <NavLink to={'/'} > <img src={'https://i.imgur.com/IgoFy68.png'} /> </NavLink>
           </li>
 
           <li>
@@ -55,11 +55,11 @@ const Navbar = () => {
           </li>
 
           <li>
-            <NavLink to={'/newstory'} > New Story </NavLink>
+            <NavLink to={'/newstory'} > <img src={'https://i.imgur.com/kh845iH.png?1'} /> </NavLink>
           </li>
 
           <li>
-            <NavLink to={'/'} onClick={event => handleLogout(event)} > Logout </NavLink>
+            <NavLink to={'/'} onClick={event => handleLogout(event)} > <img src={'https://i.imgur.com/KP11L1y.png?1'} /> </NavLink>
           </li>
         </nav>
       </>
@@ -72,11 +72,7 @@ const Navbar = () => {
     <>
       <nav>
         <li>
-          <NavLink to={'/'} > Home </NavLink>
-        </li>
-
-        <li>
-          <NavLink to={'/login'} > <img src={'https://i.imgur.com/Yr0lEE7.png?1'} className={styles.displayLoginFormButton}/> </NavLink>
+          <NavLink to={'/'} > <img src={'https://i.imgur.com/IgoFy68.png'} /> </NavLink>
         </li>
 
         <li>
@@ -85,6 +81,10 @@ const Navbar = () => {
 
         <li>
           <NavLink to={'/'} onClick={event => handleDemoLogin(event)} > Demo </NavLink>
+        </li>
+
+        <li>
+          <NavLink to={'/login'} > <img src={'https://i.imgur.com/Yr0lEE7.png?1'} className={styles.displayLoginFormButton}/> </NavLink>
         </li>
       </nav>
     </>

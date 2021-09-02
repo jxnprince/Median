@@ -2,25 +2,21 @@
 import styles from "./followbutton.module.css";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import { useUser } from "../../context/UserContext.js";
 
-import { thunk_createFollower } from "../../thunks/profile";
+import { thunk_createFollower, thunk_deleteFollower } from "../../thunks/profile";
 
 
 
 
 
 const FollowButton = ({ userId }) => {
-  const [ followed, setFollowed ] = useState(false);
   const { isUser } = useUser();
-
+  const followers = useSelector(store => store.followersReducer.followers);
   const dispatch = useDispatch();
   // const history = useHistory();
-
-
-
 
 
 
@@ -30,21 +26,27 @@ const FollowButton = ({ userId }) => {
     event.preventDefault();
     const payload = { userId, followerId: isUser.id };
     dispatch(thunk_createFollower(payload));
-    setFollowed(true);
     // history.push('/feed');
+  }
+
+
+
+  const handleUnfollow = (event, followObject) => {
+    event.preventDefault();
+    dispatch(thunk_deleteFollower(followObject.userId));
   }
 
 
 
   return (
     <>
-      {followed ?
+      {followers?.[userId] === undefined ?
         <>
-        {/* unfollow button here */}
+          <button onClick={event => handleFollow(event)} > Follow </button>
         </>
         :
         <>
-          <button onClick={event => handleFollow(event)} > Follow </button>
+          <button onClick={event => handleUnfollow(event, followers?.[userId])} > Unfollow </button>
         </>
       }
     </>

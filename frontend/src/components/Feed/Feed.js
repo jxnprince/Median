@@ -7,7 +7,9 @@ import styles from "./feed.module.css";
 
 import { thunk_getFeed } from "../../thunks/feed.js";
 import { thunk_getComments } from "../../thunks/comment.js";
+import { thunk_getAllFollowers } from "../../thunks/profile";
 
+import { useUser } from "../../context/UserContext.js";
 
 
 import CloseModalButton from "../CloseModalButton";
@@ -23,6 +25,8 @@ import ReactModal from 'react-modal';
 
 const Feed = () => {
   const [showModal, setShowModal] = useState(false);
+  const [followed, setFollowed] = useState(null);
+  const { isUser } = useUser();
   const dispatch =  useDispatch();
   const featured = useSelector(store => store.feedReducer.featured);
   const featuredComments = useSelector(store => store.commentReducer.comments)
@@ -32,7 +36,8 @@ const Feed = () => {
 
   useEffect(() => {
     dispatch(thunk_getFeed());
-  },[dispatch]);
+    dispatch(thunk_getAllFollowers(isUser.id));
+  }, [dispatch, followed]);
 
 
 
@@ -163,7 +168,7 @@ const Feed = () => {
                                   <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
                               </Link>
 
-                                <FollowButton userId={eachStory.user.id} />
+                              <FollowButton userId={eachStory.user.id}  />
                                   <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                                     {eachStory.likes}
                               </div>

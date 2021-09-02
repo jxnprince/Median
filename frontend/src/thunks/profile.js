@@ -1,6 +1,6 @@
 
 
-import { getFollowers, getBookmarks, getOtherUser, createFollower } from "../actions/profile.js";
+import { getFollowers, getBookmarks, getOtherUser, createFollower, getAllFollowers, deleteFollower } from "../actions/profile.js";
 
 
 // import csrfFetch here
@@ -44,6 +44,7 @@ const thunk_getOtherUser = (userId) => async (dispatch) => {
     return;
   }
   // dispatch error handler here
+  // dispatch error handler here
 
 }
 
@@ -67,10 +68,46 @@ const thunk_createFollower = ({ userId, followerId }) => async (dispatch) => {
 
 
 
+// GET localhost:5000/api/follows/:userId
+const thunk_getAllFollowers = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/follows/${userId}`);
+  if (response.ok) {
+    const followers = await response.json();
+    dispatch(getAllFollowers(followers));
+    return;
+  }
+  // dispatch error handler here
+
+}
+
+
+
+
+//DELETE localhost:5000/api/follows/:userId
+const thunk_deleteFollower = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/follows/${userId}`, {
+    method: 'DELETE',
+    credentials: "include"
+  });
+
+  if (response.ok) {
+    dispatch(deleteFollower(userId));
+    return;
+  }
+
+  // dispatch to error handler here
+
+}
+
+
+
 export {
   thunk_getFollowers,
   thunk_getBookmarks,
   thunk_getOtherUser,
   thunk_createFollower,
+  thunk_getAllFollowers,
+  thunk_deleteFollower,
+
 
 }
