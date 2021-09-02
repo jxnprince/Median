@@ -13,7 +13,14 @@ const followersReducer = (state = { stories: null, follower: null, followers: nu
       return { ...state, ...action.stories };
 
     case CREATE_FOLLOWER:
-      return { ...state, ...action.follower };
+      return {
+        ...state,
+        ...action.follower,
+        followers: {
+          ...state.followers,
+          [action.follower.follower.userId]: { userId: action.follower.follower.userId }
+        }
+      };
 
     case GET_ALLFOLLOWERS:
       return { ...state, ...action.followers };

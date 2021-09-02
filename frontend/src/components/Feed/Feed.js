@@ -93,7 +93,7 @@ const Feed = () => {
               </div>
 
               <div>
-                <FollowButton userId={featured.user.id} setFollowed={setFollowed}/>
+                <FollowButton userId={featured.user.id} />
                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                 <span className={styles.likeScore}> {`${featured.likes}`} </span>
               </div>
@@ -168,7 +168,7 @@ const Feed = () => {
                                   <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
                               </Link>
 
-                              <FollowButton userId={eachStory.user.id} setFollowed={setFollowed} />
+                              <FollowButton userId={eachStory.user.id}  />
                                   <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                                     {eachStory.likes}
                               </div>

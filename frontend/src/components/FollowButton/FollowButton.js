@@ -12,7 +12,7 @@ import { thunk_createFollower, thunk_deleteFollower } from "../../thunks/profile
 
 
 
-const FollowButton = ({ userId, setFollowed }) => {
+const FollowButton = ({ userId }) => {
   const { isUser } = useUser();
   const followers = useSelector(store => store.followersReducer.followers);
   const dispatch = useDispatch();
@@ -26,7 +26,6 @@ const FollowButton = ({ userId, setFollowed }) => {
     event.preventDefault();
     const payload = { userId, followerId: isUser.id };
     dispatch(thunk_createFollower(payload));
-    setFollowed(true);
     // history.push('/feed');
   }
 
@@ -35,7 +34,6 @@ const FollowButton = ({ userId, setFollowed }) => {
   const handleUnfollow = (event, followObject) => {
     event.preventDefault();
     dispatch(thunk_deleteFollower(followObject.userId));
-    setFollowed(false);
   }
 
 
