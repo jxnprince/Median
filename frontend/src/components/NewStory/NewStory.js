@@ -7,6 +7,10 @@ import { thunk_createStory } from "../../thunks/story.js";
 import { useUser } from "../../context/UserContext.js";
 
 
+import styles from "./newstory.module.css";
+
+
+
 const NewStory = () => {
   const [ imgUrl, setImgUrl ] = useState('');
   const [ postBody, setPostBody ] = useState('');
@@ -32,7 +36,7 @@ const NewStory = () => {
 
   return (
     <>
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={styles.new_story_form}>
       <label>
         Image
         <input
@@ -40,6 +44,7 @@ const NewStory = () => {
           value={imgUrl}
           onChange={event => setImgUrl(event.target.value)}
         />
+          <br />
       </label>
 
       <label>
@@ -48,6 +53,7 @@ const NewStory = () => {
           value={postBody}
           onChange={event => setPostBody(event.target.value)}
         />
+          <br />
       </label>
 
       <label>
@@ -57,6 +63,7 @@ const NewStory = () => {
           value={title}
           onChange={event => setTitle(event.target.value)}
         />
+          <br />
       </label>
 
 

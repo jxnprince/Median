@@ -1,0 +1,19 @@
+
+
+
+
+
+.new_story_form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+
+.new_story_form form{
+
+}
