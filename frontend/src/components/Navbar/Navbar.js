@@ -41,7 +41,7 @@ const Navbar = () => {
   if(isUser) {
     return (
       <>
-        <nav>
+        <nav className={styles.nav_class} >
           <li>
             <NavLink to={'/'} > <img className={styles.resize} src={'https://i.imgur.com/IgoFy68.png'} /> </NavLink>
           </li>
@@ -70,7 +70,7 @@ const Navbar = () => {
   // if the user is NOT logged in
   return (
     <>
-      <nav>
+      <nav className={styles.nav_class} >
         <li>
           <NavLink to={'/'} > <img className={styles.resize} src={'https://i.imgur.com/IgoFy68.png'} /> </NavLink>
         </li>

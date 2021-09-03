@@ -11,6 +11,10 @@
   padding: 1px;
 }
 
+.nav_class li{
+  list-style: none;
+}
+
 
 
 .resize {
