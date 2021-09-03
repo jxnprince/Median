@@ -38,6 +38,7 @@ const SignupForm = () => {
           onChange={event => setEmail(event.target.value)}
           placeholder="Email"
           />
+          <br />
 
         <input
           type="text"
@@ -45,6 +46,7 @@ const SignupForm = () => {
           onChange={event => setFirstName(event.target.value)}
           placeholder="First Name"
           />
+          <br />
 
         <input
           type="text"
@@ -52,6 +54,7 @@ const SignupForm = () => {
           onChange={event => setLastName(event.target.value)}
           placeholder="Last Name"
           />
+          <br />
 
         <input
           type="password"
@@ -59,6 +62,7 @@ const SignupForm = () => {
           onChange={event => setPassword(event.target.value)}
           placeholder="Password"
           />
+          <br />
 
         <input
           type="password"
@@ -66,6 +70,7 @@ const SignupForm = () => {
           onChange={event => setCongPassword(event.target.value)}
           placeholder="Confirm Password"
           />
+          <br />
 
           <div className={styles.buttons}>
           <button type="submit"> Sign Up </button>
