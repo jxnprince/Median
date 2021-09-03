@@ -27,6 +27,8 @@ import ReactModal from 'react-modal';
 
 
 
+
+
 const Feed = () => {
   const [showModal, setShowModal] = useState(false);
   const [followed, setFollowed] = useState(null);

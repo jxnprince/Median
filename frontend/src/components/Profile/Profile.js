@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
@@ -15,7 +15,7 @@ import { useModalStyle } from "../../context/ReactModalStylesContext.js";
 
 
 
-
+import CloseModalButton from "../CloseModalButton";
 import DeleteStoryButton from "../DeleteStoryButton";
 import UpdateStoryButton from "../UpdateStoryButton";
 import FollowButton from "../FollowButton";
@@ -32,7 +32,10 @@ import styles from "./profile.module.css";
 
 
 const Profile = ({ otherUser=false }) => {
+  const [ showBookmarksModal, setShowBookmarksModal ] = useState(false);
+  const [ showStoriesModal, setShowStoriesModal ] = useState(false);
   const { isUser } = useUser();
+  const { currentStyle } = useModalStyle();
   const dispatch = useDispatch();
   const followers = useSelector(store => store.followersReducer.stories);
   const numOfFollowers = useSelector(store => store.followersReducer.length);
@@ -59,6 +62,30 @@ const Profile = ({ otherUser=false }) => {
 
 
 
+
+  const closeBookmarksModal = () => {
+    setShowBookmarksModal(false);
+  }
+
+
+
+  const handleShowBookmarksModal = event => {
+    event.preventDefault();
+    setShowBookmarksModal(true);
+  }
+
+
+
+  const closeStoriesModal = () => {
+    setShowStoriesModal(false);
+  }
+
+
+
+  const handleShowStoriesModal = event => {
+    event.preventDefault();
+    setShowStoriesModal(true);
+  }
 
 
   return (
@@ -96,28 +123,40 @@ const Profile = ({ otherUser=false }) => {
     }
 
 
-      <div>
+
         {bookmarks !== null ?
           <>
+
+          <Link to='/' onClick={event => handleShowBookmarksModal(event)} >
             <h1>Bookmarks {Object.values(bookmarks).length} </h1>
-            {Object.values(bookmarks).map(eachBookmark => (
-              <>
-                <div className={styles.bookmarks_container}>
-                  <Link to={`/story/${eachBookmark.id}`} >
-                    <img src={eachBookmark.imgUrl} className={styles.bookmark_img}/>
-                    <span> {eachBookmark.title} </span>
-                  </Link>
-                </div>
-              </>
-            ))}
+          </Link>
+
+            <ReactModal
+              isOpen={showBookmarksModal}
+              onRequestClose={closeBookmarksModal}
+              style={currentStyle}
+            >
+                {Object.values(bookmarks).map(eachBookmark => (
+                  <>
+                    <div className={styles.bookmarks_container}>
+                      <Link to={`/story/${eachBookmark.id}`} >
+                        <img src={eachBookmark.imgUrl} className={styles.bookmark_img}/>
+                        <span> {eachBookmark.title} </span>
+                      </Link>
+                    </div>
+                  </>
+                ))}
+
+              <CloseModalButton closeModal={closeBookmarksModal} />
+            </ReactModal>
           </>
           :
           <></>
         }
-      </div>
 
 
-      <div>
+
+
         {followers !== null ?
           <>
             <h1>Followers {numOfFollowers} </h1>
@@ -143,13 +182,21 @@ const Profile = ({ otherUser=false }) => {
           :
           <></>
         }
-      </div>
 
 
-      <div>
+
+
         {stories !== null ?
           <>
-            <h1>Stories</h1>
+            <Link to='/' onClick={event => handleShowStoriesModal(event)} >
+              <h1>Stories</h1>
+            </Link>
+
+          <ReactModal
+            isOpen={showStoriesModal}
+            onRequestClose={closeStoriesModal}
+            style={currentStyle}
+          >
             {Object.values(stories).map(eachStory => (
               <>
                 <div>
@@ -174,12 +221,14 @@ const Profile = ({ otherUser=false }) => {
                 }
               </>
             ))}
+            <CloseModalButton closeModal={closeStoriesModal} />
+          </ReactModal>
           </>
           :
           <>
           </>
         }
-      </div>
+
 
     </>
   )
