@@ -109,7 +109,7 @@ const Feed = () => {
                 <div className={styles.featured_story_text}>
                   <p>{featured.postBody}</p>
                 </div>
-
+ 
 
                 <div className={styles.featured_comments}>
                   {featuredComments !== null ?
