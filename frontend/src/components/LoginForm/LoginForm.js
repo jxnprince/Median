@@ -35,6 +35,7 @@ const LoginForm = () => {
         onChange={event => setEmail(event.target.value)}
         placeholder="Email"
       />
+        <br />
 
       <input
         type="password"
@@ -42,6 +43,7 @@ const LoginForm = () => {
           onChange={event => setPassword(event.target.value)}
         placeholder="Password"
       />
+        <br />
 
         <button type="submit" > Login </button>
     </form>
