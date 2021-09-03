@@ -1,15 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useUser } from "../../context/UserContext";
-
 import { Link, useParams } from "react-router-dom";
+
+
+import ReactModal from 'react-modal';
 
 
 import { thunk_getFollowers, thunk_getBookmarks, thunk_getOtherUser } from "../../thunks/profile.js";
 import { thunk_getAllStories } from "../../thunks/story.js";
 
 
-import styles from "./profile.module.css";
+import { useUser } from "../../context/UserContext";
+import { useModalStyle } from "../../context/ReactModalStylesContext.js";
+
+
 
 
 import DeleteStoryButton from "../DeleteStoryButton";
@@ -17,9 +21,9 @@ import UpdateStoryButton from "../UpdateStoryButton";
 import FollowButton from "../FollowButton";
 
 
+import styles from "./profile.module.css";
 
 
-import ReactModal from 'react-modal';
 
 
 
