@@ -107,10 +107,10 @@
 
 .featured_story_text{
   margin: 2.5vh 3.5vw;
-  font-size: 0.8rem;
   font-weight: 375;
   padding: 10px;
   line-height: 40px;
+  background-color: #1f1f35;
 }
 
 

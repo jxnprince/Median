@@ -105,11 +105,39 @@ const Feed = () => {
 
 
 
-              <ReactModal isOpen={showModal} onRequestClose={closeModal} >
+              <ReactModal
+                isOpen={showModal}
+                onRequestClose={closeModal}
+                style={ {
+                  overlay: {
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: '#000'
+                  },
+                  content: {
+                    position: 'absolute',
+                    top: '40px',
+                    left: '40px',
+                    right: '40px',
+                    bottom: '40px',
+                    border: '1px solid #ccc',
+                    background: '#1f1f35',
+                    overflow: 'auto',
+                    WebkitOverflowScrolling: 'touch',
+                    borderRadius: '4px',
+                    outline: 'none',
+                    padding: '20px'
+                  }
+                } }
+              >
+
                 <div className={styles.featured_story_text}>
                   <p>{featured.postBody}</p>
                 </div>
- 
+
 
                 <div className={styles.featured_comments}>
                   {featuredComments !== null ?

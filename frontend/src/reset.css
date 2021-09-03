@@ -8,9 +8,15 @@
 #1f1f35
 */
 
+
+
+
+
 * {
   font-family: 'Roboto', monospace;
 }
+
+
 
 body {
   color: #F0EAE4;
@@ -19,6 +25,8 @@ body {
   margin: 0;
 }
 
+
+
 a {
   color: #F0EAE4;
   text-decoration: none;
@@ -26,13 +34,19 @@ a {
 
 
 
+
+
 li {
   list-style: none;
 }
 
+
+
 .hidden {
   display: none;
 }
+
+
 
 
 h1 {
