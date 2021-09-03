@@ -11,6 +11,9 @@ import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf.js';
 
+import "./reset.css";
+
+
 
 const store = configureStore();
 
