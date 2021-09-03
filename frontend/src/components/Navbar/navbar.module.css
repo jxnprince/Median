@@ -10,3 +10,10 @@
   cursor: pointer;
   padding: 1px;
 }
+
+
+
+.resize {
+  object-fit: contain;
+  width: 35px;
+}

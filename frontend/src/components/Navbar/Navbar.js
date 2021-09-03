@@ -43,7 +43,7 @@ const Navbar = () => {
       <>
         <nav>
           <li>
-            <NavLink to={'/'} > <img src={'https://i.imgur.com/IgoFy68.png'} /> </NavLink>
+            <NavLink to={'/'} > <img className={styles.resize} src={'https://i.imgur.com/IgoFy68.png'} /> </NavLink>
           </li>
 
           <li>
@@ -55,11 +55,11 @@ const Navbar = () => {
           </li>
 
           <li>
-            <NavLink to={'/newstory'} > <img src={'https://i.imgur.com/kh845iH.png?1'} /> </NavLink>
+            <NavLink to={'/newstory'} > <img className={styles.resize} src={'https://i.imgur.com/kh845iH.png?1'} /> </NavLink>
           </li>
 
           <li>
-            <NavLink to={'/'} onClick={event => handleLogout(event)} > <img src={'https://i.imgur.com/KP11L1y.png?1'} /> </NavLink>
+            <NavLink to={'/'} onClick={event => handleLogout(event)} > <img className={styles.resize} src={'https://i.imgur.com/KP11L1y.png?1'} /> </NavLink>
           </li>
         </nav>
       </>
@@ -72,7 +72,7 @@ const Navbar = () => {
     <>
       <nav>
         <li>
-          <NavLink to={'/'} > <img src={'https://i.imgur.com/IgoFy68.png'} /> </NavLink>
+          <NavLink to={'/'} > <img className={styles.resize} src={'https://i.imgur.com/IgoFy68.png'} /> </NavLink>
         </li>
 
         <li>
