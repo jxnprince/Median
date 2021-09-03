@@ -3,13 +3,17 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+
 import styles from "./feed.module.css";
+
 
 import { thunk_getFeed } from "../../thunks/feed.js";
 import { thunk_getComments } from "../../thunks/comment.js";
 import { thunk_getAllFollowers } from "../../thunks/profile";
 
+
 import { useUser } from "../../context/UserContext.js";
+import { useModalStyle } from "../../context/ReactModalStylesContext.js";
 
 
 import CloseModalButton from "../CloseModalButton";
@@ -27,6 +31,7 @@ const Feed = () => {
   const [showModal, setShowModal] = useState(false);
   const [followed, setFollowed] = useState(null);
   const { isUser } = useUser();
+  const { currentStyle } = useModalStyle();
   const dispatch =  useDispatch();
   const featured = useSelector(store => store.feedReducer.featured);
   const featuredComments = useSelector(store => store.commentReducer.comments)
@@ -108,30 +113,7 @@ const Feed = () => {
               <ReactModal
                 isOpen={showModal}
                 onRequestClose={closeModal}
-                style={ {
-                  overlay: {
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: '#000'
-                  },
-                  content: {
-                    position: 'absolute',
-                    top: '40px',
-                    left: '40px',
-                    right: '40px',
-                    bottom: '40px',
-                    border: '1px solid #ccc',
-                    background: '#1f1f35',
-                    overflow: 'auto',
-                    WebkitOverflowScrolling: 'touch',
-                    borderRadius: '4px',
-                    outline: 'none',
-                    padding: '20px'
-                  }
-                } }
+                style={ currentStyle }
               >
 
                 <div className={styles.featured_story_text}>

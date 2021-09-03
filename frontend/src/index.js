@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import { UserProvider } from './context/UserContext.js';
+import { ModalStyleProvider } from './context/ReactModalStylesContext.js';
 
 
 import { Provider } from 'react-redux';
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 
+
 // used to simplify ReactDOM.render below
 function Root() {
 
@@ -35,7 +37,9 @@ function Root() {
     <Provider store={store}>
       <BrowserRouter>
         <UserProvider>
-          <App />
+          <ModalStyleProvider >
+            <App />
+          </ModalStyleProvider>
         </UserProvider>
       </ BrowserRouter>
     </Provider>

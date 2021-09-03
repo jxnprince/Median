@@ -18,6 +18,15 @@ import FollowButton from "../FollowButton";
 
 
 
+
+import ReactModal from 'react-modal';
+
+
+
+
+
+
+
 const Profile = ({ otherUser=false }) => {
   const { isUser } = useUser();
   const dispatch = useDispatch();
