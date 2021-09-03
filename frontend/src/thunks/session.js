@@ -67,11 +67,11 @@ const thunk_logoutUser = () => async (dispatch) => {
 
 
 
-const thunk_signupUser = ({ email, password, username }) => async (dispatch) => {
+const thunk_signupUser = ({ email, firstName, lastName, password, confPassword }) => async (dispatch) => {
 
   const response = await csrfFetch('/api/users/signup', {
     method: 'POST',
-    body: JSON.stringify({ email, password, username })
+    body: JSON.stringify({ email, firstName, lastName, password, confPassword })
   });
 
   if (response.ok) {
@@ -79,6 +79,7 @@ const thunk_signupUser = ({ email, password, username }) => async (dispatch) => 
     dispatch(signupUser(the_user));
     return;
   }
+  // dispatch to error handler here
   throw response;
 };
 
