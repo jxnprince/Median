@@ -50,6 +50,8 @@
   align-items: center;
   margin-top: 10vh;
   flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
 
