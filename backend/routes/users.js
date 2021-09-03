@@ -43,12 +43,12 @@ router.delete('/logout', (request, response) => {
 
 //POST localhost:5000/api/users/signup
 router.post('/signup', validateSignup, asyncHandler(async (request, response, next) => {
-    const { email, password, username } = request.body;
+    const { email, firstName, lastName, password, confPassword } = request.body;
 
-    const user = await User.signup({ email, username, password });
+    const user = await User.signup({ email, firstName, lastName, password, confPassword });
 
 
-    if (user === false) {
+    if (!user) {
         const err = new Error('Signup failed.');
         err.status = 401;
         err.title = 'Signup failed';

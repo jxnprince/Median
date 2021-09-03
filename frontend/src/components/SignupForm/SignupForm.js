@@ -21,7 +21,9 @@ const SignupForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-  }
+    const payload = { email, firstName, lastName, password, confPassword };
+    
+  };
 
 
 

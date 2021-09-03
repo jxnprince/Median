@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-  User.associate = function (models) {
+  User.associate =  models => {
     User.belongsToMany(models.User, {
       through: "Follow",
       otherKey: "userId",
@@ -102,26 +102,26 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-  User.prototype.toSafeObject = function () {
+  User.prototype.toSafeObject = () => {
     const { id, firstName, lastName, gender, birthdate, email, avatar } = this; // context will be the User instance
     return { id, firstName, lastName, gender, birthdate, email, avatar };
   };
 
 
 
-  User.prototype.validatePassword = function (password) {
+  User.prototype.validatePassword = password => {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
   };
 
 
 
-  User.getCurrentUserById = async function (id) {
+  User.getCurrentUserById = async id => {
     return await User.scope('currentUser').findByPk(id);
   };
 
 
 
-  User.login = async function ({ credential, password }) {
+  User.login = async ({ credential, password }) => {
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
@@ -141,9 +141,10 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-  User.signup = async function ({ email, password }) {
+  User.signup = async ({ email, firstName, lastName, password, confPassword }) => {
     const hashedPassword = bcrypt.hashSync(password);
-    const user = await User.create({ email, hashedPassword });
+
+    const user = await User.create({ firstName, lastName, email, hashedPassword });
 
     if (user) {
       return await User.scope('currentUser').findByPk(user.id);
@@ -151,6 +152,7 @@ module.exports = (sequelize, DataTypes) => {
 
     return false;
   };
+
 
 
   return User;
