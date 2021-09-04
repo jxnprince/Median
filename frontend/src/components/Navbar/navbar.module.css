@@ -6,7 +6,35 @@
 }
 
 
+
 .displayLoginFormButton:hover {
   cursor: pointer;
   padding: 1px;
+}
+
+
+
+.nav_class {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+.nav_class li{
+  list-style: none;
+  padding: 15px;
+}
+
+
+
+
+.resize {
+  object-fit: contain;
+  width: 35px;
 }

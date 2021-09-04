@@ -3,13 +3,17 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+
 import styles from "./feed.module.css";
+
 
 import { thunk_getFeed } from "../../thunks/feed.js";
 import { thunk_getComments } from "../../thunks/comment.js";
 import { thunk_getAllFollowers } from "../../thunks/profile";
 
+
 import { useUser } from "../../context/UserContext.js";
+import { useModalStyle } from "../../context/ReactModalStylesContext.js";
 
 
 import CloseModalButton from "../CloseModalButton";
@@ -23,10 +27,13 @@ import ReactModal from 'react-modal';
 
 
 
+
+
 const Feed = () => {
   const [showModal, setShowModal] = useState(false);
   const [followed, setFollowed] = useState(null);
   const { isUser } = useUser();
+  const { currentStyle } = useModalStyle();
   const dispatch =  useDispatch();
   const featured = useSelector(store => store.feedReducer.featured);
   const featuredComments = useSelector(store => store.commentReducer.comments)
@@ -105,7 +112,12 @@ const Feed = () => {
 
 
 
-              <ReactModal isOpen={showModal} onRequestClose={closeModal} >
+              <ReactModal
+                isOpen={showModal}
+                onRequestClose={closeModal}
+                style={ currentStyle }
+              >
+
                 <div className={styles.featured_story_text}>
                   <p>{featured.postBody}</p>
                 </div>
