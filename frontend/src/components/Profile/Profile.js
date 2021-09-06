@@ -88,6 +88,8 @@ const Profile = ({ otherUser=false }) => {
   }
 
 
+
+
   return (
     <>
 
@@ -171,23 +173,31 @@ const Profile = ({ otherUser=false }) => {
           <>
             <h1>Followers {numOfFollowers} </h1>
 
-            {Object.values(followers).map(eachFollower => (
-              <>
-                <div>
-                  <Link to={`/story/${eachFollower.id}`} >
-                    <img src={eachFollower.imgUrl} className={styles.followers_img} />
-                    <span id={styles.followers_title}> {eachFollower.title} </span>
-                  </Link>
-                </div>
+          {Object.values(followers).length > 0  ?
+            <>
+              {Object.values(followers).map(eachFollower => (
+                <>
+                  <div>
+                    <Link to={`/story/${eachFollower.id}`} >
+                      <img src={eachFollower.imgUrl} className={styles.followers_img} />
+                      <span id={styles.followers_title}> {eachFollower.title} </span>
+                    </Link>
+                  </div>
 
-                <div>
-                  <Link to={`/profile/${eachFollower?.User?.id}`} >
-                    <img src={eachFollower?.User?.avatar} className={styles.miniavatar}/>
+                  <div>
+                    <Link to={`/profile/${eachFollower?.User?.id}`} >
+                      <img src={eachFollower?.User?.avatar} className={styles.miniavatar} />
                       <span> {eachFollower?.User?.firstName} {eachFollower?.User?.lastName} </span>
-                  </Link>
-                </div>
-              </>
-            ))}
+                    </Link>
+                  </div>
+                </>
+              ))}
+            </>
+            :
+            <>
+
+            </>
+          }
           </>
           :
           <></>
