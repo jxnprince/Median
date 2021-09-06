@@ -243,7 +243,7 @@ const Profile = ({ otherUser=false }) => {
         {stories !== null ?
           <>
             <Link to='/' onClick={event => handleShowStoriesModal(event)} >
-              <h1>Stories {Object.values(stories).length} </h1>
+              <h1 className={styles.stories_title}>Stories {Object.values(stories).length} </h1>
             </Link>
 
           <ReactModal
