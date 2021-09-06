@@ -36,6 +36,7 @@ const NewStory = () => {
 
   return (
     <>
+    <div className={styles.new_story_wrap}>
     <form onSubmit={onSubmit} className={styles.new_story_form}>
       <label>
         Image
@@ -70,6 +71,7 @@ const NewStory = () => {
 
       <button type='submit'> Create </button>
     </form>
+      </div>
     </>
   )
 
