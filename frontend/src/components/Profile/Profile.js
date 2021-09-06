@@ -149,7 +149,7 @@ const Profile = ({ otherUser=false }) => {
           <>
 
           <Link to='/' onClick={event => handleShowBookmarksModal(event)} >
-            <h1>Bookmarks {Object.values(bookmarks).length} </h1>
+            <h1 className={styles.bookmarks_title}>Bookmarks {Object.values(bookmarks).length} </h1>
           </Link>
 
             <ReactModal
@@ -194,7 +194,7 @@ const Profile = ({ otherUser=false }) => {
         {followers !== null ?
           <>
           <Link to='/' onClick={event => handleShowFollowersModal(event)} >
-            <h1>Followers {numOfFollowers} </h1>
+            <h1 className={styles.followers_title}>Followers {numOfFollowers} </h1>
           </Link>
 
           <ReactModal
