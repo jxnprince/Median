@@ -33,6 +33,7 @@ import styles from "./profile.module.css";
 
 const Profile = ({ otherUser=false }) => {
   const [ showBookmarksModal, setShowBookmarksModal ] = useState(false);
+  const [ showFollowersModal, setShowFollowersModal ] = useState(false);
   const [ showStoriesModal, setShowStoriesModal ] = useState(false);
   const { isUser } = useUser();
   const { currentStyle } = useModalStyle();
@@ -72,6 +73,17 @@ const Profile = ({ otherUser=false }) => {
   const handleShowBookmarksModal = event => {
     event.preventDefault();
     setShowBookmarksModal(true);
+  }
+
+
+  const handleShowFollowersModal = event => {
+    event.preventDefault();
+    setShowFollowersModal(true);
+  }
+
+
+  const closeFollowersModal = () => {
+    setShowFollowersModal(false);
   }
 
 
@@ -171,7 +183,16 @@ const Profile = ({ otherUser=false }) => {
 
         {followers !== null ?
           <>
+          <Link to='/' onClick={event => handleShowFollowersModal(event)} >
             <h1>Followers {numOfFollowers} </h1>
+          </Link>
+
+          <ReactModal
+            isOpen={showFollowersModal}
+            onRequestClose={closeFollowersModal}
+            style={currentStyle}
+          >
+
 
           {Object.values(followers).length > 0  ?
             <>
@@ -195,9 +216,12 @@ const Profile = ({ otherUser=false }) => {
             </>
             :
             <>
-
+              <h2>No story data for your followers</h2>
             </>
           }
+
+            <CloseModalButton closeModal={closeFollowersModal} />
+          </ReactModal>
           </>
           :
           <></>
