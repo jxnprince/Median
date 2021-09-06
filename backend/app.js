@@ -8,6 +8,7 @@ const feed_router = require('./routes/feed.js');
 const story_router = require('./routes/stories.js');
 const comment_router = require('./routes/comments.js');
 const follow_router = require('./routes/follows.js');
+const like_router = require('./routes/likes.js');
 
 
 
@@ -24,7 +25,7 @@ app.use('/api/feed', feed_router);
 app.use('/api/stories', story_router);
 app.use('/api/comments', comment_router);
 app.use('/api/follows', follow_router);
-
+app.use('/api/likes', like_router);
 
 
 
