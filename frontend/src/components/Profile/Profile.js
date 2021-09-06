@@ -111,7 +111,8 @@ const Profile = ({ otherUser=false }) => {
             <img src={otherUsersInfo.avatar} className={styles.mainProfileImg} />
           </div>
 
-          <FollowButton userId={otherUsersInfo.id} />
+          {/* need a different implementation of followbutton component for profile */}
+          {/* <FollowButton userId={otherUsersInfo.id} /> */}
 
           <div className={styles.userinfo}>
             <h3>{otherUsersInfo.firstName}</h3>
