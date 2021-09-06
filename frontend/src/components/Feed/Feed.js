@@ -109,7 +109,7 @@ const Feed = () => {
             </div>
 
             <Link to={'/'} onClick={event => handleShowMore(event)} >
-              <p> {limitedPreview} </p>
+              <p className={styles.featured_limmited_text}> {limitedPreview} </p>
             </Link>
 
 

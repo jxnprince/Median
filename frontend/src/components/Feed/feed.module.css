@@ -37,12 +37,17 @@
 
 
 
+.featured_limmited_text {
+  margin-left: 7.5vw;
+}
+
 
 
 .story_information {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+  margin-left: 8.5vw;
 }
 
 
