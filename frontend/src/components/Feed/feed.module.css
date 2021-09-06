@@ -21,35 +21,21 @@
 
 
 
-.featured-story-img>img{
-  height: 100%;
+.featured_title {
+  margin-left: 3.5vw;
+}
+
+
+
+.featured_image {
+  height: 40vh;
+  width: 44vw;
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: 33% 33%;
+  margin-left: 7.5vw;
 }
 
 
-
-.featured-story-img{
-  height: 25vh;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: flex-start;
-}
-
-
-
-.featured-story-heading{
-  margin-left: 2.5vh;
-  margin-right: 2.5vh;
-}
-
-
-
-.featured-story-heading>h1{
-  font-size: 1.5rem;
-  font-weight: 500;
-}
 
 
 

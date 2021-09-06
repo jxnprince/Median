@@ -84,12 +84,14 @@ const Feed = () => {
     return (
       <>
       {/* first main story  */}
-        <div className={'featured'}>
           <div className={styles.featured_container} >
-            <Link to={`/story/${featured.id}`}>
-              <h1>{featured.title}</h1>
-              <img src={featured.imgUrl} />
-            </Link>
+
+            <div>
+              <Link to={`/story/${featured.id}`}>
+                <h1 className={styles.featured_title}>{featured.title}</h1>
+                <img className={styles.featured_image} src={featured.imgUrl} />
+              </Link>
+            </div>
 
             <div className={styles.story_information}>
               <div className={styles.user_information}>
@@ -156,7 +158,7 @@ const Feed = () => {
               </ReactModal>
 
           </div>
-        </div>
+
 
 
 
