@@ -1,6 +1,20 @@
 
 
 
+.story_title {
+  margin-left: 3.5vw;
+}
+
+
+
+.story_img img{
+  height: 40vh;
+  width: 44vw;
+  object-fit: cover;
+  object-position: 33% 33%;
+  margin-left: 7.5vw;
+}
+
 
 
 
@@ -10,6 +24,7 @@
   transition: all 0.1s;
   background-color: white;
 }
+
 
 .thumbsup:hover{
   opacity: 100%;

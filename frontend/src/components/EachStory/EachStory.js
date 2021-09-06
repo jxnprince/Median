@@ -45,15 +45,26 @@ const EachStory = () => {
       <>
         <div>
           <Link to={'/'} onClick={event => goBack(event)}> Back </Link>
-            <h1>{story.title}</h1>
+
+            <h1 className={styles.story_title}>{story.title}</h1>
+
+            <div className={styles.story_img}>
               <img src={story.imgUrl} />
+            </div>
+
+              <div>
                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                   <span>
                       {Object.values(story.UserLikes).length}
                   </span>
-              <p>{story.postBody}</p>
+              </div>
+
+              <div>
+                <p>{story.postBody}</p>
+              </div>
 
         </div>
+
 
         <div>
             <h3> Comments </h3>
