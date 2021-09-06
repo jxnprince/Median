@@ -18,6 +18,12 @@
 
 
 
+.story_likes_wrap {
+  margin-left: 7.5vw;
+  margin-top: 1.5vw;
+}
+
+
 .thumbsup{
   opacity: 75%;
   width: 1.5vw;
@@ -29,4 +35,56 @@
 .thumbsup:hover{
   opacity: 100%;
   padding: -1;
+}
+
+
+
+.story_body {
+  font-size: 1rem;
+  line-height: 34px;
+  font-weight: 200;
+  padding: 93px;
+  margin-left: 1.5vw;
+}
+
+
+
+
+
+.story_comments_wrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+
+
+.story_comments_wrap h3{
+  margin-left: 7.5vw;
+}
+
+
+
+.story_comments_wrap span{
+  margin-left: 7.5vw;
+}
+
+
+
+.story_comments_wrap p{
+  margin-left: 7.5vw;
+}
+
+
+
+.story_comments_wrap img {
+  height: 8vh;
+  width: 3vw;
+  object-fit: cover;
+  object-position: 33% 33%;
+  margin-left: 7.5vw;
 }

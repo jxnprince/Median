@@ -52,21 +52,21 @@ const EachStory = () => {
               <img src={story.imgUrl} />
             </div>
 
-              <div>
+              <div className={styles.story_likes_wrap}>
                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                   <span>
                       {Object.values(story.UserLikes).length}
                   </span>
               </div>
 
-              <div>
+              <div className={styles.story_body}>
                 <p>{story.postBody}</p>
               </div>
 
         </div>
 
 
-        <div>
+        <div className={styles.story_comments_wrap}>
             <h3> Comments </h3>
           {comments.map(eachComment => (
             <>
