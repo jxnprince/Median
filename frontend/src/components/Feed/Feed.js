@@ -162,7 +162,7 @@ const Feed = () => {
 
 
         {/* all of the other stories */}
-        <div className={'feed-items'} >
+        <div className={styles.feed_items} >
           <div className={styles.feed_container}>
               <>
                     <div className={styles.shortened_story_heading}>
@@ -170,6 +170,7 @@ const Feed = () => {
                       <div className={styles.shortened_story_stack}>
                         {stories.map(eachStory => (
                           <>
+                          <div className={styles.each_story_wrap}>
                             <Link to={`/story/${eachStory.id}`} >
                               <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
                             </Link>
@@ -190,6 +191,7 @@ const Feed = () => {
                               <div className={styles.shortened_story_img}>
                                 <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
                               </div>
+                            </div>
                             </>
                             ))}
                         </div>
