@@ -264,12 +264,17 @@
 
 
 
+
+
 .shortened_story_author{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 2vh;
-	margin-right: 1vw;
+      display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 2vh;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    padding: 13px;
 }
 
 
@@ -285,8 +290,8 @@
 
 
 .shortened_story_name {
-	font-size: 0.65rem;
-	margin-left: 0.5vw;
+    padding: 10px;
+    margin-right: 9.5vw;
 }
 
 
@@ -328,6 +333,7 @@
   width: 1.5vw;
   transition: all 0.1s;
   background-color: white;
+  margin-left: 1.5vw;
 }
 
 

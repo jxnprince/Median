@@ -177,7 +177,9 @@ const Feed = () => {
                             <div className={styles.shortened_story_author}>
                               <Link to={`/profile/${eachStory.user.id}`}>
                                 <img src={eachStory.user.avatar} className={styles.shortened_story_avatar}  />
-                                  <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
+                                  <span className={styles.shortened_story_name}>
+                                      { `${eachStory.user.firstName} ${eachStory.user.lastName}` }
+                                  </span>
                               </Link>
 
                               <FollowButton userId={eachStory.user.id}  />
