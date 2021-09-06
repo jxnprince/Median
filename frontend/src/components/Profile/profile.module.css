@@ -95,13 +95,24 @@
 
 
 .bookmarks_container {
-	    background-color: #494A8F;
-    opacity: 75%;
-    border-radius: 6px;
-    margin: 3.25rem;
-    padding: 1.1rem;
-    overflow: hidden;
+	background-color: #494A8F;
+	opacity: 75%;
+	border-radius: 6px;
+	margin: 3.25rem;
+	padding: 1.1rem;
+	overflow: hidden;
 }
+
+
+.bookmarks_container span {
+	margin-left: 4.5vw;
+}
+
+
+.eachBookmark_wrap:hover {
+	cursor: pointer;
+}
+
 
 
 

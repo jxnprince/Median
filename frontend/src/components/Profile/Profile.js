@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 
 import ReactModal from 'react-modal';
@@ -38,6 +38,7 @@ const Profile = ({ otherUser=false }) => {
   const { isUser } = useUser();
   const { currentStyle } = useModalStyle();
   const dispatch = useDispatch();
+  const history = useHistory();
   const followers = useSelector(store => store.followersReducer.stories);
   const numOfFollowers = useSelector(store => store.followersReducer.length);
   const bookmarks = useSelector(store => store.bookmarksReducer.bookmarks);
@@ -101,6 +102,11 @@ const Profile = ({ otherUser=false }) => {
 
 
 
+  const gotoStory = (event, storyId) => {
+    event.preventDefault();
+    history.push(`/story/${storyId}`)
+  }
+
 
   return (
     <>
@@ -157,10 +163,13 @@ const Profile = ({ otherUser=false }) => {
                 {Object.values(bookmarks).map(eachBookmark => (
                   <>
                     <div className={styles.bookmarks_container}>
+                      <div className={styles.eachBookmark_wrap} onClick={event => gotoStory(event, eachBookmark.id)}>
                       <Link to={`/story/${eachBookmark.id}`} >
                         <img src={eachBookmark.imgUrl} className={styles.bookmark_img} />
+                          <br />
                         <span> {eachBookmark.title} </span>
                       </Link>
+                      </div>
                     </div>
                   </>
                 ))}
