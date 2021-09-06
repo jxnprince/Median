@@ -136,16 +136,26 @@ const Profile = ({ otherUser=false }) => {
               onRequestClose={closeBookmarksModal}
               style={currentStyle}
             >
+
+            {Object.values(bookmarks).length > 0  ?
+              <>
                 {Object.values(bookmarks).map(eachBookmark => (
                   <>
                     <div className={styles.bookmarks_container}>
                       <Link to={`/story/${eachBookmark.id}`} >
-                        <img src={eachBookmark.imgUrl} className={styles.bookmark_img}/>
+                        <img src={eachBookmark.imgUrl} className={styles.bookmark_img} />
                         <span> {eachBookmark.title} </span>
                       </Link>
                     </div>
                   </>
                 ))}
+              </>
+              :
+              <>
+                <h1>No Bookmarks</h1>
+
+              </>
+              }
 
               <CloseModalButton closeModal={closeBookmarksModal} />
             </ReactModal>
