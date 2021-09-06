@@ -77,7 +77,16 @@
 
 .story_comments_wrap p{
   margin-left: 7.5vw;
+  font-weight: 200;
+  padding: 12px;
 }
+
+
+
+.story_comment_delete {
+  margin-left: 7.5vw;
+}
+
 
 
 
@@ -86,5 +95,13 @@
   width: 3vw;
   object-fit: cover;
   object-position: 33% 33%;
+  margin-left: 7.5vw;
+}
+
+
+
+
+
+.story_comment_form {
   margin-left: 7.5vw;
 }

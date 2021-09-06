@@ -74,12 +74,16 @@ const EachStory = () => {
               <span > {`${eachComment.User.firstName} ${eachComment.User.lastName}`} </span>
               <p> {eachComment.body} </p>
 
-              <DeleteCommentButton commentId={eachComment.id} commenterId={eachComment.userId} />
+              <div className={styles.story_comment_delete}>
+                <DeleteCommentButton commentId={eachComment.id} commenterId={eachComment.userId} />
+              </div>
             </>
           ))}
         </div>
 
-        <CommentForm storyId={story.id} />
+        <div className={styles.story_comment_form}>
+          <CommentForm storyId={story.id} />
+        </div>
       </>
     )
   }
