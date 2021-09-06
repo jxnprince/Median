@@ -269,23 +269,20 @@
 
 
 .shortened_story_img {
-	height: 20vh;
+  height: 20vh;
   width: 8vw;
   object-fit: cover;
   object-position: 33% 33%;
-  border-radius: 2.5px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 7px;
+  border-top-right-radius: 9.5px;
+  border-bottom-right-radius: 9.5px;
 }
 
 
 
 .shortened_story_title {
-	font-size: 1.25rem;
-	font-weight: 400;
-	margin-left: 2vh;
-	margin-right: 1vw;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-left: 2vh;
 }
 
 
@@ -293,14 +290,14 @@
 
 
 .shortened_story_author{
-      display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 2vh;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    padding: 13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 2vh;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  padding: 13px;
 }
 
 
