@@ -199,7 +199,7 @@ const Profile = ({ otherUser=false }) => {
         {stories !== null ?
           <>
             <Link to='/' onClick={event => handleShowStoriesModal(event)} >
-              <h1>Stories</h1>
+              <h1>Stories {Object.values(stories).length} </h1>
             </Link>
 
           <ReactModal
@@ -207,30 +207,41 @@ const Profile = ({ otherUser=false }) => {
             onRequestClose={closeStoriesModal}
             style={currentStyle}
           >
-            {Object.values(stories).map(eachStory => (
-              <>
-                <div>
-                  <Link to={`/story/${eachStory.id}`} >
-                    <img src={eachStory.imgUrl} />
-                      <h3>{eachStory.title}</h3>
-                  </Link>
-                </div>
 
-                {eachStory.userId === isUser.id ?
+
+            {Object.values(stories).length > 0  ?
+              <>
+                {Object.values(stories).map(eachStory => (
                   <>
                     <div>
-                      <DeleteStoryButton storyId={eachStory.id} />
+                      <Link to={`/story/${eachStory.id}`} >
+                        <img src={eachStory.imgUrl} />
+                        <h3>{eachStory.title}</h3>
+                      </Link>
                     </div>
 
-                    <div>
-                      <UpdateStoryButton storyId={eachStory.id} />
-                    </div>
+                    {eachStory.userId === isUser.id ?
+                      <>
+                        <div>
+                          <DeleteStoryButton storyId={eachStory.id} />
+                        </div>
+
+                        <div>
+                          <UpdateStoryButton storyId={eachStory.id} />
+                        </div>
+                      </>
+                      :
+                      <></>
+                    }
                   </>
-                  :
-                  <></>
-                }
+                ))}
               </>
-            ))}
+              :
+              <>
+                <h1>No Stories</h1>
+              </>
+            }
+
             <CloseModalButton closeModal={closeStoriesModal} />
           </ReactModal>
           </>
