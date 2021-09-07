@@ -1,0 +1,29 @@
+
+
+
+
+
+
+
+.updatestory_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+
+
+
+
+.updatestory_form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+}

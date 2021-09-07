@@ -7,6 +7,11 @@ import { thunk_updateStory } from "../../thunks/story.js";
 
 
 
+import styles from "./updatestory.module.css";
+
+
+
+
 const UpdateStoryForm = () => {
   const [imgUrl, setImgUrl] = useState('');
   const [postBody, setPostBody] = useState('');
@@ -31,7 +36,8 @@ const UpdateStoryForm = () => {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+    <div className={styles.updatestory_wrap}>
+      <form className={styles.updatestory_form} onSubmit={onSubmit}>
         <label>
           Image
           <input
@@ -62,6 +68,7 @@ const UpdateStoryForm = () => {
 
         <button type='submit'> Update </button>
       </form>
+      </div>
     </>
   )
 };
