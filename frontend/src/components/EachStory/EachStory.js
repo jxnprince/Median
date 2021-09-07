@@ -45,17 +45,28 @@ const EachStory = () => {
       <>
         <div>
           <Link to={'/'} onClick={event => goBack(event)}> Back </Link>
-            <h1>{story.title}</h1>
+
+            <h1 className={styles.story_title}>{story.title}</h1>
+
+            <div className={styles.story_img}>
               <img src={story.imgUrl} />
+            </div>
+
+              <div className={styles.story_likes_wrap}>
                 <img src="https://i.imgur.com/uW1Ryn2.png?1" className={styles.thumbsup} />
                   <span>
                       {Object.values(story.UserLikes).length}
                   </span>
-              <p>{story.postBody}</p>
+              </div>
+
+              <div className={styles.story_body}>
+                <p>{story.postBody}</p>
+              </div>
 
         </div>
 
-        <div>
+
+        <div className={styles.story_comments_wrap}>
             <h3> Comments </h3>
           {comments.map(eachComment => (
             <>
@@ -63,12 +74,16 @@ const EachStory = () => {
               <span > {`${eachComment.User.firstName} ${eachComment.User.lastName}`} </span>
               <p> {eachComment.body} </p>
 
-              <DeleteCommentButton commentId={eachComment.id} commenterId={eachComment.userId} />
+              <div className={styles.story_comment_delete}>
+                <DeleteCommentButton commentId={eachComment.id} commenterId={eachComment.userId} />
+              </div>
             </>
           ))}
         </div>
 
-        <CommentForm storyId={story.id} />
+        <div className={styles.story_comment_form}>
+          <CommentForm storyId={story.id} />
+        </div>
       </>
     )
   }

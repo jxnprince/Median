@@ -8,6 +8,7 @@ import { feedReducer } from "../reducers/feed.js";
 import { storyReducer } from "../reducers/story.js";
 import { commentReducer } from "../reducers/comment.js";
 import { followersReducer, bookmarksReducer, otherUsersProfileReducer } from "../reducers/profile.js";
+import { likeReducer } from "../reducers/like.js";
 
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   otherUsersProfileReducer,
   followersReducer,
   bookmarksReducer,
+  likeReducer,
 
 });
 

@@ -1,5 +1,19 @@
 
 
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+
+
+
 .login_form > input{
 	color: #F0EAE4;
   background: #1f1f35;
@@ -7,7 +21,6 @@
   border: 5%;
   outline: #1f1f35;
   width: 20vw;
-  font-size: .5em;
   transition: all 0.3s 0.2s ease;
   margin: 1.5px;
   border-radius: 2.5px;

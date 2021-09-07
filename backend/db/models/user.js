@@ -102,7 +102,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-  User.prototype.toSafeObject = () => {
+  User.prototype.toSafeObject = function () {
     const { id, firstName, lastName, gender, birthdate, email, avatar } = this; // context will be the User instance
     return { id, firstName, lastName, gender, birthdate, email, avatar };
   };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 
 import ReactModal from 'react-modal';
@@ -33,10 +33,12 @@ import styles from "./profile.module.css";
 
 const Profile = ({ otherUser=false }) => {
   const [ showBookmarksModal, setShowBookmarksModal ] = useState(false);
+  const [ showFollowersModal, setShowFollowersModal ] = useState(false);
   const [ showStoriesModal, setShowStoriesModal ] = useState(false);
   const { isUser } = useUser();
   const { currentStyle } = useModalStyle();
   const dispatch = useDispatch();
+  const history = useHistory();
   const followers = useSelector(store => store.followersReducer.stories);
   const numOfFollowers = useSelector(store => store.followersReducer.length);
   const bookmarks = useSelector(store => store.bookmarksReducer.bookmarks);
@@ -75,6 +77,17 @@ const Profile = ({ otherUser=false }) => {
   }
 
 
+  const handleShowFollowersModal = event => {
+    event.preventDefault();
+    setShowFollowersModal(true);
+  }
+
+
+  const closeFollowersModal = () => {
+    setShowFollowersModal(false);
+  }
+
+
 
   const closeStoriesModal = () => {
     setShowStoriesModal(false);
@@ -88,6 +101,13 @@ const Profile = ({ otherUser=false }) => {
   }
 
 
+
+  const gotoStory = (event, storyId) => {
+    event.preventDefault();
+    history.push(`/story/${storyId}`)
+  }
+
+
   return (
     <>
 
@@ -97,7 +117,8 @@ const Profile = ({ otherUser=false }) => {
             <img src={otherUsersInfo.avatar} className={styles.mainProfileImg} />
           </div>
 
-          <FollowButton userId={otherUsersInfo.id} />
+          {/* need a different implementation of followbutton component for profile */}
+          {/* <FollowButton userId={otherUsersInfo.id} /> */}
 
           <div className={styles.userinfo}>
             <h3>{otherUsersInfo.firstName}</h3>
@@ -128,7 +149,7 @@ const Profile = ({ otherUser=false }) => {
           <>
 
           <Link to='/' onClick={event => handleShowBookmarksModal(event)} >
-            <h1>Bookmarks {Object.values(bookmarks).length} </h1>
+            <h1 className={styles.bookmarks_title}>Bookmarks {Object.values(bookmarks).length} </h1>
           </Link>
 
             <ReactModal
@@ -136,16 +157,29 @@ const Profile = ({ otherUser=false }) => {
               onRequestClose={closeBookmarksModal}
               style={currentStyle}
             >
+
+            {Object.values(bookmarks).length > 0  ?
+              <>
                 {Object.values(bookmarks).map(eachBookmark => (
                   <>
                     <div className={styles.bookmarks_container}>
+                      <div className={styles.eachBookmark_wrap} onClick={event => gotoStory(event, eachBookmark.id)}>
                       <Link to={`/story/${eachBookmark.id}`} >
-                        <img src={eachBookmark.imgUrl} className={styles.bookmark_img}/>
+                        <img src={eachBookmark.imgUrl} className={styles.bookmark_img} />
+                          <br />
                         <span> {eachBookmark.title} </span>
                       </Link>
+                      </div>
                     </div>
                   </>
                 ))}
+              </>
+              :
+              <>
+                <h1>No Bookmarks</h1>
+
+              </>
+              }
 
               <CloseModalButton closeModal={closeBookmarksModal} />
             </ReactModal>
@@ -159,25 +193,45 @@ const Profile = ({ otherUser=false }) => {
 
         {followers !== null ?
           <>
-            <h1>Followers {numOfFollowers} </h1>
+          <Link to='/' onClick={event => handleShowFollowersModal(event)} >
+            <h1 className={styles.followers_title}>Followers {numOfFollowers} </h1>
+          </Link>
 
-            {Object.values(followers).map(eachFollower => (
-              <>
-                <div>
-                  <Link to={`/story/${eachFollower.id}`} >
-                    <img src={eachFollower.imgUrl} className={styles.followers_img} />
-                    <span id={styles.followers_title}> {eachFollower.title} </span>
-                  </Link>
-                </div>
+          <ReactModal
+            isOpen={showFollowersModal}
+            onRequestClose={closeFollowersModal}
+            style={currentStyle}
+          >
 
-                <div>
-                  <Link to={`/profile/${eachFollower?.User?.id}`} >
-                    <img src={eachFollower?.User?.avatar} className={styles.miniavatar}/>
+
+          {Object.values(followers).length > 0  ?
+            <>
+              {Object.values(followers).map(eachFollower => (
+                <>
+                  <div>
+                    <Link to={`/story/${eachFollower.id}`} >
+                      <img src={eachFollower.imgUrl} className={styles.followers_img} />
+                      <span id={styles.followers_title}> {eachFollower.title} </span>
+                    </Link>
+                  </div>
+
+                  <div>
+                    <Link to={`/profile/${eachFollower?.User?.id}`} >
+                      <img src={eachFollower?.User?.avatar} className={styles.miniavatar} />
                       <span> {eachFollower?.User?.firstName} {eachFollower?.User?.lastName} </span>
-                  </Link>
-                </div>
-              </>
-            ))}
+                    </Link>
+                  </div>
+                </>
+              ))}
+            </>
+            :
+            <>
+              <h2>No story data for your followers</h2>
+            </>
+          }
+
+            <CloseModalButton closeModal={closeFollowersModal} />
+          </ReactModal>
           </>
           :
           <></>
@@ -189,7 +243,7 @@ const Profile = ({ otherUser=false }) => {
         {stories !== null ?
           <>
             <Link to='/' onClick={event => handleShowStoriesModal(event)} >
-              <h1>Stories</h1>
+              <h1 className={styles.stories_title}>Stories {Object.values(stories).length} </h1>
             </Link>
 
           <ReactModal
@@ -197,30 +251,43 @@ const Profile = ({ otherUser=false }) => {
             onRequestClose={closeStoriesModal}
             style={currentStyle}
           >
-            {Object.values(stories).map(eachStory => (
+
+
+            {Object.values(stories).length > 0  ?
               <>
-                <div>
-                  <Link to={`/story/${eachStory.id}`} >
-                    <img src={eachStory.imgUrl} />
-                      <h3>{eachStory.title}</h3>
-                  </Link>
-                </div>
-
-                {eachStory.userId === isUser.id ?
+                {Object.values(stories).map(eachStory => (
                   <>
-                    <div>
-                      <DeleteStoryButton storyId={eachStory.id} />
+                    <div className={styles.eachStory_wrap}>
+                      <Link to={`/story/${eachStory.id}`} >
+                        <img className={styles.eachStory_img} src={eachStory.imgUrl} />
+                        <h3>{eachStory.title}</h3>
+                      </Link>
                     </div>
 
-                    <div>
-                      <UpdateStoryButton storyId={eachStory.id} />
-                    </div>
+                    {eachStory.userId === isUser.id ?
+                      <>
+                        <div className={styles.eachStory_buttons}>
+                          <div>
+                            <DeleteStoryButton storyId={eachStory.id} />
+                          </div>
+
+                          <div>
+                            <UpdateStoryButton storyId={eachStory.id} />
+                          </div>
+                        </div>
+                      </>
+                      :
+                      <></>
+                    }
                   </>
-                  :
-                  <></>
-                }
+                ))}
               </>
-            ))}
+              :
+              <>
+                <h1>No Stories</h1>
+              </>
+            }
+
             <CloseModalButton closeModal={closeStoriesModal} />
           </ReactModal>
           </>

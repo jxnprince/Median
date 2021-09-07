@@ -84,12 +84,14 @@ const Feed = () => {
     return (
       <>
       {/* first main story  */}
-        <div className={'featured'}>
           <div className={styles.featured_container} >
-            <Link to={`/story/${featured.id}`}>
-              <h1>{featured.title}</h1>
-              <img src={featured.imgUrl} />
-            </Link>
+
+            <div>
+              <Link to={`/story/${featured.id}`}>
+                <h1 className={styles.featured_title}>{featured.title}</h1>
+                <img className={styles.featured_image} src={featured.imgUrl} />
+              </Link>
+            </div>
 
             <div className={styles.story_information}>
               <div className={styles.user_information}>
@@ -107,7 +109,7 @@ const Feed = () => {
             </div>
 
             <Link to={'/'} onClick={event => handleShowMore(event)} >
-              <p> {limitedPreview} </p>
+              <p className={styles.featured_limmited_text}> {limitedPreview} </p>
             </Link>
 
 
@@ -156,13 +158,13 @@ const Feed = () => {
               </ReactModal>
 
           </div>
-        </div>
+
 
 
 
 
         {/* all of the other stories */}
-        <div className={'feed-items'} >
+        <div className={styles.feed_items} >
           <div className={styles.feed_container}>
               <>
                     <div className={styles.shortened_story_heading}>
@@ -170,6 +172,7 @@ const Feed = () => {
                       <div className={styles.shortened_story_stack}>
                         {stories.map(eachStory => (
                           <>
+                          <div className={styles.each_story_wrap}>
                             <Link to={`/story/${eachStory.id}`} >
                               <h1 className={styles.shortened_story_title}>{eachStory.title}</h1>
                             </Link>
@@ -177,7 +180,9 @@ const Feed = () => {
                             <div className={styles.shortened_story_author}>
                               <Link to={`/profile/${eachStory.user.id}`}>
                                 <img src={eachStory.user.avatar} className={styles.shortened_story_avatar}  />
-                                  <span className="shortened-story-name"> {`${eachStory.user.firstName} ${eachStory.user.lastName}`} </span>
+                                  <span className={styles.shortened_story_name}>
+                                      { `${eachStory.user.firstName} ${eachStory.user.lastName}` }
+                                  </span>
                               </Link>
 
                               <FollowButton userId={eachStory.user.id}  />
@@ -188,6 +193,7 @@ const Feed = () => {
                               <div className={styles.shortened_story_img}>
                                 <img src={eachStory.imgUrl} className={styles.shortened_story_img} />
                               </div>
+                            </div>
                             </>
                             ))}
                         </div>
