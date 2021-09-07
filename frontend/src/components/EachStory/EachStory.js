@@ -10,6 +10,8 @@ import { thunk_getComments } from "../../thunks/comment.js";
 
 import CommentForm from "../CommentForm";
 import DeleteCommentButton from "../DeleteCommentButton";
+import BookmarkButton from "../BookmarkButton";
+
 
 
 import styles from "./eachstory.module.css";
@@ -45,6 +47,7 @@ const EachStory = () => {
       <>
         <div>
           <Link to={'/'} onClick={event => goBack(event)}> Back </Link>
+            <BookmarkButton />
 
             <h1 className={styles.story_title}>{story.title}</h1>
 
