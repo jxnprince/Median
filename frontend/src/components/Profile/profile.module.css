@@ -92,3 +92,20 @@
 .stories_title {
 	margin-left: 4.5vw;
 }
+
+
+
+
+.eachStory_wrap {
+
+}
+
+
+
+
+.eachStory_img {
+	height: 20vh;
+  width: 8vw;
+  object-fit: cover;
+  object-position: 33% 33%;
+}
