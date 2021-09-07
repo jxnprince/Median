@@ -266,12 +266,14 @@ const Profile = ({ otherUser=false }) => {
 
                     {eachStory.userId === isUser.id ?
                       <>
-                        <div>
-                          <DeleteStoryButton storyId={eachStory.id} />
-                        </div>
+                        <div className={styles.eachStory_buttons}>
+                          <div>
+                            <DeleteStoryButton storyId={eachStory.id} />
+                          </div>
 
-                        <div>
-                          <UpdateStoryButton storyId={eachStory.id} />
+                          <div>
+                            <UpdateStoryButton storyId={eachStory.id} />
+                          </div>
                         </div>
                       </>
                       :

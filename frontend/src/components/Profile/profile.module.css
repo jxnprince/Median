@@ -97,7 +97,14 @@
 
 
 .eachStory_wrap {
-
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 30px;
+	margin-left: 5.5vw;
 }
 
 
@@ -108,4 +115,19 @@
   width: 8vw;
   object-fit: cover;
   object-position: 33% 33%;
+}
+
+
+
+
+
+.eachStory_buttons {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 3.5vw;
+	padding: 10px;
 }
