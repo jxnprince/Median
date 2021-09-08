@@ -98,6 +98,7 @@
 
 .eachStory_wrap {
 	display: flex;
+	background-color: #494A8F;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-content: center;
@@ -105,6 +106,7 @@
 	align-items: center;
 	padding: 30px;
 	margin-left: 5.5vw;
+	border-radius: 6px;
 }
 
 

@@ -9,7 +9,7 @@ const story_router = require('./routes/stories.js');
 const comment_router = require('./routes/comments.js');
 const follow_router = require('./routes/follows.js');
 const like_router = require('./routes/likes.js');
-
+const bookmark_router = require('./routes/bookmarks.js');
 
 
 const app = express();
@@ -26,6 +26,7 @@ app.use('/api/stories', story_router);
 app.use('/api/comments', comment_router);
 app.use('/api/follows', follow_router);
 app.use('/api/likes', like_router);
+app.use('/api/bookmarks', bookmark_router);
 
 
 
